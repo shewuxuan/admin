@@ -1,0 +1,268 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 12px;
+    color: #666;
+    font-family: "宋体" ，Verdana, Microsoft YaHei, Simsun;
+    background: #fff;
+    line-height: 24px;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+em {
+    font-style: normal;
+}
+
+input, button, select, textarea {
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+/*//禁用了文本的拖拉，尤其在谷歌下*/
+p {
+    text-align: center;
+    text-justify: distribute;
+}
+
+/*//为了使文本段落左右两边对齐*/
+/*======== Link ========*/
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/**********************************************导航栏开始******************************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #89BBF8;
+}
+
+/**********************************************顶部开始******************************/
+.top {
+    width: 100%;
+    height: 112px;
+    background: url(../images/top_bg.jpg) repeat-x;
+    overflow: hidden;
+}
+
+.top_left {
+    float: left;
+    width: 45%;
+    height: 112px;
+    /*border:1px solid red;*/
+
+}
+
+.top_left01 {
+
+    margin-left: 178px;
+}
+
+.top_right {
+    float: right;
+    width: 45%;
+    height: 112px;
+    /*border:1px solid red;*/
+    overflow: hidden;
+}
+
+.top_right ul li {
+    float: right;
+}
+
+.top_right ul li a {
+}
+
+.top_right ul li img {
+    margin: 20px 25px 10px 10px;
+}
+
+.top_right ul li p {
+    margin-right: 17px;
+    text-align: center;
+    color: white;
+}
+
+.topbottom {
+    height: 25px;
+    background-color: #9CDCFF;
+}
+
+.topbottom a {
+    margin-left: 30px;
+}
+
+/**********************************************左边开始******************************/
+
+.left {
+    width: 170px;
+    /*width:12%;*/
+    height: 100%;
+    height: 600px;
+    padding: 0 0 0 0;
+    min-height: 20%;
+    background: url(../images/left_bg3.png) no-repeat;
+    float: left;
+}
+
+.left ul dd {
+    width: 170px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    background: url(../images/lefttop_bg.png) no-repeat;
+}
+
+.left ul p {
+    color: #003D7C;
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.left ul li {
+    color: white;
+    width: 85px;
+    height: 67px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-image: url(../images/left_01.png);
+}
+
+.left ul li a {
+    color: white;
+    text-decoration: none;
+    width: 85px;
+    /*height:67px;*/
+    display: block;
+    background-image: url(../images/lift_li.gif);
+}
+
+.left ul li a:hover {
+    color: white;
+    background-image: url(../images/left_kj.gif);
+}
+
+.left ul li img {
+    padding-top: 5px;
+}
+
+.left_hover {
+    color: white;
+    background-image: url(../images/right_01.png);
+}
+
+/*第一个表格开始*/
+option {
+    font-weight: normal;
+    display: block;
+    padding: 0px 5px 11px;
+    white-space: pre;
+    min-height: 1.2em;
+}
+
+.main {
+
+    height: 600px;
+    width: 99%;
+    /*width:600px;*/
+    padding: 0 0 0 0;
+    background-color: #fff;
+    float: right;
+    margin-right: 10px;
+    /*	display: none;*/
+}
+
+.main .main_top {
+    height: 33px;
+    line-height: 33px;
+    background: url(../images/maintop_bg.jpg) repeat-x;
+    color: #00C;
+}
+
+/*第一个表格结束*/
+.main .main_top img {
+    display: block;
+    float: left;
+}
+
+.main .main_bottom {
+    margin: 0px auto;
+    border: 1px solid #3692ff;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.main .main_bottom strong {
+    font-size: 18px;
+}
+
+.main .main_bottom b {
+    font-weight: normal;
+}
+
+.main .main_bottom td {
+    padding: 2px;
+    border: 1px #3692ff solid;
+    /*font-weight: bold;*/
+    font-size: 14px;
+    color: #000;
+}
+
+.main .main_bottom input {
+    width: 50px;
+    color: white;
+    background: #06c;
+}
+
+/*表格结束*/
+.yewei {
+    text-align: center;
+    font-size: 14px;
+}
+
+.yewei a {
+    color: #333;
+    padding: 0px 5px;
+}
+
+.yewei a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+

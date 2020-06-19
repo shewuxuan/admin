@@ -1,0 +1,161 @@
+/* base */
+HTML, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Tahoma, 宋体;
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.cl {
+    clear: both;
+    line-height: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: #28a2da;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background: #5AABE3;
+}
+
+
+/*=login*/
+body {
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    margin: 0;
+    background: #fff url(../images/login_bg.png) 50% 0 no-repeat;
+}
+
+.login {
+    border: 0;
+    width: 668px;
+    height: 349px;
+    margin: 0 auto;
+    background: url(../images/bg_middle.png) no-repeat;
+    margin-top: 140px;
+}
+
+.login .header {
+    height: 80px;
+    position: relative;
+    font-family: "Microsoft Yahei";
+}
+
+.login .header .bt {
+    height: 60px;
+    position: absolute;
+    left: 25%;
+    bottom: 0;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0px 1px 1px #555;
+    text-align: center;
+}
+
+.login ul {
+    width: 325px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.login ul li {
+    text-align: center;
+    margin: 0 auto;
+    height: 40px;
+    overflow: hidden;
+}
+
+.login ul li b {
+    color: white;
+    display: block;
+    width: 55px;
+    height: 18px;
+    line-height: 28px;
+    float: left;
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+.login ul li input {
+    width: 210px;
+    height: 25px;
+    padding: 0 3px;
+    border: 1px solid #85b4e0;
+    background: white;
+    line-height: 16px;
+    float: left;
+    font-family: "微软雅黑";
+    margin-right: 10px;
+}
+
+.login ul li input.text {
+    width: 126px;
+}
+
+.login ul li img {
+    float: left;
+}
+
+.login ul li.curr input {
+    border: none;
+    color: #fff;
+    padding: 0;
+    width: 73px;
+    height: 32px;
+    line-height: 18px;
+    background: url(../images/denglu_bg.jpg) no-repeat;
+    cursor: pointer;
+    display: block;
+}
+
+.login span {
+    font-size: 12px;
+    color: white;
+    font-family: "宋体,微软雅黑";
+}

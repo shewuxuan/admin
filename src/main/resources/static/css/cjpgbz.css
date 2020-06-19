@@ -1,0 +1,106 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0px;
+}
+
+table {
+    width: 350px;
+    height: 100%;
+    margin: 150px auto;
+    border: 1px solid #CBE8F7;
+    border-collapse: collapse;
+    background: url(images/body_bg4.png) repeat-y;
+
+}
+
+table tr {
+    width: 150px;
+}
+
+table td {
+    padding: 10px;
+    border: 0px;
+    font-size: 14px;
+    color: #000;
+}
+
+th {
+    font-size: 18px;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    color: white;
+    background: #06C;
+    text-align: center;
+    height: 50px;
+}
+
+input {
+    width: 190px;
+    height: 25px;
+    border: 1px #69A8F5 solid;
+    text-align: left;
+}
+
+b {
+    color: #06C;
+}
+
+.next {
+    width: 55px;
+    height: 23px;
+    line-height: 20px;
+    color: white;
+    background: #06C;
+    font-weight: bold;
+    margin-left: 60px;
+    margin-left: 132px;
+}
+
+.second_b {
+    text-align: center;
+}
+
+.main_top {
+    height: 33px;
+    line-height: 33px;
+    background: url(../images/maintop_bg.jpg) repeat-x;
+    color: #00C;
+}
+
+.main_top p {
+    position: absolute;
+    top: 19px;
+    left: 40px;
+}
+
+.biaoti {
+    height: 50px;
+    line-height: 50px;
+    background-color: #06c;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.main {
+    margin-top: 10px;
+    height: 100%;
+    height: 600px;
+    width: 99%;
+    /*width:600px;*/
+    padding: 0 0 0 0;
+    background-color: #fff;
+    float: right;
+    margin-right: 10px;
+    /*	display: none;*/
+
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.sys.SysDbMapper">
+    <resultMap id="BaseResultMap" type="com.guodu.pojo.sys.SysDb">
+        <!--@mbg.generated-->
+        <!--@Table sys_db-->
+        <result column="keycode" jdbcType="VARCHAR" property="keycode"/>
+        <result column="keyvalue" jdbcType="VARCHAR" property="keyvalue"/>
+        <result column="keymemo" jdbcType="VARCHAR" property="keymemo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        keycode, keyvalue, keymemo
+    </sql>
+    <insert id="insert" parameterType="com.guodu.pojo.sys.SysDb">
+        <!--@mbg.generated-->
+        insert into sys_db (keycode, keyvalue, keymemo
+        )
+        values (#{keycode,jdbcType=VARCHAR}, #{keyvalue,jdbcType=VARCHAR}, #{keymemo,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.guodu.pojo.sys.SysDb">
+        <!--@mbg.generated-->
+        insert into sys_db
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="keycode != null and keycode != ''">
+                keycode,
+            </if>
+            <if test="keyvalue != null and keyvalue != ''">
+                keyvalue,
+            </if>
+            <if test="keymemo != null and keymemo != ''">
+                keymemo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="keycode != null and keycode != ''">
+                #{keycode,jdbcType=VARCHAR},
+            </if>
+            <if test="keyvalue != null and keyvalue != ''">
+                #{keyvalue,jdbcType=VARCHAR},
+            </if>
+            <if test="keymemo != null and keymemo != ''">
+                #{keymemo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from sys_db
+        <where>
+            <if test="keycode != null and keycode != ''">
+                and keycode=#{keycode,jdbcType=VARCHAR}
+            </if>
+            <if test="keyvalue != null and keyvalue != ''">
+                and keyvalue=#{keyvalue,jdbcType=VARCHAR}
+            </if>
+            <if test="keymemo != null and keymemo != ''">
+                and keymemo=#{keymemo,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into sys_db
+        (keycode, keyvalue, keymemo)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.keycode,jdbcType=VARCHAR}, #{item.keyvalue,jdbcType=VARCHAR}, #{item.keymemo,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+    <select id="selectByKeycodeAndKeyValue" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_db
+        <where>
+            <if test="keycode != null and keycode != ''">
+                and keycode=#{keycode,jdbcType=VARCHAR}
+            </if>
+            <if test="keyvalue != null and keyvalue != ''">
+                and keyvalue=#{keyvalue,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

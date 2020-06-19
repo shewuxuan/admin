@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.pwbh.PwbhJbxxMapper">
+	<resultMap id="entityMap" type="com.guodu.pojo.pwbh.PwbhJbxx">
+		<result property="tsid" column="tsid" jdbcType="VARCHAR"/>
+		<result property="ssqy" column="ssqy" jdbcType="VARCHAR"/>
+		<result property="tssj" column="tssj" jdbcType="TIMESTAMP"/>
+		<result property="azddDdh" column="azdd_ddh" jdbcType="VARCHAR"/>
+		<result property="ssxl" column="ssxl" jdbcType="VARCHAR"/>
+		<result property="lm" column="lm" jdbcType="VARCHAR"/>
+		<result property="gzfzr" column="gzfzr" jdbcType="VARCHAR"/>
+		<result property="gzry" column="gzry" jdbcType="VARCHAR"/>
+		<result property="shr" column="shr" jdbcType="VARCHAR"/>
+		<result property="czr" column="czr" jdbcType="VARCHAR"/>
+		<result property="czsj" column="czsj" jdbcType="TIMESTAMP"/>
+		<result property="beizhu" column="beizhu" jdbcType="VARCHAR"/>
+		<result property="upload" column="upload" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="sqlColumn">
+		tsid,
+		ssqy,
+		tssj,
+		azdd_ddh,
+		ssxl,
+		lm,
+		gzfzr,
+		gzry,
+		shr,
+		czr,
+		czsj,
+		beizhu,
+		upload
+	</sql>
+
+	<sql id="variableSql">
+		#{tsid, jdbcType=VARCHAR},
+		#{ssqy, jdbcType=VARCHAR},
+		str_to_date(#{tssj},'%Y-%m-%d'),
+		#{azddDdh, jdbcType=VARCHAR},
+		#{ssxl, jdbcType=VARCHAR},
+		#{lm, jdbcType=VARCHAR},
+		#{gzfzr, jdbcType=VARCHAR},
+		#{gzry, jdbcType=VARCHAR},
+		#{shr, jdbcType=VARCHAR},
+		#{czr, jdbcType=VARCHAR},
+		#{czsj, jdbcType=TIMESTAMP},
+		#{beizhu, jdbcType=VARCHAR},
+		#{upload, jdbcType=VARCHAR}
+	</sql>
+
+	<insert id="insert" parameterType="com.guodu.pojo.pwbh.PwbhJbxx" >
+		insert into pwbh_jbxx ( <include refid="sqlColumn" /> ) values ( <include refid="variableSql" /> )
+	</insert>
+
+	<select id="selectById" parameterType="java.lang.String" resultMap="entityMap">
+		select * from pwbh_jbxx where tsid = #{tsid}
+	</select>
+
+	<select id="selectList" resultMap="entityMap" parameterType="java.util.Map">
+		select
+			<include refid="sqlColumn" />
+		from pwbh_jbxx
+		where 1=1
+		<if test="tsid!=null and tsid!=''"> and tsid=#{tsid, jdbcType=VARCHAR}</if>
+		<if test="ssqy!=null and ssqy!=''"> and ssqy=#{ssqy, jdbcType=VARCHAR}</if>
+		<if test="tssj!=null and tssj!=''"> and tssj=#{tssj, jdbcType=TIMESTAMP}</if>
+		<if test="azddDdh!=null and azddDdh!=''"> and azdd_ddh=#{azddDdh, jdbcType=VARCHAR}</if>
+	</select>
+
+	<update id="update" parameterType="com.guodu.pojo.pwbh.PwbhJbxx">
+		update pwbh_jbxx set tsid=#{tsid}
+		, ssqy=#{ssqy, jdbcType=VARCHAR}
+		, tssj = str_to_date(#{tssj},'%Y-%m-%d')
+		, azdd_ddh=#{azddDdh, jdbcType=VARCHAR}
+		, ssxl=#{ssxl, jdbcType=VARCHAR}
+		, lm=#{lm, jdbcType=VARCHAR}
+		, gzfzr=#{gzfzr, jdbcType=VARCHAR}
+		, gzry=#{gzry, jdbcType=VARCHAR}
+		, czr=#{czr, jdbcType=VARCHAR}
+		, czsj=#{czsj, jdbcType=TIMESTAMP}
+		, beizhu=#{beizhu, jdbcType=VARCHAR}
+		, shr=#{shr, jdbcType=VARCHAR}
+		where  tsid=#{tsid}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from pwbh_jbxx where TSID = #{id}
+	</delete>
+
+	<select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">
+		select
+		J.TSID,
+		J.SSQY,
+		J.TSSJ,
+		J.AZDD_DDH,
+		J.SSXL,
+		J.LM
+		from pwbh_jbxx j
+		left join sys_ssxl s on j.ssxl = s.id
+		where 1=1
+		<if test="ssqy!=null and ssqy!=''">and j.SSQY=#{ssqy} </if>
+		<if test="startTssj!=null and startTssj!=''">
+			<![CDATA[
+		 	and j.TSSJ >= str_to_date(#{startTssj},'%Y-%m-%d')
+		 ]]>
+		</if>
+		<if test="endTssj!=null and endTssj!=''">
+			<![CDATA[
+		 	and j.TSSJ <= str_to_date(#{endTssj},'%Y-%m-%d')
+		 ]]>
+		</if>
+		<if test="azddDdh!=null and azddDdh!=''"> and j.AZDD_DDH like '%${azddDdh}%'</if>
+		/*挖坑操作*/
+		<if test='xlmc!=null and xlmc!=""'> and j.ssxl = #{xlmc}</if>
+		<if test='bdz!=null and bdz!=""'> and   s.bdz = #{bdz}</if>
+
+		order by TSSJ desc
+	</select>
+
+</mapper>

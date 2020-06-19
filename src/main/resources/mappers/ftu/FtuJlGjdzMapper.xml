@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.ftu.FtuJlGjdzMapper">
+  <resultMap id="BaseResultMap" type="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    <!--@Table ftu_jl_gjdz-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gl1ddz" jdbcType="DECIMAL" property="gl1ddz" />
+    <result column="gl1dsj" jdbcType="DECIMAL" property="gl1dsj" />
+    <result column="gl1dtd" jdbcType="DECIMAL" property="gl1dtd" />
+    <result column="gl2ddz" jdbcType="DECIMAL" property="gl2ddz" />
+    <result column="gl2dsj" jdbcType="DECIMAL" property="gl2dsj" />
+    <result column="gl2dtd" jdbcType="DECIMAL" property="gl2dtd" />
+    <result column="lx1ddz" jdbcType="DECIMAL" property="lx1ddz" />
+    <result column="lx1dsj" jdbcType="DECIMAL" property="lx1dsj" />
+    <result column="lx1dtd" jdbcType="DECIMAL" property="lx1dtd" />
+    <result column="lx2ddz" jdbcType="DECIMAL" property="lx2ddz" />
+    <result column="lx2dsj" jdbcType="DECIMAL" property="lx2dsj" />
+    <result column="lx2dtd" jdbcType="DECIMAL" property="lx2dtd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gl1ddz, gl1dsj, gl1dtd, gl2ddz, gl2dsj, gl2dtd, lx1ddz, lx1dsj, lx1dtd, lx2ddz, 
+    lx2dsj, lx2dtd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ftu_jl_gjdz
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from ftu_jl_gjdz
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    insert into ftu_jl_gjdz (id, gl1ddz, gl1dsj, 
+      gl1dtd, gl2ddz, gl2dsj, 
+      gl2dtd, lx1ddz, lx1dsj, 
+      lx1dtd, lx2ddz, lx2dsj, 
+      lx2dtd)
+    values (#{id,jdbcType=VARCHAR}, #{gl1ddz,jdbcType=DECIMAL}, #{gl1dsj,jdbcType=DECIMAL}, 
+      #{gl1dtd,jdbcType=DECIMAL}, #{gl2ddz,jdbcType=DECIMAL}, #{gl2dsj,jdbcType=DECIMAL}, 
+      #{gl2dtd,jdbcType=DECIMAL}, #{lx1ddz,jdbcType=DECIMAL}, #{lx1dsj,jdbcType=DECIMAL}, 
+      #{lx1dtd,jdbcType=DECIMAL}, #{lx2ddz,jdbcType=DECIMAL}, #{lx2dsj,jdbcType=DECIMAL}, 
+      #{lx2dtd,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    insert into ftu_jl_gjdz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        id,
+      </if>
+      <if test="gl1ddz != null">
+        gl1ddz,
+      </if>
+      <if test="gl1dsj != null">
+        gl1dsj,
+      </if>
+      <if test="gl1dtd != null">
+        gl1dtd,
+      </if>
+      <if test="gl2ddz != null">
+        gl2ddz,
+      </if>
+      <if test="gl2dsj != null">
+        gl2dsj,
+      </if>
+      <if test="gl2dtd != null">
+        gl2dtd,
+      </if>
+      <if test="lx1ddz != null">
+        lx1ddz,
+      </if>
+      <if test="lx1dsj != null">
+        lx1dsj,
+      </if>
+      <if test="lx1dtd != null">
+        lx1dtd,
+      </if>
+      <if test="lx2ddz != null">
+        lx2ddz,
+      </if>
+      <if test="lx2dsj != null">
+        lx2dsj,
+      </if>
+      <if test="lx2dtd != null">
+        lx2dtd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gl1ddz != null">
+        #{gl1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dsj != null">
+        #{gl1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dtd != null">
+        #{gl1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2ddz != null">
+        #{gl2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dsj != null">
+        #{gl2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dtd != null">
+        #{gl2dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1ddz != null">
+        #{lx1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dsj != null">
+        #{lx1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dtd != null">
+        #{lx1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2ddz != null">
+        #{lx2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dsj != null">
+        #{lx2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dtd != null">
+        #{lx2dtd,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    update ftu_jl_gjdz
+    <set>
+      <if test="gl1ddz != null">
+        gl1ddz = #{gl1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dsj != null">
+        gl1dsj = #{gl1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dtd != null">
+        gl1dtd = #{gl1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2ddz != null">
+        gl2ddz = #{gl2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dsj != null">
+        gl2dsj = #{gl2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dtd != null">
+        gl2dtd = #{gl2dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1ddz != null">
+        lx1ddz = #{lx1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dsj != null">
+        lx1dsj = #{lx1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dtd != null">
+        lx1dtd = #{lx1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2ddz != null">
+        lx2ddz = #{lx2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dsj != null">
+        lx2dsj = #{lx2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dtd != null">
+        lx2dtd = #{lx2dtd,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    update ftu_jl_gjdz
+    set gl1ddz = #{gl1ddz,jdbcType=DECIMAL},
+      gl1dsj = #{gl1dsj,jdbcType=DECIMAL},
+      gl1dtd = #{gl1dtd,jdbcType=DECIMAL},
+      gl2ddz = #{gl2ddz,jdbcType=DECIMAL},
+      gl2dsj = #{gl2dsj,jdbcType=DECIMAL},
+      gl2dtd = #{gl2dtd,jdbcType=DECIMAL},
+      lx1ddz = #{lx1ddz,jdbcType=DECIMAL},
+      lx1dsj = #{lx1dsj,jdbcType=DECIMAL},
+      lx1dtd = #{lx1dtd,jdbcType=DECIMAL},
+      lx2ddz = #{lx2ddz,jdbcType=DECIMAL},
+      lx2dsj = #{lx2dsj,jdbcType=DECIMAL},
+      lx2dtd = #{lx2dtd,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from ftu_jl_gjdz
+        <where>
+            <if test="id != null and id != ''">
+                and id=#{id,jdbcType=VARCHAR}
+            </if>
+            <if test="gl1ddz != null">
+                and gl1ddz=#{gl1ddz,jdbcType=DECIMAL}
+            </if>
+            <if test="gl1dsj != null">
+                and gl1dsj=#{gl1dsj,jdbcType=DECIMAL}
+            </if>
+            <if test="gl1dtd != null">
+                and gl1dtd=#{gl1dtd,jdbcType=DECIMAL}
+            </if>
+            <if test="gl2ddz != null">
+                and gl2ddz=#{gl2ddz,jdbcType=DECIMAL}
+            </if>
+            <if test="gl2dsj != null">
+                and gl2dsj=#{gl2dsj,jdbcType=DECIMAL}
+            </if>
+            <if test="gl2dtd != null">
+                and gl2dtd=#{gl2dtd,jdbcType=DECIMAL}
+            </if>
+            <if test="lx1ddz != null">
+                and lx1ddz=#{lx1ddz,jdbcType=DECIMAL}
+            </if>
+            <if test="lx1dsj != null">
+                and lx1dsj=#{lx1dsj,jdbcType=DECIMAL}
+            </if>
+            <if test="lx1dtd != null">
+                and lx1dtd=#{lx1dtd,jdbcType=DECIMAL}
+            </if>
+            <if test="lx2ddz != null">
+                and lx2ddz=#{lx2ddz,jdbcType=DECIMAL}
+            </if>
+            <if test="lx2dsj != null">
+                and lx2dsj=#{lx2dsj,jdbcType=DECIMAL}
+            </if>
+            <if test="lx2dtd != null">
+                and lx2dtd=#{lx2dtd,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </select>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ftu_jl_gjdz
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gl1ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.gl1ddz,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="gl1dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.gl1dsj,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="gl1dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.gl1dtd,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="gl2ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.gl2ddz,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="gl2dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.gl2dsj,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="gl2dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.gl2dtd,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="lx1ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.lx1ddz,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="lx1dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.lx1dsj,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="lx1dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.lx1dtd,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="lx2ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.lx2ddz,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="lx2dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.lx2dsj,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="lx2dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.lx2dtd,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ftu_jl_gjdz
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="gl1ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gl1ddz != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.gl1ddz,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gl1dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gl1dsj != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.gl1dsj,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gl1dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gl1dtd != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.gl1dtd,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gl2ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gl2ddz != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.gl2ddz,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gl2dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gl2dsj != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.gl2dsj,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="gl2dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.gl2dtd != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.gl2dtd,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="lx1ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lx1ddz != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.lx1ddz,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="lx1dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lx1dsj != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.lx1dsj,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="lx1dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lx1dtd != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.lx1dtd,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="lx2ddz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lx2ddz != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.lx2ddz,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="lx2dsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lx2dsj != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.lx2dsj,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="lx2dtd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.lx2dtd != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.lx2dtd,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into ftu_jl_gjdz
+    (id, gl1ddz, gl1dsj, gl1dtd, gl2ddz, gl2dsj, gl2dtd, lx1ddz, lx1dsj, lx1dtd, lx2ddz, 
+      lx2dsj, lx2dtd)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.gl1ddz,jdbcType=DECIMAL}, #{item.gl1dsj,jdbcType=DECIMAL}, 
+        #{item.gl1dtd,jdbcType=DECIMAL}, #{item.gl2ddz,jdbcType=DECIMAL}, #{item.gl2dsj,jdbcType=DECIMAL}, 
+        #{item.gl2dtd,jdbcType=DECIMAL}, #{item.lx1ddz,jdbcType=DECIMAL}, #{item.lx1dsj,jdbcType=DECIMAL}, 
+        #{item.lx1dtd,jdbcType=DECIMAL}, #{item.lx2ddz,jdbcType=DECIMAL}, #{item.lx2dsj,jdbcType=DECIMAL}, 
+        #{item.lx2dtd,jdbcType=DECIMAL})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    insert into ftu_jl_gjdz
+    (id, gl1ddz, gl1dsj, gl1dtd, gl2ddz, gl2dsj, gl2dtd, lx1ddz, lx1dsj, lx1dtd, lx2ddz, 
+      lx2dsj, lx2dtd)
+    values
+    (#{id,jdbcType=VARCHAR}, #{gl1ddz,jdbcType=DECIMAL}, #{gl1dsj,jdbcType=DECIMAL}, 
+      #{gl1dtd,jdbcType=DECIMAL}, #{gl2ddz,jdbcType=DECIMAL}, #{gl2dsj,jdbcType=DECIMAL}, 
+      #{gl2dtd,jdbcType=DECIMAL}, #{lx1ddz,jdbcType=DECIMAL}, #{lx1dsj,jdbcType=DECIMAL}, 
+      #{lx1dtd,jdbcType=DECIMAL}, #{lx2ddz,jdbcType=DECIMAL}, #{lx2dsj,jdbcType=DECIMAL}, 
+      #{lx2dtd,jdbcType=DECIMAL})
+    on duplicate key update 
+    id = #{id,jdbcType=VARCHAR}, 
+    gl1ddz = #{gl1ddz,jdbcType=DECIMAL}, 
+    gl1dsj = #{gl1dsj,jdbcType=DECIMAL}, 
+    gl1dtd = #{gl1dtd,jdbcType=DECIMAL}, 
+    gl2ddz = #{gl2ddz,jdbcType=DECIMAL}, 
+    gl2dsj = #{gl2dsj,jdbcType=DECIMAL}, 
+    gl2dtd = #{gl2dtd,jdbcType=DECIMAL}, 
+    lx1ddz = #{lx1ddz,jdbcType=DECIMAL}, 
+    lx1dsj = #{lx1dsj,jdbcType=DECIMAL}, 
+    lx1dtd = #{lx1dtd,jdbcType=DECIMAL}, 
+    lx2ddz = #{lx2ddz,jdbcType=DECIMAL}, 
+    lx2dsj = #{lx2dsj,jdbcType=DECIMAL}, 
+    lx2dtd = #{lx2dtd,jdbcType=DECIMAL}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.guodu.pojo.ftu.FtuJlGjdz">
+    <!--@mbg.generated-->
+    insert into ftu_jl_gjdz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gl1ddz != null">
+        gl1ddz,
+      </if>
+      <if test="gl1dsj != null">
+        gl1dsj,
+      </if>
+      <if test="gl1dtd != null">
+        gl1dtd,
+      </if>
+      <if test="gl2ddz != null">
+        gl2ddz,
+      </if>
+      <if test="gl2dsj != null">
+        gl2dsj,
+      </if>
+      <if test="gl2dtd != null">
+        gl2dtd,
+      </if>
+      <if test="lx1ddz != null">
+        lx1ddz,
+      </if>
+      <if test="lx1dsj != null">
+        lx1dsj,
+      </if>
+      <if test="lx1dtd != null">
+        lx1dtd,
+      </if>
+      <if test="lx2ddz != null">
+        lx2ddz,
+      </if>
+      <if test="lx2dsj != null">
+        lx2dsj,
+      </if>
+      <if test="lx2dtd != null">
+        lx2dtd,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gl1ddz != null">
+        #{gl1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dsj != null">
+        #{gl1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dtd != null">
+        #{gl1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2ddz != null">
+        #{gl2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dsj != null">
+        #{gl2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dtd != null">
+        #{gl2dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1ddz != null">
+        #{lx1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dsj != null">
+        #{lx1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dtd != null">
+        #{lx1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2ddz != null">
+        #{lx2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dsj != null">
+        #{lx2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dtd != null">
+        #{lx2dtd,jdbcType=DECIMAL},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gl1ddz != null">
+        gl1ddz = #{gl1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dsj != null">
+        gl1dsj = #{gl1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl1dtd != null">
+        gl1dtd = #{gl1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2ddz != null">
+        gl2ddz = #{gl2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dsj != null">
+        gl2dsj = #{gl2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="gl2dtd != null">
+        gl2dtd = #{gl2dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1ddz != null">
+        lx1ddz = #{lx1ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dsj != null">
+        lx1dsj = #{lx1dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx1dtd != null">
+        lx1dtd = #{lx1dtd,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2ddz != null">
+        lx2ddz = #{lx2ddz,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dsj != null">
+        lx2dsj = #{lx2dsj,jdbcType=DECIMAL},
+      </if>
+      <if test="lx2dtd != null">
+        lx2dtd = #{lx2dtd,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

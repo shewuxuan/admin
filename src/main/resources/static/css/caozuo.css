@@ -1,0 +1,56 @@
+/* CSS Document */
+/******************************标题栏开始******************************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../images/bg.png) repeat-y;
+}
+
+.tablea {
+    height: 200px;
+    margin: 150px auto;
+    border: 1px solid #06c;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tablea th {
+    font-size: 18px;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    color: white;
+    background: #06C;
+    text-align: center;
+    height: 50px;
+}
+
+.tablea td {
+    padding: 10px;
+    border: 0px;
+    font-size: 14px;
+    color: #000;
+}
+
+.tablea tr td input {
+    width: 190px;
+    height: 25px;
+    border: 1px #69A8F5 solid;
+    text-align: left;
+}
+
+.tablea tr td b {
+    color: #06C;
+}
+
+.tablea tr td .next {
+    width: 55px;
+    height: 23px;
+    line-height: 20px;
+    color: white;
+    background: #06C;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.cq.CqRecordMapper">
+    <resultMap id="BaseResultMap" type="com.guodu.pojo.cq.CqRecord">
+        <!--@mbg.generated-->
+        <!--@Table cq_record-->
+        <id column="cqid" jdbcType="VARCHAR" property="cqid"/>
+        <result column="sbid" jdbcType="VARCHAR" property="sbid"/>
+        <result column="ssqy" jdbcType="VARCHAR" property="ssqy"/>
+        <result column="ssxl" jdbcType="VARCHAR" property="ssxl"/>
+        <result column="azdd_ddh" jdbcType="VARCHAR" property="azddDdh"/>
+        <result column="zzlx" jdbcType="VARCHAR" property="zzlx"/>
+        <result column="cqrq" jdbcType="TIMESTAMP" property="cqrq"/>
+        <result column="qxfl" jdbcType="VARCHAR" property="qxfl"/>
+        <result column="qx" jdbcType="VARCHAR" property="qx"/>
+        <result column="cqjl" jdbcType="VARCHAR" property="cqjl"/>
+        <result column="cqjg" jdbcType="VARCHAR" property="cqjg"/>
+        <result column="sgdw" jdbcType="VARCHAR" property="sgdw"/>
+        <result column="czr" jdbcType="VARCHAR" property="czr"/>
+        <result column="czsj" jdbcType="TIMESTAMP" property="czsj"/>
+        <result column="beizhu" jdbcType="VARCHAR" property="beizhu"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        cqid, sbid, ssqy, ssxl, azdd_ddh, zzlx, cqrq, qxfl, qx, cqjl, cqjg, sgdw, czr, czsj,
+        beizhu
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from cq_record
+        where cqid = #{cqid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        delete from cq_record
+        where cqid = #{cqid,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.guodu.pojo.cq.CqRecord">
+        <!--@mbg.generated-->
+        insert into cq_record (cqid, sbid, ssqy,
+        ssxl, azdd_ddh, zzlx,
+        cqrq, qxfl, qx, cqjl,
+        cqjg, sgdw, czr, czsj,
+        beizhu)
+        values (#{cqid,jdbcType=VARCHAR}, #{sbid,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR},
+        #{ssxl,jdbcType=VARCHAR}, #{azddDdh,jdbcType=VARCHAR}, #{zzlx,jdbcType=VARCHAR},
+        #{cqrq,jdbcType=TIMESTAMP}, #{qxfl,jdbcType=VARCHAR}, #{qx,jdbcType=VARCHAR}, #{cqjl,jdbcType=VARCHAR},
+        #{cqjg,jdbcType=VARCHAR}, #{sgdw,jdbcType=VARCHAR}, #{czr,jdbcType=VARCHAR}, #{czsj,jdbcType=TIMESTAMP},
+        #{beizhu,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.guodu.pojo.cq.CqRecord">
+        <!--@mbg.generated-->
+        insert into cq_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cqid != null and cqid != ''">
+                cqid,
+            </if>
+            <if test="sbid != null and sbid != ''">
+                sbid,
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                ssqy,
+            </if>
+            <if test="ssxl != null and ssxl != ''">
+                ssxl,
+            </if>
+            <if test="azddDdh != null and azddDdh != ''">
+                azdd_ddh,
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                zzlx,
+            </if>
+            <if test="cqrq != null">
+                cqrq,
+            </if>
+            <if test="qxfl != null and qxfl != ''">
+                qxfl,
+            </if>
+            <if test="qx != null and qx != ''">
+                qx,
+            </if>
+            <if test="cqjl != null and cqjl != ''">
+                cqjl,
+            </if>
+            <if test="cqjg != null and cqjg != ''">
+                cqjg,
+            </if>
+            <if test="sgdw != null and sgdw != ''">
+                sgdw,
+            </if>
+            <if test="czr != null and czr != ''">
+                czr,
+            </if>
+            <if test="czsj != null">
+                czsj,
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                beizhu,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cqid != null and cqid != ''">
+                #{cqid,jdbcType=VARCHAR},
+            </if>
+            <if test="sbid != null and sbid != ''">
+                #{sbid,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="ssxl != null and ssxl != ''">
+                #{ssxl,jdbcType=VARCHAR},
+            </if>
+            <if test="azddDdh != null and azddDdh != ''">
+                #{azddDdh,jdbcType=VARCHAR},
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                #{zzlx,jdbcType=VARCHAR},
+            </if>
+            <if test="cqrq != null">
+                #{cqrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="qxfl != null and qxfl != ''">
+                #{qxfl,jdbcType=VARCHAR},
+            </if>
+            <if test="qx != null and qx != ''">
+                #{qx,jdbcType=VARCHAR},
+            </if>
+            <if test="cqjl != null and cqjl != ''">
+                #{cqjl,jdbcType=VARCHAR},
+            </if>
+            <if test="cqjg != null and cqjg != ''">
+                #{cqjg,jdbcType=VARCHAR},
+            </if>
+            <if test="sgdw != null and sgdw != ''">
+                #{sgdw,jdbcType=VARCHAR},
+            </if>
+            <if test="czr != null and czr != ''">
+                #{czr,jdbcType=VARCHAR},
+            </if>
+            <if test="czsj != null">
+                #{czsj,jdbcType=TIMESTAMP},
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                #{beizhu,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.cq.CqRecord">
+        <!--@mbg.generated-->
+        update cq_record
+        <set>
+            <if test="sbid != null and sbid != ''">
+                sbid = #{sbid,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                ssqy = #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="ssxl != null and ssxl != ''">
+                ssxl = #{ssxl,jdbcType=VARCHAR},
+            </if>
+            <if test="azddDdh != null and azddDdh != ''">
+                azdd_ddh = #{azddDdh,jdbcType=VARCHAR},
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                zzlx = #{zzlx,jdbcType=VARCHAR},
+            </if>
+            <if test="cqrq != null">
+                cqrq = #{cqrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="qxfl != null and qxfl != ''">
+                qxfl = #{qxfl,jdbcType=VARCHAR},
+            </if>
+            <if test="qx != null and qx != ''">
+                qx = #{qx,jdbcType=VARCHAR},
+            </if>
+            <if test="cqjl != null and cqjl != ''">
+                cqjl = #{cqjl,jdbcType=VARCHAR},
+            </if>
+            <if test="cqjg != null and cqjg != ''">
+                cqjg = #{cqjg,jdbcType=VARCHAR},
+            </if>
+            <if test="sgdw != null and sgdw != ''">
+                sgdw = #{sgdw,jdbcType=VARCHAR},
+            </if>
+            <if test="czr != null and czr != ''">
+                czr = #{czr,jdbcType=VARCHAR},
+            </if>
+            <if test="czsj != null">
+                czsj = #{czsj,jdbcType=TIMESTAMP},
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                beizhu = #{beizhu,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where cqid = #{cqid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.cq.CqRecord">
+        <!--@mbg.generated-->
+        update cq_record
+        set sbid = #{sbid,jdbcType=VARCHAR},
+        ssqy = #{ssqy,jdbcType=VARCHAR},
+        ssxl = #{ssxl,jdbcType=VARCHAR},
+        azdd_ddh = #{azddDdh,jdbcType=VARCHAR},
+        zzlx = #{zzlx,jdbcType=VARCHAR},
+        cqrq = #{cqrq,jdbcType=TIMESTAMP},
+        qxfl = #{qxfl,jdbcType=VARCHAR},
+        qx = #{qx,jdbcType=VARCHAR},
+        cqjl = #{cqjl,jdbcType=VARCHAR},
+        cqjg = #{cqjg,jdbcType=VARCHAR},
+        sgdw = #{sgdw,jdbcType=VARCHAR},
+        czr = #{czr,jdbcType=VARCHAR},
+        czsj = #{czsj,jdbcType=TIMESTAMP},
+        beizhu = #{beizhu,jdbcType=VARCHAR}
+        where cqid = #{cqid,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from cq_record
+        <where>
+            <if test="cqid != null and cqid != ''">
+                and cqid=#{cqid,jdbcType=VARCHAR}
+            </if>
+            <if test="sbid != null and sbid != ''">
+                and sbid=#{sbid,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="ssxl != null and ssxl != ''">
+                and ssxl=#{ssxl,jdbcType=VARCHAR}
+            </if>
+            <if test="azddDdh != null and azddDdh != ''">
+                and azdd_ddh=#{azddDdh,jdbcType=VARCHAR}
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                and zzlx=#{zzlx,jdbcType=VARCHAR}
+            </if>
+            <if test="cqrq != null">
+                and cqrq=#{cqrq,jdbcType=TIMESTAMP}
+            </if>
+            <if test="qxfl != null and qxfl != ''">
+                and qxfl=#{qxfl,jdbcType=VARCHAR}
+            </if>
+            <if test="qx != null and qx != ''">
+                and qx=#{qx,jdbcType=VARCHAR}
+            </if>
+            <if test="cqjl != null and cqjl != ''">
+                and cqjl=#{cqjl,jdbcType=VARCHAR}
+            </if>
+            <if test="cqjg != null and cqjg != ''">
+                and cqjg=#{cqjg,jdbcType=VARCHAR}
+            </if>
+            <if test="sgdw != null and sgdw != ''">
+                and sgdw=#{sgdw,jdbcType=VARCHAR}
+            </if>
+            <if test="czr != null and czr != ''">
+                and czr=#{czr,jdbcType=VARCHAR}
+            </if>
+            <if test="czsj != null">
+                and czsj=#{czsj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu=#{beizhu,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update cq_record
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="sbid = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.sbid,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="ssqy = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="ssxl = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.ssxl,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="azdd_ddh = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.azddDdh,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="zzlx = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.zzlx,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="cqrq = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.cqrq,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="qxfl = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.qxfl,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="qx = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.qx,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="cqjl = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.cqjl,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="cqjg = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.cqjg,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="sgdw = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.sgdw,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="czr = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.czr,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="czsj = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.czsj,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="beizhu = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when cqid = #{item.cqid,jdbcType=VARCHAR} then #{item.beizhu,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+        </trim>
+        where cqid in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.cqid,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into cq_record
+        (cqid, sbid, ssqy, ssxl, azdd_ddh, zzlx, cqrq, qxfl, qx, cqjl, cqjg, sgdw, czr, czsj,
+        beizhu)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.cqid,jdbcType=VARCHAR}, #{item.sbid,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR},
+            #{item.ssxl,jdbcType=VARCHAR}, #{item.azddDdh,jdbcType=VARCHAR}, #{item.zzlx,jdbcType=VARCHAR},
+            #{item.cqrq,jdbcType=TIMESTAMP}, #{item.qxfl,jdbcType=VARCHAR}, #{item.qx,jdbcType=VARCHAR},
+            #{item.cqjl,jdbcType=VARCHAR}, #{item.cqjg,jdbcType=VARCHAR}, #{item.sgdw,jdbcType=VARCHAR},
+            #{item.czr,jdbcType=VARCHAR}, #{item.czsj,jdbcType=TIMESTAMP}, #{item.beizhu,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectByPage" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        cq.*,
+        db1.keymemo as ssqyname,
+        db2.keymemo as qxflname,
+        db3.keymemo as zzlxname,
+        ss.bdz as bdz,
+        ss.xlmc as xlmc
+        from cq_record cq
+        left join sys_db db1 on db1.keyvalue = cq.ssqy
+        left join sys_db db2 on db2.keyvalue = cq.qxfl
+        left join sys_db db3 on db3.keyvalue = cq.zzlx
+        left join sys_ssxl ss on ss.id = cq.ssxl
+        <where>
+            db1.keycode = 'region'
+            and db2.keycode = 'qx_type'
+            and db3.keycode = 'sb_type'
+            <if test="cqid != null and cqid != ''">
+                and cqid=#{cqid,jdbcType=VARCHAR}
+            </if>
+            <if test="sbid != null and sbid != ''">
+                and sbid=#{sbid,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and cq.ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="ssxl != null and ssxl != ''">
+                and ssxl=#{ssxl,jdbcType=VARCHAR}
+            </if>
+            <if test="azddDdh != null and azddDdh != ''">
+                and azdd_ddh like CONCAT('%', #{azddDdh,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                and zzlx = #{zzlx,jdbcType=VARCHAR}
+            </if>
+            <if test="startCqrq != null">
+                <![CDATA[and DATE_FORMAT(cqrq, '%Y-%m-%d')>=  DATE_FORMAT(#{startCqrq,jdbcType=TIMESTAMP}, '%Y-%m-%d')]]>
+            </if>
+            <if test="endCqrq != null">
+                <![CDATA[and DATE_FORMAT(cqrq, '%Y-%m-%d')<=  DATE_FORMAT(#{endCqrq,jdbcType=TIMESTAMP}, '%Y-%m-%d')]]>
+            </if>
+            <if test="qxfl != null and qxfl != ''">
+                and qxfl=#{qxfl,jdbcType=VARCHAR}
+            </if>
+<!--            <if test="qx != null and qx != ''">-->
+<!--                and qx like CONCAT('%', #{qx,jdbcType=VARCHAR}, '%')-->
+<!--            </if>-->
+<!--            <if test="cqjl != null and cqjl != ''">-->
+<!--                and cqjl like CONCAT('%', #{cqjl,jdbcType=VARCHAR}, '%')-->
+<!--            </if>-->
+<!--            <if test="cqjg != null and cqjg != ''">-->
+<!--                and cqjg like CONCAT('%', #{cqjg,jdbcType=VARCHAR}, '%')-->
+<!--            </if>-->
+<!--            <if test="sgdw != null and sgdw != ''">-->
+<!--                and sgdw like CONCAT(#{sgdw,jdbcType=VARCHAR}, '%')-->
+<!--            </if>-->
+            <if test="searchParam != null and searchParam != ''">
+                and concat(qx,cqjl,cqjg,sgdw) like concat('%', #{searchParam,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="czr != null and czr != ''">
+                and czr=#{czr,jdbcType=VARCHAR}
+            </if>
+            <if test="czsj != null">
+                and czsj=#{czsj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu=#{beizhu,jdbcType=VARCHAR}
+            </if>
+            <!-- 只选中变电站，没选中线路名称-->
+            <if test="bdz != null and bdz != ''">
+                and ss.bdz = #{bdz,jdbcType=VARCHAR}
+            </if>
+            <!-- 选中线路名称-->
+            <if test="xlmc != null and xlmc != ''">
+                and ss.id = #{xlmc,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by cq.cqrq desc
+    </select>
+</mapper>

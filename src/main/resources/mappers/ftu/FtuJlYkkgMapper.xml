@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.ftu.FtuJlYkkgMapper">
+  <resultMap id="BaseResultMap" type="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    <!--@Table ftu_jl_ykkg-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="tsid" jdbcType="VARCHAR" property="tsid" />
+    <result column="ssqy" jdbcType="VARCHAR" property="ssqy" />
+    <result column="ykf" jdbcType="VARCHAR" property="ykf" />
+    <result column="jcjg_ykf" jdbcType="VARCHAR" property="jcjgYkf" />
+    <result column="ykh" jdbcType="VARCHAR" property="ykh" />
+    <result column="jcjg_ykh" jdbcType="VARCHAR" property="jcjgYkh" />
+    <result column="czr" jdbcType="VARCHAR" property="czr" />
+    <result column="czsj" jdbcType="TIMESTAMP" property="czsj" />
+    <result column="beizhu" jdbcType="VARCHAR" property="beizhu" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tsid, ssqy, ykf, jcjg_ykf, ykh, jcjg_ykh, czr, czsj, beizhu
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ftu_jl_ykkg
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from ftu_jl_ykkg
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    insert into ftu_jl_ykkg (id, tsid, ssqy, 
+      ykf, jcjg_ykf, ykh, 
+      jcjg_ykh, czr, czsj, 
+      beizhu)
+    values (#{id,jdbcType=VARCHAR}, #{tsid,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, 
+      #{ykf,jdbcType=VARCHAR}, #{jcjgYkf,jdbcType=VARCHAR}, #{ykh,jdbcType=VARCHAR}, 
+      #{jcjgYkh,jdbcType=VARCHAR}, #{czr,jdbcType=VARCHAR}, #{czsj,jdbcType=TIMESTAMP}, 
+      #{beizhu,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    insert into ftu_jl_ykkg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        id,
+      </if>
+      <if test="tsid != null and tsid != ''">
+        tsid,
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        ssqy,
+      </if>
+      <if test="ykf != null and ykf != ''">
+        ykf,
+      </if>
+      <if test="jcjgYkf != null and jcjgYkf != ''">
+        jcjg_ykf,
+      </if>
+      <if test="ykh != null and ykh != ''">
+        ykh,
+      </if>
+      <if test="jcjgYkh != null and jcjgYkh != ''">
+        jcjg_ykh,
+      </if>
+      <if test="czr != null and czr != ''">
+        czr,
+      </if>
+      <if test="czsj != null">
+        czsj,
+      </if>
+      <if test="beizhu != null and beizhu != ''">
+        beizhu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tsid != null and tsid != ''">
+        #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="ykf != null and ykf != ''">
+        #{ykf,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkf != null and jcjgYkf != ''">
+        #{jcjgYkf,jdbcType=VARCHAR},
+      </if>
+      <if test="ykh != null and ykh != ''">
+        #{ykh,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkh != null and jcjgYkh != ''">
+        #{jcjgYkh,jdbcType=VARCHAR},
+      </if>
+      <if test="czr != null and czr != ''">
+        #{czr,jdbcType=VARCHAR},
+      </if>
+      <if test="czsj != null">
+        #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null and beizhu != ''">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    update ftu_jl_ykkg
+    <set>
+      <if test="tsid != null and tsid != ''">
+        tsid = #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        ssqy = #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="ykf != null and ykf != ''">
+        ykf = #{ykf,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkf != null and jcjgYkf != ''">
+        jcjg_ykf = #{jcjgYkf,jdbcType=VARCHAR},
+      </if>
+      <if test="ykh != null and ykh != ''">
+        ykh = #{ykh,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkh != null and jcjgYkh != ''">
+        jcjg_ykh = #{jcjgYkh,jdbcType=VARCHAR},
+      </if>
+      <if test="czr != null and czr != ''">
+        czr = #{czr,jdbcType=VARCHAR},
+      </if>
+      <if test="czsj != null">
+        czsj = #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null and beizhu != ''">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    update ftu_jl_ykkg
+    set tsid = #{tsid,jdbcType=VARCHAR},
+      ssqy = #{ssqy,jdbcType=VARCHAR},
+      ykf = #{ykf,jdbcType=VARCHAR},
+      jcjg_ykf = #{jcjgYkf,jdbcType=VARCHAR},
+      ykh = #{ykh,jdbcType=VARCHAR},
+      jcjg_ykh = #{jcjgYkh,jdbcType=VARCHAR},
+      czr = #{czr,jdbcType=VARCHAR},
+      czsj = #{czsj,jdbcType=TIMESTAMP},
+      beizhu = #{beizhu,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from ftu_jl_ykkg
+        <where>
+            <if test="id != null and id != ''">
+                and id=#{id,jdbcType=VARCHAR}
+            </if>
+            <if test="tsid != null and tsid != ''">
+                and tsid=#{tsid,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="ykf != null and ykf != ''">
+                and ykf=#{ykf,jdbcType=VARCHAR}
+            </if>
+            <if test="jcjgYkf != null and jcjgYkf != ''">
+                and jcjg_ykf=#{jcjgYkf,jdbcType=VARCHAR}
+            </if>
+            <if test="ykh != null and ykh != ''">
+                and ykh=#{ykh,jdbcType=VARCHAR}
+            </if>
+            <if test="jcjgYkh != null and jcjgYkh != ''">
+                and jcjg_ykh=#{jcjgYkh,jdbcType=VARCHAR}
+            </if>
+            <if test="czr != null and czr != ''">
+                and czr=#{czr,jdbcType=VARCHAR}
+            </if>
+            <if test="czsj != null">
+                and czsj=#{czsj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu=#{beizhu,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ftu_jl_ykkg
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tsid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.tsid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ssqy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ykf = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.ykf,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="jcjg_ykf = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.jcjgYkf,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ykh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.ykh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="jcjg_ykh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.jcjgYkh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="czr = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.czr,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="czsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.czsj,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="beizhu = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.beizhu,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ftu_jl_ykkg
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tsid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tsid != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.tsid,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ssqy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.ssqy != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ykf = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.ykf != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.ykf,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="jcjg_ykf = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.jcjgYkf != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.jcjgYkf,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ykh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.ykh != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.ykh,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="jcjg_ykh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.jcjgYkh != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.jcjgYkh,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="czr = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.czr != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.czr,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="czsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.czsj != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.czsj,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="beizhu = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.beizhu != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.beizhu,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into ftu_jl_ykkg
+    (id, tsid, ssqy, ykf, jcjg_ykf, ykh, jcjg_ykh, czr, czsj, beizhu)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.tsid,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR}, 
+        #{item.ykf,jdbcType=VARCHAR}, #{item.jcjgYkf,jdbcType=VARCHAR}, #{item.ykh,jdbcType=VARCHAR}, 
+        #{item.jcjgYkh,jdbcType=VARCHAR}, #{item.czr,jdbcType=VARCHAR}, #{item.czsj,jdbcType=TIMESTAMP}, 
+        #{item.beizhu,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    insert into ftu_jl_ykkg
+    (id, tsid, ssqy, ykf, jcjg_ykf, ykh, jcjg_ykh, czr, czsj, beizhu)
+    values
+    (#{id,jdbcType=VARCHAR}, #{tsid,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, #{ykf,jdbcType=VARCHAR}, 
+      #{jcjgYkf,jdbcType=VARCHAR}, #{ykh,jdbcType=VARCHAR}, #{jcjgYkh,jdbcType=VARCHAR}, 
+      #{czr,jdbcType=VARCHAR}, #{czsj,jdbcType=TIMESTAMP}, #{beizhu,jdbcType=VARCHAR}
+      )
+    on duplicate key update 
+    id = #{id,jdbcType=VARCHAR}, 
+    tsid = #{tsid,jdbcType=VARCHAR}, 
+    ssqy = #{ssqy,jdbcType=VARCHAR}, 
+    ykf = #{ykf,jdbcType=VARCHAR}, 
+    jcjg_ykf = #{jcjgYkf,jdbcType=VARCHAR}, 
+    ykh = #{ykh,jdbcType=VARCHAR}, 
+    jcjg_ykh = #{jcjgYkh,jdbcType=VARCHAR}, 
+    czr = #{czr,jdbcType=VARCHAR}, 
+    czsj = #{czsj,jdbcType=TIMESTAMP}, 
+    beizhu = #{beizhu,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.guodu.pojo.ftu.FtuJlYkkg">
+    <!--@mbg.generated-->
+    insert into ftu_jl_ykkg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tsid != null">
+        tsid,
+      </if>
+      <if test="ssqy != null">
+        ssqy,
+      </if>
+      <if test="ykf != null">
+        ykf,
+      </if>
+      <if test="jcjgYkf != null">
+        jcjg_ykf,
+      </if>
+      <if test="ykh != null">
+        ykh,
+      </if>
+      <if test="jcjgYkh != null">
+        jcjg_ykh,
+      </if>
+      <if test="czr != null">
+        czr,
+      </if>
+      <if test="czsj != null">
+        czsj,
+      </if>
+      <if test="beizhu != null">
+        beizhu,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tsid != null">
+        #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqy != null">
+        #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="ykf != null">
+        #{ykf,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkf != null">
+        #{jcjgYkf,jdbcType=VARCHAR},
+      </if>
+      <if test="ykh != null">
+        #{ykh,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkh != null">
+        #{jcjgYkh,jdbcType=VARCHAR},
+      </if>
+      <if test="czr != null">
+        #{czr,jdbcType=VARCHAR},
+      </if>
+      <if test="czsj != null">
+        #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tsid != null">
+        tsid = #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqy != null">
+        ssqy = #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="ykf != null">
+        ykf = #{ykf,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkf != null">
+        jcjg_ykf = #{jcjgYkf,jdbcType=VARCHAR},
+      </if>
+      <if test="ykh != null">
+        ykh = #{ykh,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjgYkh != null">
+        jcjg_ykh = #{jcjgYkh,jdbcType=VARCHAR},
+      </if>
+      <if test="czr != null">
+        czr = #{czr,jdbcType=VARCHAR},
+      </if>
+      <if test="czsj != null">
+        czsj = #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

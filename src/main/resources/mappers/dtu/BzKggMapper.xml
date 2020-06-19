@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.dtu.BzKggMapper">
+    <resultMap id="BaseResultMap" type="com.guodu.pojo.dtu.BzKgg">
+        <!--@mbg.generated-->
+        <!--@Table bz_kgg-->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="ssqy" jdbcType="VARCHAR" property="ssqy"/>
+        <result column="jg" jdbcType="VARCHAR" property="jg"/>
+        <result column="zzlx" jdbcType="VARCHAR" property="zzlx"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, ssqy, jg, zzlx
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from bz_kgg
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        delete from bz_kgg
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.guodu.pojo.dtu.BzKgg">
+        <!--@mbg.generated-->
+        insert into bz_kgg (id, ssqy, jg,
+        zzlx)
+        values (#{id,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, #{jg,jdbcType=VARCHAR},
+        #{zzlx,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.guodu.pojo.dtu.BzKgg">
+        <!--@mbg.generated-->
+        insert into bz_kgg
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">
+                id,
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                ssqy,
+            </if>
+            <if test="jg != null and jg != ''">
+                jg,
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                zzlx,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="jg != null and jg != ''">
+                #{jg,jdbcType=VARCHAR},
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                #{zzlx,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.dtu.BzKgg">
+        <!--@mbg.generated-->
+        update bz_kgg
+        <set>
+            <if test="ssqy != null and ssqy != ''">
+                ssqy = #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="jg != null and jg != ''">
+                jg = #{jg,jdbcType=VARCHAR},
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                zzlx = #{zzlx,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.dtu.BzKgg">
+        <!--@mbg.generated-->
+        update bz_kgg
+        set ssqy = #{ssqy,jdbcType=VARCHAR},
+        jg = #{jg,jdbcType=VARCHAR},
+        zzlx = #{zzlx,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from bz_kgg
+        <where>
+            <if test="id != null and id != ''">
+                and id=#{id,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="jg != null and jg != ''">
+                and jg=#{jg,jdbcType=VARCHAR}
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                and zzlx=#{zzlx,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update bz_kgg
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="ssqy = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="jg = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.jg,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="zzlx = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.zzlx,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into bz_kgg
+        (id, ssqy, jg, zzlx)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR}, #{item.jg,jdbcType=VARCHAR},
+            #{item.zzlx,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <select id="selectByPage" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>, db.keymemo as ssqyname
+        from bz_kgg bz
+        LEFT JOIN sys_db db ON db.keyvalue = bz.ssqy
+        <where>
+            db.keycode='region'
+            <if test="id != null and id != ''">
+                and id=#{id,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != '' and ssqy != 0">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="jg != null and jg != ''">
+                and jg=#{jg,jdbcType=VARCHAR}
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                and zzlx = #{zzlx,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by ssqy,jg
+    </select>
+</mapper>

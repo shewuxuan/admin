@@ -1,0 +1,126 @@
+#menu {
+    list-style: none;
+    border: 0;
+    padding: 0;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+#menu a {
+    display: block;
+    padding: 0px 10px;
+    white-space: nowrap;
+}
+
+#menu li {
+    width: 90px;
+    float: right;
+    margin-right: 5px;
+    background: #fff;
+}
+
+/* menu::level 1 */
+#menu a {
+    text-decoration: none;
+    color: #fff;
+    float: left;
+    position: relative;
+    z-index: 77;
+    width: 70px;
+    height: 58px;
+}
+
+#menu > ul > li:hover > a {
+    background: url(../images/right_01.png);
+    color: #fff;
+}
+
+#menu {
+    list-style: none;
+    border: 0;
+    padding: 0;
+    margin-right: 20px;
+}
+
+#menu a {
+    display: block;
+    padding: 0px 10px;
+    white-space: nowrap;
+}
+
+#menu li { /*width:71px;*/
+    float: right;
+    margin-right: 5px;
+    background: #fff;
+}
+
+/* menu::level 1 */
+#menu a {
+    text-decoration: none;
+    color: #fff;
+    float: left;
+    position: relative;
+    z-index: 77;
+}
+
+#menu > ul > li:hover > a {
+    margin-left: 3px;
+    /*text-align:center;*/
+    background: url(../images/right_01.png) no-repeat;
+    color: #fff;
+    font-weight: normal;
+}
+
+
+#menu li {
+    background: none;
+}
+
+/* menu::level >= 2 */
+
+
+#menu li div {
+    background: url(../images/right_01.png) no-repeat;
+}
+
+/* lava lamp */
+div#menu li.back {
+    height: 58px;
+    width: 70px;
+    z-index: 8;
+    position: absolute;
+}
+
+div#menu li.back .left {
+    width: auto;
+    height: 58px;
+    width: 70px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+}
+
+div#menu p {
+    text-align: center;
+    margin-top: 2px;
+    margin-right: 14px;
+}
+
+div#menu img {
+    margin-left: 7px;
+    margin-top: 2px;
+}
+
+#hide {
+    position: fixed;
+    top: 48%;
+    left: 50%;
+    background: #aaaaaa;
+    width: 300px;
+    height: 120px;
+    margin: -50px 0 0 -50px;
+    display: none;
+    border: 1px solid black;
+}

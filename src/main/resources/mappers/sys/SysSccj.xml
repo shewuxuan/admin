@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.sys.SysSccjMapper">
+    <resultMap id="entityMap" type="com.guodu.pojo.sys.SysSccj">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="cjmc" column="cjmc" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="sqlColumn">
+        id,
+        cjmc
+    </sql>
+
+    <sql id="variableSql">
+        #{id, jdbcType=VARCHAR},
+        #{cjmc, jdbcType=VARCHAR}
+    </sql>
+
+    <insert id="insert" parameterType="com.guodu.pojo.sys.SysSccj">
+        insert into sys_sccj (
+        <include refid="sqlColumn"/>
+        ) values (
+        <include refid="variableSql"/>
+        )
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="entityMap">
+        select * from sys_sccj where id = #{id}
+    </select>
+
+    <select id="selectList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        <include refid="sqlColumn"/>
+        from sys_sccj
+        where 1=1
+        <if test="id!=null and id!=''">and id=#{id, jdbcType=VARCHAR}</if>
+        <if test="cjmc!=null and cjmc!=''">and cjmc like "%"#{cjmc}"%"</if>
+    </select>
+
+    <update id="update" parameterType="com.guodu.pojo.sys.SysSccj">
+        update sys_sccj set id=#{id}
+        <if test="id!=null">, id=#{id, jdbcType=VARCHAR}</if>
+        <if test="cjmc!=null">, cjmc=#{cjmc, jdbcType=VARCHAR}</if>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from sys_sccj where id = #{id}
+    </delete>
+</mapper>

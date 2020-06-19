@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.ftu.FtuJbxxMapper">
+  <resultMap id="BaseResultMap" type="com.guodu.pojo.ftu.FtuJbxx">
+    <!--@mbg.generated-->
+    <!--@Table ftu_jbxx-->
+    <id column="tsid" jdbcType="VARCHAR" property="tsid" />
+    <result column="ssqy" jdbcType="VARCHAR" property="ssqy" />
+    <result column="tssj" jdbcType="TIMESTAMP" property="tssj" />
+    <result column="ddbh" jdbcType="VARCHAR" property="ddbh" />
+    <result column="xlmc" jdbcType="VARCHAR" property="xlmc" />
+    <result column="ftu_bm" jdbcType="VARCHAR" property="ftuBm" />
+    <result column="ysry" jdbcType="VARCHAR" property="ysry" />
+    <result column="ysrq" jdbcType="TIMESTAMP" property="ysrq" />
+    <result column="ysdw" jdbcType="VARCHAR" property="ysdw" />
+    <result column="kg_cj" jdbcType="VARCHAR" property="kgCj" />
+    <result column="kg_xh" jdbcType="VARCHAR" property="kgXh" />
+    <result column="kg_scrq" jdbcType="TIMESTAMP" property="kgScrq" />
+    <result column="kg_xjbb" jdbcType="VARCHAR" property="kgXjbb" />
+    <result column="kg_lxbb" jdbcType="VARCHAR" property="kgLxbb" />
+    <result column="ftu_cj" jdbcType="VARCHAR" property="ftuCj" />
+    <result column="ftu_xh" jdbcType="VARCHAR" property="ftuXh" />
+    <result column="ftu_scrq" jdbcType="TIMESTAMP" property="ftuScrq" />
+    <result column="txsb_cj" jdbcType="VARCHAR" property="txsbCj" />
+    <result column="txsb_xh" jdbcType="VARCHAR" property="txsbXh" />
+    <result column="txsb_scrq" jdbcType="TIMESTAMP" property="txsbScrq" />
+    <result column="wxkh" jdbcType="VARCHAR" property="wxkh" />
+    <result column="ipdz" jdbcType="VARCHAR" property="ipdz" />
+    <result column="zzlx" jdbcType="VARCHAR" property="zzlx" />
+    <result column="tsryxm" jdbcType="VARCHAR" property="tsryxm" />
+    <result column="jd" jdbcType="VARCHAR" property="jd" />
+    <result column="wd" jdbcType="VARCHAR" property="wd" />
+    <result column="xxwz" jdbcType="VARCHAR" property="xxwz" />
+    <result column="czr" jdbcType="VARCHAR" property="czr" />
+    <result column="czsj" jdbcType="TIMESTAMP" property="czsj" />
+    <result column="beizhu" jdbcType="VARCHAR" property="beizhu" />
+    <result column="upload" jdbcType="VARCHAR" property="upload" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tsid, ssqy, tssj, ddbh, xlmc, ftu_bm, ysry, ysrq, ysdw, kg_cj, kg_xh, kg_scrq, kg_xjbb, 
+    kg_lxbb, ftu_cj, ftu_xh, ftu_scrq, txsb_cj, txsb_xh, txsb_scrq, wxkh, ipdz, zzlx, 
+    tsryxm, jd, wd, xxwz, czr, czsj, beizhu, upload
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ftu_jbxx
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from ftu_jbxx
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guodu.pojo.ftu.FtuJbxx">
+    <!--@mbg.generated-->
+    insert into ftu_jbxx (tsid, ssqy, tssj, 
+      ddbh, xlmc, ftu_bm, 
+      ysry, ysrq, ysdw, 
+      kg_cj, kg_xh, kg_scrq, 
+      kg_xjbb, kg_lxbb, ftu_cj, 
+      ftu_xh, ftu_scrq, txsb_cj, 
+      txsb_xh, txsb_scrq, wxkh, 
+      ipdz, zzlx, tsryxm, 
+      jd, wd, xxwz, czr, 
+      czsj, beizhu, upload
+      )
+    values (#{tsid,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, #{tssj,jdbcType=TIMESTAMP}, 
+      #{ddbh,jdbcType=VARCHAR}, #{xlmc,jdbcType=VARCHAR}, #{ftuBm,jdbcType=VARCHAR}, 
+      #{ysry,jdbcType=VARCHAR}, #{ysrq,jdbcType=TIMESTAMP}, #{ysdw,jdbcType=VARCHAR}, 
+      #{kgCj,jdbcType=VARCHAR}, #{kgXh,jdbcType=VARCHAR}, #{kgScrq,jdbcType=TIMESTAMP}, 
+      #{kgXjbb,jdbcType=VARCHAR}, #{kgLxbb,jdbcType=VARCHAR}, #{ftuCj,jdbcType=VARCHAR}, 
+      #{ftuXh,jdbcType=VARCHAR}, #{ftuScrq,jdbcType=TIMESTAMP}, #{txsbCj,jdbcType=VARCHAR}, 
+      #{txsbXh,jdbcType=VARCHAR}, #{txsbScrq,jdbcType=TIMESTAMP}, #{wxkh,jdbcType=VARCHAR}, 
+      #{ipdz,jdbcType=VARCHAR}, #{zzlx,jdbcType=VARCHAR}, #{tsryxm,jdbcType=VARCHAR}, 
+      #{jd,jdbcType=VARCHAR}, #{wd,jdbcType=VARCHAR}, #{xxwz,jdbcType=VARCHAR}, #{czr,jdbcType=VARCHAR}, 
+      #{czsj,jdbcType=TIMESTAMP}, #{beizhu,jdbcType=VARCHAR}, #{upload,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.guodu.pojo.ftu.FtuJbxx">
+    <!--@mbg.generated-->
+    insert into ftu_jbxx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tsid != null and tsid != ''">
+        tsid,
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        ssqy,
+      </if>
+      <if test="tssj != null">
+        tssj,
+      </if>
+      <if test="ddbh != null and ddbh != ''">
+        ddbh,
+      </if>
+      <if test="xlmc != null and xlmc != ''">
+        xlmc,
+      </if>
+      <if test="ftuBm != null and ftuBm != ''">
+        ftu_bm,
+      </if>
+      <if test="ysry != null and ysry != ''">
+        ysry,
+      </if>
+      <if test="ysrq != null">
+        ysrq,
+      </if>
+      <if test="ysdw != null and ysdw != ''">
+        ysdw,
+      </if>
+      <if test="kgCj != null and kgCj != ''">
+        kg_cj,
+      </if>
+      <if test="kgXh != null and kgXh != ''">
+        kg_xh,
+      </if>
+      <if test="kgScrq != null">
+        kg_scrq,
+      </if>
+      <if test="kgXjbb != null and kgXjbb != ''">
+        kg_xjbb,
+      </if>
+      <if test="kgLxbb != null and kgLxbb != ''">
+        kg_lxbb,
+      </if>
+      <if test="ftuCj != null and ftuCj != ''">
+        ftu_cj,
+      </if>
+      <if test="ftuXh != null and ftuXh != ''">
+        ftu_xh,
+      </if>
+      <if test="ftuScrq != null">
+        ftu_scrq,
+      </if>
+      <if test="txsbCj != null and txsbCj != ''">
+        txsb_cj,
+      </if>
+      <if test="txsbXh != null and txsbXh != ''">
+        txsb_xh,
+      </if>
+      <if test="txsbScrq != null">
+        txsb_scrq,
+      </if>
+      <if test="wxkh != null and wxkh != ''">
+        wxkh,
+      </if>
+      <if test="ipdz != null and ipdz != ''">
+        ipdz,
+      </if>
+      <if test="zzlx != null and zzlx != ''">
+        zzlx,
+      </if>
+      <if test="tsryxm != null and tsryxm != ''">
+        tsryxm,
+      </if>
+      <if test="jd != null and jd != ''">
+        jd,
+      </if>
+      <if test="wd != null and wd != ''">
+        wd,
+      </if>
+      <if test="xxwz != null and xxwz != ''">
+        xxwz,
+      </if>
+      <if test="czr != null and czr != ''">
+        czr,
+      </if>
+      <if test="czsj != null">
+        czsj,
+      </if>
+      <if test="beizhu != null and beizhu != ''">
+        beizhu,
+      </if>
+      <if test="upload != null and upload != ''">
+        upload,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tsid != null and tsid != ''">
+        #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="tssj != null">
+        #{tssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ddbh != null and ddbh != ''">
+        #{ddbh,jdbcType=VARCHAR},
+      </if>
+      <if test="xlmc != null and xlmc != ''">
+        #{xlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuBm != null and ftuBm != ''">
+        #{ftuBm,jdbcType=VARCHAR},
+      </if>
+      <if test="ysry != null and ysry != ''">
+        #{ysry,jdbcType=VARCHAR},
+      </if>
+      <if test="ysrq != null">
+        #{ysrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ysdw != null and ysdw != ''">
+        #{ysdw,jdbcType=VARCHAR},
+      </if>
+      <if test="kgCj != null and kgCj != ''">
+        #{kgCj,jdbcType=VARCHAR},
+      </if>
+      <if test="kgXh != null and kgXh != ''">
+        #{kgXh,jdbcType=VARCHAR},
+      </if>
+      <if test="kgScrq != null">
+        #{kgScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kgXjbb != null and kgXjbb != ''">
+        #{kgXjbb,jdbcType=VARCHAR},
+      </if>
+      <if test="kgLxbb != null and kgLxbb != ''">
+        #{kgLxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuCj != null and ftuCj != ''">
+        #{ftuCj,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuXh != null and ftuXh != ''">
+        #{ftuXh,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuScrq != null">
+        #{ftuScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txsbCj != null and txsbCj != ''">
+        #{txsbCj,jdbcType=VARCHAR},
+      </if>
+      <if test="txsbXh != null and txsbXh != ''">
+        #{txsbXh,jdbcType=VARCHAR},
+      </if>
+      <if test="txsbScrq != null">
+        #{txsbScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wxkh != null and wxkh != ''">
+        #{wxkh,jdbcType=VARCHAR},
+      </if>
+      <if test="ipdz != null and ipdz != ''">
+        #{ipdz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzlx != null and zzlx != ''">
+        #{zzlx,jdbcType=VARCHAR},
+      </if>
+      <if test="tsryxm != null and tsryxm != ''">
+        #{tsryxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jd != null and jd != ''">
+        #{jd,jdbcType=VARCHAR},
+      </if>
+      <if test="wd != null and wd != ''">
+        #{wd,jdbcType=VARCHAR},
+      </if>
+      <if test="xxwz != null and xxwz != ''">
+        #{xxwz,jdbcType=VARCHAR},
+      </if>
+      <if test="czr != null and czr != ''">
+        #{czr,jdbcType=VARCHAR},
+      </if>
+      <if test="czsj != null">
+        #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null and beizhu != ''">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null and upload != ''">
+        #{upload,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.ftu.FtuJbxx">
+    <!--@mbg.generated-->
+    update ftu_jbxx
+    <set>
+      <if test="ssqy != null and ssqy != ''">
+        ssqy = #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="tssj != null">
+        tssj = #{tssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ddbh != null and ddbh != ''">
+        ddbh = #{ddbh,jdbcType=VARCHAR},
+      </if>
+      <if test="xlmc != null and xlmc != ''">
+        xlmc = #{xlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuBm != null and ftuBm != ''">
+        ftu_bm = #{ftuBm,jdbcType=VARCHAR},
+      </if>
+      <if test="ysry != null and ysry != ''">
+        ysry = #{ysry,jdbcType=VARCHAR},
+      </if>
+      <if test="ysrq != null">
+        ysrq = #{ysrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ysdw != null and ysdw != ''">
+        ysdw = #{ysdw,jdbcType=VARCHAR},
+      </if>
+      <if test="kgCj != null and kgCj != ''">
+        kg_cj = #{kgCj,jdbcType=VARCHAR},
+      </if>
+      <if test="kgXh != null and kgXh != ''">
+        kg_xh = #{kgXh,jdbcType=VARCHAR},
+      </if>
+      <if test="kgScrq != null">
+        kg_scrq = #{kgScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kgXjbb != null and kgXjbb != ''">
+        kg_xjbb = #{kgXjbb,jdbcType=VARCHAR},
+      </if>
+      <if test="kgLxbb != null and kgLxbb != ''">
+        kg_lxbb = #{kgLxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuCj != null and ftuCj != ''">
+        ftu_cj = #{ftuCj,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuXh != null and ftuXh != ''">
+        ftu_xh = #{ftuXh,jdbcType=VARCHAR},
+      </if>
+      <if test="ftuScrq != null">
+        ftu_scrq = #{ftuScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="txsbCj != null and txsbCj != ''">
+        txsb_cj = #{txsbCj,jdbcType=VARCHAR},
+      </if>
+      <if test="txsbXh != null and txsbXh != ''">
+        txsb_xh = #{txsbXh,jdbcType=VARCHAR},
+      </if>
+      <if test="txsbScrq != null">
+        txsb_scrq = #{txsbScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wxkh != null and wxkh != ''">
+        wxkh = #{wxkh,jdbcType=VARCHAR},
+      </if>
+      <if test="ipdz != null and ipdz != ''">
+        ipdz = #{ipdz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzlx != null and zzlx != ''">
+        zzlx = #{zzlx,jdbcType=VARCHAR},
+      </if>
+      <if test="tsryxm != null and tsryxm != ''">
+        tsryxm = #{tsryxm,jdbcType=VARCHAR},
+      </if>
+      <if test="jd != null and jd != ''">
+        jd = #{jd,jdbcType=VARCHAR},
+      </if>
+      <if test="wd != null and wd != ''">
+        wd = #{wd,jdbcType=VARCHAR},
+      </if>
+      <if test="xxwz != null and xxwz != ''">
+        xxwz = #{xxwz,jdbcType=VARCHAR},
+      </if>
+      <if test="czr != null and czr != ''">
+        czr = #{czr,jdbcType=VARCHAR},
+      </if>
+      <if test="czsj != null">
+        czsj = #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beizhu != null and beizhu != ''">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="upload != null and upload != ''">
+        upload = #{upload,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.ftu.FtuJbxx">
+    <!--@mbg.generated-->
+    update ftu_jbxx
+    set ssqy = #{ssqy,jdbcType=VARCHAR},
+      tssj = #{tssj,jdbcType=TIMESTAMP},
+      ddbh = #{ddbh,jdbcType=VARCHAR},
+      xlmc = #{xlmc,jdbcType=VARCHAR},
+      ftu_bm = #{ftuBm,jdbcType=VARCHAR},
+      ysry = #{ysry,jdbcType=VARCHAR},
+      ysrq = #{ysrq,jdbcType=TIMESTAMP},
+      ysdw = #{ysdw,jdbcType=VARCHAR},
+      kg_cj = #{kgCj,jdbcType=VARCHAR},
+      kg_xh = #{kgXh,jdbcType=VARCHAR},
+      kg_scrq = #{kgScrq,jdbcType=TIMESTAMP},
+      kg_xjbb = #{kgXjbb,jdbcType=VARCHAR},
+      kg_lxbb = #{kgLxbb,jdbcType=VARCHAR},
+      ftu_cj = #{ftuCj,jdbcType=VARCHAR},
+      ftu_xh = #{ftuXh,jdbcType=VARCHAR},
+      ftu_scrq = #{ftuScrq,jdbcType=TIMESTAMP},
+      txsb_cj = #{txsbCj,jdbcType=VARCHAR},
+      txsb_xh = #{txsbXh,jdbcType=VARCHAR},
+      txsb_scrq = #{txsbScrq,jdbcType=TIMESTAMP},
+      wxkh = #{wxkh,jdbcType=VARCHAR},
+      ipdz = #{ipdz,jdbcType=VARCHAR},
+      zzlx = #{zzlx,jdbcType=VARCHAR},
+      tsryxm = #{tsryxm,jdbcType=VARCHAR},
+      jd = #{jd,jdbcType=VARCHAR},
+      wd = #{wd,jdbcType=VARCHAR},
+      xxwz = #{xxwz,jdbcType=VARCHAR},
+      czr = #{czr,jdbcType=VARCHAR},
+      czsj = #{czsj,jdbcType=TIMESTAMP},
+      beizhu = #{beizhu,jdbcType=VARCHAR},
+      upload = #{upload,jdbcType=VARCHAR}
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List" />
+        from ftu_jbxx
+        <where>
+            <if test="tsid != null and tsid != ''">
+                and tsid=#{tsid,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="tssj != null">
+                and tssj=#{tssj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="ddbh != null and ddbh != ''">
+                and ddbh=#{ddbh,jdbcType=VARCHAR}
+            </if>
+            <if test="xlmc != null and xlmc != ''">
+                and xlmc=#{xlmc,jdbcType=VARCHAR}
+            </if>
+            <if test="ftuBm != null and ftuBm != ''">
+                and ftu_bm=#{ftuBm,jdbcType=VARCHAR}
+            </if>
+            <if test="ysry != null and ysry != ''">
+                and ysry=#{ysry,jdbcType=VARCHAR}
+            </if>
+            <if test="ysrq != null">
+                and ysrq=#{ysrq,jdbcType=TIMESTAMP}
+            </if>
+            <if test="ysdw != null and ysdw != ''">
+                and ysdw=#{ysdw,jdbcType=VARCHAR}
+            </if>
+            <if test="kgCj != null and kgCj != ''">
+                and kg_cj=#{kgCj,jdbcType=VARCHAR}
+            </if>
+            <if test="kgXh != null and kgXh != ''">
+                and kg_xh=#{kgXh,jdbcType=VARCHAR}
+            </if>
+            <if test="kgScrq != null">
+                and kg_scrq=#{kgScrq,jdbcType=TIMESTAMP}
+            </if>
+            <if test="kgXjbb != null and kgXjbb != ''">
+                and kg_xjbb=#{kgXjbb,jdbcType=VARCHAR}
+            </if>
+            <if test="kgLxbb != null and kgLxbb != ''">
+                and kg_lxbb=#{kgLxbb,jdbcType=VARCHAR}
+            </if>
+            <if test="ftuCj != null and ftuCj != ''">
+                and ftu_cj=#{ftuCj,jdbcType=VARCHAR}
+            </if>
+            <if test="ftuXh != null and ftuXh != ''">
+                and ftu_xh=#{ftuXh,jdbcType=VARCHAR}
+            </if>
+            <if test="ftuScrq != null">
+                and ftu_scrq=#{ftuScrq,jdbcType=TIMESTAMP}
+            </if>
+            <if test="txsbCj != null and txsbCj != ''">
+                and txsb_cj=#{txsbCj,jdbcType=VARCHAR}
+            </if>
+            <if test="txsbXh != null and txsbXh != ''">
+                and txsb_xh=#{txsbXh,jdbcType=VARCHAR}
+            </if>
+            <if test="txsbScrq != null">
+                and txsb_scrq=#{txsbScrq,jdbcType=TIMESTAMP}
+            </if>
+            <if test="wxkh != null and wxkh != ''">
+                and wxkh=#{wxkh,jdbcType=VARCHAR}
+            </if>
+            <if test="ipdz != null and ipdz != ''">
+                and ipdz=#{ipdz,jdbcType=VARCHAR}
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                and zzlx=#{zzlx,jdbcType=VARCHAR}
+            </if>
+            <if test="tsryxm != null and tsryxm != ''">
+                and tsryxm=#{tsryxm,jdbcType=VARCHAR}
+            </if>
+            <if test="jd != null and jd != ''">
+                and jd=#{jd,jdbcType=VARCHAR}
+            </if>
+            <if test="wd != null and wd != ''">
+                and wd=#{wd,jdbcType=VARCHAR}
+            </if>
+            <if test="xxwz != null and xxwz != ''">
+                and xxwz=#{xxwz,jdbcType=VARCHAR}
+            </if>
+            <if test="czr != null and czr != ''">
+                and czr=#{czr,jdbcType=VARCHAR}
+            </if>
+            <if test="czsj != null">
+                and czsj=#{czsj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu=#{beizhu,jdbcType=VARCHAR}
+            </if>
+            <if test="upload != null and upload != ''">
+                and upload=#{upload,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ftu_jbxx
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="ssqy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tssj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.tssj,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="ddbh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ddbh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="xlmc = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.xlmc,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ftu_bm = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ftuBm,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ysry = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ysry,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ysrq = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ysrq,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="ysdw = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ysdw,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="kg_cj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.kgCj,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="kg_xh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.kgXh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="kg_scrq = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.kgScrq,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="kg_xjbb = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.kgXjbb,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="kg_lxbb = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.kgLxbb,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ftu_cj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ftuCj,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ftu_xh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ftuXh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ftu_scrq = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ftuScrq,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="txsb_cj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.txsbCj,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="txsb_xh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.txsbXh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="txsb_scrq = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.txsbScrq,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="wxkh = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.wxkh,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="ipdz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.ipdz,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="zzlx = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.zzlx,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tsryxm = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.tsryxm,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="jd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.jd,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="wd = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.wd,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="xxwz = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.xxwz,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="czr = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.czr,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="czsj = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.czsj,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="beizhu = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.beizhu,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="upload = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when tsid = #{item.tsid,jdbcType=VARCHAR} then #{item.upload,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where tsid in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.tsid,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into ftu_jbxx
+    (tsid, ssqy, tssj, ddbh, xlmc, ftu_bm, ysry, ysrq, ysdw, kg_cj, kg_xh, kg_scrq, kg_xjbb, 
+      kg_lxbb, ftu_cj, ftu_xh, ftu_scrq, txsb_cj, txsb_xh, txsb_scrq, wxkh, ipdz, zzlx, 
+      tsryxm, jd, wd, xxwz, czr, czsj, beizhu, upload)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.tsid,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR}, #{item.tssj,jdbcType=TIMESTAMP}, 
+        #{item.ddbh,jdbcType=VARCHAR}, #{item.xlmc,jdbcType=VARCHAR}, #{item.ftuBm,jdbcType=VARCHAR}, 
+        #{item.ysry,jdbcType=VARCHAR}, #{item.ysrq,jdbcType=TIMESTAMP}, #{item.ysdw,jdbcType=VARCHAR}, 
+        #{item.kgCj,jdbcType=VARCHAR}, #{item.kgXh,jdbcType=VARCHAR}, #{item.kgScrq,jdbcType=TIMESTAMP}, 
+        #{item.kgXjbb,jdbcType=VARCHAR}, #{item.kgLxbb,jdbcType=VARCHAR}, #{item.ftuCj,jdbcType=VARCHAR}, 
+        #{item.ftuXh,jdbcType=VARCHAR}, #{item.ftuScrq,jdbcType=TIMESTAMP}, #{item.txsbCj,jdbcType=VARCHAR}, 
+        #{item.txsbXh,jdbcType=VARCHAR}, #{item.txsbScrq,jdbcType=TIMESTAMP}, #{item.wxkh,jdbcType=VARCHAR}, 
+        #{item.ipdz,jdbcType=VARCHAR}, #{item.zzlx,jdbcType=VARCHAR}, #{item.tsryxm,jdbcType=VARCHAR}, 
+        #{item.jd,jdbcType=VARCHAR}, #{item.wd,jdbcType=VARCHAR}, #{item.xxwz,jdbcType=VARCHAR}, 
+        #{item.czr,jdbcType=VARCHAR}, #{item.czsj,jdbcType=TIMESTAMP}, #{item.beizhu,jdbcType=VARCHAR}, 
+        #{item.upload,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

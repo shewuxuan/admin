@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.sys.RoleInfoMapper">
+    <resultMap id="entityMap" type="com.guodu.pojo.sys.RoleInfo">
+        <result property="roleId" column="ROLE_ID" jdbcType="VARCHAR"/>
+        <result property="roleName" column="ROLE_NAME" jdbcType="VARCHAR"/>
+        <result property="beizhu" column="BEIZHU" jdbcType="VARCHAR"/>
+        <result property="czr" column="CZR" jdbcType="VARCHAR"/>
+        <result property="czsj" column="CZSJ" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="sqlColumn">
+        ROLE_ID,
+        ROLE_NAME,
+        BEIZHU,
+        CZR,
+        CZSJ
+    </sql>
+
+    <sql id="variableSql">
+        #{roleId, jdbcType=VARCHAR},
+        #{roleName, jdbcType=VARCHAR},
+        #{beizhu, jdbcType=VARCHAR},
+        #{czr, jdbcType=VARCHAR},
+        #{czsj, jdbcType=TIMESTAMP}
+    </sql>
+
+    <insert id="insert" parameterType="com.guodu.pojo.sys.RoleInfo">
+        insert into role_info (
+        <include refid="sqlColumn"/>
+        ) values (
+        <include refid="variableSql"/>
+        )
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="entityMap">
+        select * from role_info where role_id = #{roleId}
+    </select>
+
+    <select id="selectList" resultMap="entityMap" parameterType="java.util.Map">
+        select
+        <include refid="sqlColumn"/>
+        from role_info
+        where 1=1
+        <if test="roleId!=null">and ROLE_ID=#{roleId, jdbcType=VARCHAR}</if>
+        <if test="roleName!=null">and ROLE_NAME=#{roleName, jdbcType=VARCHAR}</if>
+        <if test="beizhu!=null">and BEIZHU=#{beizhu, jdbcType=VARCHAR}</if>
+        <if test="czr!=null">and CZR=#{czr, jdbcType=VARCHAR}</if>
+        <if test="czsj!=null">and CZSJ=#{czsj, jdbcType=TIMESTAMP}</if>
+    </select>
+
+    <update id="update" parameterType="com.guodu.pojo.sys.RoleInfo">
+        update role_info set role_id=#{roleId}
+        <if test="roleName!=null">, ROLE_NAME=#{roleName, jdbcType=VARCHAR}</if>
+        <if test="beizhu!=null">, BEIZHU=#{beizhu, jdbcType=VARCHAR}</if>
+        <if test="czr!=null">, CZR=#{czr, jdbcType=VARCHAR}</if>
+        <if test="czsj!=null">, CZSJ=#{czsj, jdbcType=TIMESTAMP}</if>
+        where role_id = #{roleId}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from role_info where role_id = #{roleId}
+    </delete>
+
+    <select id="selectPage" resultMap="entityMap" parameterType="java.util.Map">
+        select * from role_info
+        <where>1 = 1
+            <if test="roleName!=null and roleName!=''">and ROLE_NAME like '%${roleName}%'</if>
+            order by CZSJ desc
+        </where>
+    </select>
+
+    <select id="getRoleByFunc" resultType="java.util.Map" parameterType="java.lang.String">
+        select funccode,authvalue from role_func where role_id=#{roleId}
+    </select>
+
+    <select id="getAllFunc" resultType="java.util.Map">
+        select funccode,funcname from func_info
+    </select>
+
+    <select id="addRoleFuncByRoleId" parameterType="java.util.Map">
+        insert into role_func(role_id,funccode,authvalue)
+        values(#{roleId, jdbcType=VARCHAR},#{funcCode, jdbcType=VARCHAR},#{authValue, jdbcType=INTEGER})
+    </select>
+
+    <update id="updateRoleFuncByRoleId" parameterType="java.util.Map">
+        update role_func set authvalue = #{authValue} where role_id=#{roleId} and funccode = #{funcCode}
+    </update>
+
+    <delete id="deleteFuncInfoByRoleId" parameterType="java.lang.String">
+        delete from role_func where role_id = #{roleId}
+    </delete>
+
+    <select id="queryAllRoleInfo" resultType="java.util.Map">
+        select distinct role_name,role_id from role_info
+    </select>
+
+    <select id="selectListAll" resultType="java.util.Map">
+        select * from role_info order by CREATETIME desc
+    </select>
+
+</mapper>

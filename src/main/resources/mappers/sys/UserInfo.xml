@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.sys.UserInfoMapper">
+    <resultMap id="entityMap" type="com.guodu.pojo.sys.UserInfo">
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+        <result property="loginName" column="LOGIN_NAME" jdbcType="VARCHAR"/>
+        <result property="password" column="PASSWORD" jdbcType="VARCHAR"/>
+        <result property="userType" column="USER_TYPE" jdbcType="VARCHAR"/>
+        <result property="roleId" column="ROLE_ID" jdbcType="VARCHAR"/>
+        <result property="phone" column="PHONE" jdbcType="VARCHAR"/>
+        <result property="email" column="EMAIL" jdbcType="VARCHAR"/>
+        <result property="zw" column="ZW" jdbcType="VARCHAR"/>
+        <result property="zt" column="ZT" jdbcType="VARCHAR"/>
+        <result property="czr" column="CZR" jdbcType="VARCHAR"/>
+        <result property="czsj" column="CZSJ" jdbcType="TIMESTAMP"/>
+        <result property="beizhu" column="BEIZHU" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="sqlColumn">
+        USER_ID,
+        USER_NAME,
+        LOGIN_NAME,
+        PASSWORD,
+        USER_TYPE,
+        ROLE_ID,
+        PHONE,
+        EMAIL,
+        ZW,
+        ZT,
+        CZR,
+        CZSJ,
+        BEIZHU
+    </sql>
+
+    <sql id="variableSql">
+        #{userId, jdbcType=VARCHAR},
+        #{userName, jdbcType=VARCHAR},
+        #{loginName, jdbcType=VARCHAR},
+        #{password, jdbcType=VARCHAR},
+        #{userType, jdbcType=VARCHAR},
+        #{roleId, jdbcType=VARCHAR},
+        #{phone, jdbcType=VARCHAR},
+        #{email, jdbcType=VARCHAR},
+        #{zw, jdbcType=VARCHAR},
+        #{zt, jdbcType=VARCHAR},
+        #{czr, jdbcType=VARCHAR},
+        #{czsj, jdbcType=TIMESTAMP},
+        #{beizhu, jdbcType=VARCHAR}
+    </sql>
+
+    <insert id="insert" parameterType="com.guodu.pojo.sys.UserInfo">
+        insert into user_info (
+        <include refid="sqlColumn"/>
+        ) values (
+        <include refid="variableSql"/>
+        )
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="entityMap">
+        select * from user_info where user_id = #{userId}
+    </select>
+
+    <select id="selectList" resultMap="entityMap" parameterType="java.util.Map">
+        select
+        <include refid="sqlColumn"/>
+        from user_info
+        where 1=1
+        <if test="userId!=null">and USER_ID=#{userId, jdbcType=VARCHAR}</if>
+        <if test="userName!=null">and USER_NAME=#{userName, jdbcType=VARCHAR}</if>
+        <if test="loginName!=null">and LOGIN_NAME=#{loginName, jdbcType=VARCHAR}</if>
+        <if test="password!=null">and PASSWORD=#{password, jdbcType=VARCHAR}</if>
+        <if test="userType!=null">and USER_TYPE=#{userType, jdbcType=VARCHAR}</if>
+        <if test="roleId!=null">and ROLE_ID=#{roleId, jdbcType=VARCHAR}</if>
+        <if test="phone!=null">and PHONE=#{phone, jdbcType=VARCHAR}</if>
+        <if test="email!=null">and EMAIL=#{email, jdbcType=VARCHAR}</if>
+        <if test="zw!=null">and ZW=#{zw, jdbcType=VARCHAR}</if>
+        <if test="zt!=null">and ZT=#{zt, jdbcType=VARCHAR}</if>
+        <if test="czr!=null">and CZR=#{czr, jdbcType=VARCHAR}</if>
+        <if test="czsj!=null">and CZSJ=#{czsj, jdbcType=TIMESTAMP}</if>
+        <if test="beizhu!=null">and BEIZHU=#{beizhu, jdbcType=VARCHAR}</if>
+    </select>
+
+    <update id="update" parameterType="com.guodu.pojo.sys.UserInfo">
+        update user_info set user_id=#{userId}
+        <if test="userId!=null">, USER_ID=#{userId, jdbcType=VARCHAR}</if>
+        <if test="userName!=null">, USER_NAME=#{userName, jdbcType=VARCHAR}</if>
+        <if test="loginName!=null">, LOGIN_NAME=#{loginName, jdbcType=VARCHAR}</if>
+        <if test="password!=null">, PASSWORD=#{password, jdbcType=VARCHAR}</if>
+        <if test="userType!=null">, USER_TYPE=#{userType, jdbcType=VARCHAR}</if>
+        <if test="roleId!=null">, ROLE_ID=#{roleId, jdbcType=VARCHAR}</if>
+        <if test="phone!=null">, PHONE=#{phone, jdbcType=VARCHAR}</if>
+        <if test="email!=null">, EMAIL=#{email, jdbcType=VARCHAR}</if>
+        <if test="zw!=null">, ZW=#{zw, jdbcType=VARCHAR}</if>
+        <if test="zt!=null">, ZT=#{zt, jdbcType=VARCHAR}</if>
+        <if test="czr!=null">, CZR=#{czr, jdbcType=VARCHAR}</if>
+        <if test="czsj!=null">, CZSJ=#{czsj, jdbcType=TIMESTAMP}</if>
+        <if test="beizhu!=null">, BEIZHU=#{beizhu, jdbcType=VARCHAR}</if>
+        where user_id = #{userId}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from user_info where user_id = #{userId}
+    </delete>
+
+    <select id="getComboTreeData" parameterType="java.lang.String" resultType="java.util.Map">
+        select distinct rf.funccode,rf.authvalue from role_func rf where rf.role_id = #{roleId}
+    </select>
+
+    <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">
+        select u.user_id,
+        u.user_name,
+        u.login_name,
+        u.user_type,
+        r.role_name,
+        u.phone,
+        u.email,
+        u.zw,
+        u.zt
+        from user_info u left join role_info r on u.role_id = r.role_id
+        <where>
+            1 = 1
+            <if test="loginName!=null and loginName!=''">and LOGIN_NAME like '%'||#{loginName}||'%'</if>
+            <if test="userName!=null and userName!=''">and USER_NAME like '%'||#{userName}||'%'</if>
+            <if test="zt!=null and zt!=''">and ZT =#{zt}</if>
+            order by u.czsj desc
+        </where>
+    </select>
+
+    <select id="selectListAll" resultType="java.util.Map">
+        select user_id,
+        name,
+        loginname,
+        user_type,
+        r.role_name,
+        phone,
+        email,
+        position,
+        status
+        from user_info u left join role_info r on u.role_id = r.role_id
+        order by CZSJ desc
+    </select>
+
+</mapper>

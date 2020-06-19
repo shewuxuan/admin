@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.dtu.JbxxPhotoMapper">
+    <resultMap id="entityMap" type="com.guodu.pojo.dtu.JbxxPhoto">
+        <result property="pid" column="PID" jdbcType="VARCHAR"/>
+        <result property="tsid" column="TSID" jdbcType="VARCHAR"/>
+        <result property="pName" column="P_NAME" jdbcType="VARCHAR"/>
+        <result property="pPath" column="P_PATH" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="sqlColumn">
+        PID,
+        TSID,
+        P_NAME,
+        P_PATH
+    </sql>
+
+    <sql id="variableSql">
+        #{pid, jdbcType=VARCHAR},
+        #{tsid, jdbcType=VARCHAR},
+        #{pName, jdbcType=VARCHAR},
+        #{pPath, jdbcType=VARCHAR}
+    </sql>
+
+    <insert id="insert" parameterType="com.guodu.pojo.dtu.JbxxPhoto">
+        insert into jbxx_photo (
+        <include refid="sqlColumn"/>
+        ) values (
+        <include refid="variableSql"/>
+        )
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="entityMap">
+        select * from jbxx_photo where pid = #{id}
+    </select>
+
+    <select id="selectList" resultMap="entityMap" parameterType="java.util.Map">
+        select
+        <include refid="sqlColumn"/>
+        from jbxx_photo
+        where 1=1
+        <if test="pid!=null and pid!=''">and pid=#{pid, jdbcType=VARCHAR}</if>
+        <if test="tsid!=null and tsid!=''">and tsid=#{tsid, jdbcType=VARCHAR}</if>
+    </select>
+
+    <update id="update" parameterType="com.guodu.pojo.dtu.JbxxPhoto">
+        update jbxx_photo set pid=#{pid}
+        <if test="pid!=null">, pid=#{pid, jdbcType=VARCHAR}</if>
+        <if test="tsid!=null">, tsid=#{tsid, jdbcType=VARCHAR}</if>
+        <if test="pName!=null">, p_name=#{pName, jdbcType=VARCHAR}</if>
+        where pid = #{pid}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from jbxx_photo where pid = #{id}
+    </delete>
+
+    <delete id="deleteByTsid" parameterType="java.lang.String">
+        delete from jbxx_photo where tsid = #{tsid}
+    </delete>
+</mapper>

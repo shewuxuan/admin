@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.dtu.JbxxGjdzMapper">
+    <resultMap id="entityMap" type="com.guodu.pojo.dtu.JbxxGjdz">
+        <id column="tsid" jdbcType="VARCHAR" property="tsid"/>
+        <result column="glgj1" jdbcType="VARCHAR" property="glgj1"/>
+        <result column="glgj2" jdbcType="VARCHAR" property="glgj2"/>
+        <result column="glgj3" jdbcType="VARCHAR" property="glgj3"/>
+        <result column="glcs1" jdbcType="VARCHAR" property="glcs1"/>
+        <result column="glcs2" jdbcType="VARCHAR" property="glcs2"/>
+        <result column="lxgj1" jdbcType="VARCHAR" property="lxgj1"/>
+        <result column="lxgj2" jdbcType="VARCHAR" property="lxgj2"/>
+        <result column="lxgj3" jdbcType="VARCHAR" property="lxgj3"/>
+        <result column="lxcs1" jdbcType="VARCHAR" property="lxcs1"/>
+        <result column="lxcs2" jdbcType="VARCHAR" property="lxcs2"/>
+        <result column="qygj1" jdbcType="VARCHAR" property="qygj1" />
+        <result column="qygj2" jdbcType="VARCHAR" property="qygj2" />
+    </resultMap>
+    <sql id="sqlColumn">
+        tsid, glgj1, glgj2, glgj3,glcs1, glcs2, lxgj1,lxgj2,lxgj3, lxcs1, lxcs2,qygj1,qygj2
+    </sql>
+    <sql id="variableSql">
+        #{tsid, jdbcType=VARCHAR},
+        #{glgj1, jdbcType=VARCHAR},
+        #{glgj2, jdbcType=VARCHAR},
+        #{glgj3, jdbcType=VARCHAR},
+        #{glcs1, jdbcType=VARCHAR},
+        #{glcs2, jdbcType=VARCHAR},
+        #{lxgj1, jdbcType=VARCHAR},
+        #{lxgj2, jdbcType=VARCHAR},
+        #{lxgj3, jdbcType=VARCHAR},
+        #{lxcs1, jdbcType=VARCHAR},
+        #{lxcs2, jdbcType=VARCHAR},
+        #{qygj1, jdbcType=VARCHAR},
+        #{qygj2, jdbcType=VARCHAR}
+    </sql>
+
+    <insert id="insert" parameterType="com.guodu.pojo.dtu.JbxxGjdz">
+        insert into jbxx_gjdz (
+        <include refid="sqlColumn"/>
+        ) values (
+        <include refid="variableSql"/>
+        )
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="entityMap">
+        select * from jbxx_gjdz where tsid = #{tsid}
+    </select>
+
+    <select id="selectList" resultMap="entityMap" parameterType="java.util.Map">
+        select
+        <include refid="sqlColumn"/>
+        from jbxx_gjdz
+        where 1=1
+        <if test="tsid!=null and tsid!=''">and tsid=#{tsid, jdbcType=VARCHAR}</if>
+        <if test="glgj1!=null and glgj1!=''">and glgj1=#{glgj1, jdbcType=VARCHAR}</if>
+        <if test="glgj2!=null and glgj2!=''">and glgj2=#{glgj2, jdbcType=VARCHAR}</if>
+        <if test="glgj3!=null and glgj3!=''">and glgj3=#{glgj3, jdbcType=VARCHAR}</if>
+        <if test="glcs1!=null and glcs1!=''">and glcs1=#{glcs1, jdbcType=VARCHAR}</if>
+        <if test="glcs2!=null and glcs2!=''">and glcs2=#{glcs2, jdbcType=VARCHAR}</if>
+        <if test="lxgj1!=null and lxgj1!=''">and lxgj1=#{lxgj1, jdbcType=VARCHAR}</if>
+        <if test="lxgj2!=null and lxgj2!=''">and lxgj2=#{lxgj2, jdbcType=VARCHAR}</if>
+        <if test="lxgj3!=null and lxgj3!=''">and lxgj3=#{lxgj3, jdbcType=VARCHAR}</if>
+        <if test="lxcs1!=null and lxcs1!=''">and lxcs1=#{lxcs1, jdbcType=VARCHAR}</if>
+        <if test="lxcs2!=null and lxcs2!=''">and lxcs2=#{lxcs2, jdbcType=VARCHAR}</if>
+        <if test="qygj1!=null and qygj1!=''">and qygj1=#{qygj1, jdbcType=VARCHAR}</if>
+        <if test="qygj2!=null and qygj2!=''">and qygj2=#{qygj2, jdbcType=VARCHAR}</if>
+    </select>
+
+    <update id="update" parameterType="com.guodu.pojo.dtu.JbxxGjdz">
+        update jbxx_gjdz set tsid=#{tsid}
+        <if test="glgj1!=null and glgj1!=''">, glgj1=#{glgj1, jdbcType=VARCHAR}</if>
+        <if test="glgj2!=null and glgj2!=''">, glgj2=#{glgj2, jdbcType=VARCHAR}</if>
+        <if test="glgj3!=null and glgj3!=''">, glgj3=#{glgj3, jdbcType=VARCHAR}</if>
+        <if test="glcs1!=null and glcs1!=''">, glcs1=#{glcs1, jdbcType=VARCHAR}</if>
+        <if test="glcs2!=null and glcs2!=''">, glcs2=#{glcs2, jdbcType=VARCHAR}</if>
+        <if test="lxgj1!=null and lxgj1!=''">, lxgj1=#{lxgj1, jdbcType=VARCHAR}</if>
+        <if test="lxgj2!=null and lxgj2!=''">, lxgj2=#{lxgj2, jdbcType=VARCHAR}</if>
+        <if test="lxgj3!=null and lxgj3!=''">, lxgj3=#{lxgj3, jdbcType=VARCHAR}</if>
+        <if test="lxcs1!=null and lxcs1!=''">, lxcs1=#{lxcs1, jdbcType=VARCHAR}</if>
+        <if test="lxcs2!=null and lxcs2!=''">, lxcs2=#{lxcs2, jdbcType=VARCHAR}</if>
+        <if test="qygj1!=null and qygj1!=''">, qygj1=#{qygj1, jdbcType=VARCHAR}</if>
+        <if test="qygj2!=null and qygj2!=''">, qygj2=#{qygj2, jdbcType=VARCHAR}</if>
+        where tsid=#{tsid}
+    </update>
+
+    <delete id="deleteAllByTsid" parameterType="java.lang.String">
+        delete from jbxx_gjdz where tsid=#{tsid}
+    </delete>
+
+</mapper>

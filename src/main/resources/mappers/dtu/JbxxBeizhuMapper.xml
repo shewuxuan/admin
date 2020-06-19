@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.dtu.JbxxBeizhuMapper">
+  <resultMap id="BaseResultMap" type="com.guodu.pojo.dtu.JbxxBeizhu">
+    <!--@mbg.generated-->
+    <!--@Table jbxx_beizhu-->
+    <id column="tsid" jdbcType="VARCHAR" property="tsid" />
+    <result column="jl_wgpz" jdbcType="VARCHAR" property="jlWgpz" />
+    <result column="jl_jydz" jdbcType="VARCHAR" property="jlJydz" />
+    <result column="jl_hldz" jdbcType="VARCHAR" property="jlHldz" />
+    <result column="jl_dyxn" jdbcType="VARCHAR" property="jlDyxn" />
+    <result column="jl_lpjy" jdbcType="VARCHAR" property="jlLpjy" />
+    <result column="jl_cyjd" jdbcType="VARCHAR" property="jlCyjd" />
+    <result column="jl_dlhl" jdbcType="VARCHAR" property="jlDlhl" />
+    <result column="jl_gncs" jdbcType="VARCHAR" property="jlGncs" />
+    <result column="jl_ctgy" jdbcType="VARCHAR" property="jlCtgy" />
+    <result column="jl_kgg" jdbcType="VARCHAR" property="jlKgg" />
+    <result column="jl_dtu" jdbcType="VARCHAR" property="jlDtu" />
+    <result column="jl_ysbj" jdbcType="VARCHAR" property="jlYsbj" />
+    <result column="jl_xb" jdbcType="VARCHAR" property="jlXb" />
+    <result column="jl_ykts" jdbcType="VARCHAR" property="jlYkts" />
+    <result column="jl_ycts" jdbcType="VARCHAR" property="jlYcts" />
+    <result column="jl_gjcs" jdbcType="VARCHAR" property="jlGjcs" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tsid, jl_wgpz, jl_jydz, jl_hldz, jl_dyxn, jl_lpjy, jl_cyjd, jl_dlhl, jl_gncs, jl_ctgy, 
+    jl_kgg, jl_dtu, jl_ysbj, jl_xb, jl_ykts, jl_ycts, jl_gjcs
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from jbxx_beizhu
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from jbxx_beizhu
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guodu.pojo.dtu.JbxxBeizhu">
+    <!--@mbg.generated-->
+    insert into jbxx_beizhu (tsid, jl_wgpz, jl_jydz, 
+      jl_hldz, jl_dyxn, jl_lpjy, 
+      jl_cyjd, jl_dlhl, jl_gncs, 
+      jl_ctgy, jl_kgg, jl_dtu, 
+      jl_ysbj, jl_xb, jl_ykts, 
+      jl_ycts, jl_gjcs)
+    values (#{tsid,jdbcType=VARCHAR}, #{jlWgpz,jdbcType=VARCHAR}, #{jlJydz,jdbcType=VARCHAR}, 
+      #{jlHldz,jdbcType=VARCHAR}, #{jlDyxn,jdbcType=VARCHAR}, #{jlLpjy,jdbcType=VARCHAR}, 
+      #{jlCyjd,jdbcType=VARCHAR}, #{jlDlhl,jdbcType=VARCHAR}, #{jlGncs,jdbcType=VARCHAR}, 
+      #{jlCtgy,jdbcType=VARCHAR}, #{jlKgg,jdbcType=VARCHAR}, #{jlDtu,jdbcType=VARCHAR}, 
+      #{jlYsbj,jdbcType=VARCHAR}, #{jlXb,jdbcType=VARCHAR}, #{jlYkts,jdbcType=VARCHAR}, 
+      #{jlYcts,jdbcType=VARCHAR}, #{jlGjcs,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guodu.pojo.dtu.JbxxBeizhu">
+    <!--@mbg.generated-->
+    insert into jbxx_beizhu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tsid != null and tsid != ''">
+        tsid,
+      </if>
+      <if test="jlWgpz != null and jlWgpz != ''">
+        jl_wgpz,
+      </if>
+      <if test="jlJydz != null and jlJydz != ''">
+        jl_jydz,
+      </if>
+      <if test="jlHldz != null and jlHldz != ''">
+        jl_hldz,
+      </if>
+      <if test="jlDyxn != null and jlDyxn != ''">
+        jl_dyxn,
+      </if>
+      <if test="jlLpjy != null and jlLpjy != ''">
+        jl_lpjy,
+      </if>
+      <if test="jlCyjd != null and jlCyjd != ''">
+        jl_cyjd,
+      </if>
+      <if test="jlDlhl != null and jlDlhl != ''">
+        jl_dlhl,
+      </if>
+      <if test="jlGncs != null and jlGncs != ''">
+        jl_gncs,
+      </if>
+      <if test="jlCtgy != null and jlCtgy != ''">
+        jl_ctgy,
+      </if>
+      <if test="jlKgg != null and jlKgg != ''">
+        jl_kgg,
+      </if>
+      <if test="jlDtu != null and jlDtu != ''">
+        jl_dtu,
+      </if>
+      <if test="jlYsbj != null and jlYsbj != ''">
+        jl_ysbj,
+      </if>
+      <if test="jlXb != null and jlXb != ''">
+        jl_xb,
+      </if>
+      <if test="jlYkts != null and jlYkts != ''">
+        jl_ykts,
+      </if>
+      <if test="jlYcts != null and jlYcts != ''">
+        jl_ycts,
+      </if>
+      <if test="jlGjcs != null and jlGjcs != ''">
+        jl_gjcs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tsid != null and tsid != ''">
+        #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="jlWgpz != null and jlWgpz != ''">
+        #{jlWgpz,jdbcType=VARCHAR},
+      </if>
+      <if test="jlJydz != null and jlJydz != ''">
+        #{jlJydz,jdbcType=VARCHAR},
+      </if>
+      <if test="jlHldz != null and jlHldz != ''">
+        #{jlHldz,jdbcType=VARCHAR},
+      </if>
+      <if test="jlDyxn != null and jlDyxn != ''">
+        #{jlDyxn,jdbcType=VARCHAR},
+      </if>
+      <if test="jlLpjy != null and jlLpjy != ''">
+        #{jlLpjy,jdbcType=VARCHAR},
+      </if>
+      <if test="jlCyjd != null and jlCyjd != ''">
+        #{jlCyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="jlDlhl != null and jlDlhl != ''">
+        #{jlDlhl,jdbcType=VARCHAR},
+      </if>
+      <if test="jlGncs != null and jlGncs != ''">
+        #{jlGncs,jdbcType=VARCHAR},
+      </if>
+      <if test="jlCtgy != null and jlCtgy != ''">
+        #{jlCtgy,jdbcType=VARCHAR},
+      </if>
+      <if test="jlKgg != null and jlKgg != ''">
+        #{jlKgg,jdbcType=VARCHAR},
+      </if>
+      <if test="jlDtu != null and jlDtu != ''">
+        #{jlDtu,jdbcType=VARCHAR},
+      </if>
+      <if test="jlYsbj != null and jlYsbj != ''">
+        #{jlYsbj,jdbcType=VARCHAR},
+      </if>
+      <if test="jlXb != null and jlXb != ''">
+        #{jlXb,jdbcType=VARCHAR},
+      </if>
+      <if test="jlYkts != null and jlYkts != ''">
+        #{jlYkts,jdbcType=VARCHAR},
+      </if>
+      <if test="jlYcts != null and jlYcts != ''">
+        #{jlYcts,jdbcType=VARCHAR},
+      </if>
+      <if test="jlGjcs != null and jlGjcs != ''">
+        #{jlGjcs,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.dtu.JbxxBeizhu">
+    <!--@mbg.generated-->
+    update jbxx_beizhu
+    <set>
+      <if test="jlWgpz != null and jlWgpz != ''">
+        jl_wgpz = #{jlWgpz,jdbcType=VARCHAR},
+      </if>
+      <if test="jlJydz != null and jlJydz != ''">
+        jl_jydz = #{jlJydz,jdbcType=VARCHAR},
+      </if>
+      <if test="jlHldz != null and jlHldz != ''">
+        jl_hldz = #{jlHldz,jdbcType=VARCHAR},
+      </if>
+      <if test="jlDyxn != null and jlDyxn != ''">
+        jl_dyxn = #{jlDyxn,jdbcType=VARCHAR},
+      </if>
+      <if test="jlLpjy != null and jlLpjy != ''">
+        jl_lpjy = #{jlLpjy,jdbcType=VARCHAR},
+      </if>
+      <if test="jlCyjd != null and jlCyjd != ''">
+        jl_cyjd = #{jlCyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="jlDlhl != null and jlDlhl != ''">
+        jl_dlhl = #{jlDlhl,jdbcType=VARCHAR},
+      </if>
+      <if test="jlGncs != null and jlGncs != ''">
+        jl_gncs = #{jlGncs,jdbcType=VARCHAR},
+      </if>
+      <if test="jlCtgy != null and jlCtgy != ''">
+        jl_ctgy = #{jlCtgy,jdbcType=VARCHAR},
+      </if>
+      <if test="jlKgg != null and jlKgg != ''">
+        jl_kgg = #{jlKgg,jdbcType=VARCHAR},
+      </if>
+      <if test="jlDtu != null and jlDtu != ''">
+        jl_dtu = #{jlDtu,jdbcType=VARCHAR},
+      </if>
+      <if test="jlYsbj != null and jlYsbj != ''">
+        jl_ysbj = #{jlYsbj,jdbcType=VARCHAR},
+      </if>
+      <if test="jlXb != null and jlXb != ''">
+        jl_xb = #{jlXb,jdbcType=VARCHAR},
+      </if>
+      <if test="jlYkts != null and jlYkts != ''">
+        jl_ykts = #{jlYkts,jdbcType=VARCHAR},
+      </if>
+      <if test="jlYcts != null and jlYcts != ''">
+        jl_ycts = #{jlYcts,jdbcType=VARCHAR},
+      </if>
+      <if test="jlGjcs != null and jlGjcs != ''">
+        jl_gjcs = #{jlGjcs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.dtu.JbxxBeizhu">
+    <!--@mbg.generated-->
+    update jbxx_beizhu
+    set jl_wgpz = #{jlWgpz,jdbcType=VARCHAR},
+      jl_jydz = #{jlJydz,jdbcType=VARCHAR},
+      jl_hldz = #{jlHldz,jdbcType=VARCHAR},
+      jl_dyxn = #{jlDyxn,jdbcType=VARCHAR},
+      jl_lpjy = #{jlLpjy,jdbcType=VARCHAR},
+      jl_cyjd = #{jlCyjd,jdbcType=VARCHAR},
+      jl_dlhl = #{jlDlhl,jdbcType=VARCHAR},
+      jl_gncs = #{jlGncs,jdbcType=VARCHAR},
+      jl_ctgy = #{jlCtgy,jdbcType=VARCHAR},
+      jl_kgg = #{jlKgg,jdbcType=VARCHAR},
+      jl_dtu = #{jlDtu,jdbcType=VARCHAR},
+      jl_ysbj = #{jlYsbj,jdbcType=VARCHAR},
+      jl_xb = #{jlXb,jdbcType=VARCHAR},
+      jl_ykts = #{jlYkts,jdbcType=VARCHAR},
+      jl_ycts = #{jlYcts,jdbcType=VARCHAR},
+      jl_gjcs = #{jlGjcs,jdbcType=VARCHAR}
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </update>
+</mapper>

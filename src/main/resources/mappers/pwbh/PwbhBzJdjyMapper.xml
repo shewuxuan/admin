@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.pwbh.PwbhBzJdjyMapper">
+  <resultMap id="BaseResultMap" type="com.guodu.pojo.pwbh.PwbhBzJdjy">
+    <!--@mbg.generated-->
+    <!--@Table pwbh_bz_jdjy-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ssqy" jdbcType="VARCHAR" property="ssqy" />
+    <result column="csjg" jdbcType="VARCHAR" property="csjg" />
+    <result column="tryq" jdbcType="VARCHAR" property="tryq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, ssqy, csjg, tryq
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from pwbh_bz_jdjy
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from pwbh_bz_jdjy
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guodu.pojo.pwbh.PwbhBzJdjy">
+    <!--@mbg.generated-->
+    insert into pwbh_bz_jdjy (id, ssqy, csjg, 
+      tryq)
+    values (#{id,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, #{csjg,jdbcType=VARCHAR}, 
+      #{tryq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guodu.pojo.pwbh.PwbhBzJdjy">
+    <!--@mbg.generated-->
+    insert into pwbh_bz_jdjy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        id,
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        ssqy,
+      </if>
+      <if test="csjg != null and csjg != ''">
+        csjg,
+      </if>
+      <if test="tryq != null and tryq != ''">
+        tryq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null and id != ''">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="csjg != null and csjg != ''">
+        #{csjg,jdbcType=VARCHAR},
+      </if>
+      <if test="tryq != null and tryq != ''">
+        #{tryq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.pwbh.PwbhBzJdjy">
+    <!--@mbg.generated-->
+    update pwbh_bz_jdjy
+    <set>
+      <if test="ssqy != null and ssqy != ''">
+        ssqy = #{ssqy,jdbcType=VARCHAR},
+      </if>
+      <if test="csjg != null and csjg != ''">
+        csjg = #{csjg,jdbcType=VARCHAR},
+      </if>
+      <if test="tryq != null and tryq != ''">
+        tryq = #{tryq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.pwbh.PwbhBzJdjy">
+    <!--@mbg.generated-->
+    update pwbh_bz_jdjy
+    set ssqy = #{ssqy,jdbcType=VARCHAR},
+      csjg = #{csjg,jdbcType=VARCHAR},
+      tryq = #{tryq,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from pwbh_bz_jdjy
+        <where>
+            <if test="id != null and id != ''">
+                and id=#{id,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="csjg != null and csjg != ''">
+                and csjg=#{csjg,jdbcType=VARCHAR}
+            </if>
+            <if test="tryq != null and tryq != ''">
+                and tryq=#{tryq,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update pwbh_bz_jdjy
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="ssqy = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="csjg = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.csjg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tryq = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=VARCHAR} then #{item.tryq,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into pwbh_bz_jdjy
+    (id, ssqy, csjg, tryq)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR}, #{item.csjg,jdbcType=VARCHAR}, 
+        #{item.tryq,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+  <select id="selectByPage" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List"/>, db.keymemo as ssqyname
+    from pwbh_bz_jdjy bz
+    LEFT JOIN sys_db db ON db.keyvalue = bz.ssqy
+    <where>
+      db.keycode='region'
+      <if test="id != null and id != ''">
+        and id=#{id,jdbcType=VARCHAR}
+      </if>
+      <if test="ssqy != null and ssqy != ''">
+        and ssqy=#{ssqy,jdbcType=VARCHAR}
+      </if>
+      <if test="csjg != null and csjg != ''">
+        and csjg like concat('%', #{csjg,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="tryq != null and tryq != ''">
+        and tryq like concat('%', #{tryq,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+    order by ssqy, csjg, tryq
+  </select>
+</mapper>

@@ -1,0 +1,187 @@
+/* base */
+HTML, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Tahoma, 宋体;
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.cl {
+    clear: both;
+    line-height: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: #28a2da;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background: #D53748;
+}
+
+
+/*=login*/
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    background: url(../images/login_bg.png) no-repeat center top;
+    /*background-color:#d53748;*/
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+
+}
+
+.login {
+    border: 0;
+    width: 668px;
+    height: 349px;
+    margin: 0 auto;
+    background: url(../images/bg_middle.png) no-repeat;
+    margin-top: 140px;
+    position: absolute;
+}
+
+.head_left {
+    width: 225px;
+    height: 100px;
+    background: url(../images/logo.png) no-repeat;
+    background-size: 45% 90%;
+    position: relative;
+    left: 290px;
+    top: 5px;
+}
+
+.head_right {
+    width: 775px;
+    height: 145px;
+    background: url(../images/head_right.png) no-repeat;
+    position: relative;
+    left: 410px;
+    top: -70px;
+}
+
+.dl {
+    position: absolute;
+    top: 265px;
+    left: 60px;
+    width: 350px;
+}
+
+.bt img {
+    width: 340px;
+    height: 111px;
+    position: absolute;
+    top: 130px;
+    left: 80px;
+    /*background:url(../images/bt.png) no-repeat;*/
+}
+
+.dl ul {
+    width: 300px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    position: relative;
+    z-index: 99999;
+    behavior: url(ie-css3.htc);
+    background-color: rgba(255, 255, 255, 0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#5Fffffff, endcolorstr=#5Fffffff);
+}
+
+.dl ul li {
+    padding: 15px;
+    /*text-align:center;*/
+
+}
+
+.dl ul li b {
+    margin-left: 15px;
+    font-size: 14px;
+    color: rgb(253, 6, 6);
+}
+
+.first_l {
+    /*border-bottom:3px solid red;*/
+}
+
+.dl ul li input {
+    width: 183px;
+    height: 20px;
+    border: none;
+    /*margin-left:20px;*/
+    border: 1px solid red;
+    background: none;
+}
+
+.dl ul li button {
+    width: 98px;
+    height: 27px;
+    background: url(../images/li_button.png) no-repeat;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.dl ul li button span {
+    /*	color:white;
+    */
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    letter-spacing: 5px;
+}
+
+/**********login页面结束**********/
+/***********注册页面开始***********/
+
+/***********注册页面结束***********/
+

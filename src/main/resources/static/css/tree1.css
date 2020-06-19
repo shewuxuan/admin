@@ -1,0 +1,303 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.muen {
+    width: 100%;
+    height: 85%;
+    overflow: auto;
+    position: relative;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.tagBox {
+    width: 260px;
+    min-width: 0px;
+    height: 24px;
+    position: relative;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    overflow: visible;
+}
+
+.childs-box {
+    width: 260px;
+    min-width: 0px;
+    height: auto;
+    position: relative;
+    display: block;
+    overflow: visible;
+}
+
+.tagBox + .childs-box {
+    left: 25px;
+}
+
+.muen_title {
+    display: block;
+    border-radius: 5px;
+    background-color: #d8d9db;
+    color: black;
+    font-size: 12px;
+    position: relative;
+    height: 100%;
+    border: 1px solid #EFEFEF;
+    text-align: center;
+    width: auto;
+    left: 2px;
+    line-height: 24px;
+    overflow-y: hidden;
+    overflow-x: visible;
+    padding-left: 10px;
+    padding-right: 10px;
+    float: left;
+    cursor: pointer;
+
+}
+
+.icon-all {
+    width: 20px;
+    height: 20px;
+    display: block;
+    top: 3px;
+    z-index: 20;
+    position: relative;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    -ms-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+}
+
+.dept-icon {
+    background-image: url("images/dept/check.png");
+}
+
+.box_checked {
+    background-image: url("images/dept/checked.png")
+}
+
+.close {
+    background-image: url("images/dept/jia.png");
+    position: relative;
+    left: 0px;
+    float: left;
+}
+
+.open {
+    background-image: url("images/dept/jian.png");
+    position: relative;
+    left: 0px;
+    float: left;
+}
+
+.add {
+    background-image: url("images/dept/add.png");
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    margin-left: 0px;
+}
+
+.update {
+    background-image: url("images/dept/update.png");
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    margin-left: 3px;
+}
+
+.delete {
+    background-image: url("images/dept/delete.png");
+    width: 15px;
+    height: 15px;
+    top: 4.5px;
+    margin-left: 3px;
+}
+
+.yes {
+    background-image: url("images/dept/yes.png");
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    margin-left: 0px;
+}
+
+.no {
+    background-image: url("images/dept/no.png");
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    margin-left: 5px;
+}
+
+.updateyes {
+    background-image: url("images/dept/yes.png");
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    margin-left: 0px;
+}
+
+.updateno {
+    background-image: url("images/dept/no.png");
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    margin-left: 5px;
+}
+
+.icons {
+    width: 100px;
+    height: 100%;
+    float: left;
+    position: relative;
+    left: 10px;
+    display: none;
+    float: left;
+}
+
+.icons > span {
+    float: left;
+}
+
+.dra_back {
+    display: none;
+}
+
+.dra_back {
+    opacity: 0;
+    width: auto;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 50;
+    cursor: pointer;
+    display: none;
+}
+
+.dra_back:checked + label {
+    background-color: #0D421A;
+    color: white;
+}
+
+.mark {
+    position: absolute;
+    width: 16px;
+    height: 17px;
+    z-index: 20;
+    top: 6px;
+}
+
+.but {
+    border: 1px solid #0A3917;
+    color: black;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 35px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 1em;
+    position: relative;
+    top: 5px;
+}
+
+.but-add {
+    position: relative;
+}
+
+.yes-click {
+    background-color: #D1DAE0;
+    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#D1DAE0), to(#767C7E));
+    background-image: -webkit-linear-gradient(top, #D1DAE0 0%, #767C7E 100%);
+    background-image: -moz-linear-gradient(top, #D1DAE0 0%, #767C7E 100%);
+    background-image: -ms-linear-gradient(top, #D1DAE0 0%, #767C7E 100%);
+    background-image: -o-linear-gradient(top, #D1DAE0 0%, #767C7E 100%);
+    background-image: linear-gradient(top, #D1DAE0 0%, #767C7E 100%); /*颜色渐变效果*/
+}
+
+.click {
+    color: white;
+    background-color: #276F39;
+    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#D1DAE0), to(#0D421A));
+    background-image: -webkit-linear-gradient(top, #276F39 0%, #0D421A 100%);
+    background-image: -moz-linear-gradient(top, #276F39 0%, #0D421A 100%);
+    background-image: -ms-linear-gradient(top, #276F39 0%, #0D421A 100%);
+    background-image: -o-linear-gradient(top, #276F39 0%, #0D421A 100%);
+    background-image: linear-gradient(top, #276F39 0%, #0D421A 100%); /*颜色渐变效果*/
+
+}
+
+.deptname {
+    width: 100px;
+    padding-left: 5px;
+    height: 35px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 1em;
+    position: relative;
+    top: 5px;
+    border: 1px solid #cccccc;
+}
+
+.deptname:focus {
+    border: 1px solid #0D421A;
+}
+
+.showBorder {
+    border: 1px dashed black;
+}
+
+.addbox {
+    position: absolute;
+    left: 34px;
+    height: 100%;
+    top: 28px;
+    width: 100%;
+    z-index: 100;
+}
+
+.addbox > input {
+    float: left;
+    height: 100%;
+    width: 80px;
+    top: 1px;
+    position: relative;
+    left: -10px;
+}
+
+.addbox > span {
+    float: left;
+    top: 4px;
+}
+
+.btnew {
+    /*	margin-top:10px;*/
+    width: 201%;
+    height: 34px;
+    background: url(../images/maintop_bg.jpg) repeat-x;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../images/mainnt_bg.png) repeat-y;
+}
+
+.treeleft {
+    width: 201%;
+    float: left;
+}
+

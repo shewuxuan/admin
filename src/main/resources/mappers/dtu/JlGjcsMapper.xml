@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.dtu.JlGjcsMapper">
+    <resultMap id="BaseResultMap" type="com.guodu.pojo.dtu.JlGjcs">
+        <!--@mbg.generated-->
+        <!--@Table jl_gjcs-->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="tsid" jdbcType="VARCHAR" property="tsid"/>
+        <result column="ssqy" jdbcType="VARCHAR" property="ssqy"/>
+        <result column="jg" jdbcType="VARCHAR" property="jg"/>
+        <result column="gjlx" jdbcType="VARCHAR" property="gjlx"/>
+        <result column="a1" jdbcType="VARCHAR" property="a1"/>
+        <result column="a2" jdbcType="VARCHAR" property="a2"/>
+        <result column="b1" jdbcType="VARCHAR" property="b1"/>
+        <result column="b2" jdbcType="VARCHAR" property="b2"/>
+        <result column="c1" jdbcType="VARCHAR" property="c1"/>
+        <result column="c2" jdbcType="VARCHAR" property="c2"/>
+        <result column="l1" jdbcType="VARCHAR" property="l1"/>
+        <result column="l2" jdbcType="VARCHAR" property="l2"/>
+        <result column="csjg1" jdbcType="VARCHAR" property="csjg1"/>
+        <result column="csjg2" jdbcType="VARCHAR" property="csjg2"/>
+        <result column="czr" jdbcType="VARCHAR" property="czr"/>
+        <result column="czsj" jdbcType="TIMESTAMP" property="czsj"/>
+        <result column="beizhu" jdbcType="VARCHAR" property="beizhu"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, tsid, ssqy, jg, gjlx, a1, a2, b1, b2, c1, c2, l1, l2, csjg1, csjg2, czr, czsj, beizhu
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from jl_gjcs
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        delete from jl_gjcs
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.guodu.pojo.dtu.JlGjcs">
+        <!--@mbg.generated-->
+        insert into jl_gjcs (id, tsid, ssqy,
+        jg, gjlx, a1, a2, b1, b2,
+        c1, c2, l1, l2,
+        csjg1, csjg2, czr,
+        czsj, beizhu)
+        values (#{id,jdbcType=VARCHAR}, #{tsid,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR},
+        #{jg,jdbcType=VARCHAR}, #{gjlx,jdbcType=VARCHAR}, #{a1,jdbcType=VARCHAR}, #{a2,jdbcType=VARCHAR}, #{b1,jdbcType=VARCHAR}, #{b2,jdbcType=VARCHAR},
+        #{c1,jdbcType=VARCHAR}, #{c2,jdbcType=VARCHAR}, #{l1,jdbcType=VARCHAR}, #{l2,jdbcType=VARCHAR},
+        #{csjg1,jdbcType=VARCHAR}, #{csjg2,jdbcType=VARCHAR}, #{czr,jdbcType=VARCHAR},
+        #{czsj,jdbcType=TIMESTAMP}, #{beizhu,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.guodu.pojo.dtu.JlGjcs">
+        <!--@mbg.generated-->
+        insert into jl_gjcs
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">
+                id,
+            </if>
+            <if test="tsid != null and tsid != ''">
+                tsid,
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                ssqy,
+            </if>
+            <if test="jg != null and jg != ''">
+                jg,
+            </if>
+            <if test="gjlx != null and gjlx != ''">
+                gjlx,
+            </if>
+            <if test="a1 != null and a1 != ''">
+                a1,
+            </if>
+            <if test="a2 != null and a2 != ''">
+                a2,
+            </if>
+            <if test="b1 != null and b1 != ''">
+                b1,
+            </if>
+            <if test="b2 != null and b2 != ''">
+                b2,
+            </if>
+            <if test="c1 != null and c1 != ''">
+                c1,
+            </if>
+            <if test="c2 != null and c2 != ''">
+                c2,
+            </if>
+            <if test="l1 != null and l1 != ''">
+                l1,
+            </if>
+            <if test="l2 != null and l2 != ''">
+                l2,
+            </if>
+            <if test="csjg1 != null and csjg1 != ''">
+                csjg1,
+            </if>
+            <if test="csjg2 != null and csjg2 != ''">
+                csjg2,
+            </if>
+            <if test="czr != null and czr != ''">
+                czr,
+            </if>
+            <if test="czsj != null">
+                czsj,
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                beizhu,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="tsid != null and tsid != ''">
+                #{tsid,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="jg != null and jg != ''">
+                #{jg,jdbcType=VARCHAR},
+            </if>
+            <if test="gjlx != null and gjlx != ''">
+                #{gjlx,jdbcType=VARCHAR},
+            </if>
+            <if test="a1 != null and a1 != ''">
+                #{a1,jdbcType=VARCHAR},
+            </if>
+            <if test="a2 != null and a2 != ''">
+                #{a2,jdbcType=VARCHAR},
+            </if>
+            <if test="b1 != null and b1 != ''">
+                #{b1,jdbcType=VARCHAR},
+            </if>
+            <if test="b2 != null and b2 != ''">
+                #{b2,jdbcType=VARCHAR},
+            </if>
+            <if test="c1 != null and c1 != ''">
+                #{c1,jdbcType=VARCHAR},
+            </if>
+            <if test="c2 != null and c2 != ''">
+                #{c2,jdbcType=VARCHAR},
+            </if>
+            <if test="l1 != null and l1 != ''">
+                #{l1,jdbcType=VARCHAR},
+            </if>
+            <if test="l2 != null and l2 != ''">
+                #{l2,jdbcType=VARCHAR},
+            </if>
+            <if test="csjg1 != null and csjg1 != ''">
+                #{csjg1,jdbcType=VARCHAR},
+            </if>
+            <if test="csjg2 != null and csjg2 != ''">
+                #{csjg2,jdbcType=VARCHAR},
+            </if>
+            <if test="czr != null and czr != ''">
+                #{czr,jdbcType=VARCHAR},
+            </if>
+            <if test="czsj != null">
+                #{czsj,jdbcType=TIMESTAMP},
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                #{beizhu,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.dtu.JlGjcs">
+        <!--@mbg.generated-->
+        update jl_gjcs
+        <set>
+            <if test="tsid != null and tsid != ''">
+                tsid = #{tsid,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                ssqy = #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="jg != null and jg != ''">
+                jg = #{jg,jdbcType=VARCHAR},
+            </if>
+            <if test="gjlx != null and gjlx != ''">
+                gjlx = #{gjlx,jdbcType=VARCHAR},
+            </if>
+            <if test="a1 != null and a1 != ''">
+                a1 = #{a1,jdbcType=VARCHAR},
+            </if>
+            <if test="a2 != null and a2 != ''">
+                a2 = #{a2,jdbcType=VARCHAR},
+            </if>
+            <if test="b1 != null and b1 != ''">
+                b1 = #{b1,jdbcType=VARCHAR},
+            </if>
+            <if test="b2 != null and b2 != ''">
+                b2 = #{b2,jdbcType=VARCHAR},
+            </if>
+            <if test="c1 != null and c1 != ''">
+                c1 = #{c1,jdbcType=VARCHAR},
+            </if>
+            <if test="c2 != null and c2 != ''">
+                c2 = #{c2,jdbcType=VARCHAR},
+            </if>
+            <if test="l1 != null and l1 != ''">
+                l1 = #{l1,jdbcType=VARCHAR},
+            </if>
+            <if test="l2 != null and l2 != ''">
+                l2 = #{l2,jdbcType=VARCHAR},
+            </if>
+            <if test="csjg1 != null and csjg1 != ''">
+                csjg1 = #{csjg1,jdbcType=VARCHAR},
+            </if>
+            <if test="csjg2 != null and csjg2 != ''">
+                csjg2 = #{csjg2,jdbcType=VARCHAR},
+            </if>
+            <if test="czr != null and czr != ''">
+                czr = #{czr,jdbcType=VARCHAR},
+            </if>
+            <if test="czsj != null">
+                czsj = #{czsj,jdbcType=TIMESTAMP},
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                beizhu = #{beizhu,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.dtu.JlGjcs">
+        <!--@mbg.generated-->
+        update jl_gjcs
+        set tsid = #{tsid,jdbcType=VARCHAR},
+        ssqy = #{ssqy,jdbcType=VARCHAR},
+        jg = #{jg,jdbcType=VARCHAR},
+        gjlx = #{gjlx,jdbcType=VARCHAR},
+        a1 = #{a1,jdbcType=VARCHAR},
+        a2 = #{a2,jdbcType=VARCHAR},
+        b1 = #{b1,jdbcType=VARCHAR},
+        b2 = #{b2,jdbcType=VARCHAR},
+        c1 = #{c1,jdbcType=VARCHAR},
+        c2 = #{c2,jdbcType=VARCHAR},
+        l1 = #{l1,jdbcType=VARCHAR},
+        l2 = #{l2,jdbcType=VARCHAR},
+        csjg1 = #{csjg1,jdbcType=VARCHAR},
+        csjg2 = #{csjg2,jdbcType=VARCHAR},
+        czr = #{czr,jdbcType=VARCHAR},
+        czsj = #{czsj,jdbcType=TIMESTAMP},
+        beizhu = #{beizhu,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByAll" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from jl_gjcs
+        <where>
+            <if test="id != null and id != ''">
+                and id=#{id,jdbcType=VARCHAR}
+            </if>
+            <if test="tsid != null and tsid != ''">
+                and tsid=#{tsid,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="jg != null and jg != ''">
+                and jg=#{jg,jdbcType=VARCHAR}
+            </if>
+            <if test="gjlx != null and gjlx != ''">
+                and gjlx like CONCAT('%',#{gjlx,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="a1 != null and a1 != ''">
+                and a1=#{a1,jdbcType=VARCHAR}
+            </if>
+            <if test="a2 != null and a2 != ''">
+                and a2=#{a2,jdbcType=VARCHAR}
+            </if>
+            <if test="b1 != null and b1 != ''">
+                and b1=#{b1,jdbcType=VARCHAR}
+            </if>
+            <if test="b2 != null and b2 != ''">
+                and b2=#{b2,jdbcType=VARCHAR}
+            </if>
+            <if test="c1 != null and c1 != ''">
+                and c1=#{c1,jdbcType=VARCHAR}
+            </if>
+            <if test="c2 != null and c2 != ''">
+                and c2=#{c2,jdbcType=VARCHAR}
+            </if>
+            <if test="l1 != null and l1 != ''">
+                and l1=#{l1,jdbcType=VARCHAR}
+            </if>
+            <if test="l2 != null and l2 != ''">
+                and l2=#{l2,jdbcType=VARCHAR}
+            </if>
+            <if test="csjg1 != null and csjg1 != ''">
+                and csjg1=#{csjg1,jdbcType=VARCHAR}
+            </if>
+            <if test="csjg2 != null and csjg2 != ''">
+                and csjg2=#{csjg2,jdbcType=VARCHAR}
+            </if>
+            <if test="czr != null and czr != ''">
+                and czr=#{czr,jdbcType=VARCHAR}
+            </if>
+            <if test="czsj != null">
+                and czsj=#{czsj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu=#{beizhu,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by jg
+    </select>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update jl_gjcs
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="tsid = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.tsid,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="ssqy = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="jg = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.jg,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="gjlx = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.gjlx,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="a1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.a1,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="a2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.a2,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="b1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.b1,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="b2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.b2,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="c1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.c1,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="c2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.c2,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="l1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.l1,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="l2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.l2,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="csjg1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.csjg1,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="csjg2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.csjg2,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="czr = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.czr,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="czsj = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.czsj,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="beizhu = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=VARCHAR} then #{item.beizhu,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into jl_gjcs
+        (id, tsid, ssqy, jg, gjlx, a1, a2, b1, b2, c1, c2, l1, l2, csjg1, csjg2, czr, czsj, beizhu
+        )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id,jdbcType=VARCHAR}, #{item.tsid,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR},
+            #{item.jg,jdbcType=VARCHAR}, #{item.gjlx,jdbcType=VARCHAR}, #{item.a1,jdbcType=VARCHAR},
+            #{item.a2,jdbcType=VARCHAR}, #{item.b1,jdbcType=VARCHAR}, #{item.b2,jdbcType=VARCHAR}, #{item.c1,jdbcType=VARCHAR}, #{item.c2,jdbcType=VARCHAR},
+            #{item.l1,jdbcType=VARCHAR}, #{item.l2,jdbcType=VARCHAR}, #{item.csjg1,jdbcType=VARCHAR},
+            #{item.csjg2,jdbcType=VARCHAR}, #{item.czr,jdbcType=VARCHAR}, #{item.czsj,jdbcType=TIMESTAMP},
+            #{item.beizhu,jdbcType=VARCHAR})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        tsid = values(tsid),
+        ssqy = values(ssqy),
+        jg = values(jg),
+        gjlx = values(gjlx),
+        a1 = values(a1),
+        a2 = values(a2),
+        b1 = values(b1),
+        b2 = values(b2),
+        c1 = values(c1),
+        c2 = values(c2),
+        l1 = values(l1),
+        l2 = values(l2),
+        csjg1 = values(csjg1),
+        csjg2 = values(csjg2),
+        czr = values(czr),
+        czsj = values(czsj),
+        beizhu = values(beizhu)
+    </insert>
+
+<!--auto generated by MybatisCodeHelper on 2020-05-28-->
+    <delete id="deleteByTsid">
+        delete from jl_gjcs
+        where tsid=#{tsid,jdbcType=VARCHAR}
+    </delete>
+</mapper>
