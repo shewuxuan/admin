@@ -27,24 +27,24 @@
                 <p>调试信息</p>
             </a>
         </li>
-        <li class="current">
+        <%--<li class="current">
             <a href="/equip/toEquipInfoView.action" target='mainFrame'  onmousedown="test(this)"  class="current left_hover"  >
                 <img src="/images/top06.gif" />
                 <p>设备管理</p>
             </a>
-        </li>
+        </li>--%>
         <li class="current">
             <a href="/cq/cqManage" target='mainFrame'  onmousedown=""  class="current left_hover"  >
                 <img src="/images/top06.png" />
                 <p>处缺记录</p>
             </a>
         </li>
-        <li class="current">
+       <%-- <li class="current">
             <a href="/pwbhJbxx/toPwbhJbxxView.action" target='mainFrame'  onmousedown=""  class="current left_hover"  >
                 <img src="/images/top02.gif" />
                 <p>配网保护</p>
             </a>
-        </li>
+        </li>--%>
         <li>
             <a href="/user/sysByUser.action" target='mainFrame'  onmousedown="test(this)"  class="left_hover"  >
                   <img src="/images/top08.png" />

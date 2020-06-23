@@ -42,12 +42,11 @@
     <br/>
     <div class="content">
         <ul>
-            <li style="display:none;"></li>
             <li style="display:block;">
                 <%@include file="cqCount.jsp" %>
 <%--                <%@include file="cqList.jsp" %>--%>
             </li>
-            <li style="display: none;">
+            <li id="li2" style="display: block;">
                 <%@include file="cqList.jsp" %>
 <%--                <%@include file="cqCount.jsp" %>--%>
             </li>
@@ -56,20 +55,16 @@
 </div>
 <script>
     $(function () {
+        $("#li2").hide();
         $(".qh .tab a").click(function () {
             $(this).addClass('on').siblings().removeClass('on');
             var index = $(this).index();
             $('.qh .content li').hide();
-            $('.qh .content li:eq(' + (index + 1) + ')').show();
-            if (index === 0) {
-                $('#cqtj').datagrid("load");
-                // $('#dg').datagrid("load");
-            } else if (index === 1) {
-                $('#dg').datagrid("load");
-                // $('#cqtj').datagrid("load");
-            }
+            $('.qh .content li:eq(' + (index ) + ')').show();
         });
     });
+
+
 
 
     // 鼠标悬浮显示
