@@ -93,10 +93,10 @@ function searchList(){
 			idField:'ID',
 			columns:[[
 				{field:'SBID',align:"center",title:'设备ID',width:0,hidden:'true'},
-				{field:'SSQY',align:"left",title:'所属区域',width:30},
-				{field:'AZDD_DDH',align:"center",title:'设备调度号',width:30},
+				{field:'SSQY',align:"center",title:'所属区域',width:30},
+				{field:'AZDD_DDH',align:"center",title:'设备调度号',width:60},
 				/*{field:'ZDMC',align:"center",title:'终端名称',width:30},*/
-				{field:'SSXL',align:"center",title:'所属线路',width:30,formatter:function(value,row,index){
+				{field:'SSXL',align:"center",title:'所属线路',width:60,formatter:function(value,row,index){
 					var xlmc = "";
 						$.ajax({
 							url: '/ssxl/selectByPrimaryKey/'+value,
@@ -121,7 +121,7 @@ function searchList(){
 				{field:'ZBBH',align:"center",title:'装置编号',width:30},
 				{field:'ZZLX',align:"center",title:'装置类型',width:30},
 				{field:'XXWZ',align:"center",title:'详细位置',width:90},
-				{field:'trans',align:"left",title:'操作',width:60,formatter:function(value,row,index){
+				{field:'trans',align:"left",title:'操作',width:50,formatter:function(value,row,index){
 						var txt0 = '<button href="javascript:void(0);" onclick="seeEquipInfo(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
 						var txt1 = '&nbsp;<button href="javascript:void(0);" onclick="editEquipInfo(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '编辑' + '</button>';
 						var txt2 = '&nbsp;<button href="javascript:void(0);" onclick="delEquipInfo(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';

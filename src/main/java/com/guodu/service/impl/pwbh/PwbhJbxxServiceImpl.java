@@ -38,7 +38,8 @@ public class PwbhJbxxServiceImpl extends BaseServiceImpl<PwbhJbxx> {
     PwbhBzWgjcService pwbhBzWgjcServiceImpl;
     @Autowired
     PwbhBzYqybService pwbhBzYqybServiceImpl;
-
+    @Autowired
+    PwbhBzZzsyService pwbhBzZzsyServiceImpl;
     public Object getPwbh(){
         Map<String,String> result = new HashMap<>();
         List<PwbhBzBhct> pwbhBzBhct = pwbhBzBhctServiceImpl.selectByAll(null);
@@ -50,6 +51,7 @@ public class PwbhJbxxServiceImpl extends BaseServiceImpl<PwbhJbxx> {
         List<PwbhBzSgjc> pwbhBzSgjc = pwbhBzSgjcServiceImpl.selectByAll(null);
         List<PwbhBzWgjc> pwbhBzWgjc = pwbhBzWgjcServiceImpl.selectByAll(null);
         List<PwbhBzYqyb> pwbhBzYqyb = pwbhBzYqybServiceImpl.selectByAll(null);
+        List<PwbhBzZzsy> pwbhBzZzsy = pwbhBzZzsyServiceImpl.selectByAll(null);
 
         result.put("bzBhct", JSONUtil.toJsonStr(pwbhBzBhct));
         result.put("bzDzjc", JSONUtil.toJsonStr(pwbhBzDzjc));
@@ -60,6 +62,7 @@ public class PwbhJbxxServiceImpl extends BaseServiceImpl<PwbhJbxx> {
         result.put("bzSgjc", JSONUtil.toJsonStr(pwbhBzSgjc));
         result.put("bzWgjc", JSONUtil.toJsonStr(pwbhBzWgjc));
         result.put("bzYqyb", JSONUtil.toJsonStr(pwbhBzYqyb));
+        result.put("bzZzsy", JSONUtil.toJsonStr(pwbhBzZzsy));
 
         return result;
     }

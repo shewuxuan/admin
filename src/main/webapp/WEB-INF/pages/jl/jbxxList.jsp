@@ -25,7 +25,7 @@
 <div class="qh">
     <div class="tab" style="">
         <a href="javascript:;" class="on" style="border-left:1px solid white;">DTU调试</a>
-        <a href="javascript:;">设备管理</a>
+        <%--<a href="javascript:;">FTU调试</a>--%>
         <a href="javascript:;">配网保护</a>
     </div>
     <br/>
@@ -61,7 +61,7 @@
 
             <!--  1 end-->
             <!--  2 begin-->
-            <li style="display:block;" id="li2">
+           <%-- <li style="display:block;" id="li2">
                 <div>
                     <div class="tj">
                         <form  method="post">
@@ -80,7 +80,7 @@
                         <table id="tableList2"></table>
                     </div>
                 </div>
-            </li>
+            </li>--%>
             <!-- 3 begin-->
             <li style="display:block;" id="li3">
                 <div>
@@ -148,17 +148,17 @@
             pageSize: 10,//每页显示的记录条数，默认为10 
             idField:'ID',
             columns:[[
-                {field:'TSID',align:"center",title:'调试ID',width:0,hidden:'true'},
-                {field:'SSQY',align:"center",title:'所属区域',width:30},
-                {field:'TSSJ',align:"center",title:'调试时间',width:30,  formatter : function(value){
+                {field:'TSID',align:"left",title:'调试ID',width:0,hidden:'true'},
+                {field:'SSQY',align:"center",title:'所属区域',width:20},
+                {field:'TSSJ',align:"center",title:'调试时间',width:25,  formatter : function(value){
                         var date = new Date(value);
                         var y = date.getFullYear();
                         var m = date.getMonth() + 1;
                         var d = date.getDate();
                         return y + '-' +m + '-' + d;
                     }},
-                {field:'AZDD_DDH',align:"center",title:'设备调度号',width:40},
-                {field:'SSXL',align:"center",title:'所属线路',width:40,formatter:function(value,row,index){
+                {field:'AZDD_DDH',align:"center",title:'设备调度号',width:50},
+                {field:'SSXL',align:"center",title:'所属线路',width:50,formatter:function(value,row,index){
                         var xlmc = "";
                         $.ajax({
                             url: '/ssxl/selectByPrimaryKey/'+value,
@@ -179,11 +179,11 @@
                         });
                         return xlmc;
                     }},
-                {field:'ZZXH',align:"left",title:'装置型号',width:30},
-                {field:'SCCS',align:"left",title:'生产厂商',width:30},
-                {field:'ZZLX',align:"left",title:'装置类型',width:30},
-                {field:'TSRYXM',align:"left",title:'调试人员',width:40},
-                {field:'trans',align:"left",title:'操作',width:60,formatter:function(value,row,index){
+                {field:'ZZXH',align:"center",title:'装置型号',width:30},
+                {field:'SCCS',align:"center",title:'生产厂商',width:40},
+                {field:'ZZLX',align:"center",title:'装置类型',width:30},
+                {field:'TSRYXM',align:"center",title:'调试人员',width:40},
+                {field:'trans',align:"left",title:'操作',width:45,formatter:function(value,row,index){
                         var txt1 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="detailJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
                         var txt2 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="exportJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '导出' + '</button>';
                         var txt3 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="deleteJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
@@ -204,7 +204,7 @@
                 $("#li2").hide();
                 $("#li3").hide();
             }
-            if (index == 1) {
+            /*if (index == 1) {
                 $("#ssqy2").append("<option value=''>全部</option>");
                 $.post("/ssqy/selectSsqyByAll", function (data) {
                     let ssqy = JSON.parse(data);
@@ -240,7 +240,7 @@
                             {field:'SBID',align:"center",title:'设备ID',width:0,hidden:'true'},
                             {field:'SSQY',align:"left",title:'所属区域',width:30},
                             {field:'AZDD_DDH',align:"center",title:'设备调度号',width:30},
-                            /*{field:'ZDMC',align:"center",title:'终端名称',width:30},*/
+                            /!*{field:'ZDMC',align:"center",title:'终端名称',width:30},*!/
                             {field:'SSXL',align:"center",title:'所属线路',width:60,formatter:function(value,row,index){
                                     var xlmc = "";
                                     $.ajax({
@@ -275,8 +275,8 @@
                         ]],
                     });
                     searchList2();
-            }
-            if(index == 2){
+            }*/
+            if(index == 1){
                 $('#tableList3').datagrid({
                     iconCls:'icon-ok',
                     //queryParams: getQueryParams(),

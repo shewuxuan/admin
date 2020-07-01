@@ -27,12 +27,12 @@
                 <p>调试信息</p>
             </a>
         </li>
-        <%--<li class="current">
+        <li class="current">
             <a href="/equip/toEquipInfoView.action" target='mainFrame'  onmousedown="test(this)"  class="current left_hover"  >
                 <img src="/images/top06.gif" />
                 <p>设备管理</p>
             </a>
-        </li>--%>
+        </li>
         <li class="current">
             <a href="/cq/cqManage" target='mainFrame'  onmousedown=""  class="current left_hover"  >
                 <img src="/images/top06.png" />
