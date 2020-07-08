@@ -1,15 +1,21 @@
 package com.guodu.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.guodu.pojo.dtu.Jbxx;
 import com.guodu.pojo.dtu.JbxxPhoto;
 import com.guodu.pojo.equip.EquipInfo;
 import com.guodu.pojo.equip.EquipPhoto;
+import com.guodu.pojo.pwbh.*;
 import com.guodu.service.*;
 import com.guodu.service.dtu.JbxxBeizhuService;
 import com.guodu.service.impl.dtu.*;
 import com.guodu.service.impl.equip.EquipInfoServiceImpl;
 import com.guodu.service.impl.equip.EquipPhotoServiceImpl;
+import com.guodu.service.impl.pwbh.PwbhJbxxServiceImpl;
 import com.guodu.service.impl.sys.SysSccjServiceImpl;
+import com.guodu.service.pwbh.*;
 import com.guodu.util.FileHandleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -268,4 +274,199 @@ public class UploadServiceImpl implements UploadService {
         jlYktsServiceImpl.deleteByTsid(tsid);
         jlYsbjServiceImpl.deleteByTsid(tsid);
     }
+
+    /**配网保护**/
+    @Autowired
+    PwbhJbxxServiceImpl pwbhJbxxServiceImpl;
+    @Autowired
+    PwbhJlBhctbhService pwbhJlBhctbhService;
+    @Autowired
+    PwbhJlBhcthlService pwbhJlBhcthlServiceImpl;
+    @Autowired
+    PwbhJlBhctjxService pwbhJlBhctjxServiceImpl;
+    @Autowired
+    PwbhJlDzdjcService pwbhJlDzdjcServiceImpl;
+    @Autowired
+    PwbhJlDzjcService pwbhJlDzjcServiceImpl;
+    @Autowired
+    PwbhJlJdjyService pwbhJlJdjyServiceImpl;
+    @Autowired
+    PwbhJlJxdxService pwbhJlJxdxServiceImpl;
+    @Autowired
+    PwbhJlJycsService pwbhJlJycsServiceImpl;
+    @Autowired
+    PwbhJlLpjyService pwbhJlLpjyServiceImpl;
+    @Autowired
+    PwbhJlSgjcService pwbhJlSgjcServiceImpl;
+    @Autowired
+    PwbhJlWgjcService pwbhJlWgjcServiceImpl;
+    @Autowired
+    PwbhJlYqybService pwbhJlYqybServiceImpl;
+    @Autowired
+    PwbhJlZzsyService pwbhJlZzsyServiceImpl;
+    @Autowired
+    PwbhJbxxBeizhuService pwbhJbxxBeizhuServiceImpl;
+    @Autowired
+    PwbhDzService pwbhDzServiceImpl;
+    @Override
+    public void uploadPwbhJl(Map<String, Object> param) throws Exception {
+        PwbhJbxx pwbhJbxx = JSON.parseObject(param.get("pwbhJbxx").toString(),PwbhJbxx.class);
+        if(pwbhJbxx == null) return;
+        PwbhJbxx oldPwbhJbxx = pwbhJbxxServiceImpl.selectById(pwbhJbxx.getTsid());
+        if(oldPwbhJbxx != null){
+            pwbhJbxxServiceImpl.edit(pwbhJbxx);
+        }else{
+            pwbhJbxxServiceImpl.add(pwbhJbxx);
+        }
+
+        PwbhJbxxBeizhu beizhu = JSON.parseObject(param.get("beizhu").toString(),PwbhJbxxBeizhu.class);
+        PwbhJbxxBeizhu oldBeizhu = pwbhJbxxBeizhuServiceImpl.selectByPrimaryKey(beizhu.getTsid());
+        if(oldBeizhu != null){
+            pwbhJbxxBeizhuServiceImpl.updateByPrimaryKey(beizhu);
+        }else{
+            pwbhJbxxBeizhuServiceImpl.insert(beizhu);
+        }
+
+        List<PwbhJlBhctbh> bhctbhs = JSON.parseObject((String) param.get("bhctbhs"), new TypeReference< List<PwbhJlBhctbh>>() {});
+        for(PwbhJlBhctbh bhctbh:bhctbhs){
+            PwbhJlBhctbh oldBhctbh = pwbhJlBhctbhService.selectByPrimaryKey(bhctbh.getId());
+            if(oldBhctbh != null){
+                pwbhJlBhctbhService.updateByPrimaryKey(bhctbh);
+            }else{
+                pwbhJlBhctbhService.insert(bhctbh);
+            }
+        }
+
+        List<PwbhJlBhcthl> bhcthls = JSON.parseObject((String) param.get("bhcthls"), new TypeReference< List<PwbhJlBhcthl>>() {});
+        for(PwbhJlBhcthl bhcthl:bhcthls){
+            PwbhJlBhcthl oldBhcthl = pwbhJlBhcthlServiceImpl.selectByPrimaryKey(bhcthl.getId());
+            if(oldBhcthl != null){
+                pwbhJlBhcthlServiceImpl.updateByPrimaryKey(bhcthl);
+            }else{
+                pwbhJlBhcthlServiceImpl.insert(bhcthl);
+            }
+        }
+
+        List<PwbhJlBhctjx> bhctjxs = JSON.parseObject((String) param.get("bhctjxs"), new TypeReference< List<PwbhJlBhctjx>>() {});
+        for(PwbhJlBhctjx bhctjx:bhctjxs){
+            PwbhJlBhctjx oldBhctjx = pwbhJlBhctjxServiceImpl.selectByPrimaryKey(bhctjx.getId());
+            if(oldBhctjx != null){
+                pwbhJlBhctjxServiceImpl.updateByPrimaryKey(bhctjx);
+            }else{
+                pwbhJlBhctjxServiceImpl.insert(bhctjx);
+            }
+        }
+
+        List<PwbhJlDzdjc> dzdjcs = JSON.parseObject((String) param.get("dzdjcs"), new TypeReference< List<PwbhJlDzdjc>>() {});
+        for(PwbhJlDzdjc dzdjc:dzdjcs){
+            PwbhJlDzdjc oldDzdjc = pwbhJlDzdjcServiceImpl.selectByPrimaryKey(dzdjc.getId());
+            if(oldDzdjc != null){
+                pwbhJlDzdjcServiceImpl.updateByPrimaryKey(dzdjc);
+            }else{
+                pwbhJlDzdjcServiceImpl.insert(dzdjc);
+            }
+        }
+
+        List<PwbhJlDzjc> dzjcs = JSON.parseObject((String) param.get("dzjcs"), new TypeReference< List<PwbhJlDzjc>>() {});
+        for(PwbhJlDzjc dzjc:dzjcs){
+            PwbhJlDzjc oldDzjc = pwbhJlDzjcServiceImpl.selectByPrimaryKey(dzjc.getId());
+            if(oldDzjc != null){
+                pwbhJlDzjcServiceImpl.updateByPrimaryKey(dzjc);
+            }else{
+                pwbhJlDzjcServiceImpl.insert(dzjc);
+            }
+        }
+
+        List<PwbhJlJdjy> jdjys = JSON.parseObject((String) param.get("jdjys"), new TypeReference< List<PwbhJlJdjy>>() {});
+        for(PwbhJlJdjy jdjy:jdjys){
+            PwbhJlJdjy oldJdjy = pwbhJlJdjyServiceImpl.selectByPrimaryKey(jdjy.getId());
+            if(oldJdjy != null){
+                pwbhJlJdjyServiceImpl.updateByPrimaryKey(jdjy);
+            }else{
+                pwbhJlJdjyServiceImpl.insert(jdjy);
+            }
+        }
+
+        List<PwbhJlJxdx> jxdxs = JSON.parseObject((String) param.get("jxdxs"), new TypeReference< List<PwbhJlJxdx>>() {});
+        for(PwbhJlJxdx jxdx:jxdxs){
+            PwbhJlJxdx oldJxdx = pwbhJlJxdxServiceImpl.selectByPrimaryKey(jxdx.getId());
+            if(oldJxdx != null){
+                pwbhJlJxdxServiceImpl.updateByPrimaryKey(jxdx);
+            }else{
+                pwbhJlJxdxServiceImpl.insert(jxdx);
+            }
+        }
+
+        List<PwbhJlJycs> jycss = JSON.parseObject((String) param.get("jycss"), new TypeReference< List<PwbhJlJycs>>() {});
+        for(PwbhJlJycs jycs:jycss){
+            PwbhJlJycs oldJycs = pwbhJlJycsServiceImpl.selectByPrimaryKey(jycs.getId());
+            if(oldJycs != null){
+                pwbhJlJycsServiceImpl.updateByPrimaryKey(jycs);
+            }else{
+                pwbhJlJycsServiceImpl.insert(jycs);
+            }
+        }
+
+        List<PwbhJlLpjy> lpjys = JSON.parseObject((String) param.get("lpjys"), new TypeReference< List<PwbhJlLpjy>>() {});
+        for(PwbhJlLpjy lpjy:lpjys){
+            PwbhJlLpjy oldLpjy = pwbhJlLpjyServiceImpl.selectByPrimaryKey(lpjy.getId());
+            if(oldLpjy != null){
+                pwbhJlLpjyServiceImpl.updateByPrimaryKey(lpjy);
+            }else{
+                pwbhJlLpjyServiceImpl.insert(lpjy);
+            }
+        }
+
+        List<PwbhJlSgjc> sgjcs = JSON.parseObject((String) param.get("sgjcs"), new TypeReference< List<PwbhJlSgjc>>() {});
+        for(PwbhJlSgjc sgjc:sgjcs){
+            PwbhJlSgjc oldSgjc = pwbhJlSgjcServiceImpl.selectByPrimaryKey(sgjc.getId());
+            if(oldSgjc != null){
+                pwbhJlSgjcServiceImpl.updateByPrimaryKey(sgjc);
+            }else{
+                pwbhJlSgjcServiceImpl.insert(sgjc);
+            }
+        }
+
+        List<PwbhJlWgjc> wgjcs = JSON.parseObject((String) param.get("wgjcs"), new TypeReference< List<PwbhJlWgjc>>() {});
+        for(PwbhJlWgjc wgjc:wgjcs){
+            PwbhJlWgjc oldWgjc = pwbhJlWgjcServiceImpl.selectByPrimaryKey(wgjc.getId());
+            if(oldWgjc != null){
+                pwbhJlWgjcServiceImpl.updateByPrimaryKey(wgjc);
+            }else{
+                pwbhJlWgjcServiceImpl.insert(wgjc);
+            }
+        }
+
+        List<PwbhJlYqyb> yqybs = JSON.parseObject((String) param.get("yqybs"), new TypeReference< List<PwbhJlYqyb>>() {});
+        for(PwbhJlYqyb yqyb:yqybs){
+            PwbhJlYqyb oldYqyb = pwbhJlYqybServiceImpl.selectByPrimaryKey(yqyb.getId());
+            if(oldYqyb != null){
+                pwbhJlYqybServiceImpl.updateByPrimaryKey(yqyb);
+            }else{
+                pwbhJlYqybServiceImpl.insert(yqyb);
+            }
+        }
+
+        List<PwbhJlZzsy> zzsys = JSON.parseObject((String) param.get("zzsys"), new TypeReference< List<PwbhJlZzsy>>() {});
+        for(PwbhJlZzsy zzsy:zzsys){
+            PwbhJlZzsy oldZzsy = pwbhJlZzsyServiceImpl.selectByPrimaryKey(zzsy.getId());
+            if(oldZzsy != null){
+                pwbhJlZzsyServiceImpl.updateByPrimaryKey(zzsy);
+            }else{
+                pwbhJlZzsyServiceImpl.insert(zzsy);
+            }
+        }
+
+        List<PwbhDz> dzs = JSON.parseObject((String) param.get("dzs"), new TypeReference< List<PwbhDz>>() {});
+        for(PwbhDz dz:dzs){
+            PwbhDz oldDz = pwbhDzServiceImpl.selectByPrimaryKey(dz.getTsid());
+            if(oldDz != null){
+                pwbhDzServiceImpl.updateByPrimaryKey(dz);
+            }else{
+                pwbhDzServiceImpl.insert(dz);
+            }
+        }
+
+    }
+
 }

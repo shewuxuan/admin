@@ -2,12 +2,17 @@ package com.guodu.controller;
 
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.StaticLog;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.guodu.pojo.dtu.Jbxx;
+import com.guodu.pojo.pwbh.PwbhBzZzsy;
+import com.guodu.pojo.pwbh.PwbhJbxx;
 import com.guodu.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.*;
@@ -93,5 +98,23 @@ public class UploadController {
             StaticLog.error(e, "更新照片失败");
             e.printStackTrace();
         }
+    }
+
+    /***
+     * 配网保护上传
+     * @return
+     */
+    @RequestMapping(value = {"uploadPwbhJl"}, produces = {"application/json;charset=UTF-8"})
+    public String uploadPwbhJl(@RequestBody  Map<String, Object> param) {
+        System.out.println(123);
+        map.clear();
+        map.put("code", 0);
+        try {
+            uploadServiceImpl.uploadPwbhJl(param);
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("code", -1);
+        }
+        return JSONUtil.toJsonStr(map);
     }
 }

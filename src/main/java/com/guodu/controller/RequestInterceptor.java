@@ -64,6 +64,7 @@ public class RequestInterceptor implements HandlerInterceptor {
                 "/selectByAll",
                 "/getUsers",
                 "/uploadJl",
+                "/uploadPwbhJl",
                 "/changeJbxxFiles",
                 "/uploadJbxxPhotos",
                 "/sccj",

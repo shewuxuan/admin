@@ -15,4 +15,5 @@ public interface UploadService {
     void uploadJl(Jbxx jbxx);
     void uploadJbxxFile(String tsid,List<Map<String,Object>> jbxxPhotos, String imgSavePath)throws Exception;
     void deleteJlByJbxx(String tsid);
+    void uploadPwbhJl(Map<String, Object> map) throws Exception;
 }

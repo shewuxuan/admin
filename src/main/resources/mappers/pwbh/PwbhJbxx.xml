@@ -81,6 +81,7 @@
 		, czsj=#{czsj, jdbcType=TIMESTAMP}
 		, beizhu=#{beizhu, jdbcType=VARCHAR}
 		, shr=#{shr, jdbcType=VARCHAR}
+		, upload=#{upload, jdbcType=VARCHAR}
 		where  tsid=#{tsid}
 	</update>
 

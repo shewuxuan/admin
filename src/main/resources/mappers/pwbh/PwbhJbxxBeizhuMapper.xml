@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guodu.mapper.pwbh.PwbhJbxxBeizhuMapper">
+  <resultMap id="BaseResultMap" type="com.guodu.pojo.pwbh.PwbhJbxxBeizhu">
+    <!--@mbg.generated-->
+    <!--@Table pwbh_jbxx_beizhu-->
+    <id column="tsid" jdbcType="VARCHAR" property="tsid" />
+    <result column="pwbh_jl_wgjc" jdbcType="VARCHAR" property="pwbhJlWgjc" />
+    <result column="pwbh_jl_jxdx" jdbcType="VARCHAR" property="pwbhJlJxdx" />
+    <result column="pwbh_jl_jycs" jdbcType="VARCHAR" property="pwbhJlJycs" />
+    <result column="pwbh_jl_lpjy" jdbcType="VARCHAR" property="pwbhJlLpjy" />
+    <result column="pwbh_jl_jdjy" jdbcType="VARCHAR" property="pwbhJlJdjy" />
+    <result column="pwbh_jl_bhctjx" jdbcType="VARCHAR" property="pwbhJlBhctjx" />
+    <result column="pwbh_jl_bhctbh" jdbcType="VARCHAR" property="pwbhJlBhctbh" />
+    <result column="pwbh_jl_dzjc" jdbcType="VARCHAR" property="pwbhJlDzjc" />
+    <result column="pwbh_jl_zzsy" jdbcType="VARCHAR" property="pwbhJlZzsy" />
+    <result column="pwbh_jl_bhcthl" jdbcType="VARCHAR" property="pwbhJlBhcthl" />
+    <result column="pwbh_jl_sgjc" jdbcType="VARCHAR" property="pwbhJlSgjc" />
+    <result column="szjcjg" jdbcType="VARCHAR" property="szjcjg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tsid, pwbh_jl_wgjc, pwbh_jl_jxdx, pwbh_jl_jycs, pwbh_jl_lpjy, pwbh_jl_jdjy, pwbh_jl_bhctjx, 
+    pwbh_jl_bhctbh, pwbh_jl_dzjc, pwbh_jl_zzsy, pwbh_jl_bhcthl, pwbh_jl_sgjc, szjcjg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from pwbh_jbxx_beizhu
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from pwbh_jbxx_beizhu
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.guodu.pojo.pwbh.PwbhJbxxBeizhu">
+    <!--@mbg.generated-->
+    insert into pwbh_jbxx_beizhu (tsid, pwbh_jl_wgjc, pwbh_jl_jxdx, 
+      pwbh_jl_jycs, pwbh_jl_lpjy, pwbh_jl_jdjy, 
+      pwbh_jl_bhctjx, pwbh_jl_bhctbh, pwbh_jl_dzjc, 
+      pwbh_jl_zzsy, pwbh_jl_bhcthl, pwbh_jl_sgjc, 
+      szjcjg)
+    values (#{tsid,jdbcType=VARCHAR}, #{pwbhJlWgjc,jdbcType=VARCHAR}, #{pwbhJlJxdx,jdbcType=VARCHAR}, 
+      #{pwbhJlJycs,jdbcType=VARCHAR}, #{pwbhJlLpjy,jdbcType=VARCHAR}, #{pwbhJlJdjy,jdbcType=VARCHAR}, 
+      #{pwbhJlBhctjx,jdbcType=VARCHAR}, #{pwbhJlBhctbh,jdbcType=VARCHAR}, #{pwbhJlDzjc,jdbcType=VARCHAR}, 
+      #{pwbhJlZzsy,jdbcType=VARCHAR}, #{pwbhJlBhcthl,jdbcType=VARCHAR}, #{pwbhJlSgjc,jdbcType=VARCHAR}, 
+      #{szjcjg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guodu.pojo.pwbh.PwbhJbxxBeizhu">
+    <!--@mbg.generated-->
+    insert into pwbh_jbxx_beizhu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tsid != null and tsid != ''">
+        tsid,
+      </if>
+      <if test="pwbhJlWgjc != null and pwbhJlWgjc != ''">
+        pwbh_jl_wgjc,
+      </if>
+      <if test="pwbhJlJxdx != null and pwbhJlJxdx != ''">
+        pwbh_jl_jxdx,
+      </if>
+      <if test="pwbhJlJycs != null and pwbhJlJycs != ''">
+        pwbh_jl_jycs,
+      </if>
+      <if test="pwbhJlLpjy != null and pwbhJlLpjy != ''">
+        pwbh_jl_lpjy,
+      </if>
+      <if test="pwbhJlJdjy != null and pwbhJlJdjy != ''">
+        pwbh_jl_jdjy,
+      </if>
+      <if test="pwbhJlBhctjx != null and pwbhJlBhctjx != ''">
+        pwbh_jl_bhctjx,
+      </if>
+      <if test="pwbhJlBhctbh != null and pwbhJlBhctbh != ''">
+        pwbh_jl_bhctbh,
+      </if>
+      <if test="pwbhJlDzjc != null and pwbhJlDzjc != ''">
+        pwbh_jl_dzjc,
+      </if>
+      <if test="pwbhJlZzsy != null and pwbhJlZzsy != ''">
+        pwbh_jl_zzsy,
+      </if>
+      <if test="pwbhJlBhcthl != null and pwbhJlBhcthl != ''">
+        pwbh_jl_bhcthl,
+      </if>
+      <if test="pwbhJlSgjc != null and pwbhJlSgjc != ''">
+        pwbh_jl_sgjc,
+      </if>
+      <if test="szjcjg != null and szjcjg != ''">
+        szjcjg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tsid != null and tsid != ''">
+        #{tsid,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlWgjc != null and pwbhJlWgjc != ''">
+        #{pwbhJlWgjc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlJxdx != null and pwbhJlJxdx != ''">
+        #{pwbhJlJxdx,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlJycs != null and pwbhJlJycs != ''">
+        #{pwbhJlJycs,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlLpjy != null and pwbhJlLpjy != ''">
+        #{pwbhJlLpjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlJdjy != null and pwbhJlJdjy != ''">
+        #{pwbhJlJdjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlBhctjx != null and pwbhJlBhctjx != ''">
+        #{pwbhJlBhctjx,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlBhctbh != null and pwbhJlBhctbh != ''">
+        #{pwbhJlBhctbh,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlDzjc != null and pwbhJlDzjc != ''">
+        #{pwbhJlDzjc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlZzsy != null and pwbhJlZzsy != ''">
+        #{pwbhJlZzsy,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlBhcthl != null and pwbhJlBhcthl != ''">
+        #{pwbhJlBhcthl,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlSgjc != null and pwbhJlSgjc != ''">
+        #{pwbhJlSgjc,jdbcType=VARCHAR},
+      </if>
+      <if test="szjcjg != null and szjcjg != ''">
+        #{szjcjg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guodu.pojo.pwbh.PwbhJbxxBeizhu">
+    <!--@mbg.generated-->
+    update pwbh_jbxx_beizhu
+    <set>
+      <if test="pwbhJlWgjc != null">
+        pwbh_jl_wgjc = #{pwbhJlWgjc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlJxdx != null">
+        pwbh_jl_jxdx = #{pwbhJlJxdx,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlJycs != null">
+        pwbh_jl_jycs = #{pwbhJlJycs,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlLpjy != null">
+        pwbh_jl_lpjy = #{pwbhJlLpjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlJdjy != null">
+        pwbh_jl_jdjy = #{pwbhJlJdjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlBhctjx != null">
+        pwbh_jl_bhctjx = #{pwbhJlBhctjx,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlBhctbh != null">
+        pwbh_jl_bhctbh = #{pwbhJlBhctbh,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlDzjc != null">
+        pwbh_jl_dzjc = #{pwbhJlDzjc,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlZzsy != null">
+        pwbh_jl_zzsy = #{pwbhJlZzsy,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlBhcthl != null">
+        pwbh_jl_bhcthl = #{pwbhJlBhcthl,jdbcType=VARCHAR},
+      </if>
+      <if test="pwbhJlSgjc != null">
+        pwbh_jl_sgjc = #{pwbhJlSgjc,jdbcType=VARCHAR},
+      </if>
+      <if test="szjcjg != null and szjcjg != ''">
+        szjcjg = #{szjcjg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guodu.pojo.pwbh.PwbhJbxxBeizhu">
+    <!--@mbg.generated-->
+    update pwbh_jbxx_beizhu
+    set pwbh_jl_wgjc = #{pwbhJlWgjc,jdbcType=VARCHAR},
+      pwbh_jl_jxdx = #{pwbhJlJxdx,jdbcType=VARCHAR},
+      pwbh_jl_jycs = #{pwbhJlJycs,jdbcType=VARCHAR},
+      pwbh_jl_lpjy = #{pwbhJlLpjy,jdbcType=VARCHAR},
+      pwbh_jl_jdjy = #{pwbhJlJdjy,jdbcType=VARCHAR},
+      pwbh_jl_bhctjx = #{pwbhJlBhctjx,jdbcType=VARCHAR},
+      pwbh_jl_bhctbh = #{pwbhJlBhctbh,jdbcType=VARCHAR},
+      pwbh_jl_dzjc = #{pwbhJlDzjc,jdbcType=VARCHAR},
+      pwbh_jl_zzsy = #{pwbhJlZzsy,jdbcType=VARCHAR},
+      pwbh_jl_bhcthl = #{pwbhJlBhcthl,jdbcType=VARCHAR},
+      pwbh_jl_sgjc = #{pwbhJlSgjc,jdbcType=VARCHAR},
+      szjcjg = #{szjcjg,jdbcType=VARCHAR}
+    where tsid = #{tsid,jdbcType=VARCHAR}
+  </update>
+</mapper>
