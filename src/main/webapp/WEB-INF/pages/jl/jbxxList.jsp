@@ -499,7 +499,8 @@
     function seePwbhJbxx(tsid){
         var w=window.screen.width/2-950/2;
         var t=window.screen.height/2-600/2-35;
-        window.open("${ctx}/pwbhJbxx/toSeePwbhJbxxView.action?tsid="+tsid,"_blank");
+        <%--window.open("${ctx}/pwbhJbxx/toSeePwbhJbxxView.action?tsid="+tsid,"_blank");--%>
+        window.open("${ctx}/pwbh/tsjl/tsjl/" + tsid,"_blank");
     }
     function delPwbhJbxx(tsid){
         var formdata = new FormData();

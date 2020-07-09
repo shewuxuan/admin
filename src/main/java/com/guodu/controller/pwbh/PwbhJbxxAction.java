@@ -9,10 +9,7 @@ import com.guodu.util.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -110,5 +107,11 @@ public class PwbhJbxxAction {
 	@RequestMapping("getPwbh")
 	public Object getPwbh(){
 		return JSONUtil.toJsonStr(pwbhJbxxServiceImpl.getPwbh());
+	}
+
+	@GetMapping("/selectByPrimaryKey/{tsid}")
+	public String selectByPrimaryKey (@PathVariable String tsid) {
+		PwbhJbxx pwbhJbxx = pwbhJbxxServiceImpl.selectByPrimaryKey(tsid);
+		return JSONUtil.toJsonStr(pwbhJbxx);
 	}
 }

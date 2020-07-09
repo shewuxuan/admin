@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface PwbhJbxxMapper extends BaseMapper<PwbhJbxx> {
-
+    PwbhJbxx selectByPrimaryKey(String id);
 }
