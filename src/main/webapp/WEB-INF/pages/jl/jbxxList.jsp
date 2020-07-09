@@ -522,7 +522,7 @@
             success : function(data) {
                 alert(data.message);
                 if(data.code == 0)
-                    $('#tableList').datagrid("load");
+                    $('#tableList3').datagrid("load");
             },
             error : function() {
                 alert("页面加载错误！");

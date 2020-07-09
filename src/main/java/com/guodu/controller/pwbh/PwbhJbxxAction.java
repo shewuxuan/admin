@@ -85,11 +85,11 @@ public class PwbhJbxxAction {
 		OutputStream os = null;
 		try {
 			PwbhJbxx pwbhJbxx = pwbhJbxxServiceImpl.selectById(tsid);
-			//doc = pwbhJbxxServiceImpl.exportToWordByWord(Auth.getAuth(request).getSsqy(),pwbhJbxx);
+			doc = pwbhJbxxServiceImpl.exportToWordByWord(pwbhJbxx.getSsqy(),pwbhJbxx);
 			os = response.getOutputStream();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/msword");
-			response.setHeader("Content-disposition","attachment;filename="+java.net.URLEncoder.encode(pwbhJbxx.getAzddDdh(), "UTF-8")+".docx");
+			response.setHeader("Content-disposition","attachment;filename="+java.net.URLEncoder.encode(pwbhJbxx.getAzddDdh()+"配网保护调试记录表", "UTF-8")+".docx");
 			doc.write(os);
 		}catch (Exception e) {
 			e.printStackTrace();

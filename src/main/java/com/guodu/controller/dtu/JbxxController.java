@@ -164,7 +164,7 @@ public class JbxxController {
             os = response.getOutputStream();
             response.setCharacterEncoding("utf-8");
             response.setContentType("application/msword");
-            response.setHeader("Content-disposition","attachment;filename="+java.net.URLEncoder.encode(jbxx.getAzddDdh(), "UTF-8")+".docx");//filename为导出的word的名字
+            response.setHeader("Content-disposition","attachment;filename="+java.net.URLEncoder.encode(jbxx.getAzddDdh()+"DTU调试记录表", "UTF-8")+".docx");//filename为导出的word的名字
             doc.write(os);
         }catch (Exception e) {
             e.printStackTrace();
