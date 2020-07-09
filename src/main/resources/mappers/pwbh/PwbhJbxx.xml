@@ -91,12 +91,12 @@
 
 	<select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">
 		select
-		J.TSID,
-		J.SSQY,
-		J.TSSJ,
-		J.AZDD_DDH,
-		J.SSXL,
-		J.LM
+		j.TSID,
+		j.SSQY,
+		j.TSSJ,
+		j.AZDD_DDH,
+		j.SSXL,
+		j.LM
 		from pwbh_jbxx j
 		left join sys_ssxl s on j.ssxl = s.id
 		where 1=1
@@ -119,4 +119,13 @@
 		order by TSSJ desc
 	</select>
 
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="entityMap">
+		SELECT pj.*, sd.keymemo as ssqyname, ss.bdz as bdz, ss.xlmc as xlmc
+		FROM pwbh_jbxx pj
+		LEFT JOIN sys_db sd on sd.keyvalue = pj.ssqy
+		LEFT JOIN sys_ssxl ss on ss.id = pj.ssxl
+		WHERE
+		sd.keycode = 'region'
+		and tsid = #{tsid,jdbcType=VARCHAR}
+	</select>
 </mapper>

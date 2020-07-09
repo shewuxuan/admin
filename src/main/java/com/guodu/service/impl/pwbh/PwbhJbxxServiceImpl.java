@@ -66,4 +66,8 @@ public class PwbhJbxxServiceImpl extends BaseServiceImpl<PwbhJbxx> {
 
         return result;
     }
+
+    public PwbhJbxx selectByPrimaryKey(String tsid) {
+        return pwbhJbxxMapper.selectByPrimaryKey(tsid);
+    }
 }

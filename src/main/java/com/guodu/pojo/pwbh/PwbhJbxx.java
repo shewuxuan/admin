@@ -22,5 +22,19 @@ public class PwbhJbxx implements Serializable {
     private String beizhu;//备注
     private String upload;
 
+    /**
+     * 所属区域名
+     */
+    private String ssqyname;
+
+    /**
+     * 变电站
+     */
+    private String bdz;
+
+    /**
+     * 线路名称
+     */
+    private String xlmc;
     private static final long serialVersionUID = 1L;
 }
