@@ -70,6 +70,10 @@ public class PwbhJbxxServiceImpl extends BaseServiceImpl<PwbhJbxx> {
         return result;
     }
 
+    public PwbhJbxx selectByPrimaryKey(String tsid) {
+        return pwbhJbxxMapper.selectByPrimaryKey(tsid);
+    }
+
     /**配网保护导出**/
     @Autowired
     private ExportPwbhDocumentService exportPwbhDocumentService;
