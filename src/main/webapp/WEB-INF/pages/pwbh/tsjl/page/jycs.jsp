@@ -31,8 +31,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#jycs'                           // 改
             , page: false
@@ -53,24 +51,6 @@
                 , {field: 'syjg', title: '检查结果', width: '10%', align: 'center', templet: '#jycsjg'}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $("[name='select4jycs']").change(function () {
-                    let elem = $(this).parents('tr');
-                    let dataindex = elem.attr("data-index");
-                    $.each(record, (i, value) => {
-                        if (value.LAY_TABLE_INDEX == dataindex) {
-                            record[i].syjg = $(this).val();
-                        }
-                    });
-                });
-                $.each(resdata, function (i) {
-                    if (resdata[i].syjg == null || resdata[i].syjg === "" || resdata[i].syjg == -1) {
-                        $("#li_jycs").css({"background-color": ""});
-                        return;
-                    }
-                    $("#li_jycs").css({"background-color": "#009688"});
-                })
             }
         });
     });

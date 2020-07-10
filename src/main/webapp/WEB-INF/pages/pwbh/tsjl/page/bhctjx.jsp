@@ -31,8 +31,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#bhctjx'                           // 改
             , page: false
@@ -50,17 +48,6 @@
                 , {field: 'bjzs', title: '表计指示', width: '27%', align: 'center'}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $.each(resdata, function (i, value) {
-                    if (value.mx1 == null || value.mx1 === ""
-                    || value.mx2 == null || value.mx2 === ""
-                    || value.bjzs == null || value.bjzs === "") {
-                        $("#dd_bhctjx").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#dd_bhctjx").css({"background-color": "#009688"});
-                })
             }
         });
     });

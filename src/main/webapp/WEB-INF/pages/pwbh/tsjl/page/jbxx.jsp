@@ -90,42 +90,6 @@
             $("#yqybbeizhu").val(data.pwbhJlYqyb);
             $("#zzsybeizhu").val(data.pwbhJlZzsy);
         });
-
-        <%--$.get("${basePath}/pwbh_dz/selectByPrimaryKey/" + tsid, function (data) {--%>
-        <%--    data = $.parseJSON(data).data;--%>
-        <%--    console.log(data);--%>
-        <%--    $("#l1").val(data.l1);--%>
-        <%--    $("#l11").val(data.l11);--%>
-        <%--    $("#l12").val(data.l12);--%>
-        <%--    $("#l2").val(data.l2);--%>
-        <%--    $("#l21").val(data.l21);--%>
-        <%--    $("#l22").val(data.l22);--%>
-        <%--    $("#g1").val(data.g1);--%>
-        <%--    $("#g11").val(data.g11);--%>
-        <%--    $("#g12").val(data.g12);--%>
-        <%--    $("#g2").val(data.g2);--%>
-        <%--    $("#g21").val(data.g21);--%>
-        <%--    $("#g22").val(data.g22);--%>
-        <%--});--%>
-
-        // 查询告警定值
-        <%--$.get("${basePath}/gjdz/selectByPrimaryKey/" + tsid, function (data) {--%>
-        <%--    let gjdz = $.parseJSON(data);--%>
-        <%--    // 告警功能--%>
-        <%--    $("#glgj1").val(gjdz.glgj1);--%>
-        <%--    $("#glgj2").val(gjdz.glgj2);--%>
-        <%--    $("#glgj3").val(gjdz.glgj3);--%>
-        <%--    $("#glcs1").val(gjdz.glcs1);--%>
-        <%--    $("#glcs2").val(gjdz.glcs2);--%>
-        <%--    $("#lxgj1").val(gjdz.lxgj1);--%>
-        <%--    $("#lxgj2").val(gjdz.lxgj2);--%>
-        <%--    $("#lxgj3").val(gjdz.lxgj3);--%>
-        <%--    $("#lxcs1").val(gjdz.lxcs1);--%>
-        <%--    $("#lxcs2").val(gjdz.lxcs2);--%>
-        <%--    // 开关柜告警--%>
-        <%--    $("#qygj1").val(gjdz.qygj1);--%>
-        <%--    $("#qygj2").val(gjdz.qygj2);--%>
-        <%--});--%>
     });
 </script>
 </body>

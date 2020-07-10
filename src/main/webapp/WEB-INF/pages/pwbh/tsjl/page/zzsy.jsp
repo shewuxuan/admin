@@ -31,8 +31,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#zzsy'                           // 改
             , page: false
@@ -52,55 +50,6 @@
                 , {field: 'jcjg', title: '检查结果', width: '10%', align: 'center', templet: '#zzsyjg'}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $("[name='select4zzsy']").change(function () {
-                    let elem = $(this).parents('tr');
-                    let dataindex = elem.attr("data-index");
-                    $.each(record, (i, value) => {
-                        if (value.LAY_TABLE_INDEX == dataindex) {
-                            value.jcjg = $(this).val();
-                        }
-                    });
-                });
-                $("[name='select4dlq']").change(function () {
-                    let elem = $(this).parents('tr');
-                    let dataindex = elem.attr("data-index");
-                    $.each(record, (i, value) => {
-                        if (value.LAY_TABLE_INDEX == dataindex) {
-                            value.dlq = $(this).val();
-                        }
-                    });
-                });
-                $("[name='select4zzxh']").change(function () {
-                    let elem = $(this).parents('tr');
-                    let dataindex = elem.attr("data-index");
-                    $.each(record, (i, value) => {
-                        if (value.LAY_TABLE_INDEX == dataindex) {
-                            value.zzxh = $(this).val();
-                        }
-                    });
-                });
-                $("[name='select4zzxs']").change(function () {
-                    let elem = $(this).parents('tr');
-                    let dataindex = elem.attr("data-index");
-                    $.each(record, (i, value) => {
-                        if (value.LAY_TABLE_INDEX == dataindex) {
-                            value.zzxs = $(this).val();
-                        }
-                    });
-                });
-                $.each(resdata, function (i, value) {
-                    if (value.gzmn == null || value.gzmn === ""
-                    || value.dlq == null || value.dlq === "" || value.dlq == -1
-                    || value.zzxh == null || value.zzxh === "" || value.zzxh == -1
-                    || value.zzxs == null || value.zzxs === "" || value.zzxs == -1
-                    || value.jcjg == null || value.jcjg === "" || value.jcjg == -1) {
-                        $("#li_zzsy").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#li_zzsy").css({"background-color": "#009688"});
-                })
             }
         });
     });

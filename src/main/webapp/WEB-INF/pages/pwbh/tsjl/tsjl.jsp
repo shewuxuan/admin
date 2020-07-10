@@ -29,9 +29,9 @@
 
     <!-- 左侧导航 -->
     <div class="layui-side layui-bg-black">
-        <div id="nav" class="layui-side-scroll" style="background-color: #009688">
+        <div id="nav" class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li id="li_yqyb" class="layui-nav-item layui-nav-itemed" style="background-color: #009688;">
+                <li id="li_yqyb" class="layui-nav-item layui-nav-itemed">
                     <a class="" href="#mao1">1.所需仪器仪表</a>
                 </li>
                 <li id="li_wgjc" class="layui-nav-item layui-nav-itemed">

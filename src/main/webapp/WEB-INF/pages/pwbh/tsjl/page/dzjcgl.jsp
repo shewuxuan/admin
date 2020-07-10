@@ -15,8 +15,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#dzjcgl'                           // 改
             , page: false
@@ -41,22 +39,6 @@
 
                 ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $.each(resdata, function (i, value) {
-                    if (value.g1 == null || value.g1 === ""
-                    || value.g11 == null || value.g11 === ""
-                    || value.g12 == null || value.g12 === ""
-                    || value.g2 == null || value.g2 === ""
-                    || value.g12 == null || value.g12 === ""
-                    || value.g22 == null || value.g22 === "") {
-                        dzjcgl = false;
-                        bgcolor(dzjcgl, dzjclx);
-                        return;
-                    }
-                    dzjcgl = true;
-                    bgcolor(dzjcgl, dzjclx);
-                })
             }
         });
     });

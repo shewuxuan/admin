@@ -32,8 +32,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#bhctbh'                           // 改
             , page: false
@@ -53,19 +51,6 @@
                 , {field: 'sybh', title: '实验变比', width: '23%', align: 'center'}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $.each(resdata, function (i, value) {
-                    if (value.xh == null || value.xh === ""
-                    || value.xqh == null || value.xqh === ""
-                    || value.cs == null || value.cs === ""
-                    || value.mybh == null || value.mybh === ""
-                    || value.sybh == null || value.sybh === "") {
-                        $("#dd_bhctbh").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#dd_bhctbh").css({"background-color": "#009688"});
-                })
             }
         });
     });

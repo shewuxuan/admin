@@ -24,8 +24,6 @@
     layui.use('table', function () {
         let table = layui.table
             , form = layui.form;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#yqyb'
             , page: false
@@ -48,18 +46,6 @@
                 , {field: 'hgqx', title: '合格期限', width: '22%', align: 'center'}
             ]]
             , done: function (res, curr, count) {
-                let resdata = res.data;
-                record = resdata;
-                // 导航栏背景色
-                $.each(resdata, function (i, value) {
-                    if (value.sbxh == null || value.sbxh === ""
-                        || value.bh == null || value.bh === ""
-                        || value.hgqx == null || value.hgqx === "") {
-                        $("#li_yqyb").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#li_yqyb").css({"background-color": "#009688"});
-                });
             }
         });
     });

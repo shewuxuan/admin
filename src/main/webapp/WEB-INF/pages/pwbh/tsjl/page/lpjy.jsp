@@ -32,8 +32,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#lpjy'                           // 改
             , page: false
@@ -49,24 +47,6 @@
                 , {field: 'cpu', title: 'CPU', width: '48%', align: 'center', sort: true}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $("[name='select4lpjy']").change(function () {
-                    let elem = $(this).parents('tr');
-                    let dataindex = elem.attr("data-index");
-                    $.each(record, (i, value) => {
-                        if (value.LAY_TABLE_INDEX == dataindex) {
-                            record[i].jcjg = $(this).val();
-                        }
-                    });
-                });
-                $.each(resdata, function (i, value) {
-                    if (value.cpu == null || value.cpu === "") {
-                        $("#li_lpjy").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#li_lpjy").css({"background-color": "#009688"});
-                })
             }
         });
     });

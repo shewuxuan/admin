@@ -31,8 +31,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#dzdjc'                           // 改
             , page: false
@@ -51,20 +49,6 @@
                 , {field: 'cxsj', title: '程序形成时间', width: '24%', align: 'center', sort: true}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $.each(resdata, function (i, value) {
-                    if (value.cdrq == null || value.cdrq === ""
-                    || value.dzdh == null || value.dzdh === ""
-                    || value.bb == null || value.bb === ""
-                    || value.jym == null || value.jym === ""
-                    || value.cxsj == null || value.cxsj === ""
-                    ) {
-                        $("#li_dzdjc").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#li_dzdjc").css({"background-color": "#009688"});
-                })
             }
         });
     });

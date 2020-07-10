@@ -31,8 +31,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = [];
-        let autosave = null;
         let tableReload = table.render({
             elem: '#bhcthl'                           // 改
             , page: false
@@ -49,16 +47,6 @@
                 , {field: 'ctc', title: 'CT侧', width: '34%', align: 'center'}
             ]]
             , done: function (res) {
-                let resdata = res.data;
-                record = resdata;
-                $.each(resdata, function (i, value) {
-                    if (value.bhc == null || value.bhc === ""
-                    || value.ctc == null || value.ctc === "") {
-                        $("#li_bhcthl").css({"background-color": ""});
-                        return false;
-                    }
-                    $("#li_bhcthl").css({"background-color": "#009688"});
-                })
             }
         });
     });

@@ -36,11 +36,6 @@
                 } else {
                     $("#szjcjg").val('');
                 }
-                if (data.szjcjg == null || data.szjcjg === "" || data.szjcjg == -1) {
-                    $("#li_jdsz").css({"background-color": ""});
-                } else {
-                    $("#li_jdsz").css({"background-color": "#009688"});
-                }
             }
         );
     });

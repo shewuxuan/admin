@@ -119,16 +119,5 @@
         });
     }
 </script>
-
-<script>
-    var dzjcgl, dzjclx = false;
-    function bgcolor(dzjcgl, dzjclx) {
-        if (dzjcgl && dzjclx) {
-            $("#li_dzjc").css({"background-color": "#009688"});
-            return;
-        }
-        $("#li_dzjc").css({"background-color": ""});
-    }
-</script>
 </body>
 </html>

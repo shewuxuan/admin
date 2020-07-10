@@ -15,8 +15,6 @@
 <script>
     layui.use('table', function () {
         let table = layui.table;
-        let record = null;
-        let autosave = null;
         let tableReload = table.render({
             elem: '#dzjclx'                           // 改
             , page: false
@@ -43,37 +41,6 @@
 
                 ]]
             , done: function (res) {
-                let resdata = res.data[0];
-                record = resdata;
-                if (record.l1 == null || record.l1 === ""
-                || record.l11 == null || record.l11 === ""
-                || record.l12 == null || record.l12 === ""
-                || record.l2 == null || record.l2 === ""
-                || record.l21 == null || record.l21 === ""
-                || record.l22 == null || record.l22 === ""
-                || record.lx1 == null || record.lx1 === ""
-                || record.lx11 == null || record.lx11 === ""
-                || record.lx12 == null || record.lx12 === ""
-                || record.lx2 == null || record.lx2 === ""
-                || record.lx21 == null || record.lx21 === ""
-                || record.lx22 == null || record.lx22 === "") {
-                    dzjclx = false;
-                    bgcolor(dzjcgl,dzjclx);
-                    return;
-                }
-                dzjclx = true;
-                bgcolor(dzjcgl, dzjclx);
-                // $.each(resdata, function (i) {
-                //     if (resdata[i].jcjg == null || resdata[i].jcjg === "" || resdata[i].jcjg == -1) {
-                //         dzjclx = false;
-                //         bgcolor(dzjcgl, dzjclx);
-                //         // $("#li_dzjc").css({"background-color": ""});
-                //         return;
-                //     }
-                //     dzjclx = true;
-                //     bgcolor(dzjcgl, dzjclx);
-                //     // $("#li_dzjc").css({"background-color": "#009688"});
-                // })
             }
         });
     });
