@@ -1,16 +1,16 @@
 package com.guodu.mapper.ftu;
 
 import com.guodu.pojo.ftu.FtuJlGjts;
+import java.util.Date;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @ClassName: FtuJlGjtsMapper
  * @Description: TODO
  * @Author: 2Uli
- * @Date: 2020/5/14 4:44 下午
+ * @Date: 2020/7/14 3:36 下午
  */
 @Mapper
 public interface FtuJlGjtsMapper {
@@ -29,10 +29,6 @@ public interface FtuJlGjtsMapper {
      * @return insert count
      */
     int insert(FtuJlGjts record);
-
-    int insertOrUpdate(FtuJlGjts record);
-
-    int insertOrUpdateSelective(FtuJlGjts record);
 
     /**
      * insert record to table selective

@@ -31,16 +31,6 @@ public class FtuJlGjtsServiceImpl implements FtuJlGjtsService {
     }
 
     @Override
-    public int insertOrUpdate(FtuJlGjts record) {
-        return ftuJlGjtsMapper.insertOrUpdate(record);
-    }
-
-    @Override
-    public int insertOrUpdateSelective(FtuJlGjts record) {
-        return ftuJlGjtsMapper.insertOrUpdateSelective(record);
-    }
-
-    @Override
     public int insertSelective(FtuJlGjts record) {
         return ftuJlGjtsMapper.insertSelective(record);
     }

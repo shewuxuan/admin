@@ -17,10 +17,6 @@ int deleteByPrimaryKey(String id);
 
 int insert(FtuJlGjdz record);
 
-int insertOrUpdate(FtuJlGjdz record);
-
-int insertOrUpdateSelective(FtuJlGjdz record);
-
 int insertSelective(FtuJlGjdz record);
 
 FtuJlGjdz selectByPrimaryKey(String id);

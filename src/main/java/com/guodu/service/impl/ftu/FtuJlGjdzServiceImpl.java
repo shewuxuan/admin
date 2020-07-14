@@ -31,16 +31,6 @@ public class FtuJlGjdzServiceImpl implements FtuJlGjdzService {
     }
 
     @Override
-    public int insertOrUpdate(FtuJlGjdz record) {
-        return ftuJlGjdzMapper.insertOrUpdate(record);
-    }
-
-    @Override
-    public int insertOrUpdateSelective(FtuJlGjdz record) {
-        return ftuJlGjdzMapper.insertOrUpdateSelective(record);
-    }
-
-    @Override
     public int insertSelective(FtuJlGjdz record) {
         return ftuJlGjdzMapper.insertSelective(record);
     }
