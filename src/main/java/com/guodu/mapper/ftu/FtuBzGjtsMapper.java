@@ -1,9 +1,7 @@
 package com.guodu.mapper.ftu;
 
 import com.guodu.pojo.ftu.FtuBzGjts;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
  * @ClassName: FtuBzGjtsMapper
  * @Description: TODO
  * @Author: 2Uli
- * @Date: 2020/4/7 4:20 下午
+ * @Date: 2020/7/15 5:09 下午
  */
 @Mapper
 public interface FtuBzGjtsMapper {
@@ -48,7 +46,7 @@ public interface FtuBzGjtsMapper {
     FtuBzGjts selectByPrimaryKey(String id);
 
     /**
-     * update record
+     * update record selective
      *
      * @param record the updated record
      * @return update count
@@ -56,7 +54,7 @@ public interface FtuBzGjtsMapper {
     int updateByPrimaryKeySelective(FtuBzGjts record);
 
     /**
-     * update record selective
+     * update record
      *
      * @param record the updated record
      * @return update count
@@ -67,8 +65,9 @@ public interface FtuBzGjtsMapper {
 
     int updateBatch(List<FtuBzGjts> list);
 
+    int updateBatchSelective(List<FtuBzGjts> list);
+
     int batchInsert(@Param("list") List<FtuBzGjts> list);
 
     List<FtuBzGjts> selectByPage(FtuBzGjts record);
-
 }

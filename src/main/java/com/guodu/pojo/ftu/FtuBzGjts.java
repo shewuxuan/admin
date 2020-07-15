@@ -9,36 +9,30 @@ import lombok.NoArgsConstructor;
  * @ClassName: FtuBzGjts
  * @Description: TODO
  * @Author: 2Uli
- * @Date: 2020/4/7 4:20 下午
+ * @Date: 2020/7/15 5:09 下午
+ */
+
+/**
+ * 告警调试标准
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class FtuBzGjts implements Serializable {
     /**
-    * 标准Id
-    */
+     * 标准Id
+     */
     private String id;
 
     /**
-    * 所属区域
-    */
+     * 所属区域
+     */
     private String ssqy;
 
     /**
-     * 所属区域名
+     * 测试项
      */
-    private String ssqyname;
-
-    /**
-    * 测试项
-    */
     private String csx;
-
-    /**
-    * 不动作/动作
-    */
-    private String dz;
 
     private static final long serialVersionUID = 1L;
 }

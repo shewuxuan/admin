@@ -7,11 +7,10 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="ssqy" jdbcType="VARCHAR" property="ssqy" />
     <result column="csx" jdbcType="VARCHAR" property="csx" />
-    <result column="dz" jdbcType="VARCHAR" property="dz" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, ssqy, csx, dz
+    id, ssqy, csx
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -27,10 +26,10 @@
   </delete>
   <insert id="insert" parameterType="com.guodu.pojo.ftu.FtuBzGjts">
     <!--@mbg.generated-->
-    insert into ftu_bz_gjts (id, ssqy, csx, 
-      dz)
-    values (#{id,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, #{csx,jdbcType=VARCHAR}, 
-      #{dz,jdbcType=VARCHAR})
+    insert into ftu_bz_gjts (id, ssqy, csx
+      )
+    values (#{id,jdbcType=VARCHAR}, #{ssqy,jdbcType=VARCHAR}, #{csx,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.guodu.pojo.ftu.FtuBzGjts">
     <!--@mbg.generated-->
@@ -45,9 +44,6 @@
       <if test="csx != null and csx != ''">
         csx,
       </if>
-      <if test="dz != null and dz != ''">
-        dz,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null and id != ''">
@@ -58,9 +54,6 @@
       </if>
       <if test="csx != null and csx != ''">
         #{csx,jdbcType=VARCHAR},
-      </if>
-      <if test="dz != null and dz != ''">
-        #{dz,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -74,9 +67,6 @@
       <if test="csx != null and csx != ''">
         csx = #{csx,jdbcType=VARCHAR},
       </if>
-      <if test="dz != null and dz != ''">
-        dz = #{dz,jdbcType=VARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -84,14 +74,13 @@
     <!--@mbg.generated-->
     update ftu_bz_gjts
     set ssqy = #{ssqy,jdbcType=VARCHAR},
-      csx = #{csx,jdbcType=VARCHAR},
-      dz = #{dz,jdbcType=VARCHAR}
+      csx = #{csx,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByAll" resultMap="BaseResultMap">
         <!--@mbg.generated-->
         select
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         from ftu_bz_gjts
         <where>
             <if test="id != null and id != ''">
@@ -102,9 +91,6 @@
             </if>
             <if test="csx != null and csx != ''">
                 and csx=#{csx,jdbcType=VARCHAR}
-            </if>
-            <if test="dz != null and dz != ''">
-                and dz=#{dz,jdbcType=VARCHAR}
             </if>
         </where>
     </select>
@@ -122,9 +108,28 @@
           when id = #{item.id,jdbcType=VARCHAR} then #{item.csx,jdbcType=VARCHAR}
         </foreach>
       </trim>
-      <trim prefix="dz = case" suffix="end,">
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update ftu_bz_gjts
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="ssqy = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
-          when id = #{item.id,jdbcType=VARCHAR} then #{item.dz,jdbcType=VARCHAR}
+          <if test="item.ssqy != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.ssqy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="csx = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.csx != null">
+            when id = #{item.id,jdbcType=VARCHAR} then #{item.csx,jdbcType=VARCHAR}
+          </if>
         </foreach>
       </trim>
     </trim>
@@ -136,17 +141,17 @@
   <insert id="batchInsert" parameterType="map">
     <!--@mbg.generated-->
     insert into ftu_bz_gjts
-    (id, ssqy, csx, dz)
+    (id, ssqy, csx)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR}, #{item.csx,jdbcType=VARCHAR}, 
-        #{item.dz,jdbcType=VARCHAR})
+      (#{item.id,jdbcType=VARCHAR}, #{item.ssqy,jdbcType=VARCHAR}, #{item.csx,jdbcType=VARCHAR}
+        )
     </foreach>
   </insert>
 
   <select id="selectByPage" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List"/>, db.keymemo as ssqyname
+    <include refid="Base_Column_List" />, db.keymemo as ssqyname
     from ftu_bz_gjts bz
     LEFT JOIN sys_db db ON db.keyvalue = bz.ssqy
     <where>
