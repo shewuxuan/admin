@@ -69,7 +69,8 @@ public class RequestInterceptor implements HandlerInterceptor {
                 "/uploadJbxxPhotos",
                 "/sccj",
                 "/ssxl",
-                "getPwbh"
+                "getPwbh",
+                "getFtu"
         };
         for (String a : arr) {
             if (url.indexOf(a) != -1) {
