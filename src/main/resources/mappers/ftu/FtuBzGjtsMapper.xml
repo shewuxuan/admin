@@ -165,9 +165,6 @@
       <if test="csx != null and csx != ''">
         and csx like concat('%', #{csx,jdbcType=VARCHAR}, '%')
       </if>
-      <if test="dz != null and dz != ''">
-        and dz like concat('%', #{dz,jdbcType=VARCHAR}, '%')
-      </if>
     </where>
     order by id desc
   </select>

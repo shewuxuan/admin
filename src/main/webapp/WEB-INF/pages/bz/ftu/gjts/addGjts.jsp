@@ -32,14 +32,6 @@
                 </tr>
 
                 <tr>
-                    <th bgcolor="#FFFFFF"><p>动作</p></th>                <!--改-->
-                    <td bgcolor="#FFFFFF" style="text-align:left; ">
-                        <input type="text" name="dz" id="dz" style="height:25px;width: 99%; border:1px solid #CCC;"/>
-                        <!--改-->
-                    </td>
-                </tr>
-
-                <tr>
                     <td height="33" colspan="2" bgcolor="#f5f2ea">
                         <input type="button" name="button" value="确定" onclick="commit()" class="iput_m"
                                style="height:25px;"/>
@@ -71,20 +63,14 @@
 
     function commit() {
         let csx = $("#csx").val();
-        let dz = $("#dz").val();
         if (csx === "" || csx == null || csx.replace(/(^\s*)|(\s*$)/g, "") === "") {
             alert("测试项不能为空！");
             $("#csx").focus();
-            return false;
-        } else if (dz === "" || dz == null || dz.replace(/(^\s*)|(\s*$)/g, "") === "") {
-            alert("动作不能为空！");
-            $("#dz").focus();
             return false;
         } else {
             let data = {                                        // 改
                 "ssqy": $("#ssqy").val(),
                 "csx": csx,
-                "dz": dz
             };
 
             $.ajax({

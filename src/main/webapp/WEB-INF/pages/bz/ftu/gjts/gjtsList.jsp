@@ -23,7 +23,6 @@
 <h2>告警调试标准</h2>                                           <!-- 改 -->
 所属区域：<select name="ssqy" id="ssqy" style="height:25px; border:1px solid #CCC;"></select>
 测试项：<input type="text" name="csx" id="csx" style="height:25px;width: 200px; border:1px solid #CCC;"/>        <!-- 改 -->
-动作：<input type="text" name="dz" id="dz" style="height:25px;width: 200px; border:1px solid #CCC;"/>        <!-- 改 -->
 <input type="button" name="button" value="查询" class="iput_m" onclick="selRecord()">
 <input type="button" name="button" value="添加" class="iput_m" onclick="addRecord()">
 
@@ -68,8 +67,7 @@
             columns: [[
                 // {field:'id',halign: 'center',align:"center",title:'ID',width:'10%'},
                 {field: 'ssqyname', halign: 'center', align: "center", title: '所属区域', width: '10%'},
-                {field: 'csx', halign: 'center', align: "center", title: '测试项', width: '57%'},     // 改
-                {field: 'dz', halign: 'center', align: "center", title: '动作', width: '20%'},     // 改
+                {field: 'csx', halign: 'center', align: "center", title: '测试项', width: '77%'},     // 改
                 {
                     field: 'trans',
                     halign: 'center',
@@ -131,7 +129,6 @@
         let queryParams = new Object();
         queryParams.ssqy = $("#ssqy").val();
         queryParams.csx = $("#csx").val();        // 改
-        queryParams.dz = $("#dz").val();        // 改
 
         $('#dg').datagrid('options').url = '${basePath}/ftu_bz_gjts/selectByPage';       // 改
         $('#dg').datagrid('options').queryParams = queryParams;
