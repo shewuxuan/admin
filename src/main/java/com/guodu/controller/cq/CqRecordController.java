@@ -10,6 +10,7 @@ import com.guodu.service.cq.CqRecordService;
 import com.guodu.util.IDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -115,6 +116,35 @@ public class CqRecordController {
         PageInfo<CqRecord> pageInfo = new PageInfo<>(cqRecords);
         map.put("rows", pageInfo.getList());
         map.put("total", pageInfo.getTotal());
+        return JSONUtil.toJsonStr(map);
+    }
+
+    @RequestMapping("selectPageCqCount")
+    public String selectPageCqCount(@RequestParam Map<String, Object> form) {
+        map.clear();
+        map = cqRecordServiceImpl.selectPageCqCount(form);
+        return JSONUtil.toJsonStr(map);
+    }
+
+    @RequestMapping("toCqRecords")
+    public ModelAndView toCqRecords(HttpServletRequest request) {
+        ModelAndView view = new ModelAndView("cq/cqRecords");
+        String ids = request.getParameter("ids");
+        view.addObject("ids",ids);
+        return view;
+    }
+
+    @RequestMapping("getCqRecords")
+    public Object getCqRecords(@RequestParam Map<String,Object> form) {
+        map.clear();
+        String ids = form.get("ids").toString();
+        String[] idArr = ids.split(",");
+        List<Map<String,Object>> records = null;
+        if(idArr.length>0){
+            records = cqRecordServiceImpl.getCqRecords(idArr);
+            map.put("total", records.size());
+            map.put("rows", records);
+        }
         return JSONUtil.toJsonStr(map);
     }
 

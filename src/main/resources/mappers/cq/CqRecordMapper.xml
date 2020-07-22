@@ -445,4 +445,45 @@
         </where>
         order by cq.cqrq desc
     </select>
+
+    <select id="selectPageCqCount" resultType="java.util.Map" parameterType="java.util.Map">
+        select  distinct c.azdd_ddh,
+            sys.keymemo ssqy,
+            concat(s.bdz,s.xlmc) ssxl
+        from cq_record c left join sys_ssxl  s on c.ssxl = s.id
+        left join sys_db sys on c.ssqy = sys.keyvalue
+        where sys.keycode = 'region'
+        <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and c.cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
+        <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and c.cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
+        <if test="ssqy != null and ssqy != ''"> and c.ssqy=#{ssqy,jdbcType=VARCHAR} </if>
+        <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz,jdbcType=VARCHAR} </if>
+        <if test="xlmc != null and xlmc != ''"> and s.xlmc=#{xlmc,jdbcType=VARCHAR} </if>
+        <if test="azddDdh != null and azddDdh != ''"> and c.azdd_ddh like "%"#{azddDdh}"%"</if>
+
+    </select>
+
+    <select id="getCqQxflGroupConut" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+     	    count(1) alls,qxfl,group_concat(cqid) as ids
+        from
+     	    cq_record
+     	where 1=1
+        <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
+        <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
+        <if test="ssqy != null and ssqy != ''"> and ssqy=#{ssqy,jdbcType=VARCHAR} </if>
+        <if test="azddDdh != null and azddDdh != ''"> and azdd_ddh=#{azddDdh,jdbcType=VARCHAR} </if>
+        group by qxfl
+    </select>
+
+    <select id="getCqRecords" resultType="java.util.Map" parameterType="java.util.Arrays">
+        select
+            cqrq,s.keymemo ssqy,azdd_ddh,concat(sxl.bdz,sxl.xlmc) ssxl,zzlx,qxfl,qx,cqjl,cqjg,sgdw
+        from
+        cq_record c left join sys_db s on c.ssqy = s.keyvalue
+        left join sys_ssxl sxl on sxl.id = c.ssxl
+        where s.keycode = 'region' and cqid in
+        <foreach collection="ids" open="(" close=")" separator="," item="item">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+    </select>
 </mapper>

@@ -1,8 +1,11 @@
 package com.guodu.mapper.cq;
 
+import com.github.pagehelper.Page;
 import com.guodu.pojo.cq.CqRecord;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -69,4 +72,10 @@ public interface CqRecordMapper {
     int batchInsert(@Param("list") List<CqRecord> list);
 
     List<CqRecord> selectByPage(CqRecord cqRecord);
+
+    Page<?> selectPageCqCount(Map<String, Object> map);
+
+    List<Map<String, Object>> getCqQxflGroupConut(Map<String, Object> map);
+
+    List<Map<String,Object>>  getCqRecords(@Param("ids") String[] ids);
 }

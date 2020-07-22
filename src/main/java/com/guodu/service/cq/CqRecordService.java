@@ -1,6 +1,7 @@
 package com.guodu.service.cq;
 
 import java.util.List;
+import java.util.Map;
 
 import com.guodu.pojo.cq.CqRecord;
 
@@ -32,6 +33,10 @@ public interface CqRecordService {
     int batchInsert(List<CqRecord> list);
 
     List<CqRecord> selectByPage(CqRecord record);
+
+    Map<String, Object> selectPageCqCount(Map<String, Object> vo);
+
+    List<Map<String,Object>>  getCqRecords(String[] idArr);
 }
 
 

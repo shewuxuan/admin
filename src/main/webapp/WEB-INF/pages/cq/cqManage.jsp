@@ -36,8 +36,8 @@
 </div>
 <div class="qh">
     <div class="tab" style="">
-        <a href="javascript:void(0);" class="on" style="border-left:1px solid white;">处缺记录</a>
-        <a href="javascript:void(0);">处缺统计</a>
+        <a href="javascript:void(0);" class="on" style="border-left:1px solid white;">处缺统计</a>
+        <a href="javascript:void(0);">处缺记录</a>
     </div>
     <br/>
     <div class="content">
