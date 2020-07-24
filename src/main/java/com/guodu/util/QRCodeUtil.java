@@ -1,10 +1,6 @@
 package com.guodu.util;
 
-import java.awt.BasicStroke;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,6 +20,7 @@ import com.google.zxing.Result;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.guodu.pojo.equip.EquipInfo;
 
 /**
  * 二维码工具类
@@ -37,6 +34,10 @@ public class QRCodeUtil {
     private static int QRCODE_SIZE = 300;
     // LOGO宽度
     private static final int WIDTH = 60;
+    // 二维码宽度
+    private final static int QRCODE_WIDTH = 300;
+    // 二维码高度
+    private final static int QRCODE_HEIGHT = 300;
     // LOGO高度
 
     private static final int HEIGHT = 60;
@@ -268,5 +269,65 @@ public class QRCodeUtil {
      */
     public static String decode(String path) throws Exception {
         return QRCodeUtil.decode(new File(path));
+    }
+
+    /**
+     * 给二维码下方添加说明文字
+     * @param image 原二维码
+     * @param note 说明文字
+     * @return 带说明文字的二维码
+     */
+    public static BufferedImage addNote(BufferedImage image,String note){
+        Image src = image.getScaledInstance(300, 350,Image.SCALE_DEFAULT);
+        BufferedImage tag;
+        if (note.length()<=16){
+            tag = new BufferedImage(300, 322,BufferedImage.TYPE_INT_RGB);
+        }else{
+            tag = new BufferedImage(300, 345,BufferedImage.TYPE_INT_RGB);
+        }
+        Graphics g1 = tag.getGraphics();//设置低栏白边
+        Graphics2D g2 = tag.createGraphics();//设置文字
+        Font font = new Font("微软雅黑",Font.BOLD,18);
+        g2.setFont(font);
+        g2.setColor(Color.BLACK);
+        if (note.length()<=16) {
+            g1.fillRect(0, QRCODE_HEIGHT, QRCODE_WIDTH, 22);
+            g2.drawString(note,QRCODE_WIDTH/2-note.length()*8-14, QRCODE_HEIGHT+font.getSize());
+        }else{
+            g1.fillRect(0, QRCODE_HEIGHT, QRCODE_WIDTH, 45);
+            g2.drawString(note.substring(0, 16),5, QRCODE_HEIGHT+font.getSize());
+            g2.drawString(note.substring(16,note.length()), QRCODE_WIDTH/2-(note.length()-16)*8-14, QRCODE_HEIGHT+font.getSize()*2+4);
+        }
+        g1.drawImage(src, 0, 0, null);
+        g1.dispose();
+        g2.dispose();
+        g2.drawImage(src, 0, 10, null);
+        image = tag;
+        image.flush();
+        return image;
+    }
+
+    public static BufferedImage QRCodeAddFont(BufferedImage img, EquipInfo equipInfo){
+        int imageWidth = 400;
+        int imageHeight = 420;
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics graphics = image.getGraphics();
+
+        Font font = new Font("楷体", Font.PLAIN, 16);
+        graphics.setFont(font);
+        graphics.setColor(new Color(255, 255, 255));
+        graphics.fillRect(0, 0, imageWidth, imageHeight);
+        graphics.setColor(new Color(0, 0, 0));
+        graphics.drawString("调度编号："+equipInfo.getAzddDdh(), 20, 380);
+        String xxwz = equipInfo.getXxwz();
+        if(xxwz.length()>16){
+            graphics.drawString("详细地址:"+xxwz.substring(0,16), 20, 395);
+            graphics.drawString(xxwz.substring(16), 20, 410);
+        }else{
+            graphics.drawString("详细地址:"+xxwz, 20, 395);
+        }
+
+        graphics.drawImage(img, 0, 0, 400, 360, null);
+        return image;
     }
 }

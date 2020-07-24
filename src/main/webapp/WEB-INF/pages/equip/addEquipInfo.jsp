@@ -199,9 +199,15 @@
                         </td>
                     </tr>
                     <tr>
+                        <th bgcolor="#FFFFFF"><p>备注</p></th>
+                        <td bgcolor="#FFFFFF" style="text-align:left; " colspan="3">
+                            <textarea name="beizhu" id="beizhu" cols="100" rows="5" style="border:1px solid #CCC;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
                         <th bgcolor="#FFFFFF">添加照片</th>
                         <td bgcolor="#FFFFFF" colspan="3" style="text-align: left;">&nbsp;
-                            <input type="button" value="添加"  onclick="addTr(14);" class="iput_m" />
+                            <input type="button" value="添加"  onclick="addTr(15);" class="iput_m" />
                         </td>
                     </tr>
                     <tr>
@@ -223,12 +229,6 @@
                                 <div class="main-div" style="height: 426px;width: 800px;margin-top: 5px;">
                                     <div id='allmap' style='width:  75%; height:400px; position: absolute;'></div>
                                 </div>
-                    </tr>
-                    <tr>
-                        <th bgcolor="#FFFFFF"><p>备注</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; " colspan="3">
-                            <textarea name="beizhu" id="beizhu" cols="100" rows="5" style="border:1px solid #CCC;"></textarea>
-                        </td>
                     </tr>
                     <tr>
                         <td height="33" colspan="4" bgcolor="#f5f2ea">

@@ -108,7 +108,7 @@ public class EquipInfoServiceImpl
 				+"/装置类型:"+choiceSbZzlxName(equipInfo.getZzlx())
 				+"&output=html&src=webapp.baidu.openAPIdemo";
 		BufferedImage img = QRCodeUtil.encode(url,"","",true);
-		return img;
+		return QRCodeUtil.QRCodeAddFont(img,equipInfo);
 	}
 
 	public String choiceSbZzlxName(String zzlx) {

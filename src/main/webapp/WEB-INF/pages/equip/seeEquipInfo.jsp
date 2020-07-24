@@ -173,17 +173,18 @@
                         </td>
                     </tr>
                     <tr>
-                            <td bgcolor="#FFFFFF" colspan="4" style="text-align: left;">
-                        <c:forEach items="${files}" var="file" varStatus="status">
-                            <div style='float: left;margin-left: 60px;' > <img src="/equip/getEquipPhotoView.action?pid=${file.PID}" height="100" class="pimg"><p><b>${file.P_NAME}</b></p></div>
-                        </c:forEach>
-                            </td>
-                    </tr>
-                    <tr>
                         <th bgcolor="#FFFFFF"><p>备注</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; " colspan="3">
                             <textarea name="beizhu" id="beizhu" cols="150" rows="5" style="border:1px solid #CCC;" readonly="readonly">${equipInfo.beizhu}</textarea>
                         </td>
+                    </tr>
+                    <tr>
+                            <td bgcolor="#FFFFFF" colspan="4" style="text-align: left;">
+                                <div style='float: left;margin-left: 60px;' > <img src='/equip/createQRCodeByEquipInfo.action?sbid=${equipInfo.sbid}' height="100" class="pimg"><p><b>${equipInfo.zdmc}</b></p></div>
+                                <c:forEach items="${files}" var="file" varStatus="status">
+                                    <div style='float: left;margin-left: 60px;' > <img src="/equip/getEquipPhotoView.action?pid=${file.PID}" height="100" class="pimg"><p><b>${file.P_NAME}</b></p></div>
+                                </c:forEach>
+                            </td>
                     </tr>
                     <tr>
                         <td height="33" colspan="4" bgcolor="#f5f2ea">
