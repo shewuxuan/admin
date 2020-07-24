@@ -48,7 +48,7 @@
                             <select name="ssqy" id="ssqy" style="height:25px; border:1px solid #CCC;" disabled="true">
                             </select>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>装置编号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbbh_p">装置编号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbbh" id="zbbh" value="${equipInfo.zbbh}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
@@ -56,11 +56,11 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p>装置类型</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <input type="hidden" id="oldZzlx" name="oldZzlx" value="${equipInfo.zzlx}" readonly="readonly"></input>
+                            <input type="hidden" id="oldZzlx" name="oldZzlx" disabled value="${equipInfo.zzlx}" readonly="readonly"></input>
                             <select name="zzlx" id="zzlx" style="height:25px; border:1px solid #CCC;" disabled="true">
                             </select>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>DTU装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxh_p">DTU装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxh" id="zbxh" value="${equipInfo.zbxh}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
@@ -70,7 +70,7 @@
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="azddDdh" id="azddDdh" value="${equipInfo.azddDdh}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>DTU生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccs_p">DTU生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccs" id="sccs" value="${equipInfo.sccs}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
@@ -78,11 +78,11 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p>所属线路</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <select id="bdz" disabled></select>&nbsp;<select id="xlmc" disabled></select>
+                            <span id="yxdw_span">单位<select id="yxdw" disabled></select></span>&nbsp;变电站<select id="bdz" disabled></select>&nbsp;线路<select id="xlmc" disabled></select>
                             <input type="hidden" name="ssxl" id="ssxl" value=""/>
                             <%--<input type="text" name="ssxl" id="ssxl" value="${equipInfo.ssxl}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>--%>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>一次柜装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxhYcg_p">一次柜装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxhYcg" id="zbxhYcg" value="${equipInfo.zbxhYcg}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
@@ -96,68 +96,68 @@
                            <td bgcolor="#FFFFFF" style="text-align:left; ">
                                <input type="text" name="txmkcj" id="txmkcj" value="${equipInfo.txmkcj}"  style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                            </td>
-                        <th bgcolor="#FFFFFF"><p>一次柜生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccsYcg_p">一次柜生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccsYcg" id="sccsYcg" value="${equipInfo.sccsYcg}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>物联网卡号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="wlwkh_p">物联网卡号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="wlwkh" id="wlwkh" value="${equipInfo.wlwkh}"  style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>一次柜调试人员姓名电话</p></th>
+                        <th bgcolor="#FFFFFF"><p id="tsryxmYcg_p">一次柜调试人员姓名电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="tsryxmYcg" id="tsryxmYcg" value="${equipInfo.tsryxmYcg}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>IP地址</p></th>
+                        <th bgcolor="#FFFFFF"><p id="ipdz_p">IP地址</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="ipdz" id="ipdz" value="${equipInfo.ipdz}"  style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>溢水柜装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxhYs_p">溢水柜装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxhYs" id="zbxhYs" value="${equipInfo.zbxhYs}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>RTU地址</p></th>
+                        <th bgcolor="#FFFFFF"><p id="rtudz_p">RTU地址</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="rtudz" id="rtudz" value="${equipInfo.rtudz}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>溢水生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccsYs_p">溢水生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccsYs" id="sccsYs" value="${equipInfo.sccsYs}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>端口号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="dkh_p">端口号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="dkh" id="dkh" value="${equipInfo.dkh}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>溢水柜调试人员姓名电话</p></th>
+                        <th bgcolor="#FFFFFF"><p id="tsryxmYs_p">溢水柜调试人员姓名电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="tsryxmYs" id="tsryxmYs" value="${equipInfo.tsryxmYs}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>生产日期</p></th>
+                        <th bgcolor="#FFFFFF"><p id="scrq_p">生产日期</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input class="easyui-datebox" name="scrq" id="scrq"
                                    data-options="required:true" value="${equipInfo.scrq}" style="width:120px" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>消防装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxhXf_p">消防装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxhXf" id="zbxhXf" value="${equipInfo.zbxhXf}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>软件版本及校验码</p></th>
+                        <th bgcolor="#FFFFFF"><p id="rjbbJym_p">软件版本及校验码</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="rjbbJym" id="rjbbJym" value="${equipInfo.rjbbJym}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>消防生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccsXf_p">消防生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccsXf" id="sccsXf" value="${equipInfo.sccsXf}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
@@ -167,7 +167,7 @@
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="yjbb" id="yjbb" value="${equipInfo.yjbb}" style="height:25px; border:1px solid #CCC;" readonly="readonly"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>消防调试人员姓名电话</p></th>
+                        <th bgcolor="#FFFFFF"><p id="tsryxmXf_p">消防调试人员姓名电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="tsryxmXf" id="tsryxmXf" value="${equipInfo.tsryxmXf}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
@@ -232,9 +232,12 @@
         });
     });
     var ssxl = "${equipInfo.ssxl}";
+    var ssqy = "${equipInfo.ssqy}";
     $.get("/ssxl/selectByPrimaryKey/"+ssxl, function (data) {
         data = JSON.parse(data);
         $('#bdz').val(data.bdz);
+        if(ssqy == 1){$("#yxdw_span").hide();}else{ $("#yxdw").append("<option value='" + data.yxdw + "' selected>" + data.yxdw + "</option>");}
+
         $("#xlmc").empty();
         $("#xlmc").append("<option value=''>全部</option>");
         $.get("/ssxl/selectByGroup/xlmc",{"bdz": $("#bdz").val()}, function (data2) {
@@ -481,17 +484,38 @@
             }
         });
 
-        $.post("/sbZzlx/selectSbZzlxByAll", function (data) {
+        $.post("/zzlx/selectZzlxByAll", function (data) {
             let zzlx = JSON.parse(data);
             var oldZzlx = $("#oldZzlx").val();
             for (let i = 0, length = zzlx.length; i < length; i++) {
                 if(oldZzlx == zzlx[i].keyvalue){
                     $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "' selected>" + zzlx[i].keymemo + "</option>");
+                    if(zzlx[i].keytype ==2) changeToFtu();
                 }else{
                     $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
                 }
             }
         });
+
+        function changeToFtu(){
+            $("#wlwkh_p").html(" 无线卡号");
+            $("#ipdz_p").html(" IP地址");
+            $("#rtudz_p").html("相间CT变比");
+            $("#dkh_p").html("零序CT变比");
+
+            $("#zbbh_p").html(" FTU型号");
+            $("#zbxh_p").html(" FTU编码");
+            $("#sccs_p").html(" FTU厂家");
+            $("#zbxhYcg_p").html("FTU生产日期");
+            $("#sccsYcg_p").html("开关本体厂家");
+            $("#tsryxmYcg_p").html("开关本体型号");
+            $("#zbxhYs_p").html("开关本体生产日期");
+            $("#sccsYs_p").html("通讯设备型号");
+            $("#tsryxmYs_p").html("通讯设备厂家");
+            $("#zbxhXf_p").html("通讯设备生产日期");
+            $("#sccsXf_p").html("调试人员姓名");
+            $("#tsryxmXf_p").html("");
+        }
     });
 
 </script>

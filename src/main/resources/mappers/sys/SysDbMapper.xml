@@ -7,10 +7,11 @@
         <result column="keycode" jdbcType="VARCHAR" property="keycode"/>
         <result column="keyvalue" jdbcType="VARCHAR" property="keyvalue"/>
         <result column="keymemo" jdbcType="VARCHAR" property="keymemo"/>
+        <result column="keytype" jdbcType="VARCHAR" property="keytype"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        keycode, keyvalue, keymemo
+        keycode, keyvalue, keymemo,keytype
     </sql>
     <insert id="insert" parameterType="com.guodu.pojo.sys.SysDb">
         <!--@mbg.generated-->
@@ -59,6 +60,9 @@
             </if>
             <if test="keymemo != null and keymemo != ''">
                 and keymemo=#{keymemo,jdbcType=VARCHAR}
+            </if>
+            <if test="keytype != null and keytype != ''">
+                and keytype=#{keytype,jdbcType=VARCHAR}
             </if>
         </where>
     </select>

@@ -29,5 +29,10 @@ public class SysDb implements Serializable {
      */
     private String keymemo;
 
+    /**
+     * 类型
+     */
+    private String keytype;
+
     private static final long serialVersionUID = 1L;
 }

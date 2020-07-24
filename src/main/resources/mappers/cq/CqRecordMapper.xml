@@ -457,7 +457,7 @@
         <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and c.cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
         <if test="ssqy != null and ssqy != ''"> and c.ssqy=#{ssqy,jdbcType=VARCHAR} </if>
         <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz,jdbcType=VARCHAR} </if>
-        <if test="xlmc != null and xlmc != ''"> and s.xlmc=#{xlmc,jdbcType=VARCHAR} </if>
+        <if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc,jdbcType=VARCHAR} </if>
         <if test="azddDdh != null and azddDdh != ''"> and c.azdd_ddh like "%"#{azddDdh}"%"</if>
 
     </select>

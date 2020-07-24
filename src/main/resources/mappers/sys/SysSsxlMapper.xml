@@ -8,10 +8,11 @@
         <result column="ssqy" jdbcType="VARCHAR" property="ssqy"/>
         <result column="bdz" jdbcType="VARCHAR" property="bdz"/>
         <result column="xlmc" jdbcType="VARCHAR" property="xlmc"/>
+        <result column="yxdw" jdbcType="VARCHAR" property="yxdw"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, ssqy, bdz, xlmc
+        id, ssqy, bdz, xlmc,yxdw
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -40,6 +41,9 @@
             <if test="xlmc != null and xlmc != ''">
                 and xlmc=#{xlmc,jdbcType=VARCHAR}
             </if>
+            <if test="yxdw != null and yxdw != ''">
+                and yxdw=#{yxdw,jdbcType=VARCHAR}
+            </if>
         </where>
     </select>
 
@@ -60,6 +64,9 @@
             </if>
             <if test="sysSsxl.xlmc != null and sysSsxl.xlmc != ''">
                 and xlmc=#{sysSsxl.xlmc,jdbcType=VARCHAR}
+            </if>
+            <if test="sysSsxl.yxdw != null and sysSsxl.yxdw != ''">
+                and yxdw=#{sysSsxl.yxdw,jdbcType=VARCHAR}
             </if>
         </where>
         <if test="groupBy != null and groupBy != ''">

@@ -32,5 +32,10 @@ public class SysSsxl implements Serializable {
      */
     private String xlmc;
 
+    /**
+     * 行运单位
+     */
+    private String yxdw;
+
     private static final long serialVersionUID = 1L;
 }

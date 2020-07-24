@@ -71,10 +71,10 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p>所属区域</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <select name="ssqy" id="ssqy" style="height:25px; border:1px solid #CCC;">
+                            <select name="ssqy" id="ssqy" onchange="changeSsqy()" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>装置编号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbbh_p">装置编号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbbh" id="zbbh" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
@@ -82,10 +82,10 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p>装置类型</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <select name="zzlx" id="zzlx" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;">
+                            <select name="zzlx" id="zzlx" onchange="changeZzlx()" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>DTU装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxh_p">DTU装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxh" id="zbxh" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
@@ -95,7 +95,7 @@
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="azddDdh" id="azddDdh" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>DTU生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccs_p">DTU生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccs" id="sccs" class="sccs" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
@@ -103,10 +103,10 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p>所属线路</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <select id="bdz"></select>&nbsp;<select id="xlmc"></select>
+                            <span id="yxdw_span">单位<select id="yxdw" onchange="changeYxdw()"></select></span>&nbsp;变电站<select id="bdz" onchange="changeBdz()"></select>&nbsp;线路<select id="xlmc"></select>
                             <input type="hidden" name="ssxl" id="ssxl" value=""/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>一次柜装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxhYcg_p">一次柜装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxhYcg" id="zbxhYcg" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
@@ -116,85 +116,85 @@
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zdmc" id="zdmc" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>--%>
-                            <th bgcolor="#FFFFFF"><p>通信模块厂家</p></th>
+                            <th bgcolor="#FFFFFF"><p id="txmkcj_p">通信模块厂家</p></th>
                             <td bgcolor="#FFFFFF" style="text-align:left; ">
                                 <input type="text" name="txmkcj" id="txmkcj" class="sccs" style="height:25px; border:1px solid #CCC;"/>
                                 <div id="searchresult" style="display: none;margin-top:10px;"/>
                             </td>
-                        <th bgcolor="#FFFFFF"><p>一次柜生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccsYcg_p">一次柜生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccsYcg" id="sccsYcg" class="sccs" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>物联网卡号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="wlwkh_p">物联网卡号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="wlwkh" id="wlwkh" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>一次柜调试人员姓名电话</p></th>
+                        <th bgcolor="#FFFFFF"><p id="tsryxmYcg_p">一次柜调试人员姓名电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="tsryxmYcg" id="tsryxmYcg" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>IP地址</p></th>
+                        <th bgcolor="#FFFFFF"><p id="ipdz_p">IP地址</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="ipdz" id="ipdz" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>溢水柜装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxhYs_p">溢水柜装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxhYs" id="zbxhYs" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>RTU地址</p></th>
+                        <th bgcolor="#FFFFFF"><p id="rtudz_p">RTU地址</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="rtudz" id="rtudz" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>溢水生产厂商</p></th>
+                        <th bgcolor="#FFFFFF"><p id="sccsYs_p">溢水生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="sccsYs" id="sccsYs"  class="sccs" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>端口号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="dkh_p">端口号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="dkh" id="dkh" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>溢水柜调试人员姓名电话</p></th>
+                        <th bgcolor="#FFFFFF"><p id="tsryxmYs_p">溢水柜调试人员姓名电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="tsryxmYs" id="tsryxmYs" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>生产日期</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <th bgcolor="#FFFFFF"><p id="scrq_p">生产日期</p></th>
+                        <td bgcolor="#FFFFFF"  id="scrq_p2" style="text-align:left; ">
                             <input class="easyui-datebox" name="scrq" id="scrq"
                                    data-options="required:true" style="width:120px"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>消防装置型号</p></th>
+                        <th bgcolor="#FFFFFF"><p id="zbxhXf_p">消防装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="text" name="zbxhXf" id="zbxhXf" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
 
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>软件版本及校验码</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <th bgcolor="#FFFFFF"><p id="rjbbJym_p">软件版本及校验码</p></th>
+                        <td bgcolor="#FFFFFF"  id="rjbbJym_p2" style="text-align:left; ">
                             <input type="text" name="rjbbJym" id="rjbbJym" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>消防生产厂商</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <th bgcolor="#FFFFFF"><p id="sccsXf_p">消防生产厂商</p></th>
+                        <td bgcolor="#FFFFFF" id="sccsXf_p2" style="text-align:left; ">
                             <input type="text" name="sccsXf" id="sccsXf" class="sccs" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>硬件版本</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <th bgcolor="#FFFFFF"><p id="yjbb_p">硬件版本</p></th>
+                        <td bgcolor="#FFFFFF"  id="yjbb_p2" style="text-align:left; ">
                             <input type="text" name="yjbb" id="yjbb" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
-                        <th bgcolor="#FFFFFF"><p>消防调试人员姓名电话</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <th bgcolor="#FFFFFF"><p id="tsryxmXf_p">消防调试人员姓名电话</p></th>
+                        <td bgcolor="#FFFFFF" id="tsryxmXf_p2" style="text-align:left; ">
                             <input type="text" name="tsryxmXf" id="tsryxmXf" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
@@ -249,33 +249,140 @@
     </div>
 </div>
 <script type="text/javascript">
-    // 变电站
-    $("#bdz").append("<option value=''>全部</option>");
-    $.get("/ssxl/selectByGroup/bdz", function (data) {
-        data = JSON.parse(data);
-        $.each(data, function (i) {
-            $("#bdz").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
-        })
-    });
-    // 线路名称
-    $("#xlmc").append("<option value=''>全部</option>");
+    $(function () {
+        $.post("/ssqy/selectSsqyByAll", function (data) {
+            let ssqy = JSON.parse(data);
+            $("#ssqy").append("<option value='' selected>" +'请选择' + "</option>");
+            for (let i = 0, length = ssqy.length; i < length; i++) {
+                    $("#ssqy").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
+                }
+        });
 
-    // 变电站更改时，线路名称随之更改
-    $("#bdz").change(function () {
-        if ($("#bdz").val() === '') {
-            $("#xlmc").empty();
-            $("#xlmc").append("<option value=''>全部</option>");
-            return;
-        }
-        $("#xlmc").empty();
-        $("#xlmc").append("<option value=''>全部</option>");
-        $.get("/ssxl/selectByGroup/xlmc",{"bdz": $("#bdz").val()}, function (data) {
-            data = JSON.parse(data);
-            $.each(data, function (i) {
-                $("#xlmc").append("<option value='" + data[i].id + "'>" + data[i].xlmc + "</option>");
-            })
+        $.post("/zzlx/selectZzlxByAll", function (data) {
+            let zzlx = JSON.parse(data);
+            for (let i = 0, length = zzlx.length; i < length; i++) {
+                    $("#zzlx").append("<option name='"+ zzlx[i].keytype+"' value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
+                }
         });
     });
+
+    //判断所选择的装置类型是dtu还是ftu
+    function changeZzlx(){
+        var zzlx = $("#zzlx").val();
+        $.get("/sbZzlx/selectSingleSbZzlx", {'keycode':'zz_type','keyvalue':zzlx},function (data) {
+            data = JSON.parse(data);
+            if(data[0].keytype == 2){
+                checkFtu();
+            }else{
+                checkDtu();
+            }
+
+        });
+    }
+    //选择dtu时
+    function checkDtu(){
+        $("#txmkcj_p").html(" 通信模块厂家");
+        $("#wlwkh_p").html(" 物联网卡号");
+        $("#ipdz_p").html(" IP地址");
+        $("#rtudz_p").html("RTU地址");
+        $("#dkh_p").html("端口号");
+        $("#scrq_p").html("生产日期");
+        $("#rjbbJym_p").html("软件版本及校验码");
+        $("#yjbb_p").html("硬件版本");
+
+        $("#zbbh_p").html(" 装置编号");
+        $("#zbxh_p").html(" DTU装置型号");
+        $("#sccs_p").html(" DTU生产厂商");
+        $("#zbxhYcg_p").html("一次柜装置型号");
+        $("#sccsYcg_p").html("一次柜生产厂商");
+        $("#tsryxmYcg_p").html("一次柜调试人员姓名电话");
+        $("#zbxhYs_p").html("溢水柜装置型号");
+        $("#sccsYs_p").html("溢水生产厂商");
+        $("#tsryxmYs_p").html("溢水柜调试人员姓名电话");
+        $("#zbxhXf_p").html("消防装置型号");
+        $("#sccsXf_p").html("消防生产厂商");
+        $("#tsryxmXf_p").html("消防调试人员姓名电话");
+
+    }
+    //选择ftu时
+    function checkFtu(){
+        $("#wlwkh_p").html(" 无线卡号");
+        $("#ipdz_p").html(" IP地址");
+        $("#rtudz_p").html("相间CT变比");
+        $("#dkh_p").html("零序CT变比");
+
+        $("#zbbh_p").html(" FTU型号");
+        $("#zbxh_p").html(" FTU编码");
+        $("#sccs_p").html(" FTU厂家");
+        $("#zbxhYcg_p").html("FTU生产日期");
+        $("#sccsYcg_p").html("开关本体厂家");
+        $("#tsryxmYcg_p").html("开关本体型号");
+        $("#zbxhYs_p").html("开关本体生产日期");
+        $("#sccsYs_p").html("通讯设备型号");
+        $("#tsryxmYs_p").html("通讯设备厂家");
+        $("#zbxhXf_p").html("通讯设备生产日期");
+        $("#sccsXf_p").html("调试人员姓名");
+        $("#tsryxmXf_p").html("");
+    }
+
+
+    changeSsqy();
+    function changeSsqy(){
+        var ssqy = $("#ssqy").val();
+        $("#yxdw").empty();
+        $("#bdz").empty();
+        $("#xlmc").empty();
+        $("#yxdw").append("<option value=''>" +'请选择' + "</option>");
+        if(ssqy != null && ssqy != '') {
+            //若选择石景山
+            if(ssqy ==1){
+                $("#yxdw_span").hide();
+                $("#bdz").empty();
+                $("#xlmc").empty();
+                $("#bdz").append("<option value=''>" +'请选择' + "</option>");
+                $.get("/ssxl/selectByGroup/bdz", {'ssqy':$("#ssqy").val(),'yxdw':'石景山'},function (data) {
+                    data = JSON.parse(data);
+                    $.each(data, function (i) {
+                        $("#bdz").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
+                    })
+                });
+            }else{
+                $("#yxdw_span").show();
+                $.get("/ssxl/selectByGroup/yxdw", {'ssqy':ssqy},function (data) {
+                    data = JSON.parse(data);
+                    $.each(data, function (i) {
+                        $("#yxdw").append("<option value='" + data[i].yxdw + "'>" + data[i].yxdw + "</option>");
+                    })
+                });
+            }
+        }
+    }
+
+    function changeYxdw(){
+            var yxdw = $("#yxdw").val();
+            $("#bdz").empty();
+            $("#xlmc").empty();
+            if(yxdw == '') return;
+            $("#bdz").append("<option value=''>" +'请选择' + "</option>");
+            $.get("/ssxl/selectByGroup/bdz", {'ssqy':$("#ssqy").val(),'yxdw':$("#yxdw").val()},function (data) {
+                data = JSON.parse(data);
+                $.each(data, function (i) {
+                    $("#bdz").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
+                })
+            });
+    }
+
+    function changeBdz(){
+            $("#xlmc").empty();
+            $("#xlmc").append("<option value=''>" +'请选择' + "</option>");
+            $.get("/ssxl/selectByGroup/xlmc", {'ssqy':$("#ssqy").val(),'yxdw':$("#yxdw").val(),'bdz': $("#bdz").val()}, function (data) {
+                data = JSON.parse(data);
+                $.each(data, function (i) {
+                    $("#xlmc").append("<option value='" + data[i].id + "'>" + data[i].xlmc + "</option>");
+                })
+            });
+    }
+
 
     function defaultClick(e){
         e.value="N/A";
@@ -535,32 +642,6 @@
     }
 </script>
 <script>
-
-    $(function () {
-        $.post("/ssqy/selectSsqyByAll", function (data) {
-            let ssqy = JSON.parse(data);
-            var oldSsqy = $("#oldSsqy").val();
-            for (let i = 0, length = ssqy.length; i < length; i++) {
-                if(oldSsqy == ssqy[i].keyvalue){
-                    $("#ssqy").append("<option value='" + ssqy[i].keyvalue + "' selected>" + ssqy[i].keymemo + "</option>");
-                }else{
-                    $("#ssqy").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
-                }
-            }
-        });
-
-        $.post("/sbZzlx/selectSbZzlxByAll", function (data) {
-            let zzlx = JSON.parse(data);
-            var oldZzlx = $("#oldZzlx").val();
-            for (let i = 0, length = zzlx.length; i < length; i++) {
-                if(oldZzlx == zzlx[i].keyvalue){
-                    $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "' selected>" + zzlx[i].keymemo + "</option>");
-                }else{
-                    $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
-                }
-            }
-        });
-    });
     function commit() {
         //验证必填字段
         if($("#ssqy").val() == ""){

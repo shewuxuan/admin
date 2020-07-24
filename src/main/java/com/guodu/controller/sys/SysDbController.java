@@ -5,6 +5,7 @@ import com.guodu.pojo.sys.SysDb;
 import com.guodu.service.sys.SysDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -86,4 +87,17 @@ public class SysDbController {
         return JSONUtil.toJsonStr(sysDbs);
     }
 
+    /**
+     * @MethodName: selectSingleSbZzlx
+     * @Description: TODO 根据keycode 和 keyvalue 设备装置类型
+     * @Param: []
+     * @Return: java.lang.String
+     * @Author: 2uli
+     * @Date: 2020/5/22 4:59 下午
+     */
+    @RequestMapping("sbZzlx/selectSingleSbZzlx")
+    public String selectSingleSbZzlx(SysDb sysDb) {
+        List<SysDb> sysDbs = sysDbServiceImpl.selectByAll(sysDb);
+        return JSONUtil.toJsonStr(sysDbs);
+    }
 }
