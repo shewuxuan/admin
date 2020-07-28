@@ -135,7 +135,7 @@
         $.ajaxSettings.async = true;            // 取消同步， ajax改成异步
 
         <%--// 查询备注信息--%>
-        $.get("${basePath}/beizhu/selectFtuBeizhuByPrimaryKey/" + tsid, function (data) {
+        $.get("${basePath}/ftu_beizhu/selectFtuBeizhuByPrimaryKey/" + tsid, function (data) {
             let beizhu = $.parseJSON(data);
             $("#kgdzbeizhu").val(beizhu.jlKgdz);
             $("#hbdybeizhu").val(beizhu.jlHbdy);

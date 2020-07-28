@@ -30,6 +30,11 @@ public class FtuBzGjts implements Serializable {
     private String ssqy;
 
     /**
+     * 所属区域名
+     */
+    private String ssqyname;
+
+    /**
      * 测试项
      */
     private String csx;
