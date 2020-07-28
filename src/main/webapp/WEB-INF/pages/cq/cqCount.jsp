@@ -176,7 +176,7 @@
             "endCqrq": $("#tj_endCqrq").val(),
             "ssqy": $("#tj_ssqy").val(),
             "azddDdh": $("#tj_azddDdh").val(),
-            "ssxl": $("#tj_xlmc").val()
+            "xlmc": $("#tj_xlmc").val()
         });
     }
 </script>

@@ -5,10 +5,14 @@ import com.alibaba.fastjson.JSON;
 import com.guodu.pojo.sys.Auth;
 import com.guodu.pojo.equip.EquipInfo;
 import com.guodu.pojo.equip.EquipPhoto;
+import com.guodu.pojo.sys.SysDb;
 import com.guodu.pojo.sys.SysSccj;
+import com.guodu.pojo.sys.SysSsxl;
 import com.guodu.service.impl.equip.EquipInfoServiceImpl;
 import com.guodu.service.impl.equip.EquipPhotoServiceImpl;
 import com.guodu.service.impl.sys.SysSccjServiceImpl;
+import com.guodu.service.sys.SysDbService;
+import com.guodu.service.sys.SysSsxlService;
 import com.guodu.util.FileHandleUtils;
 import com.guodu.util.StringUtils;
 import org.apache.log4j.Logger;
@@ -34,6 +38,10 @@ public class EquipInfoAction {
     EquipInfoServiceImpl equipInfoServiceImpl;
     @Autowired
     EquipPhotoServiceImpl equipPhotoServiceImpl;
+    @Autowired
+    SysDbService sysDbServiceImpl;
+    @Autowired
+    SysSsxlService sysSsxlServiceImpl;
     @Value("${imgSavePath}")
     String imgSavePath;
     @Autowired
@@ -175,6 +183,18 @@ public class EquipInfoAction {
     @RequestMapping("/createQRCodeByEquipInfo.action")
     public void createQRCodeByEquipInfo(HttpServletRequest request, HttpServletResponse response) {
         EquipInfo equipInfo = equipInfoServiceImpl.selectById(request.getParameter("sbid"));
+        //转换所属线路
+        SysSsxl sysSsxl = sysSsxlServiceImpl.selectByPrimaryKey(equipInfo.getSsxl());
+        equipInfo.setSsxl(sysSsxl.getBdz()+sysSsxl.getXlmc());
+        //转换装置类型
+        SysDb sysDb = new SysDb();
+        sysDb.setKeycode("zz_type");
+        sysDb.setKeyvalue(equipInfo.getZzlx());
+        equipInfo.setZzlx(sysDbServiceImpl.selectByAll(sysDb).get(0).getKeymemo());
+        sysDb.setKeycode("region");
+        sysDb.setKeyvalue(equipInfo.getSsqy());
+        equipInfo.setSsqy(sysDbServiceImpl.selectByAll(sysDb).get(0).getKeymemo());
+
         BufferedImage image = null;
         // 设置响应的类型格式为图片格式
         response.setContentType("image/jpg");

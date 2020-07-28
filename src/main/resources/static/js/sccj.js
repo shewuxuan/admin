@@ -19,7 +19,7 @@ $(function () {
                         var layer = "";
                         layer = "<table id='aa' style='margin-top: 0px;'>";
                         $.each(data, function (idx, item) {
-                            layer += "<tr class='line'><td class='std'>" + item.CJMC + "</td></tr>";
+                            layer += "<tr class='line'><td class='std'>" + item.cjmc + "</td></tr>";
                         });
                         layer += "</table>";
 
@@ -100,7 +100,7 @@ $(function () {
                         var layer = "";
                         layer = "<table id='aa' style='margin-top: 0px;'>";
                         $.each(data, function (idx, item) {
-                            layer += "<tr class='line'><td class='std'>" + item.CJMC + "</td></tr>";
+                            layer += "<tr class='line'><td class='std'>" + item.cjmc + "</td></tr>";
                         });
                         layer += "</table>";
 
@@ -181,7 +181,7 @@ $(function () {
                         var layer = "";
                         layer = "<table id='aa' style='margin-top: 0px;'>";
                         $.each(data, function (idx, item) {
-                            layer += "<tr class='line'><td class='std'>" + item.CJMC + "</td></tr>";
+                            layer += "<tr class='line'><td class='std'>" + item.cjmc + "</td></tr>";
                         });
                         layer += "</table>";
 
@@ -262,7 +262,7 @@ $(function () {
                         var layer = "";
                         layer = "<table id='aa' style='margin-top: 0px;'>";
                         $.each(data, function (idx, item) {
-                            layer += "<tr class='line'><td class='std'>" + item.CJMC + "</td></tr>";
+                            layer += "<tr class='line'><td class='std'>" + item.cjmc + "</td></tr>";
                         });
                         layer += "</table>";
 
@@ -343,7 +343,7 @@ $(function () {
                         var layer = "";
                         layer = "<table id='aa' style='margin-top: 0px;'>";
                         $.each(data, function (idx, item) {
-                            layer += "<tr class='line'><td class='std'>" + item.CJMC + "</td></tr>";
+                            layer += "<tr class='line'><td class='std'>" + item.cjmc + "</td></tr>";
                         });
                         layer += "</table>";
 

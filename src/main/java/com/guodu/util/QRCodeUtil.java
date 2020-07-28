@@ -47,13 +47,37 @@ public class QRCodeUtil {
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
         hints.put(EncodeHintType.CHARACTER_SET, CHARSET);
-        hints.put(EncodeHintType.MARGIN, 1);
+        hints.put(EncodeHintType.MARGIN, 0);
         BitMatrix bitMatrix = new MultiFormatWriter().encode(content,
                 BarcodeFormat.QR_CODE, QRCODE_SIZE, QRCODE_SIZE, hints);
-        int width = bitMatrix.getWidth();
-        int height = bitMatrix.getHeight();
+        //int width = bitMatrix.getWidth();
+       // int height = bitMatrix.getHeight();
        /* int width = 150;
         int height = 150;*/
+
+        int[] rec = bitMatrix.getEnclosingRectangle();
+        int resWidth = rec[2] + 1;
+        int resHeight = rec[3] + 1;
+        BitMatrix resMatrix = new BitMatrix(resWidth, resHeight);
+        resMatrix.clear();
+        for (int i = 0; i < resWidth; i++) {
+            for (int j = 0; j < resHeight; j++) {
+                if (bitMatrix.get(i + rec[0], j + rec[1])) {
+                    resMatrix.set(i, j);
+                }
+            }
+        }
+
+        int width = resMatrix.getWidth();
+        int height = resMatrix.getHeight();
+        /*BufferedImage image = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setRGB(x, y, resMatrix.get(x, y) == true ?
+                        Color.BLACK.getRGB():Color.WHITE.getRGB());
+            }
+        }*/
+
         BufferedImage image = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
         for (int x = 0; x < width; x++) {
@@ -61,9 +85,6 @@ public class QRCodeUtil {
                 image.setRGB(x, y, bitMatrix.get(x, y) ? 0xFF000000
                         : 0xFFFFFFFF);
             }
-        }
-        if (imgPath == null || "".equals(imgPath)) {
-            return image;
         }
         // 插入图片
         //QRCodeUtil.insertImage(image, imgPath, needCompress);
@@ -309,25 +330,37 @@ public class QRCodeUtil {
 
     public static BufferedImage QRCodeAddFont(BufferedImage img, EquipInfo equipInfo){
         int imageWidth = 400;
-        int imageHeight = 420;
+        int imageHeight = 450;
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics graphics = image.getGraphics();
 
-        Font font = new Font("楷体", Font.PLAIN, 16);
+        Font font = new Font("楷体", Font.PLAIN, 14);
         graphics.setFont(font);
         graphics.setColor(new Color(255, 255, 255));
         graphics.fillRect(0, 0, imageWidth, imageHeight);
         graphics.setColor(new Color(0, 0, 0));
-        graphics.drawString("调度编号："+equipInfo.getAzddDdh(), 20, 380);
-        String xxwz = equipInfo.getXxwz();
+        graphics.drawString("调度号："+equipInfo.getAzddDdh(), 20, 350);
+        graphics.drawString("装置类型："+equipInfo.getZzlx(), 20, 370);
+        graphics.drawString("所属线路："+equipInfo.getSsqy()+equipInfo.getSsxl(), 20, 390);
+
+        graphics.drawString("详细地址:"+equipInfo.getXxwz(), 20, 410);
+        graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
+        /*String xxwz = equipInfo.getXxwz();
         if(xxwz.length()>16){
-            graphics.drawString("详细地址:"+xxwz.substring(0,16), 20, 395);
-            graphics.drawString(xxwz.substring(16), 20, 410);
+            graphics.drawString("详细地址:"+xxwz.substring(0,16), 20, 410);
+            graphics.drawString(xxwz.substring(16), 20, 430);
         }else{
-            graphics.drawString("详细地址:"+xxwz, 20, 395);
+            graphics.drawString("详细地址:"+xxwz, 20, 410);
         }
 
-        graphics.drawImage(img, 0, 0, 400, 360, null);
+        String beizhu = equipInfo.getBeizhu();
+        if(beizhu.length()>16){
+            graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
+            graphics.drawString(beizhu.substring(16), 20, 450);
+        }else{
+            graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
+        }*/
+        graphics.drawImage(img, 45, 5, 300, 300, null);
         return image;
     }
 }
