@@ -118,8 +118,16 @@ public class EquipInfoAction {
         Map<String, Object> res = new HashMap<String, Object>();
         res.put("code", "0");
         res.put("message", "添加成功");
-        Map<String, Object> vo = new HashMap<String, Object>();
+
         try {
+            Map<String, Object> vo = new HashMap<String, Object>();
+            vo.put("azddDdh",equipInfo.getAzddDdh());
+            List<EquipInfo> equipInfos = equipInfoServiceImpl.selectList(vo);
+            if(equipInfos != null && equipInfos.size()>0){
+                res.put("code", "-1");
+                res.put("message", "设备调度号已存在！");
+                return JSON.toJSONString(res);
+            }
             Date createDate = new Date();
             String sbid = StringUtils.createDateRandomString(createDate);
             equipInfo.setSbid(sbid);

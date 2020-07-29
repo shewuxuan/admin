@@ -60,6 +60,25 @@
         </form>
     </div>
 </div>
+<script>
+    $(function () {
+        $.post("/ssqy/selectSsqyByAll", function (data) {
+            let ssqy = JSON.parse(data);
+            $("#ssqy").append("<option value='' selected>全部</option>");
+            for (let i = 0, length = ssqy.length; i < length; i++) {
+                $("#ssqy").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
+            }
+        });
+
+        $.post("/zzlx/selectZzlxByAll", function (data) {
+            let zzlx = JSON.parse(data);
+            $("#zzlx").append("<option value='' selected>全部</option>");
+            for (let i = 0, length = zzlx.length; i < length; i++) {
+                $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
+            }
+        });
+    });
+</script>
 <%--//调用百度地图--%>
 <%--<a href="bdapp://map/direction?region=beijing&origin=39.98871,
         116.43234&destination=西直门&coord_type=bd09ll&mode=driving&src=andr.baidu.openAPIdemo">
@@ -277,15 +296,38 @@
             });
             return text;
     }
+    //查询所属线路
+    function getSsxlName(value) {
+        var xlmc = "";
+        $.ajax({
+            url: '/ssxl/selectByPrimaryKey/'+value,
+            type: 'GET',
+            async: false,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                console.log("正在加载，请稍候");
+            },
+            success: function (data) {
+                let data2 = JSON.parse(data);
+                xlmc = data2.bdz+data2.xlmc;
+            },
+            error: function () {
+                //alert("页面加载错误！");
+            }
+        });
+        return xlmc;
+    }
     //展示详细信息
     function showInfo(thisMarker,point) {
         var text = getEquipPhotoView(point.sbid);
         var content = '<div id="descDiv" style="overflow-y:scroll; overflow-x:hidden; background-color:#f5f0f0;margin:0;line-height:20px;padding:15px;width:300px;height: 290px;">'
             +'&nbsp;&nbsp;&nbsp;<img width=\'180px\' height=\'180px\' src=\'/equip/createQRCodeByEquipInfo.action?sbid='+point.sbid+'\'>'
-            +'<br/>&nbsp;<b>终端名称：</b>'+point.zdmc
+            +'<br/>&nbsp;<b>调度号：</b>'+point.azddDdh
             +'<br/>&nbsp;<b>装置类型：</b>'+choiceZzlxName(point.zzlx)
-            +'<br/>&nbsp;<b>设备调度号：</b>'+point.azddDdh
-            +'<br/>&nbsp;<b>详细位置：</b>'+point.xxwz+'<hr>'
+            +'<br/>&nbsp;<b>所属线路：</b>'+getSsxlName(point.ssxl)
+            +'<br/>&nbsp;<b>详细位置：</b>'+point.xxwz
+            +'<br/>&nbsp;<b>备注：</b>'+point.beizhu+'<hr>'
             +text
             +'</div>';
         var infoWindow = new BMap.InfoWindow(content); //创建信息窗口对象
@@ -317,7 +359,7 @@
                 pointArray = pointArray.concat(ply.getPath());
             }
             map.setViewport(pointArray);    //调整视野
-            addlabel();
+            //addlabel();
         });
     }
     //删除标注
@@ -332,24 +374,5 @@
 
 </script>
 
-<script>
-    $(function () {
-        $.post("/ssqy/selectSsqyByAll", function (data) {
-            let ssqy = JSON.parse(data);
-            $("#ssqy").append("<option value='' selected>全部</option>");
-            for (let i = 0, length = ssqy.length; i < length; i++) {
-                    $("#ssqy").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
-            }
-        });
-
-        $.post("/sbZzlx/selectSbZzlxByAll", function (data) {
-            let zzlx = JSON.parse(data);
-            $("#zzlx").append("<option value='' selected>全部</option>");
-            for (let i = 0, length = zzlx.length; i < length; i++) {
-                    $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
-            }
-        });
-    });
-</script>
 </body>
 </html>

@@ -70,22 +70,22 @@ public class QRCodeUtil {
 
         int width = resMatrix.getWidth();
         int height = resMatrix.getHeight();
-        /*BufferedImage image = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);
+        BufferedImage image = new BufferedImage(width, height,BufferedImage.TYPE_INT_ARGB);
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 image.setRGB(x, y, resMatrix.get(x, y) == true ?
                         Color.BLACK.getRGB():Color.WHITE.getRGB());
             }
-        }*/
+        }
 
-        BufferedImage image = new BufferedImage(width, height,
+       /* BufferedImage image = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 image.setRGB(x, y, bitMatrix.get(x, y) ? 0xFF000000
                         : 0xFFFFFFFF);
             }
-        }
+        }*/
         // 插入图片
         //QRCodeUtil.insertImage(image, imgPath, needCompress);
         return image;
@@ -334,7 +334,7 @@ public class QRCodeUtil {
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics graphics = image.getGraphics();
 
-        Font font = new Font("楷体", Font.PLAIN, 14);
+        Font font = new Font("宋体", Font.PLAIN, 14);
         graphics.setFont(font);
         graphics.setColor(new Color(255, 255, 255));
         graphics.fillRect(0, 0, imageWidth, imageHeight);

@@ -73,4 +73,12 @@
             group by ${groupBy}
         </if>
     </select>
+
+    <insert id="insert" parameterType="com.guodu.pojo.sys.SysSsxl">
+        insert into sys_ssxl (id,ssqy,yxdw,bdz,xlmc) values (#{id},#{ssqy},#{yxdw},#{bdz},#{xlmc})
+    </insert>
+    <!--挖坑：获取当前最大id-->
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(id*1) id from sys_ssxl order by id*1 asc
+    </select>
 </mapper>

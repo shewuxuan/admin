@@ -75,7 +75,7 @@
         });
         // 装置类型
         $("#zzlx").append("<option value=''>全部</option>");
-        $.get("${basePath}/sbZzlx/selectSbZzlxByAll", function (data) {
+        $.get("${basePath}/zzlx/selectZzlxByAll", function (data) {
             data = JSON.parse(data);
             $.each(data, function (i) {
                 $("#zzlx").append("<option value='" + data[i].keyvalue + "'>" + data[i].keymemo + "</option>");
@@ -137,7 +137,7 @@
             scrollbarSize: 0,
             remoteSort: true,
             pageList: [10, 15, 30, 50],
-            pageSize: 15,//每页显示的记录条数，默认为15
+            pageSize: 10,//每页显示的记录条数，默认为15
             idField: 'cqrq',
             columns: [[
                 {field: 'cqrq', halign: 'center', align: "center", title: '处缺日期', width: '8%', formatter: function (value,) {

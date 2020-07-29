@@ -382,7 +382,7 @@
         <where>
             db1.keycode = 'region'
             and db2.keycode = 'qx_type'
-            and db3.keycode = 'sb_type'
+            and db3.keycode = 'zz_type'
             <if test="cqid != null and cqid != ''">
                 and cqid=#{cqid,jdbcType=VARCHAR}
             </if>

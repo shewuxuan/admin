@@ -27,7 +27,7 @@
 		<div>
 				<div class="tj">
 				<form  method="post">
-                     &nbsp;<span>终端名称</span>&nbsp;<input id="zdmc" type="text" class="right_ipu2"/>
+                     <%--&nbsp;<span>终端名称</span>&nbsp;<input id="zdmc" type="text" class="right_ipu2"/>--%>
                      &nbsp;<span>安装地点及调度号</span>&nbsp;<input id="azddDdh" type="text" class="right_ipu2"/>
 					&nbsp;&nbsp;<span>装置类型</span>&nbsp;<select  name="zzlx" id="zzlx"  style="height:25px; border:1px solid #CCC;"></select>
 					&nbsp;<span>所属区域</span>&nbsp;<select  name="ssqy" id="ssqy"  style="height:25px; border:1px solid #CCC;"></select>
@@ -92,14 +92,34 @@ function searchList(){
 			columns:[[
 				{field:'SBID',align:"center",title:'设备ID',width:0,hidden:'true'},
 				{field:'SSQY',align:"left",title:'所属区域',width:30},
-				{field:'AZDD_DDH',align:"center",title:'安装地点及调度号',width:30},
-				{field:'ZDMC',align:"center",title:'终端名称',width:30},
-				{field:'SSXL',align:"center",title:'所属线路',width:30},
+				{field:'AZDD_DDH',align:"center",title:'安装地点及调度号',width:50},
+				/*{field:'ZDMC',align:"center",title:'终端名称',width:30},*/
+				{field:'SSXL',align:"center",title:'所属线路',width:50,formatter:function(value,row,index){
+						var xlmc = "";
+						$.ajax({
+							url: '/ssxl/selectByPrimaryKey/'+value,
+							type: 'GET',
+							async: false,
+							processData: false,
+							contentType: false,
+							beforeSend: function () {
+								console.log("正在加载，请稍候");
+							},
+							success: function (data) {
+								let data2 = JSON.parse(data);
+								xlmc = data2.bdz+"-"+data2.xlmc;
+							},
+							error: function () {
+								//alert("页面加载错误！");
+							}
+						});
+						return xlmc;
+					}},
 				{field:'ZBXH',align:"center",title:'装置型号',width:30},
 				{field:'ZBBH',align:"center",title:'装置编号',width:30},
 				{field:'ZZLX',align:"center",title:'装置类型',width:30},
 				{field:'XXWZ',align:"center",title:'详细位置',width:90},
-				{field:'trans',align:"left",title:'操作',width:60,formatter:function(value,row,index){
+				{field:'trans',align:"left",title:'操作',width:20,formatter:function(value,row,index){
 						var txt0 = '<button href="javascript:void(0);" onclick="pick(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '选定' + '</button>';
 						return txt0;
 					}},

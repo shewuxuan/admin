@@ -166,8 +166,7 @@
                         }},
                 ]],
         });
-        searchList();
-    })
+    });
 
     <%-- 查询 --%>
     function selRecord2() {

@@ -18,5 +18,9 @@ public interface SysSsxlService {
     List<SysSsxl> selectByAll(SysSsxl record);
 
     List<SysSsxl> selectByGroup(SysSsxl sysSsxl, String groupBy);
+
+    int insert(SysSsxl sysSsxl);
+
+    int getMaxId();
 }
 

@@ -35,5 +35,15 @@ public class SysSsxlServiceImpl implements SysSsxlService {
         return sysSsxlMapper.selectByGroup(sysSsxl, groupBy);
     }
 
+    @Override
+    public int insert(SysSsxl sysSsxl) {
+        return sysSsxlMapper.insert(sysSsxl);
+    }
+
+    @Override
+    public int getMaxId() {
+        return sysSsxlMapper.getMaxId();
+    }
+
 }
 

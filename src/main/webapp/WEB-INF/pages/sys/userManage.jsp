@@ -29,6 +29,40 @@
             window.open("/role/toAddRoleInfoView.action", null, " height=500,width=1000,top=" + t + ",left=" + w + ",toolbar=no,menubar=no,localtion=no,scrollbars=no");
         }
     </script>
+    <script>
+        function importItems(){
+            var fileDir = $("#file").val();
+            var suffix = fileDir.substr(fileDir.lastIndexOf("."));
+            if("" == fileDir){
+                alert("选择需要导入的Excel文件！");
+            } else if(".xls" != suffix && ".xlsx" != suffix ){
+                alert("选择Excel格式的文件导入！");
+            } else{
+                var formdata = new FormData($("#myForm")[0]);
+                $.ajax({
+                    url : "${ctx}/ssxl/importExcel",
+                    type : 'POST',
+                    async : false,
+                    data : formdata,
+                    processData : false,
+                    contentType : false,
+                    beforeSend:function(){
+                        console.log("正在进行，请稍候");
+                    },
+                    success : function(data) {
+                        alert(data.message);
+                        if(data.code == 0){
+                            window.opener.location.reload();
+                            //window.close();
+                        }
+                    },
+                    error : function() {
+                        alert("导入出错！");
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="right_nav">
@@ -39,6 +73,7 @@
         <a href="javascript:;" class="on" style="border-left:1px solid white;">用户管理</a>
         <a href="javascript:;">权限管理</a>
         <a href="javascript:;">修改密码</a>
+        <a href="javascript:;">线路管理</a>
     </div>
     <br/>
     <div class="content">
@@ -138,6 +173,12 @@
                         </table>
                     </div>
                 </div>
+            </li>
+
+            <%--线路管理--%>
+            <li style="display:none;" id="li4">
+                &nbsp;&nbsp;<input style='float: lefet;border:0px;' id='file' name='file' type='file'/>
+                <input type="button" name="button"  value="导入" class="iput_m" style="" onclick="importItems()"/>
             </li>
         </ul>
     </div>

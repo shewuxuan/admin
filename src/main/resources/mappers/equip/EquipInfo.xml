@@ -188,7 +188,7 @@
         left join
             (select keyvalue,keymemo from sys_db where keycode='region') t  on e.SSQY = t.keyvalue
         left join
-            (select keyvalue,keymemo from sys_db where keycode='sb_type') t2  on e.ZZLX = t2.keyvalue
+            (select keyvalue,keymemo from sys_db where keycode='zz_type') t2  on e.ZZLX = t2.keyvalue
         where 1=1
         <if test="ssqy!=null and ssqy!=''">and SSQY=#{ssqy} </if>
         <if test="zdmc!=null and zdmc!=''">and ZDMC like '%${zdmc}%' </if>
@@ -244,12 +244,12 @@
         select
         ei.*, sd1.keymemo as ssqyname, ss.xlmc as ssxlname, sd2.keymemo as zzlxname
         from equip_info ei
-        left join sys_db sd1 on ei.zzlx = sd1.keyvalue
+        left join sys_db sd1 on ei.ssqy = sd1.keyvalue
         left join sys_db sd2 on ei.zzlx = sd2.keyvalue
         LEFT JOIN sys_ssxl ss on ei.ssxl = ss.id
         where
         sd1.keycode = 'region'
-        and sd2.keycode = 'sb_type'
+        and sd2.keycode = 'zz_type'
         and sbid = #{sbid,jdbcType=VARCHAR}
     </select>
 

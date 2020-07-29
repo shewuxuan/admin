@@ -36,18 +36,18 @@
 </div>
 <div class="qh">
     <div class="tab" style="">
-        <a href="javascript:void(0);" class="on" style="border-left:1px solid white;">处缺统计</a>
-        <a href="javascript:void(0);">处缺记录</a>
+        <a href="javascript:void(0);" class="on" style="border-left:1px solid white;">处缺记录</a>
+        <a href="javascript:void(0);">处缺统计</a>
     </div>
     <br/>
     <div class="content">
         <ul>
             <li style="display:block;">
-                <%@include file="cqCount.jsp" %>
+                <%@include file="cqList.jsp" %>
 <%--                <%@include file="cqList.jsp" %>--%>
             </li>
             <li id="li2" style="display: block;">
-                <%@include file="cqList.jsp" %>
+                <%@include file="cqCount.jsp" %>
 <%--                <%@include file="cqCount.jsp" %>--%>
             </li>
         </ul>

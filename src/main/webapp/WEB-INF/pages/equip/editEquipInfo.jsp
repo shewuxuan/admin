@@ -52,18 +52,6 @@
         display: none;
     }
 </style>
-<script>
-    $(function () {
-        var curr_time = new Date();
-        var strDate = curr_time.getFullYear() + "-";
-        strDate += curr_time.getMonth() + 1 + "-";
-        strDate += curr_time.getDate() + " ";
-        var tssj = '${equipInfo}';
-        if (scrq == '' || scrq == null) {
-            $('#scrq').datebox('setValue', strDate);
-        }
-    });
-</script>
 <body>
 <div class="right_main">
     <div class="right_table" style="width:96%;">
@@ -178,9 +166,10 @@
                     </tr>
                     <tr>
                         <th bgcolor="#FFFFFF"><p id="scrq_p">生产日期</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <input class="easyui-datebox" name="scrq" id="scrq"
-                                   data-options="required:true" value="${equipInfo.scrq}" style="width:120px"/>
+                        <td bgcolor="#FFFFFF" id="scrq_p2" style="text-align:left; ">
+                            <input type="text" name="scrq" id="scrq" value="${equipInfo.scrq}" style="height:25px; border:1px solid #CCC;"/>
+                            <%--<input class="easyui-datebox" name="scrq" id="scrq"
+                                   data-options="required:true" value="${equipInfo.scrq}" style="width:120px"/>--%>
                         </td>
                         <th bgcolor="#FFFFFF"><p id="zbxhXf_p">消防装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -189,7 +178,7 @@
                     </tr>
                     <tr>
                         <th bgcolor="#FFFFFF"><p id="rjbbJym_p">软件版本及校验码</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <td bgcolor="#FFFFFF" id="rjbbJym_p2" style="text-align:left; ">
                             <input type="text" name="rjbbJym" id="rjbbJym" value="${equipInfo.rjbbJym}" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                         <th bgcolor="#FFFFFF"><p id="sccsXf_p">消防生产厂商</p></th>
@@ -199,12 +188,12 @@
                     </tr>
                     <tr>
                         <th bgcolor="#FFFFFF"><p id="yjbb_p">硬件版本</p></th>
-                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                        <td bgcolor="#FFFFFF" id="yjbb_p2" style="text-align:left; ">
                             <input type="text" name="yjbb" id="yjbb" value="${equipInfo.yjbb}" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                         <th bgcolor="#FFFFFF"><p id="tsryxmXf_p">消防调试人员姓名电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <input type="text" name="tsryxmXf" id="tsryxmXf" value="${equipInfo.tsryxmXf}" sondblclick="defaultClick(this)" tyle="height:25px; border:1px solid #CCC;"/>
+                            <input type="text" name="tsryxmXf" id="tsryxmXf" value="${equipInfo.tsryxmXf}" sondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
                     <tr>
@@ -313,6 +302,12 @@
         $("#ipdz_p").html(" IP地址");
         $("#rtudz_p").html("相间CT变比");
         $("#dkh_p").html("零序CT变比");
+        $("#scrq_p").html("软件版本及校验码");
+        $("#scrq_p2").html('<input type="text" name="rjbbJym" id="rjbbJym" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
+        $("#rjbbJym_p").html("硬件版本");
+        $("#rjbbJym_p2").html('<input type="text" name="yjbb" id="yjbb" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
+        $("#yjbb_p").html("");
+        $("#yjbb_p2").html("");
 
         $("#zbbh_p").html(" FTU型号");
         $("#zbxh_p").html(" FTU编码");
@@ -326,16 +321,17 @@
         $("#zbxhXf_p").html("通讯设备生产日期");
         $("#sccsXf_p").html("调试人员姓名");
         $("#tsryxmXf_p").html("");
+        $("#tsryxmXf_p2").html("");
     }
 
     //选所属区域
     changeSsqy();
     function changeSsqy(){
-        var ssqy = $("#ssqy").val();
         $("#yxdw").empty();
         $("#bdz").empty();
         $("#xlmc").empty();
         $("#yxdw").append("<option value=''>" +'请选择' + "</option>");
+        var ssqy = $("#ssqy").val();
         if(ssqy != null && ssqy != '') {
             //若选择石景山
             if(ssqy ==1){
@@ -351,7 +347,7 @@
                 });
             }else{
                 $("#yxdw_span").show();
-                $.get("/ssxl/selectByGroup/yxdw", {'ssqy':ssqy},function (data) {
+                $.get("/ssxl/selectByGroup/yxdw", {'ssqy':$("#ssqy").val()},function (data) {
                     data = JSON.parse(data);
                     $.each(data, function (i) {
                         $("#yxdw").append("<option value='" + data[i].yxdw + "'>" + data[i].yxdw + "</option>");
@@ -374,12 +370,20 @@
             })
         });
     }
-
     var ssxl = "${equipInfo.ssxl}";
     var ssqy = "${equipInfo.ssqy}";
+
+    // 运行单位
+    $("#yxdw").append("<option value=''>全部</option>");
+    $.get("/ssxl/selectByGroup/yxdw",{'ssqy':ssqy}, function (data) {
+        data = JSON.parse(data);
+        $.each(data, function (i) {
+            $("#yxdw").append("<option value='" + data[i].yxdw + "'>" + data[i].yxdw + "</option>");
+        })
+    });
     // 变电站
     $("#bdz").append("<option value=''>全部</option>");
-    $.get("/ssxl/selectByGroup/bdz",{'ssqy':ssqy,'yxdw':'石景山'}, function (data) {
+    $.get("/ssxl/selectByGroup/bdz",{'ssqy':ssqy,'yxdw':$("#yxdw").val()}, function (data) {
         data = JSON.parse(data);
         $.each(data, function (i) {
             $("#bdz").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
@@ -406,8 +410,10 @@
         });
     });
 
+
     $.get("/ssxl/selectByPrimaryKey/"+ssxl, function (data) {
         data = JSON.parse(data);
+        $('#yxdw').val(data.yxdw);
         $('#bdz').val(data.bdz);
         if(data.ssqy == 1){$("#yxdw_span").hide();}
         $("#xlmc").empty();
@@ -615,9 +621,11 @@
     var $arr = convertGCJ02ToBD09(wd,jd);
     var point = new BMap.Point($arr.lng, $arr.lat);
     var zdmc ="${equipInfo.zdmc}";
+    var ssxl ="${equipInfo.ssxl}";
     var zzlx ="${equipInfo.zzlx}";
     var azddDdh ="${equipInfo.azddDdh}";
     var xxwz ="${equipInfo.xxwz}";
+    var beizhu ="${equipInfo.beizhu}";
     var sbid ="${equipInfo.sbid}";
     addMarker2(point);
     //point = new BMap.Point(116.331398, 39.897445);
@@ -682,15 +690,38 @@
         });
         return text;
     }
+    //查询所属线路
+    function getSsxlName(value) {
+        var xlmc = "";
+        $.ajax({
+            url: '/ssxl/selectByPrimaryKey/'+value,
+            type: 'GET',
+            async: false,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                console.log("正在加载，请稍候");
+            },
+            success: function (data) {
+                let data2 = JSON.parse(data);
+                xlmc = data2.bdz+data2.xlmc;
+            },
+            error: function () {
+                //alert("页面加载错误！");
+            }
+        });
+        return xlmc;
+    }
     //展示详细信息
     function showInfo2(thisMarker,sbid) {
         var text = getEquipPhotoView(sbid);
         var content = '<div id="descDiv" style="overflow-y:scroll; overflow-x:hidden; background-color:#f5f0f0;margin:0;line-height:20px;padding:15px;width:300px;height: 290px;">'
             +'&nbsp;&nbsp;&nbsp;<img width=\'180px\' height=\'180px\' src=\'/equip/createQRCodeByEquipInfo.action?sbid='+sbid+'\'>'
-            +'<br/>&nbsp;<b>终端名称：</b>'+zdmc
+            +'<br/>&nbsp;<b>调度号：</b>'+azddDdh
             +'<br/>&nbsp;<b>装置类型：</b>'+choiceZzlxName(zzlx)
-            +'<br/>&nbsp;<b>设备调度号：</b>'+azddDdh
-            +'<br/>&nbsp;<b>详细位置：</b>'+xxwz+'<hr>'
+            +'<br/>&nbsp;<b>所属线路：</b>'+getSsxlName(ssxl)
+            +'<br/>&nbsp;<b>详细位置：</b>'+xxwz
+            +'<br/>&nbsp;<b>备注：</b>'+beizhu+'<hr>'
             +text
             +'</div>';
         var infoWindow = new BMap.InfoWindow(content); //创建信息窗口对象

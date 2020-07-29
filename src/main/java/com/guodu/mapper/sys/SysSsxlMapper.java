@@ -41,4 +41,8 @@ public interface SysSsxlMapper {
      * @Date: 2020/5/25 1:52 下午
      */
     List<SysSsxl> selectByGroup(@Param("sysSsxl") SysSsxl sysSsxl, @Param("groupBy") String groupBy);
+
+    int insert(SysSsxl sysSsxl);
+
+    int getMaxId();
 }

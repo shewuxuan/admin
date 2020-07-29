@@ -50,15 +50,6 @@
         height: 20px;
     }
 </style>
-<script>
-    $(function () {
-        var curr_time = new Date();
-        var strDate = curr_time.getFullYear() + "-";
-        strDate += curr_time.getMonth() + 1 + "-";
-        strDate += curr_time.getDate() + " ";
-            $('#scrq').datebox('setValue', strDate);
-    });
-</script>
 <body>
 <div class="right_main">
     <div class="right_table" style="width:96%;">
@@ -169,8 +160,9 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p id="scrq_p">生产日期</p></th>
                         <td bgcolor="#FFFFFF"  id="scrq_p2" style="text-align:left; ">
-                            <input class="easyui-datebox" name="scrq" id="scrq"
-                                   data-options="required:true" style="width:120px"/>
+                          <%--  <input class="easyui-datebox" name="scrq" id="scrq"
+                                   data-options="required:true" style="width:120px"/>--%>
+                              <input type="text" name="scrq" id="scrq" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                         <th bgcolor="#FFFFFF"><p id="zbxhXf_p">消防装置型号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -249,6 +241,11 @@
     </div>
 </div>
 <script type="text/javascript">
+    var curr_time = new Date();
+    var strDate = curr_time.getFullYear() + "-";
+    strDate += curr_time.getMonth() + 1 + "-";
+    strDate += curr_time.getDate() + " ";
+    $("#scrq").val(strDate);
     $(function () {
         $.post("/ssqy/selectSsqyByAll", function (data) {
             let ssqy = JSON.parse(data);
@@ -279,6 +276,7 @@
 
         });
     }
+
     //选择dtu时
     function checkDtu(){
         $("#txmkcj_p").html(" 通信模块厂家");
@@ -287,8 +285,11 @@
         $("#rtudz_p").html("RTU地址");
         $("#dkh_p").html("端口号");
         $("#scrq_p").html("生产日期");
+        $("#scrq_p2").html('<input type="text" name="scrq" id="scrq" value="'+strDate+'" style="height:25px; border:1px solid #CCC;"/>');
         $("#rjbbJym_p").html("软件版本及校验码");
+        $("#rjbbJym_p2").html(' <input type="text" name="rjbbJym" id="rjbbJym" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
         $("#yjbb_p").html("硬件版本");
+        $("#yjbb_p2").html('<input type="text" name="yjbb" id="yjbb" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
 
         $("#zbbh_p").html(" 装置编号");
         $("#zbxh_p").html(" DTU装置型号");
@@ -302,6 +303,7 @@
         $("#zbxhXf_p").html("消防装置型号");
         $("#sccsXf_p").html("消防生产厂商");
         $("#tsryxmXf_p").html("消防调试人员姓名电话");
+        $("#tsryxmXf_p2").html(' <input type="text" name="tsryxmXf" id="tsryxmXf" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
 
     }
     //选择ftu时
@@ -310,6 +312,13 @@
         $("#ipdz_p").html(" IP地址");
         $("#rtudz_p").html("相间CT变比");
         $("#dkh_p").html("零序CT变比");
+        $("#scrq_p").html("软件版本及校验码");
+        $("#scrq_p2").html('<input type="text" name="rjbbJym" id="rjbbJym" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
+        $("#rjbbJym_p").html("硬件版本");
+        $("#rjbbJym_p2").html('<input type="text" name="yjbb" id="yjbb" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
+        $("#yjbb_p").html("");
+        $("#yjbb_p2").html("");
+
 
         $("#zbbh_p").html(" FTU型号");
         $("#zbxh_p").html(" FTU编码");
@@ -323,6 +332,7 @@
         $("#zbxhXf_p").html("通讯设备生产日期");
         $("#sccsXf_p").html("调试人员姓名");
         $("#tsryxmXf_p").html("");
+        $("#tsryxmXf_p2").html("");
     }
 
 
