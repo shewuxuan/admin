@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 2020/2/14 10:51 上午
  */
 @Controller
+@RequestMapping("ksdjfkdsfks")
 public class PageController {
 
     /**

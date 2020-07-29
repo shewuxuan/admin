@@ -15,10 +15,39 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 2020/2/14 10:51 上午
  */
 @Controller
-@RequestMapping("pwbh/")
 public class PwbhPageController {
 
-    @RequestMapping("tsjl/{page}/{tsid}")
+    /**
+     * @MethodName: bzPwbhByList
+     * @Description: TODO 跳转配网保护(pwbh)列表页面
+     * @Param: [page, pageName]
+     * @Return: java.lang.String
+     * @Author: 2uli
+     * @Date: 2020/6/10 3:35 下午
+     */
+    @RequestMapping("bz/pwbh/{page}/{pageName}")
+    public String bzPwbhByList(@PathVariable String page, @PathVariable String pageName) {
+        return "bz/pwbh/" + page + "/" + pageName;
+    }
+
+    /**
+     * @MethodName: bzPwbhByAddAndUpdate
+     * @Description: TODO 跳转配网保护(pwbh)添加/修改页面
+     * @Param: [page, pageName, id, model]
+     * @Return: java.lang.String
+     * @Author: 2uli
+     * @Date: 2020/6/10 3:36 下午
+     */
+    @RequestMapping("bz/pwbh/{page}/{pageName}/{id}")
+    public String bzPwbhByAddAndUpdate(@PathVariable String page,
+                                       @PathVariable String pageName,
+                                       @PathVariable String id,
+                                       Model model) {
+        model.addAttribute("id", id);
+        return "bz/pwbh/" + page + "/" + pageName;
+    }
+
+    @RequestMapping("pwbh/tsjl/{page}/{tsid}")
     public String tsjl(@PathVariable String page, @PathVariable String tsid, HttpServletRequest request) {
         request.setAttribute("tsid", tsid);
         String userType = Auth.getAuth(request).getUserType();
