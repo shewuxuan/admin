@@ -39,7 +39,10 @@
                             </td>
                         </tr>
                     </table>--%>
-                       <span>日期</span> <input id="tj_startCqrq" type="date"> 至 <input id="tj_endCqrq" type="date">
+                       <span>日期</span>
+                       <input class="easyui-datebox" name="tj_startTssj" id="tj_startTssj" data-options="required:true" style="width:120px"/>
+                       &nbsp;至&nbsp;
+                       <input class="easyui-datebox" name="tj_endTssj" id="tj_endTssj" data-options="required:true" style="width:120px"/>
                        &nbsp;&nbsp;&nbsp;<span>设备调度号</span><input id="tj_azddDdh" type="text" class="right_ipu2"/>
                        &nbsp;&nbsp;&nbsp;<span>所属区域</span><select name="ssqy" id="tj_ssqy" class="right_ipu2"></select>
                        &nbsp;&nbsp;&nbsp;<span>设备线路</span><select id="tj_bdz"></select>&nbsp;<select id="tj_xlmc"></select>
@@ -171,8 +174,8 @@
     <%-- 查询 --%>
     function selRecord2() {
         $('#cqtj').datagrid('reload', {
-            "startCqrq": $("#tj_startCqrq").val(),
-            "endCqrq": $("#tj_endCqrq").val(),
+            "startCqrq": $('#tj_startTssj').datebox('getValue'),
+            "endCqrq": $('#tj_endTssj').datebox('getValue'),
             "ssqy": $("#tj_ssqy").val(),
             "azddDdh": $("#tj_azddDdh").val(),
             "xlmc": $("#tj_xlmc").val()

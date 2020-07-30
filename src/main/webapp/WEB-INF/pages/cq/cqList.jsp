@@ -32,7 +32,14 @@
                 <table style="width: 100%;">
                     <tr>
                         <td colspan="1">处缺日期</td>
-                        <td colspan="3"><input id="startCqrq" type="date">-<input id="endCqrq" type="date"></td>
+<%--                        <td colspan="3"><input id="startCqrq" type="date">-<input id="endCqrq" type="date"></td>--%>
+                        <td colspan="3">
+                            <input class="easyui-datebox" name="startTssj" id="startTssj"
+                                   data-options="required:true" style="width:120px"/>
+                            &nbsp;至&nbsp;
+                            <input class="easyui-datebox" name="endTssj" id="endTssj"
+                                   data-options="required:true" style="width:120px"/>
+                        </td>
                         <td colspan="1">所属区域</td>
                         <td colspan=""><select name="ssqy" id="ssqy" class="right_ipu2"></select></td>
                         <td>设备线路</td>
@@ -218,8 +225,8 @@
     <%-- 查询 --%>
     function selRecord() {
         $('#dg').datagrid('reload', {
-            "startCqrq": $("#startCqrq").val(),
-            "endCqrq": $("#endCqrq").val(),
+            "startCqrq": $('#startTssj').datebox('getValue'),
+            "endCqrq": $('#endTssj').datebox('getValue'),
             "ssqy": $("#ssqy").val(),
             "azddDdh": $("#azddDdh").val(),
             "bdz": $("#bdz").val(),
