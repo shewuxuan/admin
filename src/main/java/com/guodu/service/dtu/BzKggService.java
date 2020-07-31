@@ -32,5 +32,5 @@ public interface BzKggService {
 
     int batchInsert(List<BzKgg> list);
 
-    String selectByPage(Map<String, Object> map);
+    List<BzKgg> selectByPage(BzKgg record);
 }

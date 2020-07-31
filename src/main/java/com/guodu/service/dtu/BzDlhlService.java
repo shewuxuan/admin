@@ -32,6 +32,6 @@ public interface BzDlhlService {
 
     int batchInsert(List<BzDlhl> list);
 
-    String selectByPage(Map<String, Object> map);
+    List<BzDlhl> selectByPage(BzDlhl record);
 }
 

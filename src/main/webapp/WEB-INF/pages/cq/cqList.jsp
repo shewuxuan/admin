@@ -43,7 +43,7 @@
                         <td colspan="1">所属区域</td>
                         <td colspan=""><select name="ssqy" id="ssqy" class="right_ipu2"></select></td>
                         <td>设备线路</td>
-                        <td><select id="bdz"></select>-<select id="xlmc"></select></td>
+                        <td><select id="bdz" style="width: 100px;"></select>-<select id="xlmc" style="width: 100px;"></select></td>
                         <td>装置类型</td>
                         <td><select id="zzlx"></select></td>
                     </tr>

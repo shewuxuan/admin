@@ -32,5 +32,5 @@ public interface BzYktsService {
 
     int batchInsert(List<BzYkts> list);
 
-    String selectByPage(Map<String, Object> map);
+    List<BzYkts> selectByPage(BzYkts record);
 }

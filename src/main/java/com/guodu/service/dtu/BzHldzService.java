@@ -32,6 +32,6 @@ public interface BzHldzService {
 
     int batchInsert(List<BzHldz> list);
 
-    String selectByPage(Map<String, Object> map);
+    List<BzHldz> selectByPage(BzHldz record);
 }
 

@@ -2,7 +2,10 @@ package com.guodu.controller.dtu;
 
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.StaticLog;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.guodu.pojo.dtu.BzGjcs;
+import com.guodu.pojo.dtu.BzHldz;
 import com.guodu.service.dtu.BzGjcsService;
 import com.guodu.util.IDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,7 @@ public class BzGjcsController {
 
     @Autowired
     private BzGjcsService bzGjcsServiceImpl;
+    private final Map<String, Object> map = new HashMap<>(16);
 
     @RequestMapping("insert")
     public int insert(BzGjcs bzGjcs) {
@@ -80,13 +84,16 @@ public class BzGjcsController {
     }
 
     @GetMapping("selectByPage")
-    public String selectByAll(BzGjcs bzGjcs,
+    public String selectByAll(BzGjcs record,
                               @RequestParam(value = "page", defaultValue = "1") Integer page,
                               @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
-        Map<String, Object> map = new HashMap<>(16);
-        map.put("bzGjcs", bzGjcs);
-        map.put("page", page);
-        map.put("rows", rows);
-        return bzGjcsServiceImpl.selectByPage(map);
+        map.clear();
+        // pagehelper分页
+        PageHelper.startPage(page, rows);
+        List<BzGjcs> list = bzGjcsServiceImpl.selectByPage(record);
+        PageInfo<BzGjcs> pageInfo = new PageInfo<>(list);
+        map.put("rows", pageInfo.getList());
+        map.put("total", pageInfo.getTotal());
+        return JSONUtil.toJsonStr(map);
     }
 }

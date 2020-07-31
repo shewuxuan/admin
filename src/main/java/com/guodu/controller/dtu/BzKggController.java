@@ -2,6 +2,9 @@ package com.guodu.controller.dtu;
 
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.StaticLog;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.guodu.pojo.dtu.BzHldz;
 import com.guodu.pojo.dtu.BzKgg;
 import com.guodu.service.dtu.BzKggService;
 import com.guodu.util.IDUtil;
@@ -24,6 +27,7 @@ public class BzKggController {
 
     @Autowired
     private BzKggService bzKggServiceImpl;
+    private final Map<String, Object> map = new HashMap<>(16);
 
     @RequestMapping("insert")
     public int insert(BzKgg bzKgg) {
@@ -77,13 +81,16 @@ public class BzKggController {
     }
 
     @GetMapping("selectByPage")
-    public String selectByAll(BzKgg bzKgg,
+    public String selectByAll(BzKgg record,
                               @RequestParam(value = "page", defaultValue = "1") Integer page,
                               @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
-        Map<String, Object> map = new HashMap<>(16);
-        map.put("bzKgg", bzKgg);
-        map.put("page", page);
-        map.put("rows", rows);
-        return bzKggServiceImpl.selectByPage(map);
+        map.clear();
+        // pagehelper分页
+        PageHelper.startPage(page, rows);
+        List<BzKgg> list = bzKggServiceImpl.selectByPage(record);
+        PageInfo<BzKgg> pageInfo = new PageInfo<>(list);
+        map.put("rows", pageInfo.getList());
+        map.put("total", pageInfo.getTotal());
+        return JSONUtil.toJsonStr(map);
     }
 }

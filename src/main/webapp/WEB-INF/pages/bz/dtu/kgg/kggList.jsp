@@ -75,8 +75,8 @@
             columns: [[
                 // {field:'id',halign: 'center',align:"center",title:'ID',width:'10%'},
                 {field: 'ssqyname', halign: 'center', align: "center", title: '所属区域', width: '10%'},
-                // {field: 'zzlx', halign: 'center', align: "center", title: '装置类型', width: '10%'},
-                {field: 'jg', halign: 'center', align: "center", title: '间隔', width: '43%'},        // 改
+                {field: 'zzlxname', halign: 'center', align: "center", title: '装置类型', width: '50%'},
+                {field: 'jg', halign: 'center', align: "center", title: '间隔', width: '10%'},        // 改
                 {
                     field: 'trans',
                     halign: 'center',

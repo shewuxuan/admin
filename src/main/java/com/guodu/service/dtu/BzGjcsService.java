@@ -32,5 +32,5 @@ public interface BzGjcsService {
 
     int batchInsert(List<BzGjcs> list);
 
-    String selectByPage(Map<String, Object> map);
+    List<BzGjcs> selectByPage(BzGjcs record);
 }

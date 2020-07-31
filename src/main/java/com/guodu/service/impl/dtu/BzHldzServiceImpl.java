@@ -5,6 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guodu.mapper.sys.SysDbMapper;
+import com.guodu.pojo.dtu.BzLpjy;
 import com.guodu.pojo.sys.SysDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,6 @@ public class BzHldzServiceImpl implements BzHldzService {
 
     @Resource
     private BzHldzMapper bzHldzMapper;
-
     @Autowired
     private SysDbMapper sysDbMapper;
 
@@ -82,33 +82,22 @@ public class BzHldzServiceImpl implements BzHldzService {
     }
 
     @Override
-    public String selectByPage(Map<String, Object> map) {
-        // pagehelper分页
-        PageHelper.startPage((Integer) map.get("page"), (Integer) map.get("rows"));
-        List<BzHldz> bzHldzs = bzHldzMapper.selectByPage((BzHldz) map.get("bzHldz"));
-
-        // 封装zzlxname
-        for (BzHldz record : bzHldzs) {
+    public List<BzHldz> selectByPage(BzHldz record) {
+        List<BzHldz> bzHldzs = bzHldzMapper.selectByPage(record);
+        // 查询装置类型名
+        for (BzHldz bzhldz : bzHldzs) {
             List<String> zzlxname = new ArrayList<>();
-            // 以,分割  取出zzlx
-            String[] zzlxs = StrUtil.split(record.getZzlx(), ",");
-            // 查询zzlxname
-            for (String zzlx : zzlxs) {
+            String[] split = bzhldz.getZzlx().split(",");
+            for (String s : split) {
                 SysDb sysDb = new SysDb();
                 sysDb.setKeycode("zz_type");
-                sysDb.setKeyvalue(zzlx);
+                sysDb.setKeyvalue(s);
                 sysDb = sysDbMapper.selectByKeycodeAndKeyValue(sysDb);
-                // 将查询出来的keymemo(装置类型名)放入zzlxname
                 zzlxname.add(sysDb.getKeymemo());
             }
-            record.setZzlxname(zzlxname.toString());
+            bzhldz.setZzlxname(zzlxname.toString());
         }
-        PageInfo<BzHldz> pageInfo = new PageInfo<>(bzHldzs);
-
-        Map<String, Object> respMap = new HashMap<>(16);
-        respMap.put("rows", pageInfo.getList());
-        respMap.put("total", pageInfo.getTotal());
-        return JSONUtil.toJsonStr(respMap);
+        return bzHldzs;
     }
 
 }
