@@ -442,6 +442,9 @@
             <if test="xlmc != null and xlmc != ''">
                 and ss.id = #{xlmc,jdbcType=VARCHAR}
             </if>
+            <if test="yxdw != null and yxdw != ''">
+                and ss.yxdw = #{yxdw,jdbcType=VARCHAR}
+            </if>
         </where>
         order by cq.cqrq desc
     </select>
@@ -456,6 +459,7 @@
         <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and c.cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
         <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and c.cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
         <if test="ssqy != null and ssqy != ''"> and c.ssqy=#{ssqy,jdbcType=VARCHAR} </if>
+        <if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw,jdbcType=VARCHAR} </if>
         <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz,jdbcType=VARCHAR} </if>
         <if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc,jdbcType=VARCHAR} </if>
         <if test="azddDdh != null and azddDdh != ''"> and c.azdd_ddh like "%"#{azddDdh}"%"</if>
@@ -464,14 +468,17 @@
 
     <select id="getCqQxflGroupConut" resultType="java.util.Map" parameterType="java.util.Map">
         select
-     	    count(1) alls,qxfl,group_concat(cqid) as ids
+     	    count(1) alls,c.qxfl,group_concat(c.cqid) as ids
         from
-     	    cq_record
+     	    cq_record c left join sys_ssxl s on c.ssxl = s.id
      	where 1=1
-        <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
-        <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
-        <if test="ssqy != null and ssqy != ''"> and ssqy=#{ssqy,jdbcType=VARCHAR} </if>
-        <if test="azddDdh != null and azddDdh != ''"> and azdd_ddh=#{azddDdh,jdbcType=VARCHAR} </if>
+        <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and c.cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
+        <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and c.cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
+        <if test="ssqy != null and ssqy != ''"> and c.ssqy=#{ssqy,jdbcType=VARCHAR} </if>
+        <if test="azddDdh != null and azddDdh != ''"> and c.azdd_ddh=#{azddDdh,jdbcType=VARCHAR} </if>
+        <if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw,jdbcType=VARCHAR} </if>
+        <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz,jdbcType=VARCHAR} </if>
+        <if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc,jdbcType=VARCHAR} </if>
         group by qxfl
     </select>
 

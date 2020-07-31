@@ -101,6 +101,9 @@
 		left join sys_ssxl s on j.ssxl = s.id
 		where 1=1
 		<if test="ssqy!=null and ssqy!=''">and j.SSQY=#{ssqy} </if>
+		<if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw} </if>
+		<if test="bdz != null and bdz != ''"> and s.bdz=#{bdz} </if>
+		<if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc} </if>
 		<if test="startTssj!=null and startTssj!=''">
 			<![CDATA[
 		 	and j.TSSJ >= str_to_date(#{startTssj},'%Y-%m-%d')
@@ -112,11 +115,9 @@
 		 ]]>
 		</if>
 		<if test="azddDdh!=null and azddDdh!=''"> and j.AZDD_DDH like '%${azddDdh}%'</if>
-		/*挖坑操作*/
-		<if test='xlmc!=null and xlmc!=""'> and j.ssxl = #{xlmc}</if>
-		<if test='bdz!=null and bdz!=""'> and   s.bdz = #{bdz}</if>
 
-		order by TSSJ desc
+
+		order by j.TSSJ desc
 	</select>
 
 	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="entityMap">

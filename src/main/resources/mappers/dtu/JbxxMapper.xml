@@ -607,43 +607,37 @@
 
     <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">
         select
-        TSID,
-        case
-        when
-        SSQY='1' THEN '石景山'
-        when SSQY='2' THEN '门头沟'
-        when SSQY='3' THEN '朝阳'
-        END as SSQY,
-        TSSJ,
-        AZDD_DDH,
-        ZZXH,
-        SCCS,
-        SSXL,
-        case
-        when
-        ZZLX='1' THEN '开闭站'
-        when ZZLX='2' THEN '开闭器'
-        when ZZLX='3' THEN '分界室'
-        when ZZLX='4' THEN '箱变'
-        when ZZLX='5' THEN '配电室'
-        ELSE ZZLX
-        END as ZZLX,
-        TSRYXM
-        from jbxx
-        where 1=1
-        <if test="ssqy!=null and ssqy!=''">and SSQY=#{ssqy} </if>
+        j.TSID,
+        sys1.keymemo as SSQY,
+        j.TSSJ,
+        j.AZDD_DDH,
+        j.ZZXH,
+        j.SCCS,
+        j.SSXL,
+        sys2.keymemo as ZZLX,
+        j.TSRYXM
+        from jbxx j
+        left join sys_db sys1 on sys1.keyvalue = j.ssqy
+        left join sys_db sys2 on sys2.keyvalue = j.zzlx
+        left join sys_ssxl lx on j.ssxl = lx.id
+        where  sys1.keycode = 'region' and sys2.keycode = 'zz_type'
+        <if test="ssqy!=null and ssqy!=''">and j.SSQY=#{ssqy} </if>
+        <if test="yxdw != null and yxdw != ''"> and lx.yxdw=#{yxdw} </if>
+        <if test="bdz != null and bdz != ''"> and lx.bdz=#{bdz} </if>
+        <if test="xlmc != null and xlmc != ''"> and lx.id=#{xlmc} </if>
+
         <if test="startTssj!=null and startTssj!=''">
             <![CDATA[
-		 	and TSSJ >= str_to_date(#{startTssj},'%Y-%m-%d')
+		 	and j.TSSJ >= str_to_date(#{startTssj},'%Y-%m-%d')
 		 ]]>
         </if>
         <if test="endTssj!=null and endTssj!=''">
             <![CDATA[
-		 	and TSSJ <= str_to_date(#{endTssj},'%Y-%m-%d')
+		 	and j.TSSJ <= str_to_date(#{endTssj},'%Y-%m-%d')
 		 ]]>
         </if>
-        <if test="azddDdh!=null and azddDdh!=''"> and AZDD_DDH like '%${azddDdh}%'</if>
-        <if test='zzlx!=null and zzlx!=""'> and ZZLX = #{zzlx}</if>
-        order by CZSJ desc
+        <if test="azddDdh!=null and azddDdh!=''"> and j.AZDD_DDH like '%${azddDdh}%'</if>
+        <if test='zzlx!=null and zzlx!=""'> and j.ZZLX = #{zzlx}</if>
+        order by j.CZSJ desc
     </select>
 </mapper>

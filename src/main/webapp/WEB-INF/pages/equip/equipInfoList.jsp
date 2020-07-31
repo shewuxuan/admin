@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="/js/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="/js/ssqy_yxdw_bdz_xlmc.js"></script>
 </head>
 <body>
 <div class="right_main">
@@ -28,9 +29,14 @@
 				<div class="tj">
 				<form  method="post" id="myForm">
                      <%--&nbsp;<span>终端名称</span>&nbsp;<input id="zdmc" type="text" class="right_ipu2"/>--%>
+                         <span>所属区域</span><select name="ssqy" id="ssqy" onchange="changeSsqy()" class="right_ipu2"></select>
+                         <span id="yxdw_span">单位<select id="yxdw" onchange="changeYxdw()"></select></span>
+                         <span>变电站</span><select id="bdz" onchange="changeBdz()"></select>
+                         <span>线路</span><select id="xlmc"></select>
+
+						<%-- &nbsp;<span>所属区域</span>&nbsp;<select  name="ssqy" id="ssqy"  style="height:25px; border:1px solid #CCC;"></select>--%>
 					&nbsp;&nbsp;<span>装置类型</span>&nbsp;<select  name="zzlx" id="zzlx"  style="height:25px; border:1px solid #CCC;"></select>
                      &nbsp;<span>设备调度号</span>&nbsp;<input id="azddDdh" type="text" class="right_ipu2"/>
-					&nbsp;<span>所属区域</span>&nbsp;<select  name="ssqy" id="ssqy"  style="height:25px; border:1px solid #CCC;"></select>
 					<input type="button" name="button"  value="查 询" class="iput_m" onclick="searchList()"/>
 					<input type="button" name="button"  value="创 建" class="iput_m" onclick="g1()">
 					<input type="button" name="button"  value="设备地图" class="iput_m" onclick="g2()">
@@ -45,31 +51,14 @@
 		</div>
 </div>
 <script>
-	$(function () {
-		<%-- 所属区域 --%>
-		$("#ssqy").append("<option value=''>全部</option>");
-		$.post("/ssqy/selectSsqyByAll", function (data) {
-			let ssqy = JSON.parse(data);
-			for (let i = 0, length = ssqy.length; i < length; i++) {
-				$("#ssqy").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
-			}
-		});
-
-		<%-- 装置类型 --%>
-		$("#zzlx").append("<option value=''>全部</option>");
-		$.post("/sbZzlx/selectSbZzlxByAll", function (data) {
-			let zzlx = JSON.parse(data);
-			for (let i = 0, length = zzlx.length; i < length; i++) {
-				$("#zzlx").append("<option value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
-			}
-		});
-	});
 function getQueryParams() {
 	var queryParams = new Object();
-    queryParams.zdmc = $('#zdmc').val();
     queryParams.azddDdh = $('#azddDdh').val();
     queryParams.zzlx = $('#zzlx').val();
     queryParams.ssqy = $('#ssqy').val();
+    queryParams.yxdw = $('#yxdw').val();
+    queryParams.bdz = $('#bdz').val();
+    queryParams.xlmc = $('#xlmc').val();
     return queryParams;
 }
 function searchList(){

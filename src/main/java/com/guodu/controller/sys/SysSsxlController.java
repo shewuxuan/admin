@@ -68,8 +68,8 @@ public class SysSsxlController {
      * 导入所属线路
      * @return
      */
-    @RequestMapping("ssxl/importExcel")
-    public String importExcel(HttpServletRequest request) {
+    @RequestMapping(value = {"ssxl/importExcel"}, produces = {"application/json;charset=UTF-8"}, method = RequestMethod.POST)
+    public Object importExcel(HttpServletRequest request) {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("file");
         InputStream in =null;

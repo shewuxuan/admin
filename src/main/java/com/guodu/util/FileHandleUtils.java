@@ -5,9 +5,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -107,6 +105,52 @@ public class FileHandleUtils {
                     fis.close();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /***
+     * 下载单个文件 坑
+     * @param response
+     * @param path
+     */
+    public static void downloadSingleFile(HttpServletResponse response,String path,String fileName){
+        OutputStream ous = null;
+        InputStream ins = null;
+        try {
+            File file = new File(path);
+            if(!file.exists()){
+                String str = "<script language='javascript'>alert('文件已删除或移动!');"
+                        +"</script>";
+                response.setContentType("text/html;charset=UTF-8");// 解决中文乱码
+                try {
+                    PrintWriter writer = response.getWriter();
+                    writer.write(str);
+                    writer.flush();
+                    writer.close();
+                } catch (Exception e) {e.printStackTrace();}
+                return;
+            }
+            ins = new BufferedInputStream(new FileInputStream(file));
+            byte []buffer = new byte[ins.available()];
+            ins.read(buffer);
+            response.reset();
+            response.addHeader("Content-Disposition", "attachment;filename=" +  java.net.URLEncoder.encode(fileName, "UTF-8"));
+            response.addHeader("Content-Length", "" + file.length());
+            ous = new BufferedOutputStream(response.getOutputStream());
+            response.setContentType("application/octet-stream");
+            ous.write(buffer);
+            ous.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(ins != null)
+                    ins.close();
+                if(ous != null)
+                    ous.close();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

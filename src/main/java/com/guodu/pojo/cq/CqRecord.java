@@ -104,6 +104,11 @@ public class CqRecord implements Serializable {
     private String zzlxname;
 
     /**
+     * 单位
+     */
+    private String yxdw;
+
+    /**
      * 变电站
      */
     private String bdz;

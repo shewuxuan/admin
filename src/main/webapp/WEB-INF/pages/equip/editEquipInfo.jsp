@@ -79,7 +79,7 @@
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <input type="hidden" id="oldZzlx" name="oldZzlx" value="${equipInfo.zzlx}"/>
                             <input type="hidden" id="zzlxKeyType"/>
-                            <select name="zzlx" id="zzlx" disabled style="height:25px; border:1px solid #CCC;">
+                            <select name="zzlx" id="zzlx" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
                         <th bgcolor="#FFFFFF"><p id="zbxh_p">DTU装置型号</p></th>
@@ -90,7 +90,7 @@
                     <tr>
                         <th bgcolor="#FFFFFF"><p>设备调度号</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <input type="text" name="azddDdh" id="azddDdh" value="${equipInfo.azddDdh}" style="height:25px; border:1px solid #CCC;"/>
+                            <input type="text" name="azddDdh" id="azddDdh" value="${equipInfo.azddDdh}" style="height:25px; border:1px solid #CCC;" readonly/>
                         </td>
                         <th bgcolor="#FFFFFF"><p id="sccs_p">DTU生产厂商</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -713,10 +713,15 @@
         return xlmc;
     }
     //展示详细信息
+    var isJDWD = ${equipInfo.jd != '' and equipInfo.wd != ''};//经纬度为空则不显示二维码
     function showInfo2(thisMarker,sbid) {
         var text = getEquipPhotoView(sbid);
+        var qrcImg = "&nbsp;";
+        if(isJDWD){
+                qrcImg = '&nbsp;&nbsp;&nbsp;<img width=\'180px\' height=\'180px\' src=\'/equip/createQRCodeByEquipInfo.action?sbid='+sbid+'\'>';
+        }
         var content = '<div id="descDiv" style="overflow-y:scroll; overflow-x:hidden; background-color:#f5f0f0;margin:0;line-height:20px;padding:15px;width:300px;height: 290px;">'
-            +'&nbsp;&nbsp;&nbsp;<img width=\'180px\' height=\'180px\' src=\'/equip/createQRCodeByEquipInfo.action?sbid='+sbid+'\'>'
+            +qrcImg
             +'<br/>&nbsp;<b>调度号：</b>'+azddDdh
             +'<br/>&nbsp;<b>装置类型：</b>'+choiceZzlxName(zzlx)
             +'<br/>&nbsp;<b>所属线路：</b>'+getSsxlName(ssxl)

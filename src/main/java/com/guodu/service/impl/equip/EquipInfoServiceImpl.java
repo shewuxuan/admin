@@ -3,7 +3,12 @@ package com.guodu.service.impl.equip;
 import com.guodu.mapper.equip.EquipInfoMapper;
 import com.guodu.pojo.equip.EquipInfo;
 import com.guodu.pojo.equip.EquipPhoto;
+import com.guodu.pojo.sys.SysDb;
+import com.guodu.pojo.sys.SysSsxl;
 import com.guodu.service.impl.BaseServiceImpl;
+import com.guodu.service.impl.sys.SysSccjServiceImpl;
+import com.guodu.service.sys.SysDbService;
+import com.guodu.service.sys.SysSsxlService;
 import com.guodu.util.FileHandleUtils;
 import com.guodu.util.QRCodeUtil;
 import com.guodu.util.StringUtils;
@@ -28,6 +33,10 @@ public class EquipInfoServiceImpl
 	EquipInfoMapper equipInfoMapper;
 	@Autowired
 	EquipPhotoServiceImpl equipPhotoServiceImpl;
+	@Autowired
+	private SysSccjServiceImpl sysSccjServiceImpl;
+	@Autowired
+	private SysDbService sysDbServiceImpl;
 
 	public EquipInfo selectByPrimaryKey(String sbid) { return this.equipInfoMapper.selectByPrimaryKey(sbid); }
 
@@ -36,9 +45,10 @@ public class EquipInfoServiceImpl
 	public List<EquipInfo> selectByAll(EquipInfo equipInfo) { return this.equipInfoMapper.selectByAll(equipInfo); }
 
 
-
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
 	public void txAddEquipAndPhoto(HttpServletRequest request, EquipInfo equipInfo, String sbid, String imgSavePath) throws Exception {
+		//挖坑：判断厂家是否存在
+		addSccj(equipInfo);
 		this.equipInfoMapper.insert(equipInfo);
 		List<MultipartFile> files = ((MultipartHttpServletRequest)request).getFiles("file");
 		//上传文件
@@ -96,6 +106,7 @@ public class EquipInfoServiceImpl
 			photo.setPPath(imgSavePath + pid + fileName);
 			this.equipPhotoServiceImpl.add(photo);
 		}
+		this.addSccj(equipInfo);
 		this.edit(equipInfo);
 	}
 
@@ -137,5 +148,34 @@ public class EquipInfoServiceImpl
 				break;
 		}
 		return name;
+	}
+
+
+	public void addSccj(EquipInfo equipInfo){
+		//添加未保存的模块厂家
+		String txmkcj = equipInfo.getTxmkcj() == null?"":equipInfo.getTxmkcj();
+		if(!txmkcj.equals("")) sysSccjServiceImpl.addCjmcByName(txmkcj);
+		//DTU生产厂商 || FTU厂家
+		String sccs = equipInfo.getSccs() == null?"":equipInfo.getSccs();
+		if(!sccs.equals("")) sysSccjServiceImpl.addCjmcByName(sccs);
+		//一次柜生产厂商 || 开关本体厂家
+		String sccsYcg = equipInfo.getSccsYcg() == null?"":equipInfo.getSccsYcg();
+		if(!sccsYcg.equals("")) sysSccjServiceImpl.addCjmcByName(sccsYcg);
+		//溢水生产厂商 || 通讯设备厂家
+		String sccsYs = equipInfo.getSccsYs() == null?"":equipInfo.getSccsYs();
+		if(!sccsYs.equals("")) sysSccjServiceImpl.addCjmcByName(sccsYs);
+		SysDb sysDb = new SysDb();
+		sysDb.setKeycode("zz_type");
+		sysDb.setKeyvalue(equipInfo.getZzlx());
+		String keytype = "";//根据装置类型判断添加的是dtu还是ftu
+		List<SysDb> sysDbs = sysDbServiceImpl.selectByAll(sysDb);
+		if(sysDbs != null && sysDbs.size()>0){
+			keytype = sysDbs.get(0).getKeytype();
+		}
+		if(keytype.equals("1")){//1.dtu 2.ftu
+			//消防生产厂商
+			String sccsXf = equipInfo.getSccsXf() == null?"":equipInfo.getSccsXf();
+			if(!sccsXf.equals("")) sysSccjServiceImpl.addCjmcByName(sccsXf);
+		}
 	}
 }

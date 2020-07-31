@@ -211,6 +211,7 @@ public class EquipInfoAction {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         try {
+            response.addHeader("Content-Disposition", "attachment;filename=" +  java.net.URLEncoder.encode(equipInfo.getAzddDdh()+".jpg", "UTF-8"));
             image = equipInfoServiceImpl.createQRCodeByEquipInfo(request,equipInfo);
             // 输出图象到页面
             ImageIO.write(image, "jpg", response.getOutputStream());
@@ -240,5 +241,20 @@ public class EquipInfoAction {
     public String selectListSccj(@RequestParam() Map<String,Object> param) {
         List<SysSccj> sysSccjList = sysSccjServiceImpl.selectList(param);
         return JSONUtil.toJsonStr(sysSccjList);
+    }
+
+    /***
+     * 下载图片
+     * @param form
+     * @param request
+     * @param response
+     */
+    @RequestMapping(value = {"/downLoadFileByFileId.action"}, produces = {"application/json;charset=UTF-8"})
+    public void downLoadFileByFileId(@RequestParam Map<String, Object> form,HttpServletRequest request,HttpServletResponse response){
+        String pId = (String)form.get("pId");
+        EquipPhoto equipPhoto = equipPhotoServiceImpl.selectById(pId);
+        String oldPath = equipPhoto.getPPath();
+        String suffix = oldPath.substring(oldPath.lastIndexOf('.'));
+        FileHandleUtils.downloadSingleFile(response,equipPhoto.getPPath(),equipPhoto.getPName()==""?"下载"+suffix:equipPhoto.getPName()+suffix);
     }
 }

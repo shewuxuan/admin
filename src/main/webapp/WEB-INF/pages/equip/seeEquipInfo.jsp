@@ -28,7 +28,7 @@
             <table width="100%" cellpadding="0" cellspacing="1" bgcolor="#c6c6c6">
                 <tbody>
                     <tr>
-                        <span bgcolor="#FFFFFF" style="text-align:left; " colspan="4">
+                        <span id="map_span" bgcolor="#FFFFFF" style="text-align:left; " colspan="4">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <span class="label">&nbsp;&nbsp;经度:</span>
                             <span>${equipInfo.jd}</span>
@@ -39,6 +39,7 @@
                             <div class="main-div" style="height: 426px;width: 800px;margin-top: 5px;">
                                 <div id='allmap' style='width:  95%; height:400px; position: absolute;'></div>
                             </div>
+                        </span>
                     </tr>
                     <tr>
                         <th bgcolor="#FFFFFF"><p>所属区域</p></th>
@@ -181,9 +182,11 @@
                     </tr>
                     <tr>
                             <td bgcolor="#FFFFFF" colspan="4" style="text-align: left;">
-                                <div style='float: left;margin-left: 60px;' > <img src='/equip/createQRCodeByEquipInfo.action?sbid=${equipInfo.sbid}' height="100" class="pimg"><p><b>${equipInfo.zdmc}</b></p></div>
+                                <c:if test="${equipInfo.jd != '' and equipInfo.wd != ''}">
+                                    <div style='float: left;margin-left: 60px;' > <img src='/equip/createQRCodeByEquipInfo.action?sbid=${equipInfo.sbid}' name="sbid0" id="${equipInfo.sbid}" height="100" class="pimg"><p><b>${equipInfo.zdmc}</b></p></div>
+                                </c:if>
                                 <c:forEach items="${files}" var="file" varStatus="status">
-                                    <div style='float: left;margin-left: 60px;' > <img src="/equip/getEquipPhotoView.action?pid=${file.PID}" height="100" class="pimg"><p><b>${file.P_NAME}</b></p></div>
+                                    <div style='float: left;margin-left: 60px;' > <img src="/equip/getEquipPhotoView.action?pid=${file.PID}" id="${file.PID}" name="fileImg" height="100" class="pimg"><p><b>${file.P_NAME}</b></p></div>
                                 </c:forEach>
                             </td>
                     </tr>
@@ -197,7 +200,11 @@
             </table>
             <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
                 <div id="innerdiv" style="position:absolute;">
-                    <img id="bigimg" style="border:1px solid #fff;" src="" />
+                    <input type="hidden" value="" id="pImgId">
+                    <input type="hidden" value="" id="pTypeName">
+                    <img id="bigimg" style="border:1px solid #fff;" src="" />&nbsp;&nbsp;
+                    <input type="button" onclick="downloadImgByPid();" name="button" value="下载图片"
+                           class="iput_m" style="height:25px;background: rgb(81,173,237);border-radius: 20%;"/>
                 </div>
             </div>
         </form>
@@ -205,6 +212,16 @@
 </div>
 <%--//调用百度地图--%>
 <script type="text/javascript">
+    //下载图片
+    function downloadImgByPid(){
+        var pImgId = $("#pImgId").val();
+        var pTypeName = $("#pTypeName").val();
+        if(pTypeName =='sbid0'){
+            window.location.href ='${ctx}/equip/createQRCodeByEquipInfo.action?sbid='+pImgId;
+        }else{
+            window.location.href ='${ctx}/equip/downLoadFileByFileId.action?pId='+pImgId;
+        }
+    }
     // 变电站
     $("#bdz").append("<option value=''>全部</option>");
     $.get("/ssxl/selectByGroup/bdz", function (data) {
@@ -257,12 +274,17 @@
     $(function(){
         $(".pimg").click(function(){
             var _this = $(this);//将当前的pimg元素作为_this传入函数
+            var pTypeName = _this.attr("name");
+            var pId = _this.attr("id");
+            $("#pImgId").val(pId);
+            $("#pTypeName").val(pTypeName);
             var src = _this.attr("src");//获取当前点击的pimg元素中的src属性
             imgShow("#outerdiv", "#innerdiv", "#bigimg", src);
         });
     });
 
     function divImgView(imgId) {
+        $("#pImgId").val(imgId);
         var src = '/equip/getEquipPhotoView.action?pid='+imgId;
         imgShow("#outerdiv", "#innerdiv", "#bigimg", src);
     }
@@ -431,10 +453,15 @@
         return xlmc;
     }
     //点击地图时间处理
+    var isJDWD = ${equipInfo.jd != '' and equipInfo.wd != ''};//经纬度为空则不显示二维码
     function showInfo(thisMarker,point) {
         var text = getEquipPhotoView(sbid);
+        var qrcImg = "&nbsp;";
+        if(isJDWD){
+            qrcImg = '&nbsp;&nbsp;&nbsp;<img width=\'180px\' height=\'180px\' src=\'/equip/createQRCodeByEquipInfo.action?sbid='+sbid+'\'>';
+        }
         var content = '<div id="descDiv" style="overflow-y:scroll; overflow-x:hidden; background-color:#f5f0f0;margin:0;line-height:20px;padding:15px;width:300px;height: 290px;">'
-            +'&nbsp;&nbsp;&nbsp;<img width=\'180px\' height=\'180px\' src=\'/equip/createQRCodeByEquipInfo.action?sbid='+sbid+'\'>'
+            +qrcImg
             +'<br/>&nbsp;<b>调度号：</b>'+azddDdh
             +'<br/>&nbsp;<b>装置类型：</b>'+choiceZzlxName(zzlx)
             +'<br/>&nbsp;<b>所属线路：</b>'+getSsxlName(ssxl)
@@ -523,6 +550,10 @@
                 }
             }
         });
+
+        if(!isJDWD){
+            $("#map_span").hide();
+        }
 
         function changeToFtu(){
             $("#wlwkh_p").html(" 无线卡号");

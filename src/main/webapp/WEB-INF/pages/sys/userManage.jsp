@@ -51,10 +51,6 @@
                     },
                     success : function(data) {
                         alert(data.message);
-                        if(data.code == 0){
-                            window.opener.location.reload();
-                            //window.close();
-                        }
                     },
                     error : function() {
                         alert("导入出错！");
@@ -166,7 +162,7 @@
                             <tr>
                                 <td height="33" colspan="2" bgcolor="#f5f2ea">
                                     <input type="button" onclick="changePwd()" name="button" value="确认" class="iput_m"
-                                           style="height:25px;""/>
+                                           style="height:25px;"/>
                                 </td>
                             </tr>
                             </tbody>
@@ -176,10 +172,13 @@
             </li>
 
             <%--线路管理--%>
+            <form id="myForm">
             <li style="display:none;" id="li4">
-                &nbsp;&nbsp;<input style='float: lefet;border:0px;' id='file' name='file' type='file'/>
+                &nbsp;&nbsp;<input style='float: left;border:0px;' id='file' name='file' type='file'/>
                 <input type="button" name="button"  value="导入" class="iput_m" style="" onclick="importItems()"/>
+                &nbsp;&nbsp;<a href="/static/template/所属线路导入模板.xls">下载模板</a>
             </li>
+            </form>
         </ul>
     </div>
 </div>

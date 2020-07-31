@@ -241,11 +241,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    var curr_time = new Date();
-    var strDate = curr_time.getFullYear() + "-";
-    strDate += curr_time.getMonth() + 1 + "-";
-    strDate += curr_time.getDate() + " ";
-    $("#scrq").val(strDate);
     $(function () {
         $.post("/ssqy/selectSsqyByAll", function (data) {
             let ssqy = JSON.parse(data);
@@ -285,7 +280,7 @@
         $("#rtudz_p").html("RTU地址");
         $("#dkh_p").html("端口号");
         $("#scrq_p").html("生产日期");
-        $("#scrq_p2").html('<input type="text" name="scrq" id="scrq" value="'+strDate+'" style="height:25px; border:1px solid #CCC;"/>');
+        $("#scrq_p2").html('<input type="text" name="scrq" id="scrq"  style="height:25px; border:1px solid #CCC;"/>');
         $("#rjbbJym_p").html("软件版本及校验码");
         $("#rjbbJym_p2").html(' <input type="text" name="rjbbJym" id="rjbbJym" ondblclick="defaultClick(this)" style="height:25px; border:1px solid #CCC;"/>');
         $("#yjbb_p").html("硬件版本");
@@ -327,8 +322,8 @@
         $("#sccsYcg_p").html("开关本体厂家");
         $("#tsryxmYcg_p").html("开关本体型号");
         $("#zbxhYs_p").html("开关本体生产日期");
-        $("#sccsYs_p").html("通讯设备型号");
-        $("#tsryxmYs_p").html("通讯设备厂家");
+        $("#sccsYs_p").html("通讯设备厂家");
+        $("#tsryxmYs_p").html("通讯设备型号");
         $("#zbxhXf_p").html("通讯设备生产日期");
         $("#sccsXf_p").html("调试人员姓名");
         $("#tsryxmXf_p").html("");

@@ -17,6 +17,7 @@
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/js/ssqy_yxdw_bdz_xlmc.js"></script>
 </head>
 <body>
 <div class="right_nav">
@@ -36,18 +37,20 @@
                 <div>
                     <div class="tj">
                         <form  method="post">
-                            <span>日期</span>
+                            <span>所属区域</span><select name="ssqy" id="ssqy" onchange="changeSsqy()" class="right_ipu2"></select>
+                            <span id="yxdw_span">单位<select id="yxdw" onchange="changeYxdw()"></select></span>
+                            <span>变电站</span><select id="bdz" onchange="changeBdz()"></select>
+                            <span>线路</span><select id="xlmc"></select>
+                            &nbsp;&nbsp;&nbsp;<span>装置类型</span><select  name="zzlx" id="zzlx" ></select>
+                            &nbsp;&nbsp;<span>日期</span>
                             <input class="easyui-datebox" name="startTssj" id="startTssj"
                                    data-options="required:true" style="width:120px"/>
                             &nbsp;至&nbsp;
                             <input class="easyui-datebox" name="endTssj" id="endTssj"
                                    data-options="required:true" style="width:120px"/>
-                            &nbsp;<span>设备调度号</span><input id="azddDdh" type="text" class="right_ipu2"/>
-                            &nbsp;&nbsp;<span>装置类型</span><select  name="zzlx" id="zzlx"  style="height:25px; border:1px solid #CCC;">
+                            &nbsp;&nbsp;<span>设备调度号</span><input id="azddDdh" type="text" class="right_ipu2"/>
+
                         </select>
-                            &nbsp;<span>所属区域</span>
-                            <select  name="ssqy" id="ssqy"  style="height:25px; border:1px solid #CCC;">
-                            </select>
                             <input type="button" name="button"  value="查 询" class="iput_m" onclick="searchList1()"/>
                         </form>
                     </div>
@@ -86,19 +89,17 @@
                 <div>
                     <div class="tj">
                         <form  method="post">
-                            <span>日期</span>
+                            <span>所属区域</span><select id="ssqy3" onchange="changeSsqy3()" class="right_ipu2"></select>
+                            <span id="yxdw_span3">单位<select id="yxdw3" onchange="changeYxdw3()"></select></span>
+                            <span>变电站</span><select id="bdz3" onchange="changeBdz3()"></select>
+                            <span>线路</span><select id="xlmc3"></select>
+                            &nbsp;&nbsp;<span>调度号</span>&nbsp;<input id="azddDdh3" type="text" class="right_ipu2"/>
+                            &nbsp;&nbsp;<span>日期</span>
                             <input class="easyui-datebox" name="startTssj" id="startTssj3"
                                    data-options="required:true" style="width:120px"/>
                             &nbsp;至&nbsp;
                             <input class="easyui-datebox" name="endTssj" id="endTssj3"
                                    data-options="required:true" style="width:120px"/>
-
-                            &nbsp;<span>调度号</span>&nbsp;<input id="azddDdh3" type="text" class="right_ipu2"/>
-
-                            &nbsp;<span>所属线路</span>
-                            <select id="bdz3" style="height:25px;width: 100px; border:1px solid #CCC;"></select>
-                            <select id="xlmc3" style="height:25px;width: 100px; border:1px solid #CCC;"></select>
-
                             <input type="button" name="button"  value="查 询" class="iput_m" onclick="searchList3()"/>
                             <%--<input type="button" name="button"  value="创 建" class="iput_m" onclick="g1()">--%>
                         </form>
@@ -115,24 +116,6 @@
 </div>
 <script>
     $(function () {
-        <%-- 所属区域 --%>
-        $("#ssqy").append("<option value=''>全部</option>");
-        $.get("/ssqy/selectSsqyByAll", function (data) {
-            let ssqy = JSON.parse(data);
-            for (let i = 0, length = ssqy.length; i < length; i++) {
-                $("#ssqy").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
-            }
-        });
-
-        <%-- 装置类型 --%>
-        $("#zzlx").append("<option value=''>全部</option>");
-        $.get("/zzlx/selectZzlxByAll", function (data) {
-            let zzlx = JSON.parse(data);
-            for (let i = 0, length = zzlx.length; i < length; i++) {
-                $("#zzlx").append("<option value='" + zzlx[i].keyvalue + "'>" + zzlx[i].keymemo + "</option>");
-            }
-        });
-
         $('#tableList1').datagrid({
             iconCls:'icon-ok',
             //queryParams: getQueryParams(),
@@ -342,6 +325,9 @@
         queryParams.azddDdh = $('#azddDdh').val();
         queryParams.zzlx = $('#zzlx').val();
         queryParams.ssqy = $('#ssqy').val();
+        queryParams.yxdw = $('#yxdw').val();
+        queryParams.bdz = $('#bdz').val();
+        queryParams.xlmc = $('#xlmc').val();
         return queryParams;
     }
     function searchList1(){
@@ -453,39 +439,82 @@
 </script>
 <%--配网保护--%>
 <script>
-    // 变电站
-    $("#bdz3").append("<option value=''>全部</option>");
-    $.get("/ssxl/selectByGroup/bdz", function (data) {
-        data = JSON.parse(data);
-        $.each(data, function (i) {
-            $("#bdz3").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
-        })
+    $(function () {
+        $.post("/ssqy/selectSsqyByAll", function (data) {
+            let ssqy = JSON.parse(data);
+            $("#ssqy3").append("<option value='' selected>全部</option>");
+            for (let i = 0, length = ssqy.length; i < length; i++) {
+                $("#ssqy3").append("<option value='" + ssqy[i].keyvalue + "'>" + ssqy[i].keymemo + "</option>");
+            }
+        });
     });
-    // 线路名称
-    $("#xlmc3").append("<option value=''>全部</option>");
 
-    // 变电站更改时，线路名称随之更改
-    $("#bdz3").change(function () {
-        if ($("#bdz3").val() === '') {
-            $("#xlmc3").empty();
-            $("#xlmc3").append("<option value=''>全部</option>");
-            return;
+    //改变所属区域
+    function changeSsqy3(){
+        var ssqy = $("#ssqy3").val();
+        $("#yxdw3").empty();
+        $("#bdz3").empty();
+        $("#xlmc3").empty();
+        $("#yxdw3").append("<option value=''>全部</option>");
+        if(ssqy != null && ssqy != '') {
+            //若选择石景山
+            if(ssqy ==1){
+                $("#yxdw_span3").hide();
+                $("#bdz3").empty();
+                $("#xlmc3").empty();
+                $("#bdz3").append("<option value=''>全部</option>");
+                $.get("/ssxl/selectByGroup/bdz", {'ssqy':$("#ssqy3").val(),'yxdw':'石景山'},function (data) {
+                    data = JSON.parse(data);
+                    $.each(data, function (i) {
+                        $("#bdz3").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
+                    })
+                });
+            }else{
+                $("#yxdw_span3").show();
+                $.get("/ssxl/selectByGroup/yxdw", {'ssqy':ssqy},function (data) {
+                    data = JSON.parse(data);
+                    $.each(data, function (i) {
+                        $("#yxdw3").append("<option value='" + data[i].yxdw + "'>" + data[i].yxdw + "</option>");
+                    })
+                });
+            }
+        }else{
+            $("#yxdw3").empty();
         }
+    }
+    //秀昂贵运行单位
+    function changeYxdw3(){
+        var yxdw = $("#yxdw3").val();
+        $("#bdz3").empty();
+        $("#xlmc3").empty();
+        if(yxdw == '') return;
+        $("#bdz3").append("<option value=''>全部</option>");
+        $.get("/ssxl/selectByGroup/bdz", {'ssqy':$("#ssqy3").val(),'yxdw':$("#yxdw3").val()},function (data) {
+            data = JSON.parse(data);
+            $.each(data, function (i) {
+                $("#bdz3").append("<option value='" + data[i].bdz + "'>" + data[i].bdz + "</option>");
+            })
+        });
+    }
+    //修改变电站
+    function changeBdz3(){
         $("#xlmc3").empty();
         $("#xlmc3").append("<option value=''>全部</option>");
-        $.get("/ssxl/selectByGroup/xlmc",{"bdz": $("#bdz3").val()}, function (data) {
+        $.get("/ssxl/selectByGroup/xlmc", {'ssqy':$("#ssqy3").val(),'yxdw':$("#yxdw3").val(),'bdz': $("#bdz3").val()}, function (data) {
             data = JSON.parse(data);
             $.each(data, function (i) {
                 $("#xlmc3").append("<option value='" + data[i].id + "'>" + data[i].xlmc + "</option>");
             })
         });
-    });
+    }
 
     function getQueryParams3() {
         var queryParams = new Object();
         queryParams.startTssj = $('#startTssj3').datebox('getValue');
         queryParams.endTssj = $('#endTssj3').datebox('getValue');
         queryParams.azddDdh = $('#azddDdh3').val();
+        queryParams.ssqy = $('#ssqy3').val();
+        queryParams.yxdw = $('#yxdw3').val();
         queryParams.bdz = $('#bdz3').val();
         queryParams.xlmc = $('#xlmc3').val();
         return queryParams;
