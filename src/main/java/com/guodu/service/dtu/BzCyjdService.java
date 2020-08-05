@@ -34,6 +34,6 @@ public interface BzCyjdService {
 
     int updateBatchSelective(List<BzCyjd> list);
 
-    String selectByPage(Map<String, Object> map);
+    List<BzCyjd> selectByPage(BzCyjd record);
 }
 

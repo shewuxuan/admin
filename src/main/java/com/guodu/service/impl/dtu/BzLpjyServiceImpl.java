@@ -3,9 +3,13 @@ package com.guodu.service.impl.dtu;
 import cn.hutool.json.JSONUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.guodu.mapper.sys.SysDbMapper;
+import com.guodu.pojo.sys.SysDb;
+import com.guodu.service.sys.SysDbService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +29,8 @@ public class BzLpjyServiceImpl implements BzLpjyService {
 
     @Resource
     private BzLpjyMapper bzLpjyMapper;
+    @Resource
+    private SysDbMapper sysDbMapper;
 
     @Override
     public int deleteByPrimaryKey(String id) {
@@ -72,16 +78,22 @@ public class BzLpjyServiceImpl implements BzLpjyService {
     }
 
     @Override
-    public String selectByPage(Map<String, Object> map) {
-        // pagehelper分页
-        PageHelper.startPage((Integer) map.get("page"), (Integer) map.get("rows"));
-        List<BzLpjy> bzLpjys = bzLpjyMapper.selectByPage((BzLpjy) map.get("bzLpjy"));
-        PageInfo<BzLpjy> pageInfo = new PageInfo<>(bzLpjys);
-
-        Map<String, Object> respMap = new HashMap<>(16);
-        respMap.put("rows", pageInfo.getList());
-        respMap.put("total", pageInfo.getTotal());
-        return JSONUtil.toJsonStr(respMap);
+    public List<BzLpjy> selectByPage(BzLpjy record) {
+        List<BzLpjy> bzLpjys = bzLpjyMapper.selectByPage(record);
+        // 查询装置类型名
+        for (BzLpjy bzLpjy : bzLpjys) {
+            List<String> zzlxname = new ArrayList<>();
+            String[] split = bzLpjy.getZzlx().split(",");
+            for (String s : split) {
+                SysDb sysDb = new SysDb();
+                sysDb.setKeycode("zz_type");
+                sysDb.setKeyvalue(s);
+                sysDb = sysDbMapper.selectByKeycodeAndKeyValue(sysDb);
+                zzlxname.add(sysDb.getKeymemo());
+            }
+            bzLpjy.setZzlxname(zzlxname.toString());
+        }
+        return bzLpjys;
     }
 
 }

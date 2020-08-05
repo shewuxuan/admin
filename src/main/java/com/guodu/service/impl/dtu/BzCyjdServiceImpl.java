@@ -3,9 +3,14 @@ package com.guodu.service.impl.dtu;
 import cn.hutool.json.JSONUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.guodu.mapper.sys.SysDbMapper;
+import com.guodu.pojo.dtu.BzHldz;
+import com.guodu.pojo.sys.SysDb;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +30,8 @@ public class BzCyjdServiceImpl implements BzCyjdService {
 
     @Resource
     private BzCyjdMapper bzCyjdMapper;
+    @Autowired
+    private SysDbMapper sysDbMapper;
 
     @Override
     public int deleteByPrimaryKey(String id) {
@@ -77,16 +84,22 @@ public class BzCyjdServiceImpl implements BzCyjdService {
     }
 
     @Override
-    public String selectByPage(Map<String, Object> map) {
-        // pagehelper分页
-        PageHelper.startPage((Integer) map.get("page"), (Integer) map.get("rows"));
-        List<BzCyjd> bzCyjds = bzCyjdMapper.selectByPage((BzCyjd) map.get("bzCyjd"));
-        PageInfo<BzCyjd> pageInfo = new PageInfo<>(bzCyjds);
-
-        Map<String, Object> respMap = new HashMap<>(16);
-        respMap.put("rows", pageInfo.getList());
-        respMap.put("total", pageInfo.getTotal());
-        return JSONUtil.toJsonStr(respMap);
+    public List<BzCyjd> selectByPage(BzCyjd record) {
+        List<BzCyjd> bzCyjds = bzCyjdMapper.selectByPage(record);
+        // 查询装置类型名
+        for (BzCyjd bzcyjd : bzCyjds) {
+            List<String> zzlxname = new ArrayList<>();
+            String[] split = bzcyjd.getZzlx().split(",");
+            for (String s : split) {
+                SysDb sysDb = new SysDb();
+                sysDb.setKeycode("zz_type");
+                sysDb.setKeyvalue(s);
+                sysDb = sysDbMapper.selectByKeycodeAndKeyValue(sysDb);
+                zzlxname.add(sysDb.getKeymemo());
+            }
+            bzcyjd.setZzlxname(zzlxname.toString());
+        }
+        return bzCyjds;
     }
 }
 

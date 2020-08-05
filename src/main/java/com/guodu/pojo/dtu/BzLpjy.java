@@ -44,6 +44,7 @@ public class BzLpjy implements Serializable {
      * 装置类型,多个装置类型逗号隔开
      */
     private String zzlx;
+    private String zzlxname;
 
     private static final long serialVersionUID = 1L;
 }

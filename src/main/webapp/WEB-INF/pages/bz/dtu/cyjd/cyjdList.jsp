@@ -81,10 +81,10 @@
             columns: [[
                 // {field:'id',halign: 'center',align:"center",title:'ID',width:'10%'},
                 {field: 'ssqyname', halign: 'center', align: "center", title: '所属区域', width: '10%'},
-                // {field: 'zzlx', halign: 'center', align: "center", title: '装置类型', width: '10%'},
+                {field: 'zzlxname', halign: 'center', align: "center", title: '装置类型', width: '20%'},
                 {field: 'jg', halign: 'center', align: "center", title: '间隔', width: '10%'},        // 改
                 {field: 'csgn', halign: 'center', align: "center", title: '测试功能', width: '33%'},        // 改
-                {field: 'clx', halign: 'center', align: "center", title: '测量项', width: '25%'},     // 改
+                {field: 'clx', halign: 'center', align: "center", title: '测量项', width: '10%'},     // 改
                 {
                     field: 'trans',
                     halign: 'center',
