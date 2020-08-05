@@ -50,7 +50,7 @@ public class EquipInfoAction {
     @RequestMapping(value = {"toEquipInfoView.action"}, produces = {"application/json;charset=UTF-8"})
     public ModelAndView toEquipInfoView(HttpServletRequest request) {
         ModelAndView view = new ModelAndView("equip/equipInfoList");
-        //view.addObject("funcMap", Auth.getAuth(request).getRoleFunc());//暂时没有添加权限
+        view.addObject("funcMap", Auth.getAuth(request).getRoleFunc());//暂时没有添加权限
         return view;
     }
 
@@ -58,6 +58,10 @@ public class EquipInfoAction {
     public Object selectListEquipInfo(HttpServletRequest request, @RequestParam Map<String, Object> form) {
         Map<String, Object> res = new HashMap<String, Object>();
         try {
+            if(form.get("ssqy").equals("")){
+                Auth auth = Auth.getAuth(request);
+                form.put("ssqy",auth.getZwSsqy());
+            }
             res = this.equipInfoServiceImpl.selectPage(form);
         } catch (Exception e) {
             e.printStackTrace();
@@ -193,7 +197,7 @@ public class EquipInfoAction {
         EquipInfo equipInfo = equipInfoServiceImpl.selectById(request.getParameter("sbid"));
         //转换所属线路
         SysSsxl sysSsxl = sysSsxlServiceImpl.selectByPrimaryKey(equipInfo.getSsxl());
-        equipInfo.setSsxl(sysSsxl.getBdz()+sysSsxl.getXlmc());
+        equipInfo.setSsxl(sysSsxl.getYxdw()+sysSsxl.getBdz()+sysSsxl.getXlmc());
         //转换装置类型
         SysDb sysDb = new SysDb();
         sysDb.setKeycode("zz_type");

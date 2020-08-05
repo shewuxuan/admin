@@ -100,7 +100,7 @@
 		from pwbh_jbxx j
 		left join sys_ssxl s on j.ssxl = s.id
 		where 1=1
-		<if test="ssqy!=null and ssqy!=''">and j.SSQY=#{ssqy} </if>
+		<if test="ssqy!=null and ssqy!=''">and j.SSQY in (${ssqy})</if>
 		<if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw} </if>
 		<if test="bdz != null and bdz != ''"> and s.bdz=#{bdz} </if>
 		<if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc} </if>

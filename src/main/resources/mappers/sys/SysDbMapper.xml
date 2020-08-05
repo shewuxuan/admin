@@ -56,7 +56,7 @@
                 and keycode=#{keycode,jdbcType=VARCHAR}
             </if>
             <if test="keyvalue != null and keyvalue != ''">
-                and keyvalue=#{keyvalue,jdbcType=VARCHAR}
+                and keyvalue in (${keyvalue})
             </if>
             <if test="keymemo != null and keymemo != ''">
                 and keymemo=#{keymemo,jdbcType=VARCHAR}

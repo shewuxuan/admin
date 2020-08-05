@@ -658,10 +658,10 @@
             return;
         }
         $("#ssxl").val($("#xlmc").val());
-        if($("#ssxl").val() == ""){
+        /*if($("#ssxl").val() == ""){
             alert("请选择所属线路！");
             return;
-        }
+        }*/
 
         $.ajax({
             url: '/equip/addEquipInfo.action',

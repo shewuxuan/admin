@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.guodu.pojo.dtu.Jbxx;
 import com.guodu.pojo.dtu.JbxxPhoto;
+import com.guodu.pojo.sys.Auth;
 import com.guodu.service.*;
 import com.guodu.service.dtu.JbxxService;
 import com.guodu.service.impl.cq.CqRecordServiceImpl;
@@ -140,6 +141,10 @@ public class JbxxController {
     public Object selectListJbxx(HttpServletRequest request, @RequestParam Map<String, Object> form) {
         Map<String, Object> res = new HashMap<String, Object>();
         try {
+            if(form.get("ssqy").equals("")){
+                Auth auth = Auth.getAuth(request);
+                form.put("ssqy",auth.getZwSsqy());
+            }
             res = this.jbxxServiceImpl.selectPage(form);
         } catch (Exception e) {
             e.printStackTrace();

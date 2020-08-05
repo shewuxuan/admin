@@ -1,5 +1,6 @@
 package com.guodu.service.impl.sys;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.guodu.mapper.sys.RoleInfoMapper;
@@ -32,27 +33,27 @@ public class RoleInfoServiceImpl extends BaseServiceImpl<RoleInfo> {
 	@Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 	public void txAddRoleInfoAndRoleFunc(RoleInfo roleInfo,String[] authValue,String[] funcCode) {
 		 this.roleInfoMapper.insert(roleInfo);
-		 /*String roleId =  roleInfo.getRoleId();
+		 String roleId =  roleInfo.getRoleId();
 		 Map<String,Object> vo = new HashMap<String,Object>();
 		 for(int i = 0;i<authValue.length;i++){
 			 vo.put("roleId", roleId);
 			 vo.put("authValue", Integer.valueOf(authValue[i]));
 			 vo.put("funcCode", funcCode[i]);
 			 this.roleInfoMapper.addRoleFuncByRoleId(vo);
-		 }*/
+		 }
 		 
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 	public void txUpdateRoleFuncByRoleId(RoleInfo roleInfo,String[] authValue,String[] funcCode) {
 		 this.roleInfoMapper.update(roleInfo);
-		 /*Map<String,Object> vo = new HashMap<String,Object>();
+		 Map<String,Object> vo = new HashMap<String,Object>();
 		 for(int i = 0;i<authValue.length;i++){
 			 vo.put("roleId", roleInfo.getRoleId());
 			 vo.put("authValue", Integer.valueOf(authValue[i]));
 			 vo.put("funcCode", funcCode[i]);
 			 this.roleInfoMapper.updateRoleFuncByRoleId(vo);
-		 }*/
+		 }
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)

@@ -135,7 +135,7 @@
         and id=#{id,jdbcType=VARCHAR}
       </if>
       <if test="ssqy != null and ssqy != ''">
-        and ssqy=#{ssqy,jdbcType=VARCHAR}
+        and ssqy in (${ssqy})
       </if>
       <if test="nr != null and nr != ''">
         and nr like concat('%', #{nr,jdbcType=VARCHAR}, '%')

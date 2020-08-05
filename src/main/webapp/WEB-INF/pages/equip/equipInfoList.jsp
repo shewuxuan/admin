@@ -37,8 +37,10 @@
 						<%-- &nbsp;<span>所属区域</span>&nbsp;<select  name="ssqy" id="ssqy"  style="height:25px; border:1px solid #CCC;"></select>--%>
 					&nbsp;&nbsp;<span>装置类型</span>&nbsp;<select  name="zzlx" id="zzlx"  style="height:25px; border:1px solid #CCC;"></select>
                      &nbsp;<span>设备调度号</span>&nbsp;<input id="azddDdh" type="text" class="right_ipu2"/>
-					<input type="button" name="button"  value="查 询" class="iput_m" onclick="searchList()"/>
-					<input type="button" name="button"  value="创 建" class="iput_m" onclick="g1()">
+						 <input type="button" name="button"  value="查 询" class="iput_m" onclick="searchList()"/>
+						<c:if test="${funcMap.sbgl == 2}">
+							<input type="button" name="button"  value="创 建" class="iput_m" onclick="g1()">
+						</c:if>
 					<input type="button" name="button"  value="设备地图" class="iput_m" onclick="g2()">
 
 				</form>
@@ -66,6 +68,8 @@ function searchList(){
 	$('#tableList').datagrid('options').queryParams = getQueryParams();
     $('#tableList').datagrid("load");
 }
+
+var sbglFun = '${funcMap.sbgl}';
 	$(function(){
 		$('#tableList').datagrid({
 			iconCls:'icon-ok',
@@ -100,7 +104,11 @@ function searchList(){
 							},
 							success: function (data) {
 								let data2 = JSON.parse(data);
-								xlmc = data2.bdz+"-"+data2.xlmc;
+								var temp = '';
+								if(data2.ssqy == 1){temp="";}
+								if(data2.ssqy == 2){temp="门头沟-";}
+								if(data2.ssqy == 3){temp="朝阳-";}
+								xlmc = temp+data2.bdz+"-"+data2.xlmc;
 							},
 							error: function () {
 								//alert("页面加载错误！");
@@ -115,6 +123,7 @@ function searchList(){
 						var txt0 = '<button href="javascript:void(0);" onclick="seeEquipInfo(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
 						var txt1 = '&nbsp;<button href="javascript:void(0);" onclick="editEquipInfo(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '编辑' + '</button>';
 						var txt2 = '&nbsp;<button href="javascript:void(0);" onclick="delEquipInfo(\'' + row.SBID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
+						if(sbglFun !=2){return txt0;}
 						return txt0+txt1+txt2;
 					}},
 			]],

@@ -88,12 +88,20 @@ public class LoginAction {
             res.put("url", "login");
             return JSON.toJSONString(res);
         }
+
+        if (!userInfo.getUserType().equals("0")) {
+            res.put("code", "-1");
+            res.put("message", "无登录权限！");
+            res.put("url", "login");
+            return JSON.toJSONString(res);
+        }
         Auth auth = new Auth();
         auth.setUserType(userInfo.getUserType());
         auth.setUserId(userInfo.getUserId());
         auth.setName(userInfo.getUserName());
         auth.setLoginname(userInfo.getLoginName());
         auth.setRoleId(userInfo.getRoleId());
+        auth.setZwSsqy(userInfo.getZw());
         request.getSession().removeAttribute("auth"); // 先清空一下
         request.getSession().setAttribute("auth", auth);
         res.put("code", "0");
@@ -117,13 +125,14 @@ public class LoginAction {
         Map<String, Object> funcMap = this.userInfoServiceImpl.getComboTreeData(Auth.getAuth(request).getRoleId());
         Auth.getAuth(request).setRoleFunc(funcMap);
         view.addObject("funcMap", funcMap);
-        view.addObject("userName", Auth.getAuth(request).getName());
         return view;
     }
 
     @RequestMapping(value = {"toTopView.action", "/"}, produces = {"application/json;charset=UTF-8"})
     public ModelAndView main1(HttpServletRequest request) {
-        return new ModelAndView("/top");
+        ModelAndView view = new ModelAndView("/top");
+        view.addObject("loginName",Auth.getAuth(request).getLoginname());
+        return view;
     }
 
     @RequestMapping(value = {"toLeftView.action", "/"}, produces = {"application/json;charset=UTF-8"})

@@ -372,6 +372,7 @@
         db1.keymemo as ssqyname,
         db2.keymemo as qxflname,
         db3.keymemo as zzlxname,
+        ss.yxdw as yxdw,
         ss.bdz as bdz,
         ss.xlmc as xlmc
         from cq_record cq
@@ -390,7 +391,7 @@
                 and sbid=#{sbid,jdbcType=VARCHAR}
             </if>
             <if test="ssqy != null and ssqy != ''">
-                and cq.ssqy=#{ssqy,jdbcType=VARCHAR}
+                and cq.ssqy in (${ssqy})
             </if>
             <if test="ssxl != null and ssxl != ''">
                 and ssxl=#{ssxl,jdbcType=VARCHAR}
@@ -452,13 +453,15 @@
     <select id="selectPageCqCount" resultType="java.util.Map" parameterType="java.util.Map">
         select  distinct c.azdd_ddh,
             sys.keymemo ssqy,
-            concat(s.bdz,s.xlmc) ssxl
+            s.yxdw,
+            s.bdz,
+            s.xlmc
         from cq_record c left join sys_ssxl  s on c.ssxl = s.id
         left join sys_db sys on c.ssqy = sys.keyvalue
         where sys.keycode = 'region'
         <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and c.cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
         <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and c.cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
-        <if test="ssqy != null and ssqy != ''"> and c.ssqy=#{ssqy,jdbcType=VARCHAR} </if>
+        <if test="ssqy != null and ssqy != ''"> and  c.ssqy in (${ssqy})</if>
         <if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw,jdbcType=VARCHAR} </if>
         <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz,jdbcType=VARCHAR} </if>
         <if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc,jdbcType=VARCHAR} </if>
@@ -474,7 +477,7 @@
      	where 1=1
         <if test="startCqrq!=null and startCqrq!=''"> <![CDATA[ and c.cqrq >= str_to_date(#{startCqrq},'%Y-%m-%d') ]]> </if>
         <if test="endCqrq!=null and endCqrq!=''"> <![CDATA[ and c.cqrq <= str_to_date(#{endCqrq},'%Y-%m-%d') ]]> </if>
-        <if test="ssqy != null and ssqy != ''"> and c.ssqy=#{ssqy,jdbcType=VARCHAR} </if>
+        <if test="ssqy != null and ssqy != ''"> and  c.ssqy in (${ssqy}) </if>
         <if test="azddDdh != null and azddDdh != ''"> and c.azdd_ddh=#{azddDdh,jdbcType=VARCHAR} </if>
         <if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw,jdbcType=VARCHAR} </if>
         <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz,jdbcType=VARCHAR} </if>
@@ -484,7 +487,7 @@
 
     <select id="getCqRecords" resultType="java.util.Map" parameterType="java.util.Arrays">
         select
-            cqrq,s.keymemo ssqy,azdd_ddh,concat(sxl.bdz,sxl.xlmc) ssxl,zzlx,qxfl,qx,cqjl,cqjg,sgdw
+            cqrq,s.keymemo ssqy,azdd_ddh,sxl.yxdw,sxl.bdz,sxl.xlmc,zzlx,qxfl,qx,cqjl,cqjg,sgdw
         from
         cq_record c left join sys_db s on c.ssqy = s.keyvalue
         left join sys_ssxl sxl on sxl.id = c.ssxl

@@ -330,37 +330,44 @@ public class QRCodeUtil {
 
     public static BufferedImage QRCodeAddFont(BufferedImage img, EquipInfo equipInfo){
         int imageWidth = 400;
-        int imageHeight = 450;
+        int imageHeight = 500;
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics graphics = image.getGraphics();
 
-        Font font = new Font("宋体", Font.PLAIN, 14);
+        Font font = new Font("宋体", Font.BOLD, 14);
         graphics.setFont(font);
         graphics.setColor(new Color(255, 255, 255));
         graphics.fillRect(0, 0, imageWidth, imageHeight);
         graphics.setColor(new Color(0, 0, 0));
-        graphics.drawString("调度号："+equipInfo.getAzddDdh(), 20, 350);
-        graphics.drawString("装置类型："+equipInfo.getZzlx(), 20, 370);
-        graphics.drawString("所属线路："+equipInfo.getSsqy()+equipInfo.getSsxl(), 20, 390);
+        //graphics.drawString(equipInfo.getAzddDdh(), 100, 350);
 
-        graphics.drawString("详细地址:"+equipInfo.getXxwz(), 20, 410);
-        graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
-        /*String xxwz = equipInfo.getXxwz();
-        if(xxwz.length()>16){
-            graphics.drawString("详细地址:"+xxwz.substring(0,16), 20, 410);
+        // 计算文字长度，计算居中的x点坐标
+        FontMetrics fm = graphics.getFontMetrics(font);
+        int textWidth = fm.stringWidth(equipInfo.getAzddDdh());
+        int widthX = (imageWidth - textWidth) / 2;
+        // 表示这段文字在图片上的位置(x,y) .第一个是你设置的内容。
+        graphics.drawString(equipInfo.getAzddDdh(),widthX,340);
+
+        //graphics.drawString(equipInfo.getAzddDdh(), 100, 350);
+        graphics.drawString("装置："+equipInfo.getZzlx(), 20, 370);
+        graphics.drawString("线路："+equipInfo.getSsqy()+equipInfo.getSsxl(), 20, 390);
+
+        //graphics.drawString("地址:"+equipInfo.getXxwz(), 20, 410);
+        //graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
+        String xxwz = equipInfo.getXxwz();
+        if(xxwz.length()>20){
+            graphics.drawString("地址:"+xxwz.substring(0,16), 20, 410);
             graphics.drawString(xxwz.substring(16), 20, 430);
+            String beizhu = equipInfo.getBeizhu();
+            if(beizhu.length()>20){
+                graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 450);
+                graphics.drawString(beizhu.substring(16), 20, 470);
+            }
         }else{
-            graphics.drawString("详细地址:"+xxwz, 20, 410);
+            graphics.drawString("地址:"+xxwz, 20, 410);
+            graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
         }
-
-        String beizhu = equipInfo.getBeizhu();
-        if(beizhu.length()>16){
-            graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
-            graphics.drawString(beizhu.substring(16), 20, 450);
-        }else{
-            graphics.drawString("备注："+equipInfo.getBeizhu(), 20, 430);
-        }*/
-        graphics.drawImage(img, 45, 5, 300, 300, null);
+        graphics.drawImage(img, 45, 15, 300, 300, null);
         return image;
     }
 }

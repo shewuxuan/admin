@@ -11,6 +11,31 @@
     <script type="text/javascript" src="/js/jquery.min.js"></script>
 </head>
 </head>
+<script>
+    $(function () {
+        $.post("/sbZzlx/selectSingleSbZzlx",{keycode:'region'},function (data) {
+            let ssqy = JSON.parse(data);
+            var oldZw = "${userInfo.zw}";
+            for (let i = 0, length = ssqy.length; i < length; i++) {
+                if(oldZw.indexOf(ssqy[i].keyvalue) != -1){
+                    $("#zw_ssqy").append("<input type='checkbox' name='zw_ssqy' checked value='" + ssqy[i].keyvalue + "'/>" + ssqy[i].keymemo);
+                }else{
+                    $("#zw_ssqy").append("<input type='checkbox' name='zw_ssqy' value='" + ssqy[i].keyvalue + "'/>" + ssqy[i].keymemo);
+                }
+            }
+        });
+    });
+
+    function changeZwSsqy() {
+        var type = $("#userType").val();
+        if(type == 0){
+            $("#lastRow").show();
+        }else {
+            $("[name='zw_ssqy']").removeAttr("checked");
+            $("#lastRow").hide();
+        }
+    }
+</script>
 <body>
 <div class="right_main">
     <div class="right_table" style="width:96%;">
@@ -37,12 +62,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>所属角色</p></th>
+                        <th bgcolor="#FFFFFF"><p>账号类型</p></th>
+                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                            <select name="userType" id="userType" onchange="changeZwSsqy()" style="height:25px; border:1px solid #CCC;">
+                                <option value="0">管理员</option>
+                                <option value="1">普通</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <c:if test="${funcMap.qxgl == 2}">
+                    <tr>
+                        <th bgcolor="#FFFFFF"><p>权限</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <select name="roleId" id="roleId" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
                     </tr>
+                    </c:if>
                     <tr>
                         <th bgcolor="#FFFFFF"><p>电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -55,11 +91,14 @@
                             <input type="text" name="email" id="email" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
-                    <tr>
-                        <th bgcolor="#FFFFFF"><p>职务</p></th>
+                    <c:if test="${funcMap.qxgl == 2}">
+                    <tr id="lastRow">
+                        <th bgcolor="#FFFFFF"><p>管理区域</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <input type="text" name="zw" id="zw" style="height:25px; border:1px solid #CCC;"/></td>
+                            <span id="zw_ssqy"></span>
+                        </td>
                     </tr>
+                    </c:if>
                     <tr>
                         <td height="33" colspan="2" bgcolor="#f5f2ea">
                             <input type="button" name="button" value="确定" onclick="commit()" class="iput_m"
@@ -83,12 +122,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <th bgcolor="#FFFFFF"><p>所属角色</p></th>
+                        <th bgcolor="#FFFFFF"><p>账号类型</p></th>
+                        <td bgcolor="#FFFFFF" style="text-align:left; ">
+                            <select name="userType" id="userType" onchange="changeZwSsqy()" style="height:25px; border:1px solid #CCC;">
+                                <option value="0" <c:if test="${userInfo.userType == 0}">selected</c:if>>管理员</option>
+                                <option value="1" <c:if test="${userInfo.userType == 1}">selected</c:if>>普通</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <c:if test="${funcMap.qxgl == 2}">
+                    <tr>
+                        <th bgcolor="#FFFFFF"><p>权限</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <select name="roleId" id="roleId" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
                     </tr>
+                    </c:if>
                     <tr>
                         <th bgcolor="#FFFFFF"><p>密码</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -109,12 +159,15 @@
                             <input type="text" name="email" id="email" style="height:25px; border:1px solid #CCC;"
                                    value="${userInfo.email}"/></td>
                     </tr>
-                    <tr>
-                        <th bgcolor="#FFFFFF"><p>职务</p></th>
+                    <c:if test="${funcMap.qxgl == 2}">
+                    <tr id="lastRow">
+                        <th bgcolor="#FFFFFF"><p>管理区域</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
-                            <input type="text" name="zw" id="zw" style="height:25px; border:1px solid #CCC;"
-                                   value="${userInfo.zw}"/></td>
+                            <span id="zw_ssqy"></span>
+                            <%--<input type="text" name="zw" id="zw" style="height:25px; border:1px solid #CCC;"
+                                   value="${userInfo.zw}"/></td>--%>
                     </tr>
+                    </c:if>
                     <tr>
                         <td height="33" colspan="2" bgcolor="#f5f2ea">
                             <input type="button" name="button" id="button" value="确定" onclick="change()" class="iput_m"
@@ -139,7 +192,7 @@
                 success:function(result){
                     $.each(result,function(index,value){
                         var roleId = '${userInfo.roleId}';
-	            	if(roleId == value.ROLE_ID ){
+	            	if(roleId == value.role_id ){
 	                	$("#roleId").append("<option value='"+value.role_id+"' selected>"+value.role_name+"</option>");
 	            	}else{
 	            		$("#roleId").append("<option value='"+value.role_id+"' >"+value.role_name+"</option>");
@@ -191,10 +244,15 @@
         var formdata = new FormData(); // 模拟表单对象
         formdata.append("userName", $("#userName").val());
         formdata.append("loginName", $("#loginName").val());
+        formdata.append("userType", $("#userType").val());
         formdata.append("roleId", $("#roleId").val());
         formdata.append("phone", $("#phone").val());
         formdata.append("email", $("#email").val());
-        formdata.append("zw", $("#zw").val());
+        var zw_ssqy_array = [];
+        $("input[name='zw_ssqy']:checked").each(function(i){
+            zw_ssqy_array.push($(this).val())
+        });
+        formdata.append("zw", zw_ssqy_array);
         return formdata;
     }
 

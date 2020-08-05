@@ -1,6 +1,7 @@
 package com.guodu.controller.sys;
 
 import cn.hutool.json.JSONUtil;
+import com.guodu.pojo.sys.Auth;
 import com.guodu.pojo.sys.SysDb;
 import com.guodu.service.sys.SysDbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -32,9 +34,14 @@ public class SysDbController {
      * @Date: 2020/5/22 5:00 下午
      */
     @RequestMapping("ssqy/selectSsqyByAll")
-    public String selectSsqyByAll() {
+    public String selectSsqyByAll(HttpServletRequest request) {
         SysDb sysDb = new SysDb();
         sysDb.setKeycode("region");
+
+        Auth auth = (Auth)request.getSession().getAttribute("auth");
+        if(auth != null){
+            sysDb.setKeyvalue(auth.getZwSsqy());
+        }
         List<SysDb> sysDbs = sysDbServiceImpl.selectByAll(sysDb);
         return JSONUtil.toJsonStr(sysDbs);
     }

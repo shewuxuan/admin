@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ include file="../import.jsp" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -66,20 +67,24 @@
 </div>
 <div class="qh">
     <div class="tab" style="">
-        <a href="javascript:;" class="on" style="border-left:1px solid white;">用户管理</a>
-        <a href="javascript:;">权限管理</a>
-        <a href="javascript:;">修改密码</a>
-        <a href="javascript:;">线路管理</a>
+        <c:if test="${funcMap.yhgl != 0 }">
+        <a href="javascript:;" id="a1" class="on" style="border-left:1px solid white;" onclick="onLi1(this)">用户管理</a>
+        </c:if>
+        <c:if test="${funcMap.qxgl != 0 }">
+        <a href="javascript:;" id="a2" onclick="onLi2(this)">权限管理</a>
+        </c:if>
+        <a href="javascript:;" id="a3" onclick="onLi3(this)">修改密码</a>
+        <a href="javascript:;" id="a4" onclick="onLi4(this)">线路管理</a>
     </div>
     <br/>
     <div class="content">
         <ul>
             <!--  1 begin-->
             <c:if test="${funcMap.yhgl == 0 }">
-            <li style="display:none;">
+            <li style="display:none;" id="li1">
                 </c:if>
                 <c:if test="${funcMap.yhgl != 0 }">
-            <li style="display:block;">
+            <li style="display:block;" id="li1">
                 </c:if>
                 <div>
                     <div class="right_table" style="padding-left:10px;padding-right:10px;">
@@ -107,15 +112,15 @@
 
             <!--  1 end-->
             <!--  2 begin-->
-            <li style="display:none;">
+            <li style="display:none;" id="li2">
                 <div>
                     <div style="padding-left:10px;padding-right:10px;">
                         <div class="tj">
-                            <span>角色名称</span><input id="roleName" type="text" class="right_ipu2">
-                            <c:if test="${funcMap.jsgl != 0 }">
+                            <span>权限名称</span><input id="roleName" type="text" class="right_ipu2">
+                            <c:if test="${funcMap.qxgl != 0 }">
                                 <input type="button" name="button" value="查 询" class="iput_m" onclick="searchList2()"/>
                             </c:if>
-                            <c:if test="${funcMap.jsgl == 2 }">
+                            <c:if test="${funcMap.qxgl == 2 }">
                                 <input type="button" name="button" value="创建" class="iput_m" onclick="g9()"/>
                             </c:if>
                         </div>
@@ -232,8 +237,8 @@
         $('#tableList').datagrid('options').queryParams = getQueryParams();
         $('#tableList').datagrid("load");
     }
-
-    var yhgl = '${funcMap.yhgl}';
+    var yhglFunc = '${funcMap.yhgl}';
+    var qxglFunc = '${funcMap.qxgl}';
     $(function () {
         $('#tableList').datagrid({
             //title:'用户管理',
@@ -255,17 +260,48 @@
                 {field: 'user_id', align: "center", title: '员工号', width: 30, hidden: 'true'},
                 {field: 'user_name', align: "center", title: '姓名', width: 30},
                 {field: 'login_name', align: "center", title: '账号', width: 30},
-                {field: 'user_type', align: "center", title: '账号类型', width: 30},
-                {field: 'role_name', align: "center", title: '所属权限', width: 30},
+                {field: 'user_type', align: "center", title: '账号类型', width: 30, formatter: function (value, row, index) {
+                        var txt = '';
+                        if (value == 0) {
+                            txt = '管理员';
+                        } else {
+                            txt = '普通';
+                        }
+                        return txt;
+                    }
+                },
+                /*{field: 'role_name', align: "center", title: '所属权限', width: 30},*/
                 {field: 'phone', align: "center", title: '电话', width: 30},
                 {field: 'email', align: "center", title: '邮箱', width: 30},
-                {field: 'zw', align: "center", title: '职务', width: 30},
-                {field: 'zt', align: "center", title: '状态', width: 30},
+                {field: 'zw', align: "center", title: '管理区域', width: 60, formatter: function (value, row, index) {
+                        var txt = '';
+                        var arr = value.split(",");
+                        for (let i = 0, length = arr.length; i < length; i++) {
+                            var name = '';
+                            if(arr[i]==1){ name = '石景山'; }
+                            if(arr[i]==2){ name = '门头沟'; }
+                            if(arr[i]==3){ name = '朝阳'; }
+                            txt+=name+"  ";
+                        }
+                        return txt;
+                    }
+                },
+                {field: 'zt', align: "center", title: '状态', width: 30, formatter: function (value, row, index) {
+                        var txt = '';
+                        if (value == 0) {
+                            txt = '启用';
+                        } else {
+                            txt = '注销';
+                        }
+                        return txt;
+                    }
+                },
                 {
                     field: 'trans', align: "left", title: '操作', width: 30, formatter: function (value, row, index) {
                         var txt = '<button href="javascript:void(0);" onclick="editUser(\'' + row.user_id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '修改' + '</button>';
 
                         var txt2 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="delUser(\'' + row.user_id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
+                        if (yhglFunc != 2) return '';
                         if (row.STATUS == '注销') {
                             return txt;
                         } else {
@@ -327,12 +363,70 @@
         });
     }
 
-    $(function () {
+    function onLi1(){
+        $("#a1").addClass('on').siblings().removeClass('on');
+        $("#li1").show();
+        $("#li2").hide();
+        $("#li3").hide();
+        $("#li4").hide();
+    }
+    function onLi2(){
+        $("#a2").addClass('on').siblings().removeClass('on');
+        $("#li1").hide();
+        $("#li2").show();
+        $("#li3").hide();
+        $("#li4").hide();
+        $('#tableList2').datagrid({
+            iconCls: 'icon-ok',
+            //queryParams: getQueryParams(),
+            nowrap: false,
+            striped: true,
+            collapsible: false,
+            fitColumns: true,
+            pagination: true,
+            singleSelect: true,
+            rownumbers: true,
+            remoteSort: true,
+            pageList: [10, 15, 30, 50],
+            pageSize: 10,//每页显示的记录条数，默认为10 
+            idField: 'ID',
+            columns: [[
+                {field: 'roleId', align: "center", title: '角色Id', width: 30, hidden: true},
+                {field: 'roleName', align: "center", title: '权限名称', width: 20},
+                {field: 'beizhu', align: "center", title: '备注', width: 30},
+                {
+                    field: 'trans', align: "left", title: '操作', width: 30, formatter: function (value, row) {
+                        var txt = '<button href="javascript:void(0);" onclick="editRole(\'' + row.roleId + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '修改' + '</button>';
+                        var txt2 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="delRole(\'' + row.roleId + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
+                        if (qxglFunc != 2) return '';
+                        return txt + txt2;
+                    }
+                },
+            ]],
+        });
+        searchList2();
+    }
+    function onLi3(){
+        $("#a3").addClass('on').siblings().removeClass('on');
+        $("#li1").hide();
+        $("#li2").hide();
+        $("#li3").show();
+        $("#li4").hide();
+    }
+    function onLi4(){
+        $("#a4").addClass('on').siblings().removeClass('on');
+        $("#li1").hide();
+        $("#li2").hide();
+        $("#li3").hide();
+        $("#li4").show();
+    }
+    /*$(function () {
         $(".qh .tab a").click(function () {
             $(this).addClass('on').siblings().removeClass('on');
             var index = $(this).index();
+            alert(index);
             $('.qh .content li').hide();
-            $('.qh .content li:eq(' + (index + 1) + ')').show();
+            $('.qh .content li:eq(' + index + ')').show();
             if (index == 1) {
                 $('#tableList2').datagrid({
                     iconCls: 'icon-ok',
@@ -350,7 +444,7 @@
                     idField: 'ID',
                     columns: [[
                         {field: 'roleId', align: "center", title: '角色Id', width: 30, hidden: true},
-                        {field: 'roleName', align: "center", title: '角色名称', width: 20},
+                        {field: 'roleName', align: "center", title: '权限名称', width: 20},
                         {field: 'beizhu', align: "center", title: '备注', width: 30},
                         {
                             field: 'trans', align: "left", title: '操作', width: 30, formatter: function (value, row) {
@@ -365,8 +459,8 @@
             }
         });
 
-        /*权限管理结束  */
-    });
+        /!*权限管理结束  *!/
+    });*/
 
     /* 修改密码 */
     function changePwd() {

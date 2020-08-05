@@ -25,7 +25,9 @@
 测试项目：<input type="text" name="csxm" id="csxm" style="height:25px;width: 300px; border:1px solid #CCC;"/>
 标准要求：<input type="text" name="csyq" id="csyq" style="height:25px;width: 400px; border:1px solid #CCC;"/>
 <input type="button" name="button" value="查询" class="iput_m" onclick="selRecord()">
+<c:if test="${funcMap.bzgl ==2 }">
 <input type="button" name="button" value="添加" class="iput_m" onclick="addRecord()">
+</c:if>
 
 <div style="margin:20px 0;"></div>
 
@@ -46,6 +48,7 @@
 </script>
 
 <script type="text/javascript">
+    var bzglFun = '${funcMap.bzgl}';
     $(function () {
         $('#dg').datagrid({
             singleSelect: true,	// 设置为 true，则只允许选中一行。
@@ -86,6 +89,7 @@
                     formatter: function (value, row, index) {
                         var txt1 = '&nbsp;&nbsp;<button href="javascript:void(0);" onclick="updRecord(\'' + row.id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '修改' + '</button>';
                         var txt3 = '&nbsp;&nbsp;<button href="javascript:void(0);" onclick="delRecord(\'' + row.id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
+                        if(bzglFun != 2) return '';
                         return txt1 + txt3;
                     }
                 },

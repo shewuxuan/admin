@@ -5,11 +5,13 @@ import cn.hutool.log.StaticLog;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guodu.pojo.ftu.FtuBzCyjdcs;
+import com.guodu.pojo.sys.Auth;
 import com.guodu.service.ftu.FtuBzCyjdcsService;
 import com.guodu.util.IDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,10 +105,14 @@ public class FtuBzCyjdcsController {
     }
 
     @GetMapping("selectByPage")
-    public String selectByAll(FtuBzCyjdcs record,
+    public String selectByAll(HttpServletRequest request,FtuBzCyjdcs record,
                               @RequestParam(value = "page", defaultValue = "1") Integer page,
                               @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
         map.clear();
+        if (record.getSsqy() == null ||  record.getSsqy().equals("0")){
+            Auth auth = Auth.getAuth(request);
+            map.put("ssqy",auth.getZwSsqy());
+        }
         // pagehelper分页
         PageHelper.startPage(page, rows);
         List<FtuBzCyjdcs> list = serviceImpl.selectByPage(record);

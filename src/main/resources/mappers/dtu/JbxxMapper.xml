@@ -621,7 +621,9 @@
         left join sys_db sys2 on sys2.keyvalue = j.zzlx
         left join sys_ssxl lx on j.ssxl = lx.id
         where  sys1.keycode = 'region' and sys2.keycode = 'zz_type'
-        <if test="ssqy!=null and ssqy!=''">and j.SSQY=#{ssqy} </if>
+        <if test="ssqy != null and ssqy != '' ">
+            and j.ssqy in (${ssqy})
+        </if>
         <if test="yxdw != null and yxdw != ''"> and lx.yxdw=#{yxdw} </if>
         <if test="bdz != null and bdz != ''"> and lx.bdz=#{bdz} </if>
         <if test="xlmc != null and xlmc != ''"> and lx.id=#{xlmc} </if>

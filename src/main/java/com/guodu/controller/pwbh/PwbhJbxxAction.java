@@ -37,6 +37,10 @@ public class PwbhJbxxAction {
 	public Object selectListPwbhJbxx(@RequestParam Map<String, Object> form,HttpServletRequest request) {
 		Map res = new HashMap<String , Object>();
 		try{
+			if(form.get("ssqy").equals("")){
+				Auth auth = Auth.getAuth(request);
+				form.put("ssqy",auth.getZwSsqy());
+			}
 			res = this.pwbhJbxxServiceImpl.selectPage(form);
 		}catch(Exception e){
 			e.printStackTrace();

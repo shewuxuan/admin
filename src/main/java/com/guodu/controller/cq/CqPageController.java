@@ -26,7 +26,8 @@ public class CqPageController {
      * @Date: 2020/3/26 2:53 下午
      */
     @RequestMapping("cq/{page}")
-    public String cq(@PathVariable String page) {
+    public String cq(@PathVariable String page,HttpServletRequest request) {
+        request.setAttribute("funcMap",Auth.getAuth(request).getRoleFunc());
         return "cq/" + page;
     }
 

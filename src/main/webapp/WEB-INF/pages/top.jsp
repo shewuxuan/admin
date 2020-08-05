@@ -39,7 +39,21 @@
         </div>
         <div class="clear"></div>
     </div>
+    <b style="text-align: right; font-size: 20px; float: right;  margin-top: 30px; margin-right: 30px;">
+        ${loginName},欢迎您！
+    </b>
 </div>
-
+<script>
+    /* 退出登陆 */
+    function logOut() {
+        if (confirm('确定已保存当前工作并退出吗？') == true) {
+            // window.location.href = '/logoutJson.action';
+            if (top != window) {
+                top.location.href = '/logoutJson.action';
+            }
+        }
+        return false;
+    }
+</script>
 </body>
 </html>

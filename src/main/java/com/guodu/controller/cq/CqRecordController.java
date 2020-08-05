@@ -106,10 +106,14 @@ public class CqRecordController {
     }
 
     @RequestMapping("selectByPage")
-    public String selectByPage(CqRecord record,
+    public String selectByPage(HttpServletRequest request,CqRecord record,
                                @RequestParam(value = "page", defaultValue = "1") Integer page,
                                @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
         map.clear();
+        if(record.getSsqy() == null || record.getSsqy().equals("")){
+            Auth auth = Auth.getAuth(request);
+            record.setSsqy(auth.getZwSsqy());
+        }
         // pagehelper分页
         PageHelper.startPage(page, rows);
         List<CqRecord> cqRecords = cqRecordServiceImpl.selectByPage(record);
@@ -120,8 +124,12 @@ public class CqRecordController {
     }
 
     @RequestMapping("selectPageCqCount")
-    public String selectPageCqCount(@RequestParam Map<String, Object> form) {
+    public String selectPageCqCount(HttpServletRequest request,@RequestParam Map<String, Object> form) {
         map.clear();
+        if(form.get("ssqy").equals("")){
+            Auth auth = Auth.getAuth(request);
+            form.put("ssqy",auth.getZwSsqy());
+        }
         map = cqRecordServiceImpl.selectPageCqCount(form);
         return JSONUtil.toJsonStr(map);
     }

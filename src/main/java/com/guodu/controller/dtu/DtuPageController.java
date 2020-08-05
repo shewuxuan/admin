@@ -26,7 +26,8 @@ public class DtuPageController {
      * @Date: 2020/3/6 11:08 上午
      */
     @RequestMapping("bz/{page}/{pageName}")
-    public String bz1(@PathVariable String page, @PathVariable String pageName) {
+    public String bz1(HttpServletRequest request,@PathVariable String page, @PathVariable String pageName) {
+        request.setAttribute("funcMap",Auth.getAuth(request).getRoleFunc());
         return "bz/dtu/" + page + "/" + pageName;
     }
 
@@ -56,7 +57,8 @@ public class DtuPageController {
      * @Date: 2020/3/12 9:39 上午
      */
     @RequestMapping("jl/{page}")
-    public String jl2(@PathVariable String page) {
+    public String jl2(@PathVariable String page,HttpServletRequest request) {
+       request.setAttribute("funcMap",Auth.getAuth(request).getRoleFunc());
         return "jl/" + page;
     }
 

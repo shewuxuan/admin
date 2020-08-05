@@ -158,9 +158,22 @@
                 {field: 'ssqy', halign: 'center', align: "center", title: '所属区域', width: '10%', rowspan:2, formatter:function (value, row, index) {
                         return contentFormat(value);
                     }},
-                {field: 'ssxl', halign: 'center', align: "center", title: '设备线路', width: '10%', rowspan:2, formatter:function (value, row, index) {
-                        return contentFormat(value);
-                    }},
+                {field: 'xlmc', halign: 'center', align: "center", title: '设备线路', width: '15%', rowspan:2, formatter:function (value, row, index) {
+                    if(value == null | value==''){
+                        return '';
+                    }else{
+                        var xlmc='';
+                        var temp = '';
+                        if(row.ssqy == 2){temp="门头沟-";}
+                        if(row.ssqy == 3){temp="朝阳-";}
+                        xlmc = temp+row.yxdw+"-"+row.bdz+"-"+row.xlmc;
+                        if(row.ssqy == 1){
+                            temp="";
+                            xlmc = row.bdz+"-"+row.xlmc;
+                        }
+                        return contentFormat(xlmc);
+                    }
+                 }},
                 {halign: 'center', align: "center", title: '缺陷分类', colspan: 5},
                 {field: 'sum', halign: 'center', align: "center", title: '合计', width: '10%', rowspan:2, formatter:function (value, row, index) {
                         var idss = row.ids1+','+row.ids2+','+row.ids3+','+row.ids4+','+row.ids5;
@@ -188,7 +201,7 @@
 
     <%-- 查询 --%>
     function selRecord2() {
-        $('#cqtj').datagrid('reload', {
+        $('#cqtj').datagrid('load', {
             "startCqrq": $("#tj_startCqrq").datebox('getValue'),
             "endCqrq": $("#tj_endCqrq").datebox('getValue'),
             "ssqy": $("#tj_ssqy").val(),

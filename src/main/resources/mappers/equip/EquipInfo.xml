@@ -86,7 +86,7 @@
         <if test="scrq !=null and scrq != ''">
             str_to_date(#{scrq}, '%Y-%m-%d'),
         </if>
-        <if test="scrq == ''">
+        <if test="scrq == null or scrq == ''">
             null,
         </if>
         #{zbxh, jdbcType=VARCHAR},
@@ -150,7 +150,7 @@
         <if test="scrq !=null and scrq != ''">
             ,scrq = str_to_date(#{scrq}, '%Y-%m-%d')
         </if>
-        <if test="scrq == ''">
+        <if test="scrq == null or scrq == ''">
             ,scrq = null
         </if>
         <if test="zbxh!=null">, zbxh=#{zbxh, jdbcType=VARCHAR}</if>
@@ -201,7 +201,7 @@
             (select keyvalue,keymemo from sys_db where keycode='zz_type') t2  on e.ZZLX = t2.keyvalue
         left join sys_ssxl s on s.id = e.ssxl
         where 1=1
-        <if test="ssqy!=null and ssqy!=''">and e.SSQY=#{ssqy} </if>
+        <if test="ssqy!=null and ssqy!=''">and e.SSQY in (${ssqy})</if>
         <if test="yxdw != null and yxdw != ''"> and s.yxdw=#{yxdw} </if>
         <if test="bdz != null and bdz != ''"> and s.bdz=#{bdz} </if>
         <if test="xlmc != null and xlmc != ''"> and s.id=#{xlmc} </if>

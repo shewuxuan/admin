@@ -3,11 +3,13 @@ package com.guodu.controller.dtu;
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.StaticLog;
 import com.guodu.pojo.dtu.BzDyxn;
+import com.guodu.pojo.sys.Auth;
 import com.guodu.service.dtu.BzDyxnService;
 import com.guodu.util.IDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,13 +78,17 @@ public class BzDyxnController {
     }
 
     @GetMapping("selectByPage")
-    public String selectByAll(BzDyxn bzDyxn,
+    public String selectByAll(HttpServletRequest request,BzDyxn bzDyxn,
                               @RequestParam(value = "page", defaultValue = "1") Integer page,
                               @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
         Map<String, Object> map = new HashMap<>(16);
         map.put("bzDyxn", bzDyxn);
         map.put("page", page);
         map.put("rows", rows);
+        if (bzDyxn.getSsqy() == null || bzDyxn.getSsqy().equals("0")){
+            Auth auth = Auth.getAuth(request);
+            map.put("ssqy",auth.getZwSsqy());
+        }
         return bzDyxnServiceImpl.selectByPage(map);
     }
 }

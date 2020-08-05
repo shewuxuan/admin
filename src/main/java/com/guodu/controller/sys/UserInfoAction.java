@@ -63,6 +63,7 @@ public class UserInfoAction {
             UserInfo userInfo = this.userInfoServiceImpl.selectList(vo).get(0);
             view.addObject("userInfo", userInfo);
         }
+        view.addObject("funcMap",Auth.getAuth(request).getRoleFunc());
         return view;
     }
 
@@ -108,8 +109,11 @@ public class UserInfoAction {
         res.put("code", "0");
         res.put("message", "修改成功");
         try {
-            if (!userInfo.getPassword().equals(F.UserPwd.defaultPwd))
+            if (!userInfo.getPassword().equals(F.UserPwd.defaultPwd)){//更改
                 userInfo.setPassword(MD5Utils.MD5(userInfo.getPassword(), "utf-8"));
+            }else{//未修改
+                userInfo.setPassword(null);
+            }
             userInfo.setCzsj(new Date());
             res.put("lockData", "用户ID：" + userInfo.getUserId() + ",用户姓名：" + userInfo.getUserName());
             this.userInfoServiceImpl.edit(userInfo);

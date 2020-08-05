@@ -68,12 +68,9 @@ public class RoleInfoAction {
 			Map<String,Object> resultMap = new HashMap<String,Object>();
 			List<Map<String,Object>> roleFuncList = this.roleInfoServiceImpl.getRoleByFunc(roleId);
 			for(Map<String,Object> map : roleFuncList){
-				resultMap.put(map.get("FUNCCODE").toString(), map.get("AUTHVALUE"));
+				resultMap.put(map.get("funccode").toString(), map.get("authvalue"));
 			}
 			view.addObject("roleFuncList",resultMap);
-		}else{
-			List<Map<String,Object>> roleFuncList = this.roleInfoServiceImpl.getAllFunc();
-			view.addObject("roleFuncList",roleFuncList);
 		}
 		return view;
 	}
@@ -93,31 +90,21 @@ public class RoleInfoAction {
 			res.put("message", "角色已存在");
 			return JSON.toJSONString(res);
 		}
-		/*String xmxx = (String)form.get("xmxx");//项目信息
-		String cgjh = (String)form.get("cgjh");//采购计划
-		String xmzb = (String)form.get("xmzb");//项目招标
-		String xmys = (String)form.get("xmys");//项目预算	
-		String xmht = (String)form.get("xmht");//项目合同	
-		String xmys2 = (String)form.get("xmys2");//项目验收
-		String djzc = (String)form.get("djzc");//登记资产
-		String xmfk = (String)form.get("xmfk");//项目付款
-		String pfgl = (String)form.get("pfgl");//批复管理	
-		String tjhz = (String)form.get("tjhz");//统计汇总
+		String bzgl = (String)form.get("bzgl");//标准管理
+		String tsgl = (String)form.get("tsgl");//DTU调试
+		//String pwbh = (String)form.get("pwbh");//配网保护
+		String sbgl = (String)form.get("sbgl");//设备管理
+		String cqgl = (String)form.get("cqgl");//处缺管理
 		String yhgl = (String)form.get("yhgl");//用户管理
-		String jsgl = (String)form.get("jsgl");//角色管理
-		String xmrz = (String)form.get("xmrz");//项目日志
-		String czrz = (String)form.get("czrz");//操作日志	*/
+		String qxgl = (String)form.get("qxgl");//权限管理
+		//String xlgl = (String)form.get("xlgl");//线路管理
 		RoleInfo roleInfo = new RoleInfo();
-		/*String[] funcCode = {"xmxx","cgjh","xmzb","xmys","xmht","xmys2","djzc","xmfk","pfgl",
-				"tjhz","yhgl","jsgl","xmrz","czrz"};
-		String[] authValue= {xmxx,cgjh,xmzb,xmys,xmht,xmys2,djzc,xmfk,pfgl,tjhz,yhgl,jsgl,xmrz,czrz};*/
-		String[] funcCode = {};
-		String[] authValue = {};
+		String[] funcCode = {"bzgl","tsgl","sbgl","cqgl","yhgl","qxgl"};
+		String[] authValue= {bzgl,tsgl,sbgl,cqgl,yhgl,qxgl};
 		try {
 			Date createDate = new Date();
 			String roleId = StringUtils.createDateRandomString(createDate);
 			roleInfo.setRoleId(roleId);
-			res.put("lockData","角色ID："+roleId+",角色名称："+roleName);
 			roleInfo.setRoleName(roleName);
 			roleInfo.setBeizhu(remark);
 			roleInfo.setCzsj(createDate);
@@ -141,7 +128,6 @@ public class RoleInfoAction {
 		Date date = new Date();
 		RoleInfo roleInfo = new RoleInfo();
 		roleInfo.setRoleId(roleId);
-		res.put("lockData","角色ID："+roleId+",角色名称："+roleName);
 		roleInfo.setRoleName(roleName);
 		roleInfo.setBeizhu(remark);
 		roleInfo.setCzsj(date);
@@ -149,25 +135,16 @@ public class RoleInfoAction {
 		res.put("code", "0");
 		res.put("message", "修改成功");
 		try{
-			/*String xmxx = (String)form.get("xmxx");//项目信息
-			String cgjh = (String)form.get("cgjh");//采购计划
-			String xmzb = (String)form.get("xmzb");//项目招标
-			String xmys = (String)form.get("xmys");//项目预算	
-			String xmht = (String)form.get("xmht");//项目合同	
-			String xmys2 = (String)form.get("xmys2");//项目验收
-			String djzc = (String)form.get("djzc");//登记资产
-			String xmfk = (String)form.get("xmfk");//项目付款
-			String pfgl = (String)form.get("pfgl");//批复管理	
-			String tjhz = (String)form.get("tjhz");//统计汇总
+			String bzgl = (String)form.get("bzgl");//标准管理
+			String tsgl = (String)form.get("tsgl");//DTU调试
+			//String pwbh = (String)form.get("pwbh");//配网保护
+			String sbgl = (String)form.get("sbgl");//设备管理
+			String cqgl = (String)form.get("cqgl");//处缺管理
 			String yhgl = (String)form.get("yhgl");//用户管理
-			String jsgl = (String)form.get("jsgl");//角色管理
-			String xmrz = (String)form.get("xmrz");//项目日志
-			String czrz = (String)form.get("czrz");//操作日志	
-			String[] funcCode = {"xmxx","cgjh","xmzb","xmys","xmht","xmys2","djzc","xmfk","pfgl",
-					"tjhz","yhgl","jsgl","xmrz","czrz"};
-			String[] authValue = {xmxx,cgjh,xmzb,xmys,xmht,xmys2,djzc,xmfk,pfgl,tjhz,yhgl,jsgl,xmrz,czrz};*/
-			String[] funcCode = {};
-			String[] authValue = {};
+			String qxgl = (String)form.get("qxgl");//权限管理
+			//String xlgl = (String)form.get("xlgl");//线路管理
+			String[] funcCode = {"bzgl","tsgl","sbgl","cqgl","yhgl","qxgl"};
+			String[] authValue= {bzgl,tsgl,sbgl,cqgl,yhgl,qxgl};
 			this.roleInfoServiceImpl.txUpdateRoleFuncByRoleId(roleInfo,authValue,funcCode);
 		}catch(Exception e){
 			res.put("code", "-1");

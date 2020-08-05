@@ -57,7 +57,9 @@
                         </td>
                         <td colspan="2">
                             <input type="button" name="button" value="查询" class="iput_m" onclick="selRecord()">
+                            <c:if test="${funcMap.cqgl == 2}">
                             <input type="button" name="button" value="添加" class="iput_m" onclick="addRecord()">
+                            </c:if>
                         </td>
                     </tr>
                 </table>
@@ -214,6 +216,7 @@
 
 <%-- 表格 --%>
 <script type="text/javascript">
+    var cqglFun = '${funcMap.cqgl}';
     $(function () {
         $('#dg').datagrid({
             singleSelect: true,	// 设置为 true，则只允许选中一行。
@@ -240,9 +243,23 @@
                 {field: 'azddDdh', halign: 'center', align: "center", title: '设备调度号', width: '9%', formatter:function (value, row, index) {
                         return contentFormat(value);
                     }},
+
                 {field: 'xlmc', halign: 'center', align: "center", title: '设备线路', width: '9%', formatter:function (value, row, index) {
-                        return contentFormat(value);
-                    }},
+                    if(value == null | value==''){
+                        return '';
+                    }else {
+                        var xlmc='';
+                        var temp = '';
+                        if(row.ssqy == 2){temp="门头沟-";}
+                        if(row.ssqy == 3){temp="朝阳-";}
+                        xlmc = temp+row.yxdw+"-"+row.bdz+"-"+row.xlmc;
+                        if(row.ssqy == 1){
+                            temp="";
+                            xlmc = row.bdz+"-"+row.xlmc;
+                        }
+                        return xlmc;
+                    }
+                 }},
                 {field: 'zzlxname', halign: 'center', align: "center", title: '装置类型', width: '6%', formatter:function (value, row, index) {
                         return contentFormat(value);
                     }},
@@ -265,12 +282,16 @@
                         var txt1 = '&nbsp;&nbsp;<button href="javascript:void(0);" onclick="viewRecord(\'' + row.cqid + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
                         var txt2 = '&nbsp;&nbsp;<button href="javascript:void(0);" onclick="updRecord(\'' + row.cqid + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '修改' + '</button>';
                         var txt3 = '&nbsp;&nbsp;<button href="javascript:void(0);" onclick="delRecord(\'' + row.cqid + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
+                        if(cqglFun !=2 ){
+                            return txt1;
+                        }
                         return txt1 + txt2 + txt3;
                     }
                 },
             ]],
-        })
-    })
+        });
+        selRecord();
+    });
 </script>
 
 <%-- 操作 --%>
@@ -310,7 +331,7 @@
 
     <%-- 查询 --%>
     function selRecord() {
-        $('#dg').datagrid('reload', {
+        $('#dg').datagrid('load', {
             "startCqrq": $("#startCqrq").datebox('getValue'),
             "endCqrq": $("#endCqrq").datebox('getValue'),
             "ssqy": $("#ssqy").val(),

@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/style/easyui/themes/default/easyui.css"/>
     <script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/js/sccj.js"></script>
     <!-- 设置地图ak, api key 申请的密钥 -->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KU3KGvuGAZBLbLai55AuWrQikAsqmC2g"></script>
 </head>
@@ -838,10 +839,10 @@
             return;
         }
         $("#ssxl").val($("#xlmc").val());
-        if($("#ssxl").val() == ""){
+        /*if($("#ssxl").val() == ""){
             alert("请选择所属线路！");
             return;
-        }
+        }*/
 
         $("#flagArrayStr").val(flagArray);
         $.ajax({

@@ -13,7 +13,12 @@
     <frameset name="btmframe" id="btmframe" cols="145,**" frameborder="no">
         <frame name="left" src="${basePath}/toLeftView.action" scrolling="No" noresize="noresize" id="leftFrame"
                title="leftFrame"/>
+        <c:if test="${funcMap.tsgl != 0}">
         <frame name="mainFrame" src="/jl/jbxxList" id="mainFrame" title="mainFrame"/>
+        </c:if>
+        <c:if test="${funcMap.tsgl == 0}">
+            <frame name="mainFrame" src="/user/sysByUser.action" id="mainFrame" title="mainFrame"/>
+        </c:if>
     </frameset>
 </frameset>
 

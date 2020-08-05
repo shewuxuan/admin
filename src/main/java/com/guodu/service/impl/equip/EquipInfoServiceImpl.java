@@ -115,7 +115,7 @@ public class EquipInfoServiceImpl
 		//反向地址解析  与标注相反location	lat<纬度>,lng<经度>	必选
 		String url="http://api.map.baidu.com/marker?location="+equipInfo.getWd()+","+equipInfo.getJd()+"&title="+equipInfo.getXxwz()
 				+"&content="
-				+"终端名称:"+equipInfo.getZdmc()
+				//+"终端名称:"+equipInfo.getZdmc()
 				+"/装置类型:"+choiceSbZzlxName(equipInfo.getZzlx())
 				+"&output=html&src=webapp.baidu.openAPIdemo";
 		BufferedImage img = QRCodeUtil.encode(url,"","",true);

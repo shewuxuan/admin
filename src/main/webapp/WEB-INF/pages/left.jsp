@@ -15,30 +15,38 @@
 <div class="left" style="height: 1000px;">
 
     <ul>
+        <c:if test="${funcMap.bzgl !=0}">
         <li class="current">
-            <a href="/toSjglView.action" target='mainFrame'  onmousedown="test(this)"  class="current left_hover"  >
+            <a href="/toSjglView.action" target='mainFrame'    class="current left_hover"  >
                 <img src="/images/top04.png" />
                 <p>标准管理</p>
             </a>
         </li>
+        </c:if>
+        <c:if test="${funcMap.tsgl !=0}">
         <li class="current">
-            <a href="/jl/jbxxList" target='mainFrame'  onmousedown="test(this)"  class="current left_hover"  >
+            <a href="/jl/jbxxList" target='mainFrame'  class="current left_hover"  >
                 <img src="/images/top09.gif" />
                 <p>调试信息</p>
             </a>
         </li>
+        </c:if>
+        <c:if test="${funcMap.sbgl !=0}">
         <li class="current">
-            <a href="/equip/toEquipInfoView.action" target='mainFrame'  onmousedown="test(this)"  class="current left_hover"  >
+            <a href="/equip/toEquipInfoView.action" target='mainFrame' class="current left_hover"  >
                 <img src="/images/top06.gif" />
                 <p>设备管理</p>
             </a>
         </li>
+        </c:if>
+        <c:if test="${funcMap.cqgl !=0}">
         <li class="current">
             <a href="/cq/cqManage" target='mainFrame'  onmousedown=""  class="current left_hover"  >
                 <img src="/images/top06.png" />
                 <p>处缺记录</p>
             </a>
         </li>
+        </c:if>
        <%-- <li class="current">
             <a href="/pwbhJbxx/toPwbhJbxxView.action" target='mainFrame'  onmousedown=""  class="current left_hover"  >
                 <img src="/images/top02.gif" />
@@ -46,7 +54,7 @@
             </a>
         </li>--%>
         <li>
-            <a href="/user/sysByUser.action" target='mainFrame'  onmousedown="test(this)"  class="left_hover"  >
+            <a href="/user/sysByUser.action" target='mainFrame' class="left_hover"  >
                   <img src="/images/top08.png" />
                   <p>系统管理</p>
               </a>
@@ -69,17 +77,6 @@
                 }
             }
         }
-    }
-
-    /* 退出登陆 */
-    function logOut() {
-        if (confirm('确定已保存当前工作并退出吗？') == true) {
-            // window.location.href = '/logoutJson.action';
-            if (top != window) {
-                top.location.href = '/logoutJson.action';
-            }
-        }
-        return false;
     }
 </script>
 

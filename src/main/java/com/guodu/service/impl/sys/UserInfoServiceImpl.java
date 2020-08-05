@@ -27,7 +27,7 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo> {
         List<Map<String, Object>> funcList = this.userInfoMapper.getComboTreeData(roleId);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         for (Map<String, Object> func : funcList) {
-            resultMap.put(func.get("FUNCCODE").toString(), func.get("AUTHVALUE"));
+            resultMap.put(func.get("funccode").toString(), func.get("authvalue"));
         }
         return resultMap;
     }

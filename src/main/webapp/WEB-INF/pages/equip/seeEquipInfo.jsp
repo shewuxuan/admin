@@ -29,16 +29,17 @@
                 <tbody>
                     <tr>
                         <span id="map_span" bgcolor="#FFFFFF" style="text-align:left; " colspan="4">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="main-div" style="height: 426px;width: 800px;margin-top: 5px;">
+                                <div id='allmap' style='width:  95%; height:400px; position: absolute;'></div>
+                            </div>
+                            <b>
                             <span class="label">&nbsp;&nbsp;经度:</span>
                             <span>${equipInfo.jd}</span>
                             <span class="label">&nbsp;&nbsp;纬度:</span>
                             <span>${equipInfo.wd}</span>
                             <span class="label">&nbsp;&nbsp;详细位置:</span>
                             <span>${equipInfo.xxwz}</span>
-                            <div class="main-div" style="height: 426px;width: 800px;margin-top: 5px;">
-                                <div id='allmap' style='width:  95%; height:400px; position: absolute;'></div>
-                            </div>
+                            </b>
                         </span>
                     </tr>
                     <tr>
@@ -258,7 +259,7 @@
         if(ssqy == 1){$("#yxdw_span").hide();}else{ $("#yxdw").append("<option value='" + data.yxdw + "' selected>" + data.yxdw + "</option>");}
 
         $("#xlmc").empty();
-        $("#xlmc").append("<option value=''>全部</option>");
+        //$("#xlmc").append("<option value=''>全部</option>");
         $.get("/ssxl/selectByGroup/xlmc",{"bdz": $("#bdz").val()}, function (data2) {
             data2 = JSON.parse(data2);
             $.each(data2, function (i) {

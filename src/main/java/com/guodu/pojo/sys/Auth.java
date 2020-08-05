@@ -10,6 +10,7 @@ public class Auth {
     private String loginname;
     private String roleId;
     private Map<String, Object> roleFunc;
+    private String zwSsqy;//拥有的所属区域
 
     static public Auth getAuth(HttpServletRequest request) {
 
@@ -66,5 +67,7 @@ public class Auth {
         this.roleFunc = roleFunc;
     }
 
+    public String getZwSsqy() { return zwSsqy; }
 
+    public void setZwSsqy(String zwSsqy) {this.zwSsqy = zwSsqy; }
 }

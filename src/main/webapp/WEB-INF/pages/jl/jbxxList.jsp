@@ -142,6 +142,7 @@
                     }},
                 {field:'AZDD_DDH',align:"center",title:'设备调度号',width:50},
                 {field:'SSXL',align:"center",title:'所属线路',width:50,formatter:function(value,row,index){
+                    if(value == null | value=='') return '';
                         var xlmc = "";
                         $.ajax({
                             url: '/ssxl/selectByPrimaryKey/'+value,
