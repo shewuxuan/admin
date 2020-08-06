@@ -25,7 +25,7 @@ public class DtuPageController {
      * @Author: 2uli
      * @Date: 2020/3/6 11:08 上午
      */
-    @RequestMapping("bz/{page}/{pageName}")
+    @RequestMapping("bz/dtu/{page}/{pageName}")
     public String bz1(HttpServletRequest request,@PathVariable String page, @PathVariable String pageName) {
         request.setAttribute("funcMap",Auth.getAuth(request).getRoleFunc());
         return "bz/dtu/" + page + "/" + pageName;

@@ -165,19 +165,19 @@
 <div region="west" split="true" style="width: 160px; overflow: auto;">
 	<div class="easyui-accordion" id="left" fit="true" border="true">
 		<div title="DTU标准管理" style="overflow: auto;" iconCls="icon-system">
-			<h3 onClick="addTab(this,'/bz/wgpz/wgpzList');">DTU外观结构与配置</h3>
-			<h3 onClick="addTab(this,'/bz/jydz/jydzList');">绝缘电阻</h3>
-			<h3 onClick="addTab(this,'/bz/hldz/hldzList');">CT回路电阻</h3>
-			<h3 onClick="addTab(this,'/bz/dyxn/dyxnList');">电源性能</h3>
-			<h3 onClick="addTab(this,'/bz/lpjy/lpjyList');">电流电压零漂校验</h3>
-			<h3 onClick="addTab(this,'/bz/cyjd/cyjdList');">采样精度</h3>
-			<h3 onClick="addTab(this,'/bz/dlhl/dlhlList');">模拟CT一次电流验证回路</h3>
-			<h3 onClick="addTab(this,'/bz/gncs/gncsList');">功能调试标准</h3>
-			<h3 onClick="addTab(this,'/bz/ctgy/ctgyList');">CT安装工艺检查标准</h3>
-			<h3 onClick="addTab(this,'/bz/kgg/kggList');">开关柜</h3>
-			<h3 onClick="addTab(this,'/bz/ykts/yktsList');">遥控功能调试</h3>
-			<h3 onClick="addTab(this,'/bz/ycts/yctsList');">遥测功能调试</h3>
-			<h3 onClick="addTab(this,'/bz/gjcs/gjcsList');">告警功能调试</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/wgpz/wgpzList');">DTU外观结构与配置</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/jydz/jydzList');">绝缘电阻</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/hldz/hldzList');">CT回路电阻</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/dyxn/dyxnList');">电源性能</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/lpjy/lpjyList');">电流电压零漂校验</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/cyjd/cyjdList');">采样精度</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/dlhl/dlhlList');">模拟CT一次电流验证回路</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/gncs/gncsList');">功能调试标准</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/ctgy/ctgyList');">CT安装工艺检查标准</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/kgg/kggList');">开关柜</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/ykts/yktsList');">遥控功能调试</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/ycts/yctsList');">遥测功能调试</h3>
+			<h3 onClick="addTab(this,'/bz/dtu/gjcs/gjcsList');">告警功能调试</h3>
 		</div>
 
 		<div title="FTU标准管理" style="overflow: auto;" iconCls="icon-system">
