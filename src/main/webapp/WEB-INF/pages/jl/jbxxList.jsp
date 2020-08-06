@@ -115,6 +115,7 @@
     </div>
 </div>
 <script>
+    var funcTsgl = "${funcMap.tsgl}";
     $(function () {
         $('#tableList1').datagrid({
             iconCls:'icon-ok',
@@ -171,6 +172,7 @@
                         var txt1 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="detailJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
                         var txt2 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="exportJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '导出' + '</button>';
                         var txt3 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="deleteJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
+                        if(funcTsgl != 2) return txt1+txt2;
                         return txt1+txt2+txt3;
                     }},
             ]],
@@ -311,6 +313,7 @@
                                 var txt3 = '&nbsp;<button href="javascript:void(0);" onclick="seePwbhJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
                                 var txt4 = '&nbsp;<button href="javascript:void(0);" onclick="delPwbhJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
                                 var txt5 = '&nbsp;<button href="javascript:void(0);" onclick="exportPwbhJbxx(\'' + row.TSID + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '导出' + '</button>';
+                                if(funcTsgl != 2) return txt3+txt5;
                                 return  txt3+txt4+txt5;
                             }},
                     ]],

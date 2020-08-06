@@ -126,7 +126,9 @@ public class EquipInfoAction {
         try {
             Map<String, Object> vo = new HashMap<String, Object>();
             vo.put("azddDdh",equipInfo.getAzddDdh());
-            List<EquipInfo> equipInfos = equipInfoServiceImpl.selectList(vo);
+            EquipInfo temp = new EquipInfo();
+            temp.setAzddDdh(equipInfo.getAzddDdh());
+            List<EquipInfo> equipInfos = equipInfoServiceImpl.selectByAll(temp);
             if(equipInfos != null && equipInfos.size()>0){
                 res.put("code", "-1");
                 res.put("message", "设备调度号已存在！");
@@ -196,8 +198,12 @@ public class EquipInfoAction {
     public void createQRCodeByEquipInfo(HttpServletRequest request, HttpServletResponse response) {
         EquipInfo equipInfo = equipInfoServiceImpl.selectById(request.getParameter("sbid"));
         //转换所属线路
-        SysSsxl sysSsxl = sysSsxlServiceImpl.selectByPrimaryKey(equipInfo.getSsxl());
-        equipInfo.setSsxl(sysSsxl.getYxdw()+sysSsxl.getBdz()+sysSsxl.getXlmc());
+        if(equipInfo.getSsxl() != null && !equipInfo.getSsxl().equals("")){
+            SysSsxl sysSsxl = sysSsxlServiceImpl.selectByPrimaryKey(equipInfo.getSsxl());
+            equipInfo.setSsxl(sysSsxl.getYxdw()+sysSsxl.getBdz()+sysSsxl.getXlmc());
+        }else{
+            equipInfo.setSsxl("");
+        }
         //转换装置类型
         SysDb sysDb = new SysDb();
         sysDb.setKeycode("zz_type");

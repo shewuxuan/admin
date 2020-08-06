@@ -599,10 +599,13 @@
                 break;
             case "5":
                 name="配电室";
+                break;
             case "6":
-                name="柱变TTU";
-            case "7":
                 name="柱上FTU";
+                break;
+            case "7":
+                name="柱上变压器";
+                break;
             case "8":
                 name="故障指示器";
                 break;
@@ -626,7 +629,7 @@
     var zzlx ="${equipInfo.zzlx}";
     var azddDdh ="${equipInfo.azddDdh}";
     var xxwz ="${equipInfo.xxwz}";
-    var beizhu ="${equipInfo.beizhu}";
+    var beizhu =$("#beizhu").val();
     var sbid ="${equipInfo.sbid}";
     addMarker2(point);
     //point = new BMap.Point(116.331398, 39.897445);

@@ -35,7 +35,7 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo> {
     public boolean checkUserPassword(String userId, String oldPassword) {
         boolean check = false;
         UserInfo userInfo = this.userInfoMapper.selectById(userId);
-        if (userInfo.getPassword().equals(oldPassword)) {
+        if (userInfo.getPassword().toUpperCase().equals(oldPassword.toUpperCase())) {
             check = true;
         }
         return check;

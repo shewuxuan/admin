@@ -343,10 +343,13 @@
                 break;
             case "5":
                 name="配电室";
+                break;
             case "6":
-                name="柱变TTU";
-            case "7":
                 name="柱上FTU";
+                break;
+            case "7":
+                name="柱上变压器";
+                break;
             case "8":
                 name="故障指示器";
                 break;
@@ -367,7 +370,7 @@
     var ssxl ="${equipInfo.ssxl}";
     var azddDdh ="${equipInfo.azddDdh}";
     var xxwz ="${equipInfo.xxwz}";
-    var beizhu ="${equipInfo.beizhu}";
+    var beizhu =$("#beizhu").val();
     point = new BMap.Point(jd, wd);
     //var $arr = convertGCJ02ToBD09(wd,jd);
     //var point = new BMap.Point($arr.lng, $arr.lat);
@@ -467,7 +470,7 @@
             +'<br/>&nbsp;<b>装置类型：</b>'+choiceZzlxName(zzlx)
             +'<br/>&nbsp;<b>所属线路：</b>'+getSsxlName(ssxl)
             +'<br/>&nbsp;<b>详细位置：</b>'+xxwz
-            +'<br/>&nbsp;<b>备注：</b>'+beizhu+'<hr>'
+            +'<br/>&nbsp;<b>备注：</b>'+beizhu +'<hr>'
             +text
             +'</div>';
         var infoWindow = new BMap.InfoWindow(content); //创建信息窗口对象

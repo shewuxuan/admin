@@ -20,7 +20,9 @@
         }
     </script>
 </head>
-
+<style>
+    .out:hover {color:#ffffff;}  /* 鼠标移动到链接上 */
+</style>
 <body>
 <!--顶部开始-->
 <div class="top">
@@ -32,10 +34,8 @@
     </div>
     <div class="main_tright">
         <div id="menu">
-            <%-- <ul class="menu" >
-                 <li><a href="/Login/loginOut.action"><img src="/images/top01.png" class="imgpng"/><p>系统退出</p></a></li>
-                 <li><a href="/Login/password.action" onclick="ShowTagDetail(this)" target="left" name="aa"><img src="/images/xgpw.png" class="imgpng"/><p>密码修改</p></a></li>
-             </ul>--%>
+            <a href="#" onclick="logOut()" style="font-size:14px;top:45px;float:right;color: rgb(0,0,179);"><u class="out">退出用户</u></a>
+                <%-- <li><a href="/Login/password.action" onclick="ShowTagDetail(this)" target="left" name="aa"><img src="/images/xgpw.png" class="imgpng"/><p>密码修改</p></a></li>--%>
         </div>
         <div class="clear"></div>
     </div>

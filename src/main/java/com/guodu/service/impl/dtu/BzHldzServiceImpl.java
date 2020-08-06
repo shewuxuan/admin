@@ -83,7 +83,13 @@ public class BzHldzServiceImpl implements BzHldzService {
 
     @Override
     public List<BzHldz> selectByPage(BzHldz record) {
-        List<BzHldz> bzHldzs = bzHldzMapper.selectByPage(record);
+        List<BzHldz> bzHldzs =null;
+        try {
+
+         bzHldzs = bzHldzMapper.selectByPage(record);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         // 查询装置类型名
         for (BzHldz bzhldz : bzHldzs) {
             List<String> zzlxname = new ArrayList<>();
