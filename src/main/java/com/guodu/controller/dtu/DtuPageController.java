@@ -39,7 +39,7 @@ public class DtuPageController {
      * @Author: 2uli
      * @Date: 2020/3/6 11:11 上午
      */
-    @RequestMapping("bz/{page}/{pageName}/{id}")
+    @RequestMapping("bz/dtu/{page}/{pageName}/{id}")
     public String bz2(@PathVariable String page,
                       @PathVariable String pageName,
                       @PathVariable String id,

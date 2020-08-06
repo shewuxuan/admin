@@ -34,7 +34,7 @@
 <div style="margin:20px 0;"></div>
 
 <table id="dg" class="easyui-datagrid" title="采样精度" style="width:100%;height:auto"
-       data-options="onClickCell: onClickCell"></table>     <!-- 改 -->
+       data-options=""></table>     <!-- 改 -->
 
 <%-- 所属区域 --%>
 <script type="text/javascript">
@@ -110,7 +110,7 @@
     function addRecord() {
         var w = window.screen.width / 2 - 950 / 2;
         var t = window.screen.height / 2 - 600 / 2 - 35;
-        window.open("${basePath}/bz/cyjd/addCyjd", "_blank", " height=500,width=1000,top=" + t + ",left=" + w + ",toolbar=no,menubar=no,localtion=no,scrollbars=no");     // 改
+        window.open("${basePath}/bz/dtu/cyjd/addCyjd", "_blank", " height=500,width=1000,top=" + t + ",left=" + w + ",toolbar=no,menubar=no,localtion=no,scrollbars=no");     // 改
     }
 
     <%-- 修改 --%>
@@ -118,7 +118,7 @@
     function updRecord(id) {
         var w = window.screen.width / 2 - 950 / 2;
         var t = window.screen.height / 2 - 600 / 2 - 35;
-        window.open("${basePath}/bz/cyjd/updCyjd/" + id, "_blank", " height=500,width=1000,top=" + t + ",left=" + w + ",toolbar=no,menubar=no,localtion=no,scrollbars=no");     // 改
+        window.open("${basePath}/bz/dtu/cyjd/updCyjd/" + id, "_blank", " height=500,width=1000,top=" + t + ",left=" + w + ",toolbar=no,menubar=no,localtion=no,scrollbars=no");     // 改
     }
 
     <%-- 删除 --%>
@@ -157,52 +157,6 @@
         $('#dg').datagrid('options').url = '${basePath}/bzcyjd/selectByPage';       // 改
         $('#dg').datagrid('options').queryParams = queryParams;
         $('#dg').datagrid("load");
-    }
-</script>
-
-<script type="text/javascript">
-    $.extend($.fn.datagrid.methods, {
-        editCell: function (jq, param) {
-            return jq.each(function () {
-                var opts = $(this).datagrid('options');
-                var fields = $(this).datagrid('getColumnFields', true).concat($(this).datagrid('getColumnFields'));
-                for (var i = 0; i < fields.length; i++) {
-                    var col = $(this).datagrid('getColumnOption', fields[i]);
-                    col.editor1 = col.editor;
-                    if (fields[i] != param.field) {
-                        col.editor = null;
-                    }
-                }
-                $(this).datagrid('beginEdit', param.index);
-                for (var i = 0; i < fields.length; i++) {
-                    var col = $(this).datagrid('getColumnOption', fields[i]);
-                    col.editor = col.editor1;
-                }
-            });
-        }
-    });
-
-    var editIndex = undefined;
-
-    function endEditing() {
-        if (editIndex == undefined) {
-            return true
-        }
-        if ($('#dg').datagrid('validateRow', editIndex)) {
-            $('#dg').datagrid('endEdit', editIndex);
-            editIndex = undefined;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function onClickCell(index, field) {
-        if (endEditing()) {
-            $('#dg').datagrid('selectRow', index)
-                .datagrid('editCell', {index: index, field: field});
-            editIndex = index;
-        }
     }
 </script>
 </body>
