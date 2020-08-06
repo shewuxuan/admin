@@ -26,7 +26,8 @@ public class PwbhPageController {
      * @Date: 2020/6/10 3:35 下午
      */
     @RequestMapping("bz/pwbh/{page}/{pageName}")
-    public String bzPwbhByList(@PathVariable String page, @PathVariable String pageName) {
+    public String bzPwbhByList(HttpServletRequest request,@PathVariable String page, @PathVariable String pageName) {
+        request.setAttribute("funcMap",Auth.getAuth(request).getRoleFunc());
         return "bz/pwbh/" + page + "/" + pageName;
     }
 

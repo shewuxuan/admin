@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 public class FtuPageController {
 
     @RequestMapping("bz/ftu/{page}/{pageName}")
-    public String bz3(@PathVariable String page, @PathVariable String pageName) {
+    public String bz3(HttpServletRequest request,@PathVariable String page, @PathVariable String pageName) {
+        request.setAttribute("funcMap",Auth.getAuth(request).getRoleFunc());
         return "bz/ftu/" + page + "/" + pageName;
     }
 

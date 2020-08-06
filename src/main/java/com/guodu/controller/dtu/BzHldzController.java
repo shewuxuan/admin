@@ -2,6 +2,9 @@ package com.guodu.controller.dtu;
 
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.StaticLog;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.guodu.pojo.dtu.BzGjcs;
 import com.guodu.pojo.dtu.BzHldz;
 import com.guodu.pojo.sys.Auth;
 import com.guodu.service.dtu.BzHldzService;
@@ -78,17 +81,20 @@ public class BzHldzController {
     }
 
     @GetMapping("selectByPage")
-    public String selectByAll(HttpServletRequest request,BzHldz bzHldz,
+    public String selectByAll(HttpServletRequest request,BzHldz record,
                               @RequestParam(value = "page", defaultValue = "1") Integer page,
                               @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
         Map<String, Object> map = new HashMap<>(16);
-        map.put("bzHldz", bzHldz);
-        map.put("page", page);
-        map.put("rows", rows);
-        if (bzHldz.getSsqy() == null || bzHldz.getSsqy().equals("0")){
+        // pagehelper分页
+        if (record.getSsqy() == null || record.getSsqy().equals("0")){
             Auth auth = Auth.getAuth(request);
-            map.put("ssqy",auth.getZwSsqy());
+            record.setSsqy(auth.getZwSsqy());
         }
-        return bzHldzServiceImpl.selectByPage(map);
+        PageHelper.startPage(page, rows);
+        List<BzHldz> list = bzHldzServiceImpl.selectByPage(record);
+        PageInfo<BzHldz> pageInfo = new PageInfo<>(list);
+        map.put("rows", pageInfo.getList());
+        map.put("total", pageInfo.getTotal());
+        return JSONUtil.toJsonStr(map);
     }
 }

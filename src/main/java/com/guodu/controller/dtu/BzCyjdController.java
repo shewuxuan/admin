@@ -2,6 +2,8 @@ package com.guodu.controller.dtu;
 
 import cn.hutool.json.JSONUtil;
 import cn.hutool.log.StaticLog;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.guodu.pojo.dtu.BzCyjd;
 import com.guodu.pojo.sys.Auth;
 import com.guodu.service.dtu.BzCyjdService;
@@ -118,17 +120,20 @@ public class BzCyjdController {
     }
 
     @GetMapping("selectByPage")
-    public String selectByAll(HttpServletRequest request,BzCyjd bzCyjd,
+    public String selectByAll(HttpServletRequest request,BzCyjd record,
                               @RequestParam(value = "page", defaultValue = "1") Integer page,
                               @RequestParam(value = "rows", defaultValue = "10") Integer rows) {
         Map<String, Object> map = new HashMap<>(16);
-        map.put("bzCyjd", bzCyjd);
-        map.put("page", page);
-        map.put("rows", rows);
-        if (bzCyjd.getSsqy() == null || bzCyjd.getSsqy().equals("0")){
+        // pagehelper分页
+        if (record.getSsqy() == null || record.getSsqy().equals("0")){
             Auth auth = Auth.getAuth(request);
-            map.put("ssqy",auth.getZwSsqy());
+            record.setSsqy(auth.getZwSsqy());
         }
-        return bzCyjdServiceImpl.selectByPage(map);
+        PageHelper.startPage(page, rows);
+        List<BzCyjd> list = bzCyjdServiceImpl.selectByPage(record);//???一些返回String,有的返回list
+        PageInfo<BzCyjd> pageInfo = new PageInfo<>(list);
+        map.put("rows", pageInfo.getList());
+        map.put("total", pageInfo.getTotal());
+        return JSONUtil.toJsonStr(map);
     }
 }
