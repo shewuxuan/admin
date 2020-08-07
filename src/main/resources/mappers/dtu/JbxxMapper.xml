@@ -527,82 +527,82 @@
         </foreach>
     </insert>
     <select id="selectByPage" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select
-    <include refid="Base_Column_List"/>, sd1.keymemo as ssqyName, sd2.keymemo as zzlxName
-    from jbxx
-    LEFT JOIN sys_db sd1 ON sd1.keyvalue = jbxx.ssqy
-    LEFT JOIN sys_db sd2 ON sd2.keyvalue = jbxx.zzlx
-    <where>
-        <if test="tsid != null and tsid != ''">
-            and tsid=#{tsid,jdbcType=VARCHAR}
-        </if>
-        <if test="ssqy != null and ssqy != ''">
-            and ssqy=#{ssqy,jdbcType=VARCHAR}
-        </if>
-        <if test="tssj != null">
-            and tssj=#{tssj,jdbcType=TIMESTAMP}
-        </if>
-        <if test="azddDdh != null and azddDdh != ''">
-            and azdd_ddh=#{azddDdh,jdbcType=VARCHAR}
-        </if>
-        <if test="ipdz != null and ipdz != ''">
-            and ipdz=#{ipdz,jdbcType=VARCHAR}
-        </if>
-        <if test="wlwkh != null and wlwkh != ''">
-            and wlwkh=#{wlwkh,jdbcType=VARCHAR}
-        </if>
-        <if test="rtudz != null and rtudz != ''">
-            and rtudz=#{rtudz,jdbcType=VARCHAR}
-        </if>
-        <if test="dkh != null and dkh != ''">
-            and dkh=#{dkh,jdbcType=VARCHAR}
-        </if>
-        <if test="sccs != null and sccs != ''">
-            and sccs=#{sccs,jdbcType=VARCHAR}
-        </if>
-        <if test="scrq != null">
-            and scrq=#{scrq,jdbcType=TIMESTAMP}
-        </if>
-        <if test="zzxh != null and zzxh != ''">
-            and zzxh=#{zzxh,jdbcType=VARCHAR}
-        </if>
-        <if test="zzbh != null and zzbh != ''">
-            and zzbh=#{zzbh,jdbcType=VARCHAR}
-        </if>
-        <if test="zzlx != null and zzlx != ''">
-            and zzlx=#{zzlx,jdbcType=VARCHAR}
-        </if>
-        <if test="rjbbJym != null and rjbbJym != ''">
-            and rjbb_jym=#{rjbbJym,jdbcType=VARCHAR}
-        </if>
-        <if test="yjbb != null and yjbb != ''">
-            and yjbb=#{yjbb,jdbcType=VARCHAR}
-        </if>
-        <if test="tsryxm != null and tsryxm != ''">
-            and tsryxm=#{tsryxm,jdbcType=VARCHAR}
-        </if>
-        <if test="upload != null and upload != ''">
-            and upload=#{upload,jdbcType=VARCHAR}
-        </if>
-        <if test="czr != null and czr != ''">
-            and czr=#{czr,jdbcType=VARCHAR}
-        </if>
-        <if test="czsj != null">
-            and czsj=#{czsj,jdbcType=TIMESTAMP}
-        </if>
-        <if test="beizhu != null and beizhu != ''">
-            and beizhu=#{beizhu,jdbcType=VARCHAR}
-        </if>
-        <if test="startTssj != null and startTssj != ''">
-            and tssj &gt;= #{startTssj,jdbcType=TIMESTAMP}
-        </if>
-        <if test="endTssj != null and endTssj != ''">
-            and tssj &lt;= #{endTssj,jdbcType=TIMESTAMP}
-        </if>
-        and sd1.keycode = 'region'
-        and sd2.keycode = 'zz_type'
-    </where>
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>, sd1.keymemo as ssqyName, sd2.keymemo as zzlxName
+        from jbxx
+        LEFT JOIN sys_db sd1 ON sd1.keyvalue = jbxx.ssqy
+        LEFT JOIN sys_db sd2 ON sd2.keyvalue = jbxx.zzlx
+        <where>
+            <if test="tsid != null and tsid != ''">
+                and tsid=#{tsid,jdbcType=VARCHAR}
+            </if>
+            <if test="ssqy != null and ssqy != ''">
+                and ssqy=#{ssqy,jdbcType=VARCHAR}
+            </if>
+            <if test="tssj != null">
+                and tssj=#{tssj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="azddDdh != null and azddDdh != ''">
+                and azdd_ddh=#{azddDdh,jdbcType=VARCHAR}
+            </if>
+            <if test="ipdz != null and ipdz != ''">
+                and ipdz=#{ipdz,jdbcType=VARCHAR}
+            </if>
+            <if test="wlwkh != null and wlwkh != ''">
+                and wlwkh=#{wlwkh,jdbcType=VARCHAR}
+            </if>
+            <if test="rtudz != null and rtudz != ''">
+                and rtudz=#{rtudz,jdbcType=VARCHAR}
+            </if>
+            <if test="dkh != null and dkh != ''">
+                and dkh=#{dkh,jdbcType=VARCHAR}
+            </if>
+            <if test="sccs != null and sccs != ''">
+                and sccs=#{sccs,jdbcType=VARCHAR}
+            </if>
+            <if test="scrq != null">
+                and scrq=#{scrq,jdbcType=TIMESTAMP}
+            </if>
+            <if test="zzxh != null and zzxh != ''">
+                and zzxh=#{zzxh,jdbcType=VARCHAR}
+            </if>
+            <if test="zzbh != null and zzbh != ''">
+                and zzbh=#{zzbh,jdbcType=VARCHAR}
+            </if>
+            <if test="zzlx != null and zzlx != ''">
+                and zzlx=#{zzlx,jdbcType=VARCHAR}
+            </if>
+            <if test="rjbbJym != null and rjbbJym != ''">
+                and rjbb_jym=#{rjbbJym,jdbcType=VARCHAR}
+            </if>
+            <if test="yjbb != null and yjbb != ''">
+                and yjbb=#{yjbb,jdbcType=VARCHAR}
+            </if>
+            <if test="tsryxm != null and tsryxm != ''">
+                and tsryxm=#{tsryxm,jdbcType=VARCHAR}
+            </if>
+            <if test="upload != null and upload != ''">
+                and upload=#{upload,jdbcType=VARCHAR}
+            </if>
+            <if test="czr != null and czr != ''">
+                and czr=#{czr,jdbcType=VARCHAR}
+            </if>
+            <if test="czsj != null">
+                and czsj=#{czsj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beizhu != null and beizhu != ''">
+                and beizhu=#{beizhu,jdbcType=VARCHAR}
+            </if>
+            <if test="startTssj != null and startTssj != ''">
+                and tssj &gt;= #{startTssj,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endTssj != null and endTssj != ''">
+                and tssj &lt;= #{endTssj,jdbcType=TIMESTAMP}
+            </if>
+            and sd1.keycode = 'region'
+            and sd2.keycode = 'zz_type'
+            </where>
     </select>
 
     <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">

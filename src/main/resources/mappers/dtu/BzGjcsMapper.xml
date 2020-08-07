@@ -174,7 +174,7 @@
             <if test="id != null and id != ''">
                 and id=#{id,jdbcType=VARCHAR}
             </if>
-            <if test="ssqy != null and ssqy != '' and ssqy != 0">
+            <if test="ssqy != null and ssqy != '' and ssqy != '0'.toString() ">
                 and ssqy in (${ssqy})
             </if>
             <if test="jg != null and jg != ''">

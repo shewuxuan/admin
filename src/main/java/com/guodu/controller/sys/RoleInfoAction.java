@@ -21,25 +21,25 @@ import com.guodu.util.StringUtils;
 
 
 /**
-* @ClassName: RoleInfoAction.java
-* @Description: 角色相关操作
-* @author: shewuxuan
-* @date: 2020年3月13日
-*
-* Modification History:
-* Date         Author          Version            Description
-*---------------------------------------------------------*
-*  2020年3月13日   shewuxuan           v1.0.0               初始化构建
-*/
+ * @ClassName: RoleInfoAction.java
+ * @Description: 角色相关操作
+ * @author: shewuxuan
+ * @date: 2020年3月13日
+ *
+ * Modification History:
+ * Date         Author          Version            Description
+ *---------------------------------------------------------*
+ *  2020年3月13日   shewuxuan           v1.0.0               初始化构建
+ */
 @Controller
 @RequestMapping("role")
 public class RoleInfoAction {
 
 	@Autowired
 	RoleInfoServiceImpl roleInfoServiceImpl;
-	
-	
-	
+
+
+
 	@RequestMapping(value = {"selectListRoleInfo.action",  "/" }, produces = { "application/json;charset=UTF-8" },method=RequestMethod.POST)
 	@ResponseBody
 	public Object selectListRoleInfo(@RequestParam Map<String, Object> form) {
@@ -49,13 +49,13 @@ public class RoleInfoAction {
 		vo.put("roleName", roleName);
 		try{
 			res = this.roleInfoServiceImpl.selectPage(form);
- 		}catch(Exception e){
- 			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return JSON.toJSONString(res);
-		
+
 	}
-	
+
 	@RequestMapping(value = {"toAddRoleInfoView.action",  "/" }, produces = { "application/json;charset=UTF-8" })
 	public ModelAndView toAddRoleInfoView(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView("sys/addRole");
@@ -114,10 +114,10 @@ public class RoleInfoAction {
 			res.put("code", "-1");
 			res.put("message", "添加失败");
 			e.printStackTrace();
-		}	
-		return JSON.toJSONString(res);	
+		}
+		return JSON.toJSONString(res);
 	}
-	
+
 	@RequestMapping(value = {"updeatRoleInfo.action",  "/" }, produces = {"application/json;charset=UTF-8"},method=RequestMethod.POST)
 	@ResponseBody
 	public Object updeatRoleInfo(@RequestParam Map<String, Object> form, HttpServletRequest request) {
@@ -151,9 +151,9 @@ public class RoleInfoAction {
 			res.put("message", "修改失败");
 			e.printStackTrace();
 		}
-		return JSON.toJSONString(res);	
+		return JSON.toJSONString(res);
 	}
-	
+
 	@RequestMapping(value = {"delRoleInfo.action",  "/" }, produces = { "application/json;charset=UTF-8" },method=RequestMethod.POST)
 	@ResponseBody
 	public Object delRoleInfo(@RequestParam Map<String, Object> form) {
@@ -171,15 +171,15 @@ public class RoleInfoAction {
 			res.put("message", "删除失败");
 			e.printStackTrace();
 		}
-		return JSON.toJSONString(res);	
+		return JSON.toJSONString(res);
 	}
-	
+
 	@RequestMapping(value = {"queryAllRoleInfo.action",  "/" }, produces = { "application/json;charset=UTF-8" },method=RequestMethod.POST)
 	@ResponseBody
 	public Object queryAllRoleInfo(@RequestParam Map<String, Object> form) {
 		List<Map<String, Object>> queryAllRoleInfo = null;
 		try{
-			 queryAllRoleInfo = this.roleInfoServiceImpl.queryAllRoleInfo();
+			queryAllRoleInfo = this.roleInfoServiceImpl.queryAllRoleInfo();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -182,23 +182,23 @@
 
     <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">
         select
-            e.SBID,
-            t.keymemo as SSQY,
-            e.AZDD_DDH,
-            e.ZDMC,
-            e.SSXL,
-            e.ZBXH,
-            e.ZBBH,
-            t2.keymemo as ZZLX,
-            e.JD,
-            e.WD,
-            e.XXWZ
+        e.SBID,
+        t.keymemo as SSQY,
+        e.AZDD_DDH,
+        e.ZDMC,
+        e.SSXL,
+        e.ZBXH,
+        e.ZBBH,
+        t2.keymemo as ZZLX,
+        e.JD,
+        e.WD,
+        e.XXWZ
         from
-            equip_info e
+        equip_info e
         left join
-            (select keyvalue,keymemo from sys_db where keycode='region') t  on e.SSQY = t.keyvalue
+        (select keyvalue,keymemo from sys_db where keycode='region') t  on e.SSQY = t.keyvalue
         left join
-            (select keyvalue,keymemo from sys_db where keycode='zz_type') t2  on e.ZZLX = t2.keyvalue
+        (select keyvalue,keymemo from sys_db where keycode='zz_type') t2  on e.ZZLX = t2.keyvalue
         left join sys_ssxl s on s.id = e.ssxl
         where 1=1
         <if test="ssqy!=null and ssqy!=''">and e.SSQY in (${ssqy})</if>
@@ -251,7 +251,7 @@
         sccs_xf,
         zbxh_xf,
         tsryxm_xf,
-         jd, wd, xxwz, czr, czsj, beizhu
+        jd, wd, xxwz, czr, czsj, beizhu
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         <!--@mbg.generated-->
