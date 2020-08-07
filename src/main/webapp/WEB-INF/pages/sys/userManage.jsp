@@ -189,6 +189,12 @@
 </div>
 <script>
     /* 用户管理 */
+    function seeUser(userId) {
+        var w = window.screen.width / 2 - 950 / 2;
+        var t = window.screen.height / 2 - 600 / 2 - 35;
+        window.open("${ctx}/user/toSeeUserInfoView.action?userId=" + userId, null, " height=500,width=1000,top=" + t + ",left=" + w + ",toolbar=no,menubar=no,localtion=no,scrollbars=no");
+    }
+
     function editUser(userId) {
         var w = window.screen.width / 2 - 950 / 2;
         var t = window.screen.height / 2 - 600 / 2 - 35;
@@ -270,7 +276,7 @@
                         return txt;
                     }
                 },
-                /*{field: 'role_name', align: "center", title: '所属权限', width: 30},*/
+                {field: 'role_name', align: "center", title: '权限', width: 30},
                 {field: 'phone', align: "center", title: '电话', width: 30},
                 {field: 'email', align: "center", title: '邮箱', width: 30},
                 {field: 'zw', align: "center", title: '管理区域', width: 60, formatter: function (value, row, index) {
@@ -297,15 +303,14 @@
                     }
                 },
                 {
-                    field: 'trans', align: "left", title: '操作', width: 30, formatter: function (value, row, index) {
-                        var txt = '<button href="javascript:void(0);" onclick="editUser(\'' + row.user_id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '修改' + '</button>';
-
+                    field: 'trans', align: "left", title: '操作', width: 60, formatter: function (value, row, index) {
+                        var txt0 = '<button href="javascript:void(0);" onclick="seeUser(\'' + row.user_id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '查看' + '</button>';
+                        var txt1 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="editUser(\'' + row.user_id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '修改' + '</button>';
                         var txt2 = '&nbsp;&nbsp;&nbsp;<button href="javascript:void(0);" onclick="delUser(\'' + row.user_id + '\')" class="iput_m" style="width: 40px; height: 20px;">' + '删除' + '</button>';
-                        if (yhglFunc != 2) return '';
-                        if (row.STATUS == '注销') {
-                            return txt;
+                        if (yhglFunc != 2){
+                            return txt0;
                         } else {
-                            return txt + txt2;
+                            return txt0+txt1 + txt2;
                         }
                     }
                 },

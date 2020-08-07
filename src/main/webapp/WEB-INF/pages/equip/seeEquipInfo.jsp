@@ -20,6 +20,12 @@
     #descDiv::-webkit-scrollbar{
         display: none;
     }
+    #rightImg:hover,#leftImg:hover{
+        filter:alpha(opacity:0.6);
+        -moz-opacity:0.6;
+        opacity:0.6;
+        cursor: pointer;
+    }
 </style>
 <body>
 <div class="right_main">
@@ -199,7 +205,8 @@
                     </tr>
                 </tbody>
             </table>
-            <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+            <img id="leftImg" src="/images/left.png" onclick="upImg()" style="position:fixed;z-index:3;width:100px;height:100px;left:0px;top:35%;display:none;"/>
+            <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:80%;height:100%;left:10%;display:none;">
                 <div id="innerdiv" style="position:absolute;">
                     <input type="hidden" value="" id="pImgId">
                     <input type="hidden" value="" id="pTypeName">
@@ -208,16 +215,56 @@
                            class="iput_m" style="height:25px;background: rgb(81,173,237);border-radius: 20%;"/>
                 </div>
             </div>
+            <img id="rightImg" src="/images/right.png" onclick="nextImg()" style="position:fixed;z-index:3;width:100px;height:100px;right:0px;top:35%;display:none;"/>
+
         </form>
     </div>
 </div>
 <%--//调用百度地图--%>
 <script type="text/javascript">
+    //坑比：没有产品蛋疼
+    var ids = '${ids}';
+    var sbid = '${equipInfo.sbid}';
+    var data = JSON.parse(ids);
+    function upImg() {
+        //$("#rightImg").fadeIn("fast");
+        var nowId = $("#pImgId").val();
+        if(nowId == data[1]){
+            //$("#leftImg").fadeOut("fast");
+            $("#pImgId").val(sbid);
+            imgShow("#outerdiv", "#innerdiv", "#bigimg", '/equip/createQRCodeByEquipInfo.action?sbid='+sbid);
+        }else{
+            var index = 0;
+            for(i = 0; i < data.length; i++) {
+                if(data[i] == nowId){index = i;}
+            }
+            if(index>0){//遍历：取出上一张
+                $("#pImgId").val(data[index-1]);
+                imgShow("#outerdiv", "#innerdiv", "#bigimg", '/equip/downLoadFileByFileId.action?pId='+data[index-1]);
+            }
+        }
+    }
+    function nextImg() {
+        //$("#leftImg").fadeIn("fast");
+        var nowId = $("#pImgId").val();
+        if(nowId == data[data.length-1]){//最后一张
+            //$("#rightImg").fadeOut("fast");
+        }else{
+            var index = 0;
+            for(i = 0; i < data.length; i++) {
+                if(data[i] == nowId){index = i;}
+            }
+            if(index < data.length){//遍历：取出上一张
+                $("#pImgId").val(data[index+1]);
+                imgShow("#outerdiv", "#innerdiv", "#bigimg", '/equip/downLoadFileByFileId.action?pId='+data[index+1]);
+            }
+        }
+    }
     //下载图片
     function downloadImgByPid(){
         var pImgId = $("#pImgId").val();
-        var pTypeName = $("#pTypeName").val();
-        if(pTypeName =='sbid0'){
+        //var pTypeName = $("#pTypeName").val();
+        if(pImgId == sbid){
             window.location.href ='${ctx}/equip/createQRCodeByEquipInfo.action?sbid='+pImgId;
         }else{
             window.location.href ='${ctx}/equip/downLoadFileByFileId.action?pId='+pImgId;
@@ -315,14 +362,18 @@
             }
             $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
 
-            var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
-            var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
+            var w = (windowW-imgWidth)/3;//计算图片与窗口左边距
+            var h = (windowH-imgHeight)/3;//计算图片与窗口上边距
             $(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性
             $(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg
+            $("#rightImg").fadeIn("fast");
+            $("#leftImg").fadeIn("fast");
         });
 
         $(outerdiv).click(function(){//再次点击淡出消失弹出层
             $(this).fadeOut("fast");
+            $("#rightImg").fadeOut("fast");
+            $("#leftImg").fadeOut("fast");
         });
     }
     //装置类型选择

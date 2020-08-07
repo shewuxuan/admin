@@ -25,10 +25,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("equip")
@@ -102,6 +99,15 @@ public class EquipInfoAction {
         vo.put("sbid", sbid);
         List<EquipPhoto> files = equipPhotoServiceImpl.selectList(vo);
         view.addObject("files",files);
+        //为了实现页面轮播图
+        vo.put("files",files);
+        List<Map> tempList = (List<Map>)vo.get("files");
+        List ids = new ArrayList();
+        ids.add("0");//默认二维码id
+        for (Map tmap :tempList){
+            ids.add(tmap.get("PID").toString());
+        }
+        view.addObject("ids",JSON.toJSONString(ids));
         return view;
     }
 

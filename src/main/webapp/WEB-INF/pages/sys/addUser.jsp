@@ -30,9 +30,11 @@
         var type = $("#userType").val();
         if(type == 0){
             $("#lastRow").show();
+            $("#qxRow").show();
         }else {
             $("[name='zw_ssqy']").removeAttr("checked");
             $("#lastRow").hide();
+            $("#qxRow").hide();
         }
     }
 </script>
@@ -70,15 +72,13 @@
                             </select>
                         </td>
                     </tr>
-                    <c:if test="${funcMap.qxgl == 2}">
-                    <tr>
+                    <tr id="qxRow">
                         <th bgcolor="#FFFFFF"><p>权限</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <select name="roleId" id="roleId" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
                     </tr>
-                    </c:if>
                     <tr>
                         <th bgcolor="#FFFFFF"><p>电话</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -91,14 +91,12 @@
                             <input type="text" name="email" id="email" style="height:25px; border:1px solid #CCC;"/>
                         </td>
                     </tr>
-                    <c:if test="${funcMap.qxgl == 2}">
                     <tr id="lastRow">
                         <th bgcolor="#FFFFFF"><p>管理区域</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <span id="zw_ssqy"></span>
                         </td>
                     </tr>
-                    </c:if>
                     <tr>
                         <td height="33" colspan="2" bgcolor="#f5f2ea">
                             <input type="button" name="button" value="确定" onclick="commit()" class="iput_m"
@@ -130,15 +128,13 @@
                             </select>
                         </td>
                     </tr>
-                    <c:if test="${funcMap.qxgl == 2}">
-                    <tr>
+                    <tr id="qxRow">
                         <th bgcolor="#FFFFFF"><p>权限</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
                             <select name="roleId" id="roleId" style="height:25px; border:1px solid #CCC;">
                             </select>
                         </td>
                     </tr>
-                    </c:if>
                     <tr>
                         <th bgcolor="#FFFFFF"><p>密码</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -159,7 +155,6 @@
                             <input type="text" name="email" id="email" style="height:25px; border:1px solid #CCC;"
                                    value="${userInfo.email}"/></td>
                     </tr>
-                    <c:if test="${funcMap.qxgl == 2}">
                     <tr id="lastRow">
                         <th bgcolor="#FFFFFF"><p>管理区域</p></th>
                         <td bgcolor="#FFFFFF" style="text-align:left; ">
@@ -167,7 +162,6 @@
                             <%--<input type="text" name="zw" id="zw" style="height:25px; border:1px solid #CCC;"
                                    value="${userInfo.zw}"/></td>--%>
                     </tr>
-                    </c:if>
                     <tr>
                         <td height="33" colspan="2" bgcolor="#f5f2ea">
                             <input type="button" name="button" id="button" value="确定" onclick="change()" class="iput_m"

@@ -53,6 +53,17 @@ public class UserInfoAction {
 
     }
 
+    @RequestMapping(value = {"toSeeUserInfoView.action", "/"}, produces = {"application/json;charset=UTF-8"})
+    public ModelAndView toSeeUserInfoView(HttpServletRequest request) {
+        ModelAndView view = new ModelAndView("sys/seeUser");
+        String userId =  request.getParameter("userId");
+        UserInfo userInfo = userInfoServiceImpl.selectById(userId);
+        view.addObject("userInfo", userInfo);
+        Map<String, Object> funcMap = userInfoServiceImpl.getComboTreeData(userInfo.getRoleId());
+        view.addObject("funcMap", funcMap);
+        return view;
+    }
+
     @RequestMapping(value = {"toAddUserInfoView.action", "/"}, produces = {"application/json;charset=UTF-8"})
     public ModelAndView toAddUserInfoView(HttpServletRequest request) {
         ModelAndView view = new ModelAndView("sys/addUser");
